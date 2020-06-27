@@ -1,0 +1,37 @@
+{
+  "name": "vt-style",
+  "version": "1.0.0",
+  "description": "",
+  "bin": {
+    "vt-style": "dist/cli.js"
+  },
+  "scripts": {
+    "build": "tsc -p .",
+    "watch": "tsc -w",
+    "lint": "eslint .",
+    "fix": "eslint --fix .",
+    "test": "mocha -r ts-node/register test/*.ts",
+    "test:watch": "npm test -- --watch --watch-files src/**/*.ts --watch-files test/**/*.ts"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "cli-color": "^2.0.0",
+    "command-line-args": "^5.1.1",
+    "command-line-usage": "^6.1.0",
+    "source-map-support": "^0.5.19"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.2.11",
+    "@types/cli-color": "^2.0.0",
+    "@types/command-line-args": "^5.0.0",
+    "@types/command-line-usage": "^5.0.1",
+    "@types/mocha": "^7.0.2",
+    "@types/node": "^14.0.14",
+    "@types/source-map-support": "^0.5.1",
+    "chai": "^4.2.0",
+    "mocha": "^8.0.1",
+    "ts-node": "^8.10.2",
+    "typescript": "^3.9.5"
+  }
+}
