@@ -17,19 +17,13 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "cli-color": "^2.0.0",
-    "command-line-args": "^5.1.1",
-    "command-line-usage": "^6.1.0",
-    "source-map-support": "^0.5.19"
+    "commander": "^8.2.0"
   },
   "devDependencies": {
     "@types/chai": "^4.2.11",
-    "@types/cli-color": "^2.0.0",
-    "@types/command-line-args": "^5.0.0",
-    "@types/command-line-usage": "^5.0.1",
+    "@types/commander": "^2.12.2",
     "@types/mocha": "^7.0.2",
     "@types/node": "^14.0.14",
-    "@types/source-map-support": "^0.5.1",
     "chai": "^4.2.0",
     "mocha": "^8.0.1",
     "ts-node": "^8.10.2",
