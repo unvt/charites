@@ -1,9 +1,16 @@
+import fs from 'fs'
 import YAML from 'js-yaml'
 
-export function parser(yaml: string) {
+const yamlinc = require('yaml-include')
+
+export function parser(file: string): object {
+  yamlinc.setBaseFile(file)
+  const yaml = fs.readFileSync(file, 'utf8')
+
   // Don't detect as comment if it is RGB color code like `#FF0000`.
-  const obj = YAML.load(yaml.replace(/(#[a-f0-9]{6})/ig, "'$1'").trim(), {
-    schema: YAML.JSON_SCHEMA,
+  const obj = YAML.load(yaml, {
+    schema: yamlinc.YAML_INCLUDE_SCHEMA,
+    filename: file,
     json: true
   })
 

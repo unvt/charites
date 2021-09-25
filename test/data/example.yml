@@ -1,8 +1,8 @@
-$color: #ff0000
+$color: "#ff0000"
 $stroke-width: 2
 
-$background: #ff0000
-$backgroundColor: #ffff00
+$background: "#ff0000"
+$backgroundColor: "#ffff00"
 $backgroundAlias: $background
 $fruits:
   - apple
@@ -16,3 +16,5 @@ background: $background
 backgroundColor: $backgroundColor
 alias: $backgroundAlias
 fruits: $array-alias
+
+names: !!inc/file names.yml

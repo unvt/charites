@@ -1,13 +1,12 @@
 import path from 'path'
 import fs from 'fs'
-import YAML from 'js-yaml'
+import { parser } from '../lib/yaml-parser'
 
 export function build(source: string, destination: string) {
   const sourcePath = path.resolve(process.cwd(), source)
   const destinationPath = path.resolve(process.cwd(), destination)
 
-  const yaml = fs.readFileSync(sourcePath, 'utf8')
-  const style = JSON.stringify(YAML.load(yaml), null, '  ')
+  const style = JSON.stringify(parser(sourcePath), null, '  ')
 
   try {
     fs.writeFileSync(destinationPath, style)
