@@ -3,18 +3,14 @@
 ## Usage
 
 ```
-$ vt-style --help
+$ vt-style help
+Usage: vt-style [options] [command]
 
-vt-style
+Options:
+  -h, --help                    display help for command
 
-  A command-line utility for Mapbox GL style.
-
-Synopsis
-
-  $ vt-style <command> [options]
-
-Command List
-
-  init    Create a style.
-  start   Start a development server.
+Commands:
+  init <file>                   initialize a style JSON
+  build <source> [destination]  build a style JSON from the YAML
+  help [command]                display help for command
 ```
