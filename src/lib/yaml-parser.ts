@@ -7,7 +7,6 @@ export function parser(file: string): object {
   yamlinc.setBaseFile(file)
   const yaml = fs.readFileSync(file, 'utf8')
 
-  // Don't detect as comment if it is RGB color code like `#FF0000`.
   const obj = YAML.load(yaml, {
     schema: yamlinc.YAML_INCLUDE_SCHEMA,
     filename: file,
@@ -19,9 +18,9 @@ export function parser(file: string): object {
 
   for (const key in obj as any) {
     if (key.match(/^\$/)) {
-        // TODO:
-        // @ts-ignore
-        variables[key] = obj[key]
+      // TODO:
+      // @ts-ignore
+      variables[key] = obj[key]
     } else {
       // TODO:
       // @ts-ignore

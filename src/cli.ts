@@ -17,4 +17,4 @@ program
   .description('build a style JSON from the YAML')
   .action(build);
 
-program.parse(process.argv);
+program.parse(process.argv)
