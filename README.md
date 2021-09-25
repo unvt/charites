@@ -17,6 +17,14 @@ Commands:
   help [command]                display help for command
 ```
 
+### Example:
+
+Build the style.json from style.yml:
+
+```
+vt-style build style.yml style.json
+```
+
 ## Development
 
 ```
