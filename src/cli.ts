@@ -1,27 +1,20 @@
 #!/usr/bin/env node
 
-import commandLineArgs from 'command-line-args'
-import Usage from './lib/Usage'
+import { Command } from 'commander';
 
-import initCommand from './lib/initCommand'
-import startCommand from './lib/startCommand'
+import { init } from './commands/init'
+import { build } from './commands/build'
 
-type Commands = {
-  [key: string]: any;
-}
+const program = new Command();
 
-const commands: Commands = {
-  init: initCommand,
-  start: startCommand,
-}
+program
+  .command('init <file>')
+  .description('initialize a style JSON')
+  .action(init)
 
-const mainCommand = commandLineArgs([
-  { name: 'name', defaultOption: true }
-], { stopAtFirstUnknown: true })
+program
+  .command('build <source> [destination]')
+  .description('build a style JSON from the YAML')
+  .action(build);
 
-if (commands[mainCommand.name]) {
-  const command = new commands[mainCommand.name]()
-  command.run(mainCommand)
-} else {
-  Usage(commands)
-}
+program.parse(process.argv);
