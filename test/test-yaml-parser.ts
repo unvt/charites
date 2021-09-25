@@ -15,7 +15,7 @@ describe('Test for the `yaml-parser.ts`.', () => {
       backgroundColor: '#ffff00',
       alias: '#ff0000',
       fruits: [ 'apple', 'banana', '#ff0000' ],
-      "names": [
+      names: [
         "John",
         "花子",
         "#ff0000"
