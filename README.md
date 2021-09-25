@@ -14,3 +14,19 @@ Commands:
   build <source> [destination]  build a style JSON from the YAML
   help [command]                display help for command
 ```
+
+## Development
+
+```
+$ git clone https://github.com/geolonia/vt-style.git
+$ cd vt-style
+$ npm install
+$ npm run build
+$ npm install -g .
+```
+
+Then run:
+
+```
+$ vt-style help
+```
