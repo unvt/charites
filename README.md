@@ -1,4 +1,4 @@
-# [WIP] `vt-style`
+# Charites
 
 Demo: https://github.com/miya0001/style-template
 
