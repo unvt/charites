@@ -24,13 +24,15 @@ export function convert(source: string, destination: string) {
     fs.mkdirSync(dirName, { recursive: true })
     fs.writeFileSync(path.join(dirName, fileName), layerYml)
 
-    layers.push(`!!inc/file ${path.join(dirName, fileName)}`)
+    layers.push(`!!inc/file ${path.join('layers', fileName)}`)
   }
 
   style.layers = layers
 
   try {
-    fs.writeFileSync(destinationPath, YAML.dump(style).replace(/'/g, ''))
+    fs.writeFileSync(destinationPath, YAML.dump(style).replace(/'\!\!inc\/file layers\/.+\.yml'/g, function (match) {
+      return match.replace(/'/g, '')
+    }))
   } catch(err) {
     // TODO: Error handling
   }
