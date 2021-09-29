@@ -30,7 +30,9 @@ export function convert(source: string, destination: string) {
   style.layers = layers
 
   try {
-    fs.writeFileSync(destinationPath, YAML.dump(style).replace(/'/g, ''))
+    fs.writeFileSync(destinationPath, YAML.dump(style).replace(/'\!\!inc\/file layers\/.+\.yml'/g, function (match) {
+      return match.replace(/'/g, '')
+    }))
   } catch(err) {
     // TODO: Error handling
   }
