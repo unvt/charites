@@ -24,7 +24,7 @@ export function convert(source: string, destination: string) {
     fs.mkdirSync(dirName, { recursive: true })
     fs.writeFileSync(path.join(dirName, fileName), layerYml)
 
-    layers.push(`!!inc/file ${path.join(dirName, fileName)}`)
+    layers.push(`!!inc/file ${path.join('layers', fileName)}`)
   }
 
   style.layers = layers
