@@ -1,5 +1,7 @@
 # Charites
 
+Allows to edit a Mapbox GL JS based styles with YAML format.
+
 Demo: https://github.com/miya0001/style-template
 
 ## Usage
