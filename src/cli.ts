@@ -4,6 +4,7 @@ import { Command } from 'commander';
 
 import { init } from './commands/init'
 import { build } from './commands/build'
+import { convert } from './commands/convert'
 
 const program = new Command();
 
@@ -16,5 +17,11 @@ program
   .command('build <source> [destination]')
   .description('build a style JSON from the YAML')
   .action(build);
+
+program
+  .command('convert <source> [destination]')
+  .description('convert the style JSON to YAML')
+  .action(convert);
+
 
 program.parse(process.argv)
