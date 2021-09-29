@@ -1,9 +1,9 @@
 {
-  "name": "vt-style",
+  "name": "charites",
   "version": "1.0.0",
   "description": "",
   "bin": {
-    "vt-style": "dist/cli.js"
+    "charites": "dist/cli.js"
   },
   "scripts": {
     "build": "tsc -p .",

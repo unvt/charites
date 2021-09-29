@@ -1,10 +1,12 @@
-# [WIP] `vt-style`
+# Charites
+
+Demo: https://github.com/miya0001/style-template
 
 ## Usage
 
 ```
-$ vt-style help
-Usage: vt-style [options] [command]
+$ charites help
+Usage: charites [options] [command]
 
 Options:
   -h, --help                    display help for command
@@ -15,11 +17,19 @@ Commands:
   help [command]                display help for command
 ```
 
+### Example:
+
+Build the style.json from style.yml:
+
+```
+vt-style build style.yml style.json
+```
+
 ## Development
 
 ```
-$ git clone https://github.com/geolonia/vt-style.git
-$ cd vt-style
+$ git clone https://github.com/geolonia/charites.git
+$ cd charites
 $ npm install
 $ npm run build
 $ npm install -g .
@@ -28,5 +38,5 @@ $ npm install -g .
 Then run:
 
 ```
-$ vt-style help
+$ charites help
 ```
