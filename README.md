@@ -9,12 +9,13 @@ $ charites help
 Usage: charites [options] [command]
 
 Options:
-  -h, --help                    display help for command
+  -h, --help                      display help for command
 
 Commands:
-  init <file>                   initialize a style JSON
-  build <source> [destination]  build a style JSON from the YAML
-  help [command]                display help for command
+  init <file>                     initialize a style JSON
+  build <source> [destination]    build a style JSON from the YAML
+  convert <source> [destination]  convert the style JSON to YAML
+  help [command]                  display help for command
 ```
 
 ### Example:
