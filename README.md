@@ -32,7 +32,7 @@ charites build style.yml style.json
 Convert the `style.json` to `style.yml`:
 
 ```
-charites build style.json
+charites convert style.json
 ```
 
 Serve the map locally and watch updating the style:
