@@ -11,9 +11,12 @@ describe('Test for the `build.ts`.', () => {
 
   it('Should convert `data/style.yml` to JSON.', () => {
     const tmpdir = fs.mkdtempSync(path.join(os.tmpdir(), 'charites-'))
-    build(stylePath, path.join(tmpdir, 'style.json'))
+    const styleJson = path.join(tmpdir, 'style.json')
+
+    build(stylePath, styleJson)
 
     // The file should exists.
-    assert.deepEqual(true, true)
+    assert.deepEqual(true, !! fs.statSync(styleJson))
+    assert.deepEqual(8, JSON.parse(fs.readFileSync(styleJson, 'utf-8')).version)
   });
 });
