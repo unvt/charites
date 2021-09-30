@@ -3,12 +3,25 @@ import fs from 'fs'
 import YAML from 'js-yaml'
 
 export function convert(source: string, destination: string) {
-  const sourcePath = path.resolve(process.cwd(), source)
+  let sourcePath = path.resolve(process.cwd(), source)
+
+  // The `source` is absolute path.
+  if (source.match(/^\//)) {
+    sourcePath = source
+  }
+
+  if (! fs.existsSync(sourcePath)) {
+    throw `${sourcePath}: No such file or directory`
+  }
 
   let destinationPath = ""
 
   if (destination) {
-    destinationPath = path.resolve(process.cwd(), destination)
+    if (destination.match(/^\//)) {
+      destinationPath = destination
+    } else {
+      destinationPath = path.resolve(process.cwd(), destination)
+    }
   } else {
     destinationPath = path.join(path.dirname(sourcePath), `${path.basename(source, '.json')}.yml`)
   }
@@ -34,6 +47,6 @@ export function convert(source: string, destination: string) {
       return match.replace(/'/g, '')
     }))
   } catch(err) {
-    // TODO: Error handling
+    throw `${destinationPath}: Permission denied`
   }
 }
