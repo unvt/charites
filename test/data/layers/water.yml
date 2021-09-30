@@ -1,0 +1,8 @@
+id: water
+type: fill
+source: geolonia
+source-layer: water
+layout:
+  visibility: visible
+paint:
+  fill-color: rgba(1, 17, 44, 1)

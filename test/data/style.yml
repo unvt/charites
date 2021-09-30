@@ -1,0 +1,12 @@
+version: 8
+name: Geolonia Midnight
+metadata: {}
+sources:
+  geolonia:
+    type: vector
+    url: https://api.geolonia.com/v1/sources?key=YOUR-API-KEY
+sprite: https://sprites.geolonia.com/basic-white
+glyphs: https://glyphs.geolonia.com/{fontstack}/{range}.pbf
+layers:
+  - !!inc/file layers/background.yml
+  - !!inc/file layers/water.yml
