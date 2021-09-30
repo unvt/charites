@@ -1,19 +1,15 @@
 import { assert } from 'chai'
 import path from 'path'
 import fs from 'fs'
+import os from 'os'
 
 import { convert } from '../src/commands/convert'
 
 describe('Test for the `convert.ts`.', () => {
 
   const jsonPath = path.join(__dirname, 'data/convert.json')
-  const yamlPath = path.join(__dirname, 'data/convert.yml')
-  const layerPath = path.join(__dirname, 'data/layers/background.yml')
-
-  afterEach(function(){
-    fs.unlinkSync(yamlPath)
-    fs.rmSync(path.join(__dirname, 'data/layers'), {recursive:true})
-  });
+  const yamlPath = path.join(os.tmpdir(), 'convert.yml')
+  const layerPath = path.join(os.tmpdir(), 'layers/background.yml')
 
   it('Should convert `data/convert.json` to YAML.', () => {
 
