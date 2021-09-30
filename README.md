@@ -8,15 +8,16 @@ Demo: https://github.com/miya0001/style-template
 
 ```
 $ charites help
-Usage: charites [options] [command]
+Usage: cli [options] [command]
 
 Options:
   -h, --help                      display help for command
 
 Commands:
   init <file>                     initialize a style JSON
-  build <source> [destination]    build a style JSON from the YAML
   convert <source> [destination]  convert the style JSON to YAML
+  build <source> [destination]    build a style JSON from the YAML
+  serve <source>                  serve your map locally
   help [command]                  display help for command
 ```
 
