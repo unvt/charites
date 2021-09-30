@@ -1,6 +1,6 @@
 # Charites
 
-Allows to edit a Mapbox GL JS based styles with YAML format.
+Allows to edit your style.json for Mapbox GL JS with YAML syntax.
 
 Demo: https://github.com/miya0001/style-template
 
@@ -8,7 +8,7 @@ Demo: https://github.com/miya0001/style-template
 
 ```
 $ charites help
-Usage: cli [options] [command]
+Usage: charites [options] [command]
 
 Options:
   -h, --help                      display help for command
