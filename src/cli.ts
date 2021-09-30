@@ -3,8 +3,9 @@
 import { Command } from 'commander';
 
 import { init } from './commands/init'
-import { build } from './commands/build'
 import { convert } from './commands/convert'
+import { build } from './commands/build'
+import { serve } from './commands/serve'
 
 const program = new Command();
 
@@ -16,7 +17,24 @@ const error = (message: any) => {
 program
   .command('init <file>')
   .description('initialize a style JSON')
-  .action(init)
+  .action((file: string) => {
+    try {
+      init(file)
+    } catch(e) {
+      error(e)
+    }
+  })
+
+program
+  .command('convert <source> [destination]')
+  .description('convert the style JSON to YAML')
+  .action((source: string, destination: string) => {
+    try {
+      convert(source, destination)
+    } catch(e) {
+      error(e)
+    }
+  })
 
 program
   .command('build <source> [destination]')
@@ -30,11 +48,11 @@ program
   })
 
 program
-  .command('convert <source> [destination]')
-  .description('convert the style JSON to YAML')
-  .action((source: string, destination: string) => {
+  .command('serve <source>')
+  .description('serve your map locally')
+  .action((source: string) => {
     try {
-      convert(source, destination)
+      serve(source)
     } catch(e) {
       error(e)
     }
