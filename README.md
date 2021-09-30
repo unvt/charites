@@ -25,7 +25,7 @@ Commands:
 Build the style.json from style.yml:
 
 ```
-vt-style build style.yml style.json
+charites build style.yml style.json
 ```
 
 ## Development
