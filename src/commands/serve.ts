@@ -61,10 +61,14 @@ export function serve(source: string) {
   const wss = new WebSocketServer({ server });
 
   wss.on('connection', (ws) => {
-    watch(path.dirname(sourcePath), { recursive: true }, (event, file) => {
-      console.log(`${event}: ${file}`)
-      const style = parser(sourcePath)
-      ws.send(JSON.stringify(style))
+    watch(path.dirname(sourcePath), { recursive: true, filter: /\.yml$/ }, (event, file) => {
+      console.log(`${(event || '').toUpperCase()}: ${file}`)
+      try {
+        const style = parser(sourcePath)
+        ws.send(JSON.stringify(style))
+      } catch(e) {
+        // Nothing to do
+      }
     })
   });
 }

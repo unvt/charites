@@ -29,6 +29,18 @@ Build the style.json from style.yml:
 charites build style.yml style.json
 ```
 
+Convert the `style.json` to `style.yml`:
+
+```
+charites build style.json
+```
+
+Serve the map locally and watch updating the style:
+
+```
+charites serve style.yml
+```
+
 ## Development
 
 ```
