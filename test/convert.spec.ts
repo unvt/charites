@@ -7,9 +7,10 @@ import { convert } from '../src/commands/convert'
 
 describe('Test for the `convert.ts`.', () => {
 
+  const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'charites-'))
   const jsonPath = path.join(__dirname, 'data/convert.json')
-  const yamlPath = path.join(os.tmpdir(), 'convert.yml')
-  const layerPath = path.join(os.tmpdir(), 'layers/background.yml')
+  const yamlPath = path.join(tmp, 'convert.yml')
+  const layerPath = path.join(tmp, 'layers/background.yml')
 
   it('Should convert `data/convert.json` to YAML.', () => {
 
