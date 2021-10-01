@@ -7,11 +7,18 @@ import watch from 'node-watch'
 
 import { parser } from '../lib/yaml-parser'
 
-export function serve(source: string) {
+interface options {
+  provider?: string
+}
+
+export function serve(source: string, options: options) {
   const port = process.env.PORT || 8080
   let sourcePath = path.resolve(process.cwd(), source)
 
   let provider = "geolonia"
+  if (options.provider) {
+    provider = options.provider
+  }
 
   // The `source` is absolute path.
   if (source.match(/^\//)) {
@@ -48,13 +55,19 @@ export function serve(source: string) {
         case `/${provider}.js`:
           res.statusCode = 200
           res.setHeader('Content-Type', 'application/javascript; charset=UTF-8')
-          const app = fs.readFileSync(path.join(dir, 'provider', 'geolonia.js'), 'utf-8')
-          res.end(app.replace('___PORT___', `${port}`))
+          try {
+            const app = fs.readFileSync(path.join(dir, 'provider', `${provider}.js`), 'utf-8')
+            res.end(app.replace('___PORT___', `${port}`))
+          } catch(e) {
+            throw `Invalid provider: ${provider}`
+          }
           break;
       }
   })
 
   server.listen(port, () => {
+    console.log("\n")
+    console.log(`Loading your style: ${sourcePath}`)
     console.log(`Your map is running on http://localhost:${port}/\n`)
     open(`http://localhost:${port}`)
   })
