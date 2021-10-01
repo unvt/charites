@@ -1,7 +1,7 @@
 // @ts-ignore
 const styleSpec = require('@maplibre/maplibre-gl-style-spec')
 
-export function validateStyle(style: object) {
+export function validateStyle(style: object): void {
   const result = styleSpec.validate(style)
 
   const errors = []
@@ -12,8 +12,6 @@ export function validateStyle(style: object) {
   }
 
   if (errors.length) {
-    throw errors
+    throw `ERROR:\n* ${errors.join("\n* ")}`
   }
-
-  return true
 }

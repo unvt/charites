@@ -11,8 +11,7 @@ describe('Test for the `validate-style.ts`.', () => {
     try {
       validateStyle(style)
     } catch(error) {
-      assert.deepEqual('missing required property "sources"', error[0])
-      assert.deepEqual('missing required property "layers"', error[1])
+      assert.deepEqual(true, !! error) // It should have something error.
       done()
     }
   });

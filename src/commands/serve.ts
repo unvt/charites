@@ -6,6 +6,7 @@ import { WebSocketServer } from 'ws'
 import watch from 'node-watch'
 
 import { parser } from '../lib/yaml-parser'
+import { validateStyle } from '../lib/validate-style'
 
 interface options {
   provider?: string
@@ -42,6 +43,11 @@ export function serve(source: string, options: options) {
           break;
         case '/style.json':
           const style = parser(sourcePath)
+          try {
+            validateStyle(style)
+          } catch(error) {
+            console.log(error)
+          }
           res.statusCode = 200
           res.setHeader('Content-Type', 'application/json; charset=UTF-8')
           res.end(JSON.stringify(style))
@@ -78,6 +84,11 @@ export function serve(source: string, options: options) {
       console.log(`${(event || '').toUpperCase()}: ${file}`)
       try {
         const style = parser(sourcePath)
+        try {
+          validateStyle(style)
+        } catch(error) {
+          console.log(error)
+        }
         ws.send(JSON.stringify(style))
       } catch(e) {
         // Nothing to do

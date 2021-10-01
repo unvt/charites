@@ -1,6 +1,7 @@
 import path from 'path'
 import fs from 'fs'
 import { parser } from '../lib/yaml-parser'
+import { validateStyle } from '../lib/validate-style'
 
 export function build(source: string, destination: string) {
   let sourcePath = path.resolve(process.cwd(), source)
@@ -29,9 +30,15 @@ export function build(source: string, destination: string) {
   let style = ''
 
   try {
-    style = JSON.stringify(parser(sourcePath), null, '  ')
+    const _style = parser(sourcePath)
+    validateStyle(_style)
+    style = JSON.stringify(_style, null, '  ')
   } catch(err) {
-    throw `${sourcePath}: Invalid YAML syntax`
+    if (err) {
+      throw err
+    } else {
+      throw `${sourcePath}: Invalid YAML syntax`
+    }
   }
 
   try {
