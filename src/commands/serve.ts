@@ -31,7 +31,7 @@ export function serve(source: string, options: options) {
 
   const server = http.createServer((req, res) => {
       const url = (req.url || '').replace(/\?.*/, '')
-      const dir = path.join(path.dirname(path.dirname(__dirname)), 'app')
+      const dir = path.join(path.dirname(path.dirname(__dirname)), 'provider', provider)
 
       switch (url) {
         case '/':
@@ -46,17 +46,17 @@ export function serve(source: string, options: options) {
           res.setHeader('Content-Type', 'application/json; charset=UTF-8')
           res.end(JSON.stringify(style))
           break;
-        case '/style.css':
+        case '/app.css':
           res.statusCode = 200
           res.setHeader('Content-Type', 'text/css; charset=UTF-8')
-          const css = fs.readFileSync(path.join(dir, 'style.css'), 'utf-8')
+          const css = fs.readFileSync(path.join(dir, 'app.css'), 'utf-8')
           res.end(css)
           break;
-        case `/${provider}.js`:
+        case `/app.js`:
           res.statusCode = 200
           res.setHeader('Content-Type', 'application/javascript; charset=UTF-8')
           try {
-            const app = fs.readFileSync(path.join(dir, 'provider', `${provider}.js`), 'utf-8')
+            const app = fs.readFileSync(path.join(dir, 'app.js'), 'utf-8')
             res.end(app.replace('___PORT___', `${port}`))
           } catch(e) {
             throw `Invalid provider: ${provider}`
