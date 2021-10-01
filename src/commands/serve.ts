@@ -66,7 +66,6 @@ export function serve(source: string, options: options) {
   })
 
   server.listen(port, () => {
-    console.log("\n")
     console.log(`Loading your style: ${sourcePath}`)
     console.log(`Your map is running on http://localhost:${port}/\n`)
     open(`http://localhost:${port}`)
