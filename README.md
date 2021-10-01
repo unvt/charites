@@ -12,6 +12,7 @@ Usage: charites [options] [command]
 
 Options:
   -h, --help                      display help for command
+  -c, --compact-output            build a minified style JSON
 
 Commands:
   init <file>                     initialize a style JSON
