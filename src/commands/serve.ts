@@ -11,6 +11,8 @@ export function serve(source: string) {
   const port = process.env.PORT || 8080
   let sourcePath = path.resolve(process.cwd(), source)
 
+  let provider = "geolonia"
+
   // The `source` is absolute path.
   if (source.match(/^\//)) {
     sourcePath = source
@@ -22,7 +24,7 @@ export function serve(source: string) {
 
   const server = http.createServer((req, res) => {
       const url = (req.url || '').replace(/\?.*/, '')
-      const dir = path.join(__dirname, 'app')
+      const dir = path.join(path.dirname(path.dirname(__dirname)), 'app')
 
       switch (url) {
         case '/':
@@ -43,7 +45,7 @@ export function serve(source: string) {
           const css = fs.readFileSync(path.join(dir, 'style.css'), 'utf-8')
           res.end(css)
           break;
-        case '/geolonia.js':
+        case `/${provider}.js`:
           res.statusCode = 200
           res.setHeader('Content-Type', 'application/javascript; charset=UTF-8')
           const app = fs.readFileSync(path.join(dir, 'provider', 'geolonia.js'), 'utf-8')
@@ -53,6 +55,7 @@ export function serve(source: string) {
   })
 
   server.listen(port, () => {
+    console.log(`Your map is running on http://localhost:${port}/\n`)
     open(`http://localhost:${port}`)
   })
 

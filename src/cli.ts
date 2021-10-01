@@ -50,6 +50,7 @@ program
 program
   .command('serve <source>')
   .description('serve your map locally')
+  // .option('-p, --provider <provider>', 'your map service. e.g, `mapbox`, `maptiler`, `geolonia`')
   .action((source: string) => {
     try {
       serve(source)
