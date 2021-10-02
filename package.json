@@ -17,6 +17,7 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "@mapbox/mapbox-gl-style-spec": "^13.22.0",
     "@maplibre/maplibre-gl-style-spec": "^14.0.2",
     "commander": "^8.2.0",
     "js-yaml": "^4.0.0",

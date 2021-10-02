@@ -37,18 +37,19 @@ program
   })
 
 program
-  .command('build <source> [destination]')
+  .command('build <source> [destination] [--provider]')
   .description('build a style JSON from the YAML')
-  .action((source: string, destination: string) => {
+  .option('-p, --provider <provider>', 'your map service. e.g. `mapbox`, `maptiler`, `geolonia`')
+  .action((source: string, destination: string, options: object) => {
     try {
-      build(source, destination)
+      build(source, destination, options)
     } catch(e) {
       error(e)
     }
   })
 
 program
-  .command('serve <source>')
+  .command('serve <source> [--provider]')
   .description('serve your map locally')
   .option('-p, --provider <provider>', 'your map service. e.g. `mapbox`, `maptiler`, `geolonia`')
   .action((source: string, options: object) => {

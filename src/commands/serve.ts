@@ -7,6 +7,7 @@ import watch from 'node-watch'
 
 import { parser } from '../lib/yaml-parser'
 import { validateStyle } from '../lib/validate-style'
+import { defaults } from '../lib/defaults'
 
 interface options {
   provider?: string
@@ -16,7 +17,7 @@ export function serve(source: string, options: options) {
   const port = process.env.PORT || 8080
   let sourcePath = path.resolve(process.cwd(), source)
 
-  let provider = "geolonia"
+  let provider = defaults.provider
   if (options.provider) {
     provider = options.provider
   }
@@ -44,7 +45,7 @@ export function serve(source: string, options: options) {
         case '/style.json':
           const style = parser(sourcePath)
           try {
-            validateStyle(style)
+            validateStyle(style, provider)
           } catch(error) {
             console.log(error)
           }
@@ -85,7 +86,7 @@ export function serve(source: string, options: options) {
       try {
         const style = parser(sourcePath)
         try {
-          validateStyle(style)
+          validateStyle(style, provider)
         } catch(error) {
           console.log(error)
         }

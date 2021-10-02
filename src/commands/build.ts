@@ -2,8 +2,13 @@ import path from 'path'
 import fs from 'fs'
 import { parser } from '../lib/yaml-parser'
 import { validateStyle } from '../lib/validate-style'
+import { defaults } from '../lib/defaults'
 
-export function build(source: string, destination: string) {
+interface options {
+  provider?: string
+}
+
+export function build(source: string, destination: string, options: options) {
   let sourcePath = path.resolve(process.cwd(), source)
 
   // The `source` is absolute path.
@@ -27,11 +32,16 @@ export function build(source: string, destination: string) {
     destinationPath = path.join(path.dirname(sourcePath), `${path.basename(source, '.yml')}.json`)
   }
 
+  let provider = defaults.provider
+  if (options.provider) {
+    provider = options.provider
+  }
+
   let style = ''
 
   try {
     const _style = parser(sourcePath)
-    validateStyle(_style)
+    validateStyle(_style, provider)
     style = JSON.stringify(_style, null, '  ')
   } catch(err) {
     if (err) {
