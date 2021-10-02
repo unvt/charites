@@ -11,15 +11,16 @@ $ charites help
 Usage: charites [options] [command]
 
 Options:
-  --provider <provider>           your map service. e.g. `mapbox`, `maptiler`, `geolonia`
-  -h, --help                      display help for command
+  --provider [provider]                      your map service. e.g. `mapbox`, `geolonia`
+  --mapbox-access-token [mapboxAccessToken]  Access Token for the Mapbox
+  -h, --help                                 display help for command
 
 Commands:
-  init <file>                     initialize a style JSON
-  convert <source> [destination]  convert the style JSON to YAML
-  build <source> [destination]    build a style JSON from the YAML
-  serve <source>                  serve your map locally
-  help [command]                  display help for command
+  init <file>                                initialize a style JSON
+  convert <source> [destination]             convert the style JSON to YAML
+  build <source> [destination]               build a style JSON from the YAML
+  serve <source>                             serve your map locally
+  help [command]                             display help for command
 ```
 
 ### Example:
@@ -40,6 +41,12 @@ Serve the map locally and watch updating the style:
 
 ```
 charites serve style.yml
+```
+
+If you are a user of the Mapbox.
+
+```
+charites serve style.yml --provider mapbox --mapbox-access-token xxxx
 ```
 
 ## Development

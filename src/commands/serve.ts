@@ -11,7 +11,7 @@ import { defaultValues } from '../lib/defaultValues'
 
 interface options {
   provider?: string
-  mapboxglAccessToken?: string
+  mapboxAccessToken?: string
 }
 
 export function serve(source: string, options: options) {
@@ -65,7 +65,7 @@ export function serve(source: string, options: options) {
           res.setHeader('Content-Type', 'application/javascript; charset=UTF-8')
           try {
             const app = fs.readFileSync(path.join(dir, 'app.js'), 'utf-8')
-            res.end(app.replace('___PORT___', `${port}`).replace('___MAPBOX_ACCESS_TOKEN___', `${options.mapboxglAccessToken || 'aaaaaaaaa'}`))
+            res.end(app.replace('___PORT___', `${port}`).replace('___MAPBOX_ACCESS_TOKEN___', `${options.mapboxAccessToken || 'aaaaaaaaa'}`))
           } catch(e) {
             throw `Invalid provider: ${provider}`
           }
