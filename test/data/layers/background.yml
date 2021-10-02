@@ -1,4 +1,4 @@
 id: background
 type: background
-paint: null
-background-color: rgba(19, 28, 54, 1)
+paint:
+  background-color: rgba(19, 28, 54, 1)

@@ -17,6 +17,7 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "@maplibre/maplibre-gl-style-spec": "^14.0.2",
     "commander": "^8.2.0",
     "js-yaml": "^4.0.0",
     "node-watch": "^0.7.2",
