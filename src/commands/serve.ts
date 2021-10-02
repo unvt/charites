@@ -65,7 +65,7 @@ export function serve(source: string, options: options) {
           res.setHeader('Content-Type', 'application/javascript; charset=UTF-8')
           try {
             const app = fs.readFileSync(path.join(dir, 'app.js'), 'utf-8')
-            res.end(app.replace('___PORT___', `${port}`).replace('___MAPBOX_ACCESS_TOKEN___', `${options.mapboxAccessToken || 'aaaaaaaaa'}`))
+            res.end(app.replace('___PORT___', `${port}`).replace('___MAPBOX_ACCESS_TOKEN___', `${options.mapboxAccessToken || defaultValues.mapboxAccessToken}`))
           } catch(e) {
             throw `Invalid provider: ${provider}`
           }
