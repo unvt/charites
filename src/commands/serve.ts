@@ -65,7 +65,9 @@ export function serve(source: string, options: options) {
           res.setHeader('Content-Type', 'application/javascript; charset=UTF-8')
           try {
             const app = fs.readFileSync(path.join(dir, 'app.js'), 'utf-8')
-            res.end(app.replace('___PORT___', `${port}`).replace('___MAPBOX_ACCESS_TOKEN___', `${options.mapboxAccessToken || defaultValues.mapboxAccessToken}`))
+            const js = app.replace('___PORT___', `${port}`)
+              .replace('___MAPBOX_ACCESS_TOKEN___', `${options.mapboxAccessToken || defaultValues.mapboxAccessToken}`)
+            res.end(js)
           } catch(e) {
             throw `Invalid provider: ${provider}`
           }
@@ -98,4 +100,6 @@ export function serve(source: string, options: options) {
       }
     })
   });
+
+  return server
 }
