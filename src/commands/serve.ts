@@ -33,7 +33,7 @@ export function serve(source: string, options: options) {
 
   const server = http.createServer((req, res) => {
       const url = (req.url || '').replace(/\?.*/, '')
-      const dir = path.join(path.dirname(path.dirname(__dirname)), 'provider', provider)
+      const dir = path.join(defaultValues.providerDir, provider)
 
       switch (url) {
         case '/':
