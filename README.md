@@ -11,6 +11,7 @@ $ charites help
 Usage: charites [options] [command]
 
 Options:
+  --provider <provider>           your map service. e.g. `mapbox`, `maptiler`, `geolonia`
   -h, --help                      display help for command
 
 Commands:
