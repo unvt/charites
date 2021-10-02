@@ -7,7 +7,7 @@ import watch from 'node-watch'
 
 import { parser } from '../lib/yaml-parser'
 import { validateStyle } from '../lib/validate-style'
-import { defaults } from '../lib/defaults'
+import { defaultValues } from '../lib/defaultValues'
 
 interface options {
   provider?: string
@@ -17,7 +17,7 @@ export function serve(source: string, options: options) {
   const port = process.env.PORT || 8080
   let sourcePath = path.resolve(process.cwd(), source)
 
-  let provider = defaults.provider
+  let provider = defaultValues.provider
   if (options.provider) {
     provider = options.provider
   }

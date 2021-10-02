@@ -15,6 +15,10 @@ const error = (message: any) => {
 }
 
 program
+  .option('--provider <provider>', 'your map service. e.g. `mapbox`, `maptiler`, `geolonia`')
+
+
+program
   .command('init <file>')
   .description('initialize a style JSON')
   .action((file: string) => {
@@ -37,24 +41,22 @@ program
   })
 
 program
-  .command('build <source> [destination] [--provider]')
+  .command('build <source> [destination]')
   .description('build a style JSON from the YAML')
-  .option('-p, --provider <provider>', 'your map service. e.g. `mapbox`, `maptiler`, `geolonia`')
-  .action((source: string, destination: string, options: object) => {
+  .action((source: string, destination: string) => {
     try {
-      build(source, destination, options)
+      build(source, destination, program.opts())
     } catch(e) {
       error(e)
     }
   })
 
 program
-  .command('serve <source> [--provider]')
+  .command('serve <source>')
   .description('serve your map locally')
-  .option('-p, --provider <provider>', 'your map service. e.g. `mapbox`, `maptiler`, `geolonia`')
-  .action((source: string, options: object) => {
+  .action((source: string) => {
     try {
-      serve(source, options)
+      serve(source, program.opts())
     } catch(e) {
       error(e)
     }

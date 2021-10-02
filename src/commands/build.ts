@@ -2,7 +2,7 @@ import path from 'path'
 import fs from 'fs'
 import { parser } from '../lib/yaml-parser'
 import { validateStyle } from '../lib/validate-style'
-import { defaults } from '../lib/defaults'
+import { defaultValues } from '../lib/defaultValues'
 
 interface options {
   provider?: string
@@ -32,7 +32,7 @@ export function build(source: string, destination: string, options: options) {
     destinationPath = path.join(path.dirname(sourcePath), `${path.basename(source, '.yml')}.json`)
   }
 
-  let provider = defaults.provider
+  let provider = defaultValues.provider
   if (options.provider) {
     provider = options.provider
   }

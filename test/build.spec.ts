@@ -4,7 +4,7 @@ import fs from 'fs'
 import os from 'os'
 
 import { build } from '../src/commands/build'
-import { defaults } from '../src/lib/defaults'
+import { defaultValues } from '../src/lib/defaultValues'
 
 describe('Test for the `build.ts`.', () => {
 
@@ -14,7 +14,7 @@ describe('Test for the `build.ts`.', () => {
     const tmpdir = fs.mkdtempSync(path.join(os.tmpdir(), 'charites-'))
     const styleJson = path.join(tmpdir, 'style.json')
 
-    build(stylePath, styleJson, {provider: defaults.provider})
+    build(stylePath, styleJson, {provider: defaultValues.provider})
 
     // The file should exists.
     assert.deepEqual(true, !! fs.statSync(styleJson))
