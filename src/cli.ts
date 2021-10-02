@@ -18,8 +18,7 @@ const error = (message: any) => {
 }
 
 program
-  .option('--provider <provider>', 'your map service. e.g. `mapbox`, `maptiler`, `geolonia`')
-
+  .option('--provider [provider]', 'your map service. e.g. `mapbox`, `maptiler`, `geolonia`')
 
 program
   .command('init <file>')
