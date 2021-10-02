@@ -18,7 +18,8 @@ const error = (message: any) => {
 }
 
 program
-  .option('--provider [provider]', 'your map service. e.g. `mapbox`, `maptiler`, `geolonia`')
+  .option('--provider [provider]', 'your map service. e.g. `mapbox`, `geolonia`')
+  .option('--mapboxgl-access-token [mapboxAccessToken]', 'Access Token for the Mapbox')
 
 program
   .command('init <file>')
