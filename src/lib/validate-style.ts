@@ -12,6 +12,6 @@ export function validateStyle(style: object): void {
   }
 
   if (errors.length) {
-    throw `ERROR:\n* ${errors.join("\n* ")}`
+    throw `\u001b[31mError:\u001b[0m ${errors.join("\n\u001b[31mError:\u001b[0m ")}`
   }
 }
