@@ -4,16 +4,16 @@ Charites は、MapboxGL JS や MapLibre GL JS のスタイルを YAML で記述�
 
 ＜ここに Charites という単語にからめたうんちくがほしい！＞
 
-例: https://github.com/miya0001/style-template
-
 ## 主な機能
 
 * スタイルを YAML で記述することができます。
-* `!!inc/file <related-path-the-file>` のように記述することで外部ファイルを読み込むことができます。
+* `!!inc/file <related-path-to-the-file>` のように記述することで外部ファイルを読み込むことができます。
 * `$backgroundColor` のように変数を利用して、その値を再利用することができます。
 * スタイルのビルド時に、スタイルの構文チェックを自動的に行います。
 * ブラウザでライブリロードしながら、スタイルを編集することが可能です。
 * 既存の JSON を読み込んで、編集しやすい YAML に変換することができます。
+
+例: https://github.com/miya0001/style-template
 
 ## Usage
 
