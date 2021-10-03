@@ -35,7 +35,7 @@ Commands:
   help [command]                             display help for command
 ```
 
-各コマンド別のヘルプを `charites help <command>` で確認することもできます。
+各コマンドの詳しいヘルプを `charites help <command>` で確認することができますので、そちらもご確認ください。
 
 ## Global Options
 
