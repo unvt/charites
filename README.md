@@ -56,14 +56,14 @@ Charites には、すべてのコマンドに共通する以下の２つの Glob
 ~/.charites/config.yml
 ```
 
-Global options は、このファイルの中で以下の様に指定することで、コマンド入力時のオプション入力を省略することができます。
+Global options は、この設定ファイルに以下の様に指定することで、コマンド入力時のオプションを省略することができます。
 
 ```
 provider: mapbox
 mapboxAccessToken: xxxx
 ```
 
-上の例は、`charites --provider mapbox --mapbox-access-token xxxx` と同じ結果を得ることができます。
+上の設定例では、`charites --provider mapbox --mapbox-access-token xxxx` と同じ結果を得ることができます。
 
 ### Examples
 
@@ -79,13 +79,13 @@ charites build style.yml style.json
 charites convert style.json
 ```
 
-ローカル環境で地図を起動し、スタイルの編集を watch して、地図のライブリロードを行う:
+ローカル環境で地図を起動し、地図のライブリロードを自動的に実行する:
 
 ```
 charites serve style.yml
 ```
 
-もし、あなたが Mapbox のユーザーであるなら以下のようにコマンドを実行してください。
+もし、あなたが Mapbox のユーザーであるなら以下のようにコマンドを実行できます:
 
 ```
 charites serve style.yml --provider mapbox --mapbox-access-token xxxx
