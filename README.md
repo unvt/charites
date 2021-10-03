@@ -64,7 +64,7 @@ mapboxAccessToken: xxxx
 
 上の例は、`charites --provider mapbox --mapbox-access-token xxxx` と同じ結果を得ることができます。
 
-### Example:
+### Examples
 
 `style.yml` から `style.json` をビルドする:
 
