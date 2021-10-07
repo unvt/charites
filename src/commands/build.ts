@@ -1,6 +1,8 @@
 import path from 'path'
 import fs from 'fs'
 import { parser } from '../lib/yaml-parser'
+var jsonminify = require("jsonminify");
+
 
 export function build(source: string, destination: string) {
   let sourcePath = path.resolve(process.cwd(), source)
@@ -30,11 +32,17 @@ export function build(source: string, destination: string) {
 
   try {
     style = JSON.stringify(parser(sourcePath), null, '  ')
+    style = jsonminify(style)
+    // style = style.replace(/\n/g, '')
+    console.log('あああああああああああ')
+
   } catch(err) {
+    console.log(err)
     throw `${sourcePath}: Invalid YAML syntax`
   }
 
   try {
+    console.log(style)
     fs.writeFileSync(destinationPath, style)
   } catch(err) {
     throw `${destinationPath}: Permission denied`
