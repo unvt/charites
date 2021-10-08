@@ -20,4 +20,16 @@ describe('Test for the `build.ts`.', () => {
     assert.deepEqual(true, !! fs.statSync(styleJson))
     assert.deepEqual(8, JSON.parse(fs.readFileSync(styleJson, 'utf-8')).version)
   });
+
+  it('Should minify `data/style.yml` to JSON.', () => {
+
+    const minifiedJson = fs.readFileSync(path.join(__dirname, 'data/minified.json'), 'utf-8')
+
+    const tmpdir = fs.mkdtempSync(path.join(os.tmpdir(), 'charites-'))
+    const styleJson = path.join(tmpdir, 'style.json')
+
+    build(stylePath, styleJson, {provider: defaultValues.provider, compactOutput: true})
+
+    assert.deepEqual(fs.readFileSync(styleJson, 'utf-8'),fs.readFileSync(minifiedJson, 'utf-8'))
+  });
 });

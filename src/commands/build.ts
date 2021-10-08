@@ -6,10 +6,11 @@ import { defaultValues } from '../lib/defaultValues'
 import jsonminify from 'jsonminify'
 
 interface options {
-  provider?: string
+  provider?: string,
+  compactOutput?: boolean
 }
 
-export function build(source: string, destination: string, options: boolean, globalOptions: options) {
+export function build(source: string, destination: string, options: options) {
   let sourcePath = path.resolve(process.cwd(), source)
 
   // The `source` is absolute path.
@@ -34,8 +35,8 @@ export function build(source: string, destination: string, options: boolean, glo
   }
 
   let provider = defaultValues.provider
-  if (globalOptions.provider) {
-    provider = globalOptions.provider
+  if (options.provider) {
+    provider = options.provider
   }
 
   let style = ''
@@ -44,7 +45,7 @@ export function build(source: string, destination: string, options: boolean, glo
     const _style = parser(sourcePath)
     validateStyle(_style, provider)
     style = JSON.stringify(_style, null, '  ')
-    if (options) {
+    if (options.compactOutput) {
       style = jsonminify(style)
     }
   } catch(err) {

@@ -10,6 +10,10 @@ import { serve } from './commands/serve'
 
 import { defaultSettings } from './lib/defaultValues'
 
+interface buildOptions {
+  compactOutput?: boolean
+}
+
 const program = new Command();
 
 const error = (message: any) => {
@@ -47,13 +51,15 @@ program
   .command('build <source> [destination]')
   .description('build a style JSON from the YAML')
   .option('-c, --compact-output', 'build a minified style JSON')
-  .action((source: string, destination: string, options: boolean) => {
-    const globalOptions = program.opts()
+  .action((source: string, destination: string, buildOptions: buildOptions) => {
+    const options = program.opts()
+    options.compactOutput = buildOptions.compactOutput
+
     if (! fs.existsSync(defaultSettings.configFile)) {
-      fs.writeFileSync(defaultSettings.configFile, `provider: ${globalOptions.provider || 'default'}`)
+      fs.writeFileSync(defaultSettings.configFile, `provider: ${options.provider || 'default'}`)
     }
     try {
-      build(source, destination, options, globalOptions)
+      build(source, destination, options)
     } catch(e) {
       error(e)
     }
