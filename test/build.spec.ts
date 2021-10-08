@@ -1,4 +1,4 @@
-import { assert } from 'chai'
+import { assert,  } from 'chai'
 import path from 'path'
 import fs from 'fs'
 import os from 'os'
@@ -23,13 +23,14 @@ describe('Test for the `build.ts`.', () => {
 
   it('Should minify `data/style.yml` to JSON.', () => {
 
-    const minifiedJson = fs.readFileSync(path.join(__dirname, 'data/minified.json'), 'utf-8')
-
     const tmpdir = fs.mkdtempSync(path.join(os.tmpdir(), 'charites-'))
     const styleJson = path.join(tmpdir, 'style.json')
 
     build(stylePath, styleJson, {provider: defaultValues.provider, compactOutput: true})
 
-    assert.deepEqual(fs.readFileSync(styleJson, 'utf-8'),fs.readFileSync(minifiedJson, 'utf-8'))
+    const contents = fs.readFileSync(styleJson, 'utf-8')
+    const lines = contents.split('\n').length
+
+    assert.deepEqual(lines, 1)
   });
 });
