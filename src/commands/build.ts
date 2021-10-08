@@ -1,10 +1,15 @@
 import path from 'path'
 import fs from 'fs'
 import { parser } from '../lib/yaml-parser'
+import { validateStyle } from '../lib/validate-style'
+import { defaultValues } from '../lib/defaultValues'
 var jsonminify = require("jsonminify");
 
+interface options {
+  provider?: string
+}
 
-export function build(source: string, destination: string) {
+export function build(source: string, destination: string, options: options) {
   let sourcePath = path.resolve(process.cwd(), source)
 
   // The `source` is absolute path.
@@ -28,17 +33,23 @@ export function build(source: string, destination: string) {
     destinationPath = path.join(path.dirname(sourcePath), `${path.basename(source, '.yml')}.json`)
   }
 
+  let provider = defaultValues.provider
+  if (options.provider) {
+    provider = options.provider
+  }
+
   let style = ''
 
   try {
-    style = JSON.stringify(parser(sourcePath), null, '  ')
-    style = jsonminify(style)
-    // style = style.replace(/\n/g, '')
-    console.log('あああああああああああ')
-
+    const _style = parser(sourcePath)
+    validateStyle(_style, provider)
+    style = JSON.stringify(_style, null, '  ')
   } catch(err) {
-    console.log(err)
-    throw `${sourcePath}: Invalid YAML syntax`
+    if (err) {
+      throw err
+    } else {
+      throw `${sourcePath}: Invalid YAML syntax`
+    }
   }
 
   try {

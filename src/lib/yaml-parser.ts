@@ -3,27 +3,27 @@ import YAML from 'js-yaml'
 
 const yamlinc = require('yaml-include')
 
+interface StyleObject {
+  [key: string]: any;
+}
+
 export function parser(file: string): object {
   yamlinc.setBaseFile(file)
   const yaml = fs.readFileSync(file, 'utf8')
 
-  const obj = YAML.load(yaml, {
+  const obj: StyleObject = YAML.load(yaml, {
     schema: yamlinc.YAML_INCLUDE_SCHEMA,
     filename: file,
     json: true
-  })
+  }) as StyleObject
 
-  const styleObj: any = {}
-  let variables = {}
+  const styleObj: StyleObject = {}
+  let variables: StyleObject = {}
 
   for (const key in obj as any) {
     if (key.match(/^\$/)) {
-      // TODO:
-      // @ts-ignore
       variables[key] = obj[key]
     } else {
-      // TODO:
-      // @ts-ignore
       styleObj[key] = obj[key]
     }
   }
@@ -32,12 +32,9 @@ export function parser(file: string): object {
   while(JSON.stringify(Object.values(variables)).match(/\$/)) {
     for (const key in variables as any) {
       for (const variable in variables) {
-        // @ts-ignore
         let _value = JSON.stringify(variables[key])
         const regex = new RegExp(`\"\\${variable}\"`, 'g')
-        // @ts-ignore
         _value = _value.replace(regex, JSON.stringify(variables[variable]))
-        // @ts-ignore
         variables[key] = JSON.parse(_value)
       }
     }
@@ -47,7 +44,6 @@ export function parser(file: string): object {
 
   for (const key in variables) {
     const regex = new RegExp(`\"\\${key}\"`, 'g')
-    // @ts-ignore
     style = style.replace(regex, JSON.stringify(variables[key]))
   }
 
