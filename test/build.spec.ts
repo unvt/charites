@@ -1,4 +1,4 @@
-import { assert,  } from 'chai'
+import { assert } from 'chai'
 import path from 'path'
 import fs from 'fs'
 import os from 'os'
