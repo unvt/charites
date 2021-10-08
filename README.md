@@ -23,10 +23,9 @@ $ charites help
 Usage: charites [options] [command]
 
 Options:
-  -h, --help                      display help for command
-  -c, --compact-output            build a minified style JSON
   --provider [provider]                      your map service. e.g. `mapbox`, `geolonia`
   --mapbox-access-token [mapboxAccessToken]  Access Token for the Mapbox
+  -c, --compact-output                       build a minified style JSON
   -h, --help                                 display help for command
 
 Commands:

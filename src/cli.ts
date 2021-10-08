@@ -46,13 +46,14 @@ program
 program
   .command('build <source> [destination]')
   .description('build a style JSON from the YAML')
-  .action((source: string, destination: string) => {
-    const options = program.opts()
+  .option('-c, --compact-output', 'build a minified style JSON')
+  .action((source: string, destination: string, options: boolean) => {
+    const globalOptions = program.opts()
     if (! fs.existsSync(defaultSettings.configFile)) {
-      fs.writeFileSync(defaultSettings.configFile, `provider: ${options.provider || 'default'}`)
+      fs.writeFileSync(defaultSettings.configFile, `provider: ${globalOptions.provider || 'default'}`)
     }
     try {
-      build(source, destination, options)
+      build(source, destination, options, globalOptions)
     } catch(e) {
       error(e)
     }

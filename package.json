@@ -19,6 +19,7 @@
   "dependencies": {
     "@mapbox/mapbox-gl-style-spec": "^13.22.0",
     "@maplibre/maplibre-gl-style-spec": "^14.0.2",
+    "@types/jsonminify": "^0.4.1",
     "commander": "^8.2.0",
     "js-yaml": "^4.0.0",
     "jsonminify": "^0.4.1",

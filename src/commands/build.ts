@@ -3,13 +3,13 @@ import fs from 'fs'
 import { parser } from '../lib/yaml-parser'
 import { validateStyle } from '../lib/validate-style'
 import { defaultValues } from '../lib/defaultValues'
-var jsonminify = require("jsonminify");
+import jsonminify from 'jsonminify'
 
 interface options {
   provider?: string
 }
 
-export function build(source: string, destination: string, options: options) {
+export function build(source: string, destination: string, options: boolean, globalOptions: options) {
   let sourcePath = path.resolve(process.cwd(), source)
 
   // The `source` is absolute path.
@@ -34,8 +34,8 @@ export function build(source: string, destination: string, options: options) {
   }
 
   let provider = defaultValues.provider
-  if (options.provider) {
-    provider = options.provider
+  if (globalOptions.provider) {
+    provider = globalOptions.provider
   }
 
   let style = ''
@@ -44,6 +44,9 @@ export function build(source: string, destination: string, options: options) {
     const _style = parser(sourcePath)
     validateStyle(_style, provider)
     style = JSON.stringify(_style, null, '  ')
+    if (options) {
+      style = jsonminify(style)
+    }
   } catch(err) {
     if (err) {
       throw err
@@ -53,7 +56,6 @@ export function build(source: string, destination: string, options: options) {
   }
 
   try {
-    console.log(style)
     fs.writeFileSync(destinationPath, style)
   } catch(err) {
     throw `${destinationPath}: Permission denied`
