@@ -82,7 +82,13 @@ charites build style.yml style.json -c
 `style.json` を `style.yml` に変換する:
 
 ```
-charites convert style.json
+charites convert style.json style.yml
+```
+
+標準入力から JSON を読み込んで `style.yml` に変換する:
+
+```
+curl http://example.com/style.json | charites convert - style.yml
 ```
 
 ローカル環境で地図を起動し、地図のライブリロードを自動的に実行する:
