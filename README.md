@@ -6,13 +6,12 @@ Charites は、MapboxGL JS や MapLibre GL JS のスタイルを YAML で記述�
 
 ## 主な機能
 
-* スタイルを YAML で記述することができます。
+* スタイルを YAML で記述することができます。また、既存のスタイル用の JSON を読み込んで、YAML に変換することができます。
 * `!!inc/file <related-path-to-the-file>` のように記述することで外部ファイルを読み込むことができます。
 * `$backgroundColor` のように変数を利用して、その値を再利用することができます。
 * スタイルのビルド時に、スタイルの構文チェックを自動的に行います。
 * `--provier mapbox` とすることで Mapbox GL JS v2.x 互換の構文チェックを行うこともできます。
 * ブラウザでライブリロードしながら、スタイルを編集することが可能です。
-* 既存の JSON を読み込んで、編集しやすい YAML に変換することができます。
 
 例: https://github.com/miya0001/style-template
 
@@ -23,16 +22,16 @@ $ charites help
 Usage: charites [options] [command]
 
 Options:
-  --provider [provider]                                your map service. e.g. `mapbox`, `geolonia`
-  --mapbox-access-token [mapboxAccessToken]            Access Token for the Mapbox
-  -h, --help                                           display help for command
+  --provider [provider]                      your map service. e.g. `mapbox`, `geolonia`
+  --mapbox-access-token [mapboxAccessToken]  Access Token for the Mapbox
+  -h, --help                                 display help for command
 
 Commands:
-  init <file>                                          initialize a style JSON
-  convert <source> [destination]                       convert the style JSON to YAML
-  build <source> [destination] [-c, --compact-output]  build a style JSON from the YAML
-  serve <source>                                       serve your map locally
-  help [command]                                       display help for command
+  init <file>                                initialize a style JSON
+  convert <source> [destination]             convert the style JSON to YAML
+  build [options] <source> [destination]     build a style JSON from the YAML
+  serve <source>                             serve your map locally
+  help [command]                             display help for command
 ```
 
 各コマンドの詳しいヘルプを `charites help <command>` で確認することができますので、そちらもご確認ください。
