@@ -3,9 +3,11 @@ import fs from 'fs'
 import { parser } from '../lib/yaml-parser'
 import { validateStyle } from '../lib/validate-style'
 import { defaultValues } from '../lib/defaultValues'
+import jsonminify from 'jsonminify'
 
 interface options {
-  provider?: string
+  provider?: string,
+  compactOutput?: boolean
 }
 
 export function build(source: string, destination: string, options: options) {
@@ -43,6 +45,9 @@ export function build(source: string, destination: string, options: options) {
     const _style = parser(sourcePath)
     validateStyle(_style, provider)
     style = JSON.stringify(_style, null, '  ')
+    if (options.compactOutput) {
+      style = jsonminify(style)
+    }
   } catch(err) {
     if (err) {
       throw err

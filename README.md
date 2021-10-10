@@ -23,16 +23,16 @@ $ charites help
 Usage: charites [options] [command]
 
 Options:
-  --provider [provider]                      your map service. e.g. `mapbox`, `geolonia`
-  --mapbox-access-token [mapboxAccessToken]  Access Token for the Mapbox
-  -h, --help                                 display help for command
+  --provider [provider]                                your map service. e.g. `mapbox`, `geolonia`
+  --mapbox-access-token [mapboxAccessToken]            Access Token for the Mapbox
+  -h, --help                                           display help for command
 
 Commands:
-  init <file>                                initialize a style JSON
-  convert <source> [destination]             convert the style JSON to YAML
-  build <source> [destination]               build a style JSON from the YAML
-  serve <source>                             serve your map locally
-  help [command]                             display help for command
+  init <file>                                          initialize a style JSON
+  convert <source> [destination]                       convert the style JSON to YAML
+  build <source> [destination] [-c, --compact-output]  build a style JSON from the YAML
+  serve <source>                                       serve your map locally
+  help [command]                                       display help for command
 ```
 
 各コマンドの詳しいヘルプを `charites help <command>` で確認することができますので、そちらもご確認ください。
@@ -71,6 +71,12 @@ mapboxAccessToken: xxxx
 
 ```
 charites build style.yml style.json
+```
+
+`-c` もしくは `--compact-output` で、JSON を軽量化することができます。
+
+```
+charites build style.yml style.json -c
 ```
 
 `style.json` を `style.yml` に変換する:
