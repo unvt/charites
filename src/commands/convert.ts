@@ -1,8 +1,7 @@
 import path from 'path'
 import fs from 'fs'
 import YAML from 'js-yaml'
-import { Buffer } from 'buffer'
-import { readlineSync } from 'readline-sync'
+import readline from 'readline'
 
 // TODO: Type of style should be loaded from maplibre or mapbox style spec.
 const writeYaml = (destinationPath: string, style: any) => {
@@ -26,18 +25,51 @@ const writeYaml = (destinationPath: string, style: any) => {
   }))
 }
 
+const getDestinationPath = (destination: string, sourcePath: string = '') => {
+  let destinationPath
+
+  if (destination) {
+    if (destination.match(/^\//)) {
+      destinationPath = destination
+    } else {
+      destinationPath = path.resolve(process.cwd(), destination)
+    }
+  } else {
+    if (sourcePath) {
+      destinationPath = path.join(path.dirname(sourcePath), `${path.basename(sourcePath, '.json')}.yml`)
+    } else {
+      destinationPath = path.join(process.cwd(), 'style.yml')
+    }
+  }
+
+  return destinationPath
+}
+
 export function convert(source: string, destination: string) {
-  let style, sourcePath, destinationPath
+  let style, sourcePath
 
   if ('-' === source) {
-    const buf = Buffer.alloc(1024)
-    let data
+    const rl = readline.createInterface({
+      input: process.stdin,
+      terminal: false
+    });
 
-    while (true) {
-      var n = fs.readSync(proce, 100, 0, 'utf8')
-      if (!n) break
-      data += b.toString(null, 0, n)
-    }
+    const lines: string[] = []
+
+    rl.on("line", (line) => {
+      lines.push(line)
+    });
+
+    rl.on("close", () => {
+      const style = JSON.parse(lines.join(''))
+      const destinationPath = getDestinationPath(destination)
+
+      try {
+        writeYaml(destinationPath, style)
+      } catch(err) {
+        throw `${destinationPath}: Permission denied`
+      }
+    })
   } else {
     sourcePath = path.resolve(process.cwd(), source)
 
@@ -51,25 +83,13 @@ export function convert(source: string, destination: string) {
     }
 
     style = JSON.parse(fs.readFileSync(sourcePath, 'utf-8'))
-  }
 
-  if (destination) {
-    if (destination.match(/^\//)) {
-      destinationPath = destination
-    } else {
-      destinationPath = path.resolve(process.cwd(), destination)
-    }
-  } else {
-    if (sourcePath) {
-      destinationPath = path.join(path.dirname(sourcePath), `${path.basename(source, '.json')}.yml`)
-    } else {
-      destinationPath = path.join(process.cwd(), 'style.yml')
-    }
-  }
+    const destinationPath = getDestinationPath(destination, sourcePath)
 
-  try {
-    writeYaml(destinationPath, style)
-  } catch(err) {
-    throw `${destinationPath}: Permission denied`
+    try {
+      writeYaml(destinationPath, style)
+    } catch(err) {
+      throw `${destinationPath}: Permission denied`
+    }
   }
 }
