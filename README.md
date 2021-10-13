@@ -1,9 +1,9 @@
 # Charites
 
-A easy, intuitive, and efficient command line tool for writing vector map styles compatible with the [Mapbox](https://docs.mapbox.com/mapbox-gl-js/style-spec/) and [MapLibre](https://maplibre.org/maplibre-gl-js-docs/style-spec/) Style Specification in YAML.
+An easy, intuitive, and efficient command-line tool for writing vector map styles compatible with the [Mapbox](https://docs.mapbox.com/mapbox-gl-js/style-spec/) and [MapLibre](https://maplibre.org/maplibre-gl-js-docs/style-spec/) Style Specification in YAML.
 With YAML format's readability, JSON compiler, linter, and live style viewer on a local browser, you can simplify your map styling workflow.
 
-In Greek mythology, the [Charites](https://en.wikipedia.org/wiki/Charites) are the three goddesses of charm, beauty, and human creativity. They are believed to have been worshipped not only by artists, but also by those who aspired to technology to infuse them with creative spirit.
+In Greek mythology, the [Charites](https://en.wikipedia.org/wiki/Charites) are the three goddesses of charm, beauty, and human creativity. They are believed to have been worshipped not only by artists but also by those who aspired to technology to infuse them with a creative spirit.
 
 ## Features
 
@@ -13,7 +13,7 @@ In Greek mythology, the [Charites](https://en.wikipedia.org/wiki/Charites) are t
 - Use variables like `$backgroundColor` and `$waterColor` to style effectively.
 - Compile YAML to a single style.json file, with a format linter.
 - Use `--provider mapbox` to validate your style against Mapbox GL JS v2.x
-- Run `charis serve <source>` to preview your style live while you make changes in a browser.
+- Run `charites serve <source>` to preview your style live while you make changes in a browser.
 
 Example: https://github.com/miya0001/style-template
 
@@ -47,7 +47,7 @@ Charites has two global options that are common to all commands.
 
 # Configuration
 
-The global options for Charites can be stored in a configuration file written in YML.
+The global options for Charites can be stored in a configuration file written in YAML.
 
 The config file will be automatically created to the following path the first time the charites command is executed.
 
