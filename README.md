@@ -1,19 +1,21 @@
 # Charites
 
-Charites は、MapboxGL JS や MapLibre GL JS のスタイルを YAML で記述するためのコマンドラインツールです。
+An easy, intuitive, and efficient command-line tool for writing vector map styles compatible with the [Mapbox](https://docs.mapbox.com/mapbox-gl-js/style-spec/) and [MapLibre](https://maplibre.org/maplibre-gl-js-docs/style-spec/) Style Specification in YAML.
+With YAML format's readability, JSON compiler, linter, and live style viewer on a local browser, you can simplify your map styling workflow.
 
-＜ここに Charites という単語にからめたうんちくがほしい！＞
+In Greek mythology, the [Charites](https://en.wikipedia.org/wiki/Charites) are the three goddesses of charm, beauty, and human creativity. They are believed to have been worshipped not only by artists but also by those who aspired to technology to infuse them with a creative spirit.
 
-## 主な機能
+## Features
 
-* スタイルを YAML で記述することができます。また、既存のスタイル用の JSON を読み込んで、YAML に変換することができます。
-* `!!inc/file <related-path-to-the-file>` のように記述することで外部ファイルを読み込むことができます。
-* `$backgroundColor` のように変数を利用して、その値を再利用することができます。
-* スタイルのビルド時に、スタイルの構文チェックを自動的に行います。
-* `--provier mapbox` とすることで Mapbox GL JS v2.x 互換の構文チェックを行うこともできます。
-* ブラウザでライブリロードしながら、スタイルを編集することが可能です。
+- Initiate a project from scratch, or convert an existing `style.json` file to generate YAML style files.
+- Write styles in a simple YAML format.
+- Divide groups of layers in to multiple files for better readability and mantainability. `!!inc/file <relative-path-to-the-file>`
+- Use variables like `$backgroundColor` and `$waterColor` to style effectively.
+- Compile YAML to a single style.json file, with a format linter.
+- Use `--provider mapbox` to validate your style against Mapbox GL JS v2.x
+- Run `charites serve <source>` to preview your style live while you make changes in a browser.
 
-例: https://github.com/miya0001/style-template
+Example: https://github.com/miya0001/style-template
 
 ## Usage
 
@@ -34,51 +36,50 @@ Commands:
   help [command]                             display help for command
 ```
 
-各コマンドの詳しいヘルプを `charites help <command>` で確認することができますので、そちらもご確認ください。
-
 ## Global Options
 
-Charites には、すべてのコマンドに共通する以下の２つの Global Options があります。
+Charites has two global options that are common to all commands.
 
-* `--provider` - `mapbox`、`geolonia` または `default` を指定することができ、なにも指定しない場合は `default` または、後述する設定ファイルの値が利用されます。
-  * `mapbox` - Mapbox GL JS v2.x 互換の仕様に基づいてスタイルの構文チェックが行われます。
-  * `geolonia` 及び `default` - MapLibre GL JS 互換の仕様に基づいてスタイルの構文チェックが行われます。
-* `--mapbox-access-token` - Mapbox 向けのスタイルを使用する場合には、Mapbox のアクセストークンを取得して、このオプションで指定する必要があります。
+- `--provider` - `mapbox`, `geolonia`, or `default`. When not specified, default or the value in the configuration file will be used.
+    - `mapbox` - The format linter runs against the Mapbox GL JS v2.x compatible specification.
+    - `geolonia` and `default` - the format linter runs against the MapLibre GL JS compatible specification.
+- `--mapbox-access-token` - Set your access-token when styling for Mapbox.
 
-## Configuration
+# Configuration
 
-`charites` の global otptions は、YML で記述された設定ファイルから読み込むこともできます。
+The global options for Charites can be stored in a configuration file written in YAML.
 
-設定ファイルは、初めての `charites` コマンド実行時に、以下のパスに自動的に保存されます。
+The config file will be automatically created to the following path the first time the charites command is executed.
 
 ```
 ~/.charites/config.yml
 ```
 
-Global options は、この設定ファイルに以下の様に指定することで、コマンド入力時のオプションを省略することができます。
+Global options can be specified as follows:
+
 
 ```
 provider: mapbox
 mapboxAccessToken: xxxx
 ```
 
-上の設定例では、`charites --provider mapbox --mapbox-access-token xxxx` と同じ結果を得ることができます。
+With the example above, you get the same result as `charites --provider mapbox --mapbox-access-token xxxx`.
 
-### Examples
+## Examples
 
-`style.yml` から `style.json` をビルドする:
+Build `style.json` from `style.yml`:
 
 ```
 charites build style.yml style.json
 ```
 
-`-c` もしくは `--compact-output` で、JSON を軽量化することができます。
+Add `-c` or `--compact-output` to minify the JSON
 
 ```
 charites build style.yml style.json -c
 ```
 
-`style.json` を `style.yml` に変換する:
+Convert `style.json` to `style.yml`:
 
 ```
 charites convert style.json style.yml
@@ -90,13 +91,13 @@ charites convert style.json style.yml
 curl http://example.com/style.json | charites convert - style.yml
 ```
 
-ローカル環境で地図を起動し、地図のライブリロードを自動的に実行する:
+Launch a live preview of your map style in your local environment:
 
 ```
 charites serve style.yml
 ```
 
-もし、あなたが Mapbox のユーザーであるなら以下のようにコマンドを実行できます:
+For Mapbox users:
 
 ```
 charites serve style.yml --provider mapbox --mapbox-access-token xxxx
@@ -113,13 +114,12 @@ $ npm install
 $ npm run build
 $ npm install -g .
 ```
-
 Then run:
 
 ```
 $ charites help
 ```
 
-## ライセンス
+## License
 
 MIT
