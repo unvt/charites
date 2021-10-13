@@ -17,8 +17,6 @@ The name Charites, or Graces, comes from the that of the goddesses of charm, bea
 
 Example: https://github.com/miya0001/style-template
 
-
-
 ## Usage
 
 ```
@@ -33,7 +31,7 @@ Options:
 Commands:
   init <file>                                initialize a style JSON
   convert <source> [destination]             convert the style JSON to YAML
-  build <source> [destination]               build a style JSON from the YAML
+  build [options] <source> [destination]     build a style JSON from the YAML
   serve <source>                             serve your map locally
   help [command]                             display help for command
 ```
@@ -75,10 +73,22 @@ Build `style.json` from `style.yml`:
 charites build style.yml style.json
 ```
 
+Add `-c` or `--compact-output` to minify the JSON
+
+```
+charites build style.yml style.json -c
+```
+
 Convert `style.json` to `style.yml`:
 
 ```
-charites convert style.json
+charites convert style.json style.yml
+```
+
+標準入力から JSON を読み込んで `style.yml` に変換する:
+
+```
+curl http://example.com/style.json | charites convert - style.yml
 ```
 
 Launch a live preview of your map style in your local environment:
