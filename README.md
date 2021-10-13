@@ -85,7 +85,7 @@ Convert `style.json` to `style.yml`:
 charites convert style.json style.yml
 ```
 
-標準入力から JSON を読み込んで `style.yml` に変換する:
+Load JSON as a standard input to generate `style.yml`:
 
 ```
 curl http://example.com/style.json | charites convert - style.yml
