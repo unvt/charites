@@ -1,19 +1,19 @@
 # Charites
 
-A command line tool for writing MapboxGL JS and MapLibre GL JS styles in YAML, which gives you easy, intuitive, and efficient experience in styling digital maps. With YAML format's readability, JSON compiler, linter, and live style viewer on a local browser, the workflow of map styling gets modern and simple.
+A easy, intuitive, and efficient command line tool for writing vector map styles compatible with the [Mapbox](https://docs.mapbox.com/mapbox-gl-js/style-spec/) and [MapLibre](https://maplibre.org/maplibre-gl-js-docs/style-spec/) Style Specification in YAML.
+With YAML format's readability, JSON compiler, linter, and live style viewer on a local browser, you can simplify your map styling workflow.
 
-The name Charites, or Graces, comes from the that of the goddesses of charm, beauty, and human creativity. They are believed to have been worshipped not only by artists, but also by those who aspired to technology to infuse them with creative spirit.
-
+In Greek mythology, the [Charites](https://en.wikipedia.org/wiki/Charites) are the three goddesses of charm, beauty, and human creativity. They are believed to have been worshipped not only by artists, but also by those who aspired to technology to infuse them with creative spirit.
 
 ## Features
 
-- Initiate a project or convert existing style json to generate YAML style files
-- Write styles in a simple YAML format
-- One file for one layer; Include external files with `!!inc/file <relative-path-to-the-file>`
-- Use variables like `$backgroundColor` and `$waterColor` to style effectively
-- Convert YAML to a style.json, with a format linter.
-- `--provider mapbox` is an option to validate your style against Mapbox GL JS v2.X
-- Run `charis serve <source>` to view your style in a live reloading browser
+- Initiate a project from scratch, or convert an existing `style.json` file to generate YAML style files.
+- Write styles in a simple YAML format.
+- Divide groups of layers in to multiple files for better readability and mantainability. `!!inc/file <relative-path-to-the-file>`
+- Use variables like `$backgroundColor` and `$waterColor` to style effectively.
+- Compile YAML to a single style.json file, with a format linter.
+- Use `--provider mapbox` to validate your style against Mapbox GL JS v2.x
+- Run `charis serve <source>` to preview your style live while you make changes in a browser.
 
 Example: https://github.com/miya0001/style-template
 
@@ -38,7 +38,7 @@ Commands:
 
 ## Global Options
 
-Charites has two Global Options that are common to all commands.
+Charites has two global options that are common to all commands.
 
 - `--provider` - `mapbox`, `geolonia`, or `default`. When not specified, default or the value in the configuration file will be used.
     - `mapbox` - The format linter runs against the Mapbox GL JS v2.x compatible specification.
