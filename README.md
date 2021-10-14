@@ -132,6 +132,14 @@ Then run:
 $ charites help
 ```
 
+### Releasing this package
+
+```
+$ npm version patch # Or `minor` or `major`
+$ git push
+$ git push origin <version>
+```
+
 ## License
 
 MIT
