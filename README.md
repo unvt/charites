@@ -17,6 +17,18 @@ In Greek mythology, the [Charites](https://en.wikipedia.org/wiki/Charites) are t
 
 Example: https://github.com/miya0001/style-template
 
+## Install
+
+```
+$ npm install -g @unvt/charites
+```
+
+Then try:
+
+```
+$ charites help
+```
+
 ## Usage
 
 ```
