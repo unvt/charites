@@ -44,8 +44,9 @@ export function serve(source: string, options: options) {
           res.end(content)
           break;
         case '/style.json':
-          const style = parser(sourcePath)
+          let style
           try {
+            style = parser(sourcePath)
             validateStyle(style, provider)
           } catch(error) {
             console.log(error)
