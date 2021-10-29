@@ -1,0 +1,9 @@
+version: 8
+name: My Style
+sprite: ''
+glyphs: ''
+sources:
+  Geography Class:
+    type: vector
+    url: https://a.tiles.mapbox.com/v3/aj.1x1-degrees.json
+layers: []

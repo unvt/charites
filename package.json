@@ -18,9 +18,12 @@
   "license": "MIT",
   "dependencies": {
     "@mapbox/mapbox-gl-style-spec": "^13.22.0",
+    "@mapbox/spritezero": "^8.0.0",
     "@maplibre/maplibre-gl-style-spec": "^14.0.2",
     "@types/jsonminify": "^0.4.1",
+    "axios": "^0.24.0",
     "commander": "^8.2.0",
+    "glob": "^7.2.0",
     "js-yaml": "^4.0.0",
     "jsonminify": "^0.4.1",
     "node-watch": "^0.7.2",

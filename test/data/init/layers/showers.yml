@@ -1,0 +1,6 @@
+id: showers
+type: fill
+source: OpenStreetMap
+source-layer: showers
+layout: {}
+paint: {}

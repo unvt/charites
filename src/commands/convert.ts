@@ -1,29 +1,7 @@
 import path from 'path'
 import fs from 'fs'
-import YAML from 'js-yaml'
 import readline from 'readline'
-
-// TODO: Type of style should be loaded from maplibre or mapbox style spec.
-const writeYaml = (destinationPath: string, style: any) => {
-  const layers = []
-
-  for (let i = 0; i < style.layers.length; i++) {
-    const layer = style.layers[i]
-    const layerYml = YAML.dump(layer)
-    const fileName = `${style.layers[i].id}.yml`
-    const dirName = path.join(path.dirname(destinationPath), 'layers')
-    fs.mkdirSync(dirName, { recursive: true })
-    fs.writeFileSync(path.join(dirName, fileName), layerYml)
-
-    layers.push(`!!inc/file ${path.join('layers', fileName)}`)
-  }
-
-  style.layers = layers
-
-  fs.writeFileSync(destinationPath, YAML.dump(style).replace(/'\!\!inc\/file layers\/.+\.yml'/g, function (match) {
-    return match.replace(/'/g, '')
-  }))
-}
+import { writeYaml } from '../lib/yaml-writer'
 
 const getDestinationPath = (destination: string, sourcePath: string = '') => {
   let destinationPath
@@ -65,7 +43,7 @@ export function convert(source: string, destination: string) {
       const destinationPath = getDestinationPath(destination)
 
       try {
-        writeYaml(destinationPath, style)
+        writeYaml(destinationPath, style, false)
       } catch(err) {
         throw `${destinationPath}: Permission denied`
       }
@@ -87,7 +65,7 @@ export function convert(source: string, destination: string) {
     const destinationPath = getDestinationPath(destination, sourcePath)
 
     try {
-      writeYaml(destinationPath, style)
+      writeYaml(destinationPath, style, false)
     } catch(err) {
       throw `${destinationPath}: Permission denied`
     }
