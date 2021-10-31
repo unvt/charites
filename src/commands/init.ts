@@ -3,13 +3,13 @@ import fs from 'fs'
 import YAML from 'js-yaml'
 import axios from 'axios'
 import { TileJSON } from '../types'
+import { StyleSpecification, LayerSpecification } from '@maplibre/maplibre-gl-style-spec/types'
 
 export interface initOptions {
   tilejson_url?: string
 }
 
-// TODO: We need type definition for style.
-const styleRoot = {
+const styleRoot: StyleSpecification = {
   version: 8,
   name: "My Style",
   sprite: "",
@@ -39,27 +39,21 @@ export async function init(file: string, options: initOptions) {
   if (tilejson_url) {
     const res = await axios.get(tilejson_url)
     const tilejson: TileJSON = res.data
-    // @ts-ignore
-    styleRoot.sources[tilejson.name] = {
+    const tilesetName : string =  (tilejson.name) ? tilejson.name : Math.random().toString(32).substring(2)
+    styleRoot.sources[tilesetName] = {
       type: 'vector',
       url: tilejson_url
     }
     tilejson.vector_layers.forEach(layer=>{
-      
-      styleRoot.layers.push({
-        // @ts-ignore
+      const layerStyle : LayerSpecification = {
         "id": layer.id,
-        // @ts-ignore
         "type": "fill",
-        // @ts-ignore
-        "source": tilejson.name,
-        // @ts-ignore
+        "source": tilesetName,
         "source-layer": layer.id,
-        // @ts-ignore
         "layout": { },
-        // @ts-ignore
         "paint": { }
-      })
+      }
+      styleRoot.layers.push(layerStyle)
     })
   } 
   generateYAML(styleRoot, file)
