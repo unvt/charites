@@ -27,7 +27,7 @@ describe('Test for the `init.ts`.', () => {
     const styleYaml = path.join(tmpdir, 'style.yml')
 
     const options = {
-      tilejson_url : 'https://raw.githubusercontent.com/mapbox/tilejson-spec/master/3.0.0/example/osm.json'
+      tilejson_urls : 'https://raw.githubusercontent.com/mapbox/tilejson-spec/master/3.0.0/example/osm.json'
     }
 
     await init(styleYaml, options)

@@ -82,7 +82,7 @@ With the example above, you get the same result as `charites --provider mapbox -
 Initialize `style.yml` from TileJSON. If you do not specify TileJSON URL, it will generate empty `style.yml`.
 
 ```
-charites init style.yml --tilejson_url https://raw.githubusercontent.com/mapbox/tilejson-spec/master/3.0.0/example/osm.json
+charites init style.yml --tilejson_urls https://raw.githubusercontent.com/mapbox/tilejson-spec/master/3.0.0/example/osm.json
 ```
 
 Build `style.json` from `style.yml`:

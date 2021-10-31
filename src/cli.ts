@@ -27,12 +27,12 @@ program
 program
   .command('init <file>')
   .description('initialize a style JSON')
-  .option('-t, --tilejson_url', 'an URL for TileJSON. It will create empty layers from vector_layers property of TileJSON.')
-  .action((file: string, initOptions: initOptions) => {
+  .option('-t, --tilejson_urls', 'an URL for TileJSON. It will create empty layers from vector_layers property of TileJSON. Please use comma (,) in case multiple TileJSONs require.')
+  .action(async(file: string, initOptions: initOptions) => {
     const options = program.opts()
-    options.tilejson_url = initOptions.tilejson_url
+    options.tilejson_urls = initOptions.tilejson_urls
     try {
-      init(file, options.tilejson_url)
+      await init(file, options)
     } catch(e) {
       error(e)
     }
