@@ -34,48 +34,38 @@ const generateYAML = (stylejson: StyleSpecification, dist_file: string) => {
   }
 }
 
-type ResponseTileJSON = {
-  sources: { [key: string]: SourceSpecification; },
-  layers: LayerSpecification[],
-}
+const getTileJSON = async(url: string) => {
+  const res = await axios.get(url)
+  const tilejson: TileJSON = res.data
+  const tilesetName : string =  (tilejson.name) ? tilejson.name : Math.random().toString(32).substring(2)
+  
+  const sources : { [key: string]: SourceSpecification; } = {}
+  sources[tilesetName] = {
+    type: 'vector',
+    url: url
+  }
 
-const getTileJSON = (url: string) => {
-  return new Promise<ResponseTileJSON> ((resolve, reject) => {
-    axios.get(url).then(res=>{
-      const tilejson: TileJSON = res.data
-      const tilesetName : string =  (tilejson.name) ? tilejson.name : Math.random().toString(32).substring(2)
-      
-      const sources : { [key: string]: SourceSpecification; } = {}
-      sources[tilesetName] = {
-        type: 'vector',
-        url: url
-      }
-
-      const layers : LayerSpecification[] = []
-      tilejson.vector_layers.forEach(layer=>{
-        const layerStyle : LayerSpecification = {
-          "id": layer.id,
-          "type": "fill",
-          "source": tilesetName,
-          "source-layer": layer.id,
-          "layout": { },
-          "paint": { }
-        }
-        layers.push(layerStyle)
-      })
-      resolve({ sources, layers})
-    })
-    .catch(reject)
+  const layers : LayerSpecification[] = []
+  tilejson.vector_layers.forEach(layer=>{
+    const layerStyle : LayerSpecification = {
+      "id": layer.id,
+      "type": "fill",
+      "source": tilesetName,
+      "source-layer": layer.id,
+      "layout": { },
+      "paint": { }
+    }
+    layers.push(layerStyle)
   })
+  return {sources, layers}
 }
 
 export async function init(file: string, options: initOptions) {
   if (options.tilejson_urls) {
     const tilejson_urls = options.tilejson_urls + ''
     const urls: string[] = tilejson_urls.split(',')
-    const promises = urls.map(url=>getTileJSON(url))
-    const reponses = await Promise.all(promises)
-    reponses.forEach(res=>{
+    const responses = await Promise.all(urls.map(url=>getTileJSON(url)))
+    responses.forEach(res=>{
       Object.keys(res.sources).forEach(sourceName=>{
         styleRoot.sources[sourceName] = res.sources[sourceName]
       })
