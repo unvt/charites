@@ -18,7 +18,7 @@ const styleRoot: StyleSpecification = {
   layers: []
 }
 
-const generateYAML = (stylejson: any, dist_file: string) => {
+const generateYAML = (stylejson: StyleSpecification, dist_file: string) => {
   const styleYAML = YAML.dump(stylejson)
   let stylePath = path.resolve(process.cwd(), dist_file)
 
