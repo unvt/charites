@@ -2,30 +2,10 @@ import path from 'path'
 import fs from 'fs'
 import YAML from 'js-yaml'
 import axios from 'axios'
+import { TileJSON } from '../types'
 
 export interface initOptions {
   tilejson_url?: string
-}
-
-type vector_layers = {
-  id: string,
-  fields: { [key: string]: string; }
-}
-
-type tilejson = {
-  tilejson: string,
-  name: string,
-  description: string,
-  version: string,
-  attribution: string,
-  scheme: string,
-  tiles: string[],
-  minzoom: number,
-  maxzoom: number,
-  bounds: number[],
-  fillzoom: number,
-  something_custom: string,
-  vector_layers: vector_layers[]
 }
 
 // TODO: We need type definition for style.
@@ -58,7 +38,7 @@ export async function init(file: string, options: initOptions) {
   const tilejson_url = options.tilejson_url
   if (tilejson_url) {
     const res = await axios.get(tilejson_url)
-    const tilejson: tilejson = res.data
+    const tilejson: TileJSON = res.data
     // @ts-ignore
     styleRoot.sources[tilejson.name] = {
       type: 'vector',
