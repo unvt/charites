@@ -1,0 +1,28 @@
+version: 8
+name: My Style
+sprite: ''
+glyphs: ''
+sources:
+  OpenStreetMap:
+    type: vector
+    url: >-
+      https://raw.githubusercontent.com/mapbox/tilejson-spec/master/3.0.0/example/osm.json
+layers:
+  - id: telephone
+    type: fill
+    source: OpenStreetMap
+    source-layer: telephone
+    layout: {}
+    paint: {}
+  - id: bicycle_parking
+    type: fill
+    source: OpenStreetMap
+    source-layer: bicycle_parking
+    layout: {}
+    paint: {}
+  - id: showers
+    type: fill
+    source: OpenStreetMap
+    source-layer: showers
+    layout: {}
+    paint: {}
