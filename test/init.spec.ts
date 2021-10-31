@@ -8,12 +8,12 @@ import { init } from '../src/commands/init'
 
 describe('Test for the `init.ts`.', () => {
 
-  it('Should initialize default style.yml.', () => {
+  it('Should initialize default style.yml.', async() => {
     const tempStylePath = path.join(__dirname, 'data/init.yml')
     const tmpdir = fs.mkdtempSync(path.join(os.tmpdir(), 'charites-'))
     const styleYaml = path.join(tmpdir, 'style.yml')
 
-    init(styleYaml, {})
+    await init(styleYaml, {})
 
     // The file should exists.
     assert.deepEqual(true, !! fs.statSync(styleYaml))
