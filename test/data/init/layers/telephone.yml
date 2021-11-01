@@ -1,0 +1,6 @@
+id: telephone
+type: fill
+source: OpenStreetMap
+source-layer: telephone
+layout: {}
+paint: {}

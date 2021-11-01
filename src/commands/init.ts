@@ -1,12 +1,11 @@
-import path from 'path'
-import fs from 'fs'
-import YAML from 'js-yaml'
 import axios from 'axios'
 import { TileJSON } from '../types'
 import { StyleSpecification, SourceSpecification, LayerSpecification } from '@maplibre/maplibre-gl-style-spec/types'
+import { writeYaml } from '../lib/yaml-writer'
 
 export interface initOptions {
-  tilejson_urls?: string
+  tilejson_urls?: string,
+  composite_layers?: boolean
 }
 
 const styleRoot: StyleSpecification = {
@@ -16,22 +15,6 @@ const styleRoot: StyleSpecification = {
   glyphs: "",
   sources: {},
   layers: []
-}
-
-const generateYAML = (stylejson: StyleSpecification, dist_file: string) => {
-  const styleYAML = YAML.dump(stylejson)
-  let stylePath = path.resolve(process.cwd(), dist_file)
-
-  // The `source` is absolute path.
-  if (dist_file.match(/^\//)) {
-    stylePath = dist_file
-  }
-
-  try {
-    fs.writeFileSync(stylePath, styleYAML)
-  } catch(err) {
-    throw `${stylePath}: Permission denied`
-  }
 }
 
 const getTileJSON = async(url: string) => {
@@ -77,5 +60,5 @@ export async function init(file: string, options: initOptions) {
       }
     })
   }
-  generateYAML(styleTemplate, file)
+  writeYaml(file, styleTemplate, options.composite_layers)
 }

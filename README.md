@@ -85,6 +85,8 @@ Initialize `style.yml` from TileJSON. If you do not specify TileJSON URL, it wil
 charites init style.yml --tilejson_urls https://raw.githubusercontent.com/mapbox/tilejson-spec/master/3.0.0/example/osm.json
 ```
 
+In `init` command, you can just generate a single YAML instead of creating layer configuration files separately when you add optional `-c` or `--composite_layers` parameter.
+
 Build `style.json` from `style.yml`:
 
 ```

@@ -28,9 +28,11 @@ program
   .command('init <file>')
   .description('initialize a style JSON')
   .option('-t, --tilejson_urls <tilejson_urls>', 'an URL for TileJSON. It will create empty layers from vector_layers property of TileJSON. Please use comma (,) in case multiple TileJSONs require.')
+  .option('-c, --composite_layers', 'If it is true, a single YAML will be generated with multiple layers. Default is false.')
   .action(async(file: string, initOptions: initOptions) => {
     const options = program.opts()
     options.tilejson_urls = initOptions.tilejson_urls
+    options.composite_layers = initOptions.composite_layers
     try {
       await init(file, options)
     } catch(e) {
