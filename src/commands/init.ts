@@ -46,31 +46,36 @@ const getTileJSON = async(url: string) => {
   }
 
   const layers : LayerSpecification[] = []
-  tilejson.vector_layers.forEach(layer=>{
-    const layerStyle : LayerSpecification = {
-      "id": layer.id,
-      "type": "fill",
-      "source": tilesetName,
-      "source-layer": layer.id,
-      "layout": { },
-      "paint": { }
-    }
-    layers.push(layerStyle)
-  })
+  if (tilejson.vector_layers) {
+    tilejson.vector_layers.forEach(layer=>{
+      const layerStyle : LayerSpecification = {
+        "id": layer.id,
+        "type": "fill",
+        "source": tilesetName,
+        "source-layer": layer.id,
+        "layout": { },
+        "paint": { }
+      }
+      layers.push(layerStyle)
+    })
+  }
   return {sources, layers}
 }
 
 export async function init(file: string, options: initOptions) {
+  const styleTemplate = JSON.parse(JSON.stringify(styleRoot))
   if (options.tilejson_urls) {
     const tilejson_urls = options.tilejson_urls + ''
     const urls: string[] = tilejson_urls.split(',')
     const responses = await Promise.all(urls.map(url=>getTileJSON(url)))
     responses.forEach(res=>{
       Object.keys(res.sources).forEach(sourceName=>{
-        styleRoot.sources[sourceName] = res.sources[sourceName]
+        styleTemplate.sources[sourceName] = res.sources[sourceName]
       })
-      styleRoot.layers = styleRoot.layers.concat(res.layers)
+      if (res.layers.length > 0) {
+        styleTemplate.layers = styleTemplate.layers.concat(res.layers)
+      }
     })
   }
-  generateYAML(styleRoot, file)
+  generateYAML(styleTemplate, file)
 }
