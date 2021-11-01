@@ -27,7 +27,7 @@ program
 program
   .command('init <file>')
   .description('initialize a style JSON')
-  .option('-t, --tilejson_urls', 'an URL for TileJSON. It will create empty layers from vector_layers property of TileJSON. Please use comma (,) in case multiple TileJSONs require.')
+  .option('-t, --tilejson_urls <tilejson_urls>', 'an URL for TileJSON. It will create empty layers from vector_layers property of TileJSON. Please use comma (,) in case multiple TileJSONs require.')
   .action(async(file: string, initOptions: initOptions) => {
     const options = program.opts()
     options.tilejson_urls = initOptions.tilejson_urls
