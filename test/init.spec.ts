@@ -27,8 +27,8 @@ describe('Test for the `init.ts`.', () => {
     const styleYaml = path.join(tmpdir, 'style.yml')
 
     const options = {
-      tilejson_urls : 'https://raw.githubusercontent.com/mapbox/tilejson-spec/master/3.0.0/example/osm.json',
-      composite_layers: true
+      tilejsonUrls : 'https://raw.githubusercontent.com/mapbox/tilejson-spec/master/3.0.0/example/osm.json',
+      compositeLayers: true
     }
 
     await init(styleYaml, options)
@@ -45,8 +45,8 @@ describe('Test for the `init.ts`.', () => {
     const styleYaml = path.join(tmpdir, 'style.yml')
 
     const options = {
-      tilejson_urls : 'https://a.tiles.mapbox.com/v3/aj.1x1-degrees.json',
-      composite_layers: true
+      tilejsonUrls : 'https://a.tiles.mapbox.com/v3/aj.1x1-degrees.json',
+      compositeLayers: true
     }
 
     await init(styleYaml, options)
@@ -61,8 +61,8 @@ describe('Test for the `init.ts`.', () => {
     const styleYaml = path.join(tmpdir, 'style.yml')
 
     const options = {
-      tilejson_urls : 'https://raw.githubusercontent.com/mapbox/tilejson-spec/master/3.0.0/example/osm.json',
-      composite_layers: false
+      tilejsonUrls : 'https://raw.githubusercontent.com/mapbox/tilejson-spec/master/3.0.0/example/osm.json',
+      compositeLayers: false
     }
 
     await init(styleYaml, options)
