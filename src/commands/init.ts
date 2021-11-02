@@ -4,8 +4,8 @@ import { StyleSpecification, SourceSpecification, LayerSpecification } from '@ma
 import { writeYaml } from '../lib/yaml-writer'
 
 export interface initOptions {
-  tilejson_urls?: string,
-  composite_layers?: boolean
+  tilejsonUrls?: string,
+  compositeLayers?: boolean
 }
 
 const styleRoot: StyleSpecification = {
@@ -47,8 +47,8 @@ const getTileJSON = async(url: string) => {
 
 export async function init(file: string, options: initOptions) {
   const styleTemplate = JSON.parse(JSON.stringify(styleRoot))
-  if (options.tilejson_urls) {
-    const tilejson_urls = options.tilejson_urls + ''
+  if (options.tilejsonUrls) {
+    const tilejson_urls = options.tilejsonUrls + ''
     const urls: string[] = tilejson_urls.split(',')
     const responses = await Promise.all(urls.map(url=>getTileJSON(url)))
     responses.forEach(res=>{
@@ -60,5 +60,5 @@ export async function init(file: string, options: initOptions) {
       }
     })
   }
-  writeYaml(file, styleTemplate, options.composite_layers)
+  writeYaml(file, styleTemplate, options.compositeLayers)
 }
