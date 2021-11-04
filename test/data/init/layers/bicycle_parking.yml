@@ -1,0 +1,6 @@
+id: bicycle_parking
+type: fill
+source: OpenStreetMap
+source-layer: bicycle_parking
+layout: {}
+paint: {}

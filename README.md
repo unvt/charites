@@ -79,6 +79,14 @@ With the example above, you get the same result as `charites --provider mapbox -
 
 ## Examples
 
+Initialize `style.yml` from TileJSON. If you do not specify TileJSON URL, it will generate empty `style.yml`.
+
+```
+charites init style.yml --tilejson-urls https://raw.githubusercontent.com/mapbox/tilejson-spec/master/3.0.0/example/osm.json
+```
+
+In `init` command, you can just generate a single YAML instead of creating layer configuration files separately when you add optional `-c` or `--composite-layers` parameter.
+
 Build `style.json` from `style.yml`:
 
 ```
