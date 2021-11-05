@@ -85,7 +85,7 @@ Initialize `style.yml` from either TileJSON or metadata.json.
 
 ```bash
 $ charites init -h
-Usage: cli init [options] <file> <--tilejson-urls> <tilejson_urls> <--metadatajson-urls> <metadatajson_urls> <--composite-layers>
+Usage: charites init [options] <file> <--tilejson-urls> <tilejson_urls> <--metadatajson-urls> <metadatajson_urls> <--composite-layers>
 
 initialize a style JSON
 
