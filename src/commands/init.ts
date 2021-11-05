@@ -1,10 +1,10 @@
-import axios from 'axios'
-import { TileJSON } from '../types'
-import { StyleSpecification, SourceSpecification, LayerSpecification } from '@maplibre/maplibre-gl-style-spec/types'
+import { StyleSpecification } from '@maplibre/maplibre-gl-style-spec/types'
 import { writeYaml } from '../lib/yaml-writer'
+import { TileJSONImporter, MetadataJSONImporter } from '../lib/tileinfo-importer'
 
 export interface initOptions {
   tilejsonUrls?: string,
+  metadatajsonUrls?: string,
   compositeLayers?: boolean
 }
 
@@ -16,49 +16,16 @@ const styleRoot: StyleSpecification = {
   sources: {},
   layers: []
 }
-
-const getTileJSON = async(url: string) => {
-  const res = await axios.get(url)
-  const tilejson: TileJSON = res.data
-  const tilesetName : string =  (tilejson.name) ? tilejson.name : Math.random().toString(32).substring(2)
   
-  const sources : { [key: string]: SourceSpecification; } = {}
-  sources[tilesetName] = {
-    type: 'vector',
-    url: url
-  }
-
-  const layers : LayerSpecification[] = []
-  if (tilejson.vector_layers) {
-    tilejson.vector_layers.forEach(layer=>{
-      const layerStyle : LayerSpecification = {
-        "id": layer.id,
-        "type": "fill",
-        "source": tilesetName,
-        "source-layer": layer.id,
-        "layout": { },
-        "paint": { }
-      }
-      layers.push(layerStyle)
-    })
-  }
-  return {sources, layers}
-}
-
 export async function init(file: string, options: initOptions) {
-  const styleTemplate = JSON.parse(JSON.stringify(styleRoot))
+  let styleTemplate = JSON.parse(JSON.stringify(styleRoot))
   if (options.tilejsonUrls) {
-    const tilejson_urls = options.tilejsonUrls + ''
-    const urls: string[] = tilejson_urls.split(',')
-    const responses = await Promise.all(urls.map(url=>getTileJSON(url)))
-    responses.forEach(res=>{
-      Object.keys(res.sources).forEach(sourceName=>{
-        styleTemplate.sources[sourceName] = res.sources[sourceName]
-      })
-      if (res.layers.length > 0) {
-        styleTemplate.layers = styleTemplate.layers.concat(res.layers)
-      }
-    })
+    const tileJSONImporter = new TileJSONImporter(options.tilejsonUrls)
+    styleTemplate = await tileJSONImporter.import(styleTemplate)
+  }
+  if (options.metadatajsonUrls) {
+    const metadataJSONImporter = new MetadataJSONImporter(options.metadatajsonUrls)
+    styleTemplate = await metadataJSONImporter.import(styleTemplate)
   }
   writeYaml(file, styleTemplate, options.compositeLayers)
 }

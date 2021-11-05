@@ -79,13 +79,41 @@ With the example above, you get the same result as `charites --provider mapbox -
 
 ## Examples
 
-Initialize `style.yml` from TileJSON. If you do not specify TileJSON URL, it will generate empty `style.yml`.
+- `init`
 
+Initialize `style.yml` from either TileJSON or metadata.json.
+
+```bash
+$ charites init -h
+Usage: charites init [options] <file> <--tilejson-urls> <tilejson_urls> <--metadatajson-urls> <metadatajson_urls> <--composite-layers>
+
+initialize a style JSON
+
+Options:
+  -t, --tilejson-urls <tilejson_urls>          an URL for TileJSON. It will create empty layers from vector_layers
+                                               property of TileJSON. Please use comma (,) in case multiple TileJSONs
+                                               require.
+  -m, --metadatajson-urls <metadatajson_urls>  an URL for metadata.json. It will create empty layers from vector_layers
+                                               property of metadata.json. Please use comma (,) in case multiple
+                                               metadata.json require.
+  -c, --composite-layers                       If it is true, a single YAML will be generated with multiple layers.
+                                               Default is false.
+  -h, --help                                   display help for command
 ```
+
+If you do not specify TileJSON URL, it will generate empty `style.yml`.
+
+```bash
 charites init style.yml --tilejson-urls https://raw.githubusercontent.com/mapbox/tilejson-spec/master/3.0.0/example/osm.json
 ```
 
+```bash
+charites init style.yml --metadatajson-urls https://optgeo.github.io/kokoromi-rw/zxy/metadata.json
+```
+
 In `init` command, you can just generate a single YAML instead of creating layer configuration files separately when you add optional `-c` or `--composite-layers` parameter.
+
+- `build`
 
 Build `style.json` from `style.yml`:
 
@@ -99,6 +127,8 @@ Add `-c` or `--compact-output` to minify the JSON
 charites build style.yml style.json -c
 ```
 
+- `convert`
+
 Convert `style.json` to `style.yml`:
 
 ```
@@ -110,6 +140,8 @@ Load JSON as a standard input to generate `style.yml`:
 ```
 curl http://example.com/style.json | charites convert - style.yml
 ```
+
+- `serve`
 
 Launch a live preview of your map style in your local environment:
 
