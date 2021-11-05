@@ -1,3 +1,5 @@
+import { VectorLayer } from './vector_layers'
+
 /**
  * Definition of TileJSON v3.0.0
  * see https://github.com/mapbox/tilejson-spec/blob/master/3.0.0/schema.json
@@ -5,13 +7,7 @@
 export type TileJSON = {
     tilejson: string,
     tiles: string[],
-    vector_layers: {
-      id: string,
-      fields: { [key: string]: string; },
-      description: string,
-      maxzoom: string,
-      minzoom: string,
-    } [],
+    vector_layers: VectorLayer[],
     attribution?: string,
     bounds?: number[],
     center?: number[],
