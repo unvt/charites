@@ -127,7 +127,11 @@ Add `-c` or `--compact-output` to minify the JSON
 charites build style.yml style.json -c
 ```
 
-- `convert`
+Add `--sprite-input` and `--sprite-output` to build svg files for map icons.
+
+```
+charites build style.yml style.json --sprite-input icons/ --sprite-output public/
+```
 
 Convert `style.json` to `style.yml`:
 

@@ -2,15 +2,20 @@ import path from 'path'
 import fs from 'fs'
 import { parser } from '../lib/yaml-parser'
 import { validateStyle } from '../lib/validate-style'
+import { buildSprite } from '../lib/build-sprite'
+import { getSpriteSlug } from '../lib/get-sprite-slug'
 import { defaultValues } from '../lib/defaultValues'
 import jsonminify from 'jsonminify'
 
 interface options {
   provider?: string,
-  compactOutput?: boolean
+  compactOutput?: boolean,
+  spriteUrl?: string,
+  spriteInput?: string,
+  spriteOutput?: string
 }
 
-export function build(source: string, destination: string, options: options) {
+export async function build(source: string, destination: string, options: options) {
   let sourcePath = path.resolve(process.cwd(), source)
 
   // The `source` is absolute path.
@@ -42,12 +47,37 @@ export function build(source: string, destination: string, options: options) {
   let style = ''
 
   try {
-    const _style = parser(sourcePath)
+    let _style: any = parser(sourcePath)
     validateStyle(_style, provider)
+
+    if (options.spriteUrl && 'sprite' in _style) {
+      _style.sprite = options.spriteUrl
+    }
+
     style = JSON.stringify(_style, null, '  ')
+
+    if (options.spriteInput && options.spriteOutput) {
+
+      if (! fs.existsSync(options.spriteInput)) {
+        throw `${options.spriteInput}: No such directory. Please specify valid icon input directory. For more help run charites build --help`
+      }
+
+      if (! fs.existsSync(options.spriteOutput)) {
+        throw `${options.spriteOutput}: No such directory. Please specify valid icon output directory. For more help run charites build --help`
+      }
+
+      const iconSlug = getSpriteSlug(JSON.parse(style))
+      if (!iconSlug) {
+        throw `Invalid sprite url format.`
+      }
+
+      await buildSprite(options.spriteInput, options.spriteOutput, iconSlug)
+    }
+
     if (options.compactOutput) {
       style = jsonminify(style)
     }
+
   } catch(err) {
     if (err) {
       throw err
