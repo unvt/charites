@@ -102,7 +102,7 @@ charites build style.yml style.json -c
 Add `--sprite-input` and `--sprite-output` to build svg files for map icons.
 
 ```
-charites build style.yml --sprite-input icons/ --sprite-output public/
+charites build style.yml style.json --sprite-input icons/ --sprite-output public/
 ```
 
 Convert `style.json` to `style.yml`:
