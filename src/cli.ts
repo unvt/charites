@@ -29,13 +29,15 @@ program
   .option('--mapbox-access-token [mapboxAccessToken]', 'Access Token for the Mapbox')
 
 program
-  .command('init <file>')
+  .command('init <file> --tilejson-urls <tilejson_urls> --metadatajson-urls <metadatajson_urls> --composite-layers')
   .description('initialize a style JSON')
   .option('-t, --tilejson-urls <tilejson_urls>', 'an URL for TileJSON. It will create empty layers from vector_layers property of TileJSON. Please use comma (,) in case multiple TileJSONs require.')
+  .option('-m, --metadatajson-urls <metadatajson_urls>', 'an URL for metadata.json. It will create empty layers from vector_layers property of metadata.json. Please use comma (,) in case multiple metadata.json require.')
   .option('-c, --composite-layers', 'If it is true, a single YAML will be generated with multiple layers. Default is false.')
   .action(async(file: string, initOptions: initOptions) => {
     const options = program.opts()
     options.tilejsonUrls = initOptions.tilejsonUrls
+    options.metadatajsonUrls = initOptions.metadatajsonUrls
     options.compositeLayers = initOptions.compositeLayers
     try {
       await init(file, options)

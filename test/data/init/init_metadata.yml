@@ -1,0 +1,60 @@
+version: 8
+name: My Style
+sprite: ''
+glyphs: ''
+sources:
+  tiles.mbtiles:
+    type: vector
+    tiles:
+      - https://optgeo.github.io/kokoromi-rw/zxy/metadata.json
+    minzoom: '0'
+    maxzoom: '15'
+layers:
+  - id: boundary
+    type: fill
+    source: tiles.mbtiles
+    source-layer: boundary
+    layout: {}
+    paint: {}
+  - id: building
+    type: fill
+    source: tiles.mbtiles
+    source-layer: building
+    layout: {}
+    paint: {}
+  - id: nature
+    type: fill
+    source: tiles.mbtiles
+    source-layer: nature
+    layout: {}
+    paint: {}
+  - id: place
+    type: fill
+    source: tiles.mbtiles
+    source-layer: place
+    layout: {}
+    paint: {}
+  - id: road
+    type: fill
+    source: tiles.mbtiles
+    source-layer: road
+    layout: {}
+    paint: {}
+  - id: route
+    type: fill
+    source: tiles.mbtiles
+    source-layer: route
+    layout: {}
+    paint: {}
+  - id: structure
+    type: fill
+    source: tiles.mbtiles
+    source-layer: structure
+    layout: {}
+    paint: {}
+  - id: water
+    type: fill
+    source: tiles.mbtiles
+    source-layer: water
+    layout: {}
+    paint: {}
