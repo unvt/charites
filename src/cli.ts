@@ -29,7 +29,7 @@ program
   .option('--mapbox-access-token [mapboxAccessToken]', 'Access Token for the Mapbox')
 
 program
-  .command('init <file> --tilejson-urls <tilejson_urls> --metadatajson-urls <metadatajson_urls> --composite-layers')
+  .command('init <file>')
   .description('initialize a style JSON')
   .option('-t, --tilejson-urls <tilejson_urls>', 'an URL for TileJSON. It will create empty layers from vector_layers property of TileJSON. Please use comma (,) in case multiple TileJSONs require.')
   .option('-m, --metadatajson-urls <metadatajson_urls>', 'an URL for metadata.json. It will create empty layers from vector_layers property of metadata.json. Please use comma (,) in case multiple metadata.json require.')
