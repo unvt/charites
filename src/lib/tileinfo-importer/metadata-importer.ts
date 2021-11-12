@@ -10,9 +10,10 @@ export class MetadataJSONImporter extends BaseImporter {
         const metadataName : string =  (matadataJSON.name) ? matadataJSON.name : Math.random().toString(32).substring(2)
         
         const sources : { [key: string]: VectorSourceSpecification; } = {}
+        const urlSplited = url.split('/')
         sources[metadataName] = {
             type: 'vector',
-            tiles: [url],
+            tiles: [url.replace(new RegExp(urlSplited[urlSplited.length - 1], 'g'), '{z}/{x}/{y}.pbf')],
         }
         if (matadataJSON.minzoom) {
             sources[metadataName].minzoom = matadataJSON.minzoom

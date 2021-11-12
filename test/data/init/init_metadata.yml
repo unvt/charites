@@ -6,7 +6,7 @@ sources:
   tiles.mbtiles:
     type: vector
     tiles:
-      - https://optgeo.github.io/kokoromi-rw/zxy/metadata.json
+      - https://optgeo.github.io/kokoromi-rw/zxy/{z}/{x}/{y}.pbf
     minzoom: '0'
     maxzoom: '15'
 layers:
