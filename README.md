@@ -51,12 +51,13 @@ $ charites help
 Usage: charites [options] [command]
 
 Options:
+  -v, --version                              output the version number
   --provider [provider]                      your map service. e.g. `mapbox`, `geolonia`
   --mapbox-access-token [mapboxAccessToken]  Access Token for the Mapbox
   -h, --help                                 display help for command
 
 Commands:
-  init <file>                                initialize a style JSON
+  init [options] <file>                      initialize a style JSON
   convert <source> [destination]             convert the style JSON to YAML
   build [options] <source> [destination]     build a style JSON from the YAML
   serve <source>                             serve your map locally

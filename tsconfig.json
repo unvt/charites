@@ -15,5 +15,7 @@
     "module": "commonjs",
     "outDir": "./dist"
   },
-  "include": ["src/cli/**.ts"]
+  "include": [
+    "src/cli/**.ts"
+  ]
 }
