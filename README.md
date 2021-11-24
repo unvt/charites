@@ -180,7 +180,7 @@ charites serve style.yml --provider mapbox --mapbox-access-token xxxx
 ### Development
 
 ```
-$ git clone https://github.com/geolonia/charites.git
+$ git clone https://github.com/unvt/charites.git
 $ cd charites
 $ npm install
 $ npm run build
