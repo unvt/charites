@@ -1,6 +1,6 @@
 import { Command } from 'commander';
 import { serve } from '../commands/serve'
-import { error } from './error'
+import { error } from '../lib/error'
 import { defaultSettings } from '../lib/defaultValues'
 import fs from 'fs'
 

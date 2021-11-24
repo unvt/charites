@@ -16,6 +16,6 @@
     "outDir": "./dist"
   },
   "include": [
-    "src/cli/**.ts"
+    "src/cli.ts"
   ]
 }
