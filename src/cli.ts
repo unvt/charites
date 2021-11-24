@@ -2,13 +2,13 @@
 
 import { Command } from 'commander';
 
-import init from './init'
-import convert from './convert'
-import build from './build'
-import serve from './serve'
+import init from './cli/init'
+import convert from './cli/convert'
+import build from './cli/build'
+import serve from './cli/serve'
 
 const program = new Command();
-const version = require('../../package.json').version
+const version = require('../package.json').version
 program
   .version(version, '-v, --version', 'output the version number')
   .option('--provider [provider]', 'your map service. e.g. `mapbox`, `geolonia`')

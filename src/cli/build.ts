@@ -1,6 +1,6 @@
 import { Command } from 'commander';
 import { build, buildOptions } from '../commands/build'
-import { error } from './error'
+import { error } from '../lib/error'
 import { defaultSettings } from '../lib/defaultValues'
 import fs from 'fs'
 import path from 'path'
