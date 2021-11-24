@@ -15,7 +15,7 @@ In Greek mythology, the [Charites](https://en.wikipedia.org/wiki/Charites) are t
 - Use `--provider mapbox` to validate your style against Mapbox GL JS v2.x
 - Run `charites serve <source>` to preview your style live while you make changes in a browser.
 
-Example: https://github.com/miya0001/style-template
+Example: https://github.com/geoloniamaps/basic
 
 ## Install
 
