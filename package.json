@@ -3,7 +3,7 @@
   "version": "0.1.2",
   "description": "",
   "bin": {
-    "charites": "dist/cli"
+    "charites": "dist/cli/index.js"
   },
   "scripts": {
     "build": "tsc -p .",
