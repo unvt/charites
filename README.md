@@ -177,6 +177,7 @@ charites serve style.yml --provider mapbox --mapbox-access-token xxxx
 
 ## Contributing
 
+see [CONTRIBUTING.md](./.github/CONTRIBUTING.md)
 ### Development
 
 ```
