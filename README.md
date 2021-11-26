@@ -62,7 +62,7 @@ Commands:
   help [command]                          display help for command
 ```
 
-## Sub commands
+### Sub commands
 
 - init
 
