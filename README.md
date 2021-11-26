@@ -51,72 +51,109 @@ $ charites help
 Usage: charites [options] [command]
 
 Options:
-  -v, --version                              output the version number
+  -v, --version                           output the version number
+  -h, --help                              display help for command
+
+Commands:
+  init [options] <file>                   initialize a style JSON
+  convert <source> [destination]          convert the style JSON to YAML
+  build [options] <source> [destination]  build a style JSON from the YAML
+  serve [options] <source>                serve your map locally
+  help [command]                          display help for command
+```
+
+## Sub commands
+
+- init
+
+```bash
+$ charites init -h  
+Usage: charites init [options] <file>
+
+initialize a style JSON
+
+Options:
+  -t, --tilejson-urls <tilejson_urls>          an URL for TileJSON. It will create empty layers from vector_layers property of TileJSON. Please use
+                                               comma (,) in case multiple TileJSONs require.
+  -m, --metadatajson-urls <metadatajson_urls>  an URL for metadata.json. It will create empty layers from vector_layers property of metadata.json.
+                                               Please use comma (,) in case multiple metadata.json require.
+  -c, --composite-layers                       If it is true, a single YAML will be generated with multiple layers. Default is false.
+  -h, --help                                   display help for command
+```
+
+- convert
+
+```bash
+$ charites convert -h
+Usage: charites convert [options] <source> [destination]
+
+convert the style JSON to YAML
+
+Options:
+  -h, --help  display help for command
+```
+
+- build
+
+```bash
+charites build -h
+Usage: charites build [options] <source> [destination]
+
+build a style JSON from the YAML
+
+Options:
+  -c, --compact-output                           build a minified style JSON
+  -u, --sprite-url [<sprite url>]                url to set as the sprite in style.json
+  -i, --sprite-input [<icon input directory>]    directory path of icon source to build icons. The default <icon source> is `icons/`
+  -o, --sprite-output [<icon output directory>]  directory path to output icon files. The default <icons destination> is the current directory
+  -h, --help                                     display help for command
+```
+
+- serve
+
+```bash
+charites serve -h
+Usage: charites serve [options] <source>
+
+serve your map locally
+
+Options:
   --provider [provider]                      your map service. e.g. `mapbox`, `geolonia`
   --mapbox-access-token [mapboxAccessToken]  Access Token for the Mapbox
   -h, --help                                 display help for command
-
-Commands:
-  init [options] <file>                      initialize a style JSON
-  convert <source> [destination]             convert the style JSON to YAML
-  build [options] <source> [destination]     build a style JSON from the YAML
-  serve <source>                             serve your map locally
-  help [command]                             display help for command
 ```
 
-## Global Options
-
-Charites has two global options that are common to all commands.
+Charites has two options for `serve` command.
 
 - `--provider` - `mapbox`, `geolonia`, or `default`. When not specified, default or the value in the configuration file will be used.
-    - `mapbox` - The format linter runs against the Mapbox GL JS v2.x compatible specification.
-    - `geolonia` and `default` - the format linter runs against the MapLibre GL JS compatible specification.
+  - `mapbox` - The format linter runs against the Mapbox GL JS v2.x compatible specification.
+  - `geolonia` and `default` - the format linter runs against the MapLibre GL JS compatible specification.
 - `--mapbox-access-token` - Set your access-token when styling for Mapbox.
 
-# Configuration
+## Configuration
 
-The global options for Charites can be stored in a configuration file written in YAML.
+Some options for Charites can be stored in a configuration file written in YAML.
 
 The config file will be automatically created to the following path the first time the charites command is executed.
 
-```
+```bash
 ~/.charites/config.yml
 ```
 
 Global options can be specified as follows:
 
-
-```
+```bash
 provider: mapbox
 mapboxAccessToken: xxxx
 ```
 
-With the example above, you get the same result as `charites --provider mapbox --mapbox-access-token xxxx`.
+With the example above, you get the same result as `charites serve --provider mapbox --mapbox-access-token xxxx`.
 
 ## Examples
 
 - `init`
 
 Initialize `style.yml` from either TileJSON or metadata.json.
-
-```bash
-$ charites init -h
-Usage: charites init [options] <file>
-
-initialize a style JSON
-
-Options:
-  -t, --tilejson-urls <tilejson_urls>          an URL for TileJSON. It will create empty layers from vector_layers
-                                               property of TileJSON. Please use comma (,) in case multiple TileJSONs
-                                               require.
-  -m, --metadatajson-urls <metadatajson_urls>  an URL for metadata.json. It will create empty layers from vector_layers
-                                               property of metadata.json. Please use comma (,) in case multiple
-                                               metadata.json require.
-  -c, --composite-layers                       If it is true, a single YAML will be generated with multiple layers.
-                                               Default is false.
-  -h, --help                                   display help for command
-```
-
 If you do not specify TileJSON URL, it will generate empty `style.yml`.
 
 ```bash
@@ -133,31 +170,31 @@ In `init` command, you can just generate a single YAML instead of creating layer
 
 Build `style.json` from `style.yml`:
 
-```
+```bash
 charites build style.yml style.json
 ```
 
 Add `-c` or `--compact-output` to minify the JSON
 
-```
+```bash
 charites build style.yml style.json -c
 ```
 
 Add `--sprite-input` and `--sprite-output` to build svg files for map icons.
 
-```
+```bash
 charites build style.yml style.json --sprite-input icons/ --sprite-output public/
 ```
 
 Convert `style.json` to `style.yml`:
 
-```
+```bash
 charites convert style.json style.yml
 ```
 
 Load JSON as a standard input to generate `style.yml`:
 
-```
+```bash
 curl http://example.com/style.json | charites convert - style.yml
 ```
 
@@ -165,13 +202,13 @@ curl http://example.com/style.json | charites convert - style.yml
 
 Launch a live preview of your map style in your local environment:
 
-```
+```bash
 charites serve style.yml
 ```
 
 For Mapbox users:
 
-```
+```bash
 charites serve style.yml --provider mapbox --mapbox-access-token xxxx
 ```
 
@@ -179,22 +216,30 @@ charites serve style.yml --provider mapbox --mapbox-access-token xxxx
 
 ### Development
 
-```
+```bash
 $ git clone https://github.com/unvt/charites.git
 $ cd charites
 $ npm install
 $ npm run build
 $ npm install -g .
 ```
+
+Note. if you have already installed other version's `charites` from npm globally, it might occur some conflicts. Please uninstall all charites from globally by using following commands before installing development version.
+
+```bash
+npm uninstall -g .
+npm uninstall -g @unvt/charites
+```
+
 Then run:
 
-```
+```bash
 $ charites help
 ```
 
 ### Releasing this package
 
-```
+```bash
 $ npm version patch # Or `minor` or `major`
 $ git push
 $ git push origin <version>
