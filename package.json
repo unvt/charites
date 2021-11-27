@@ -12,7 +12,7 @@
     "fix": "eslint --fix .",
     "test": "mocha -r ts-node/register test/*.ts",
     "test:watch": "npm test -- --watch --watch-files src/**/*.ts --watch-files test/**/*.ts",
-    "command": "./node_modules/.bin/ts-node ./src/cli.ts"
+    "command": "./node_modules/.bin/ts-node ./src/cli"
   },
   "author": "",
   "license": "MIT",

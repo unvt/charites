@@ -15,7 +15,7 @@ In Greek mythology, the [Charites](https://en.wikipedia.org/wiki/Charites) are t
 - Use `--provider mapbox` to validate your style against Mapbox GL JS v2.x
 - Run `charites serve <source>` to preview your style live while you make changes in a browser.
 
-Example: https://github.com/miya0001/style-template
+Example: https://github.com/geoloniamaps/basic
 
 ## Install
 
@@ -32,6 +32,7 @@ $ charites help
 ### Recommended environment
 
 Chrities may work well on OSX, Ubuntu, but it might not work well in some envrionment such as arm64 (eg., M1 Mac) because some of NPM packages like sprite-zero uses mapnik.  
+
 Docker can be the good environment in Windows while WSL might work well.
 
 ### charites on unvt/nanban
@@ -40,6 +41,7 @@ Charites runs on Docker with one of UNVT tools named [unvt/nanban](https://githu
 
 ```
 docker run -ti --rm -v ${PWD}:/data -p 8080:8080 unvt/nanban
+
 cd /data
 ```
 
@@ -51,12 +53,13 @@ $ charites help
 Usage: charites [options] [command]
 
 Options:
+  -v, --version                              output the version number
   --provider [provider]                      your map service. e.g. `mapbox`, `geolonia`
   --mapbox-access-token [mapboxAccessToken]  Access Token for the Mapbox
   -h, --help                                 display help for command
 
 Commands:
-  init <file>                                initialize a style JSON
+  init [options] <file>                      initialize a style JSON
   convert <source> [destination]             convert the style JSON to YAML
   build [options] <source> [destination]     build a style JSON from the YAML
   serve <source>                             serve your map locally
@@ -179,7 +182,7 @@ charites serve style.yml --provider mapbox --mapbox-access-token xxxx
 ### Development
 
 ```
-$ git clone https://github.com/geolonia/charites.git
+$ git clone https://github.com/unvt/charites.git
 $ cd charites
 $ npm install
 $ npm run build

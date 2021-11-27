@@ -7,7 +7,7 @@ import { getSpriteSlug } from '../lib/get-sprite-slug'
 import { defaultValues } from '../lib/defaultValues'
 import jsonminify from 'jsonminify'
 
-interface options {
+export interface buildOptions {
   provider?: string,
   compactOutput?: boolean,
   spriteUrl?: string,
@@ -15,7 +15,7 @@ interface options {
   spriteOutput?: string
 }
 
-export async function build(source: string, destination: string, options: options) {
+export async function build(source: string, destination: string, options: buildOptions) {
   let sourcePath = path.resolve(process.cwd(), source)
 
   // The `source` is absolute path.
