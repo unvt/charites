@@ -30,18 +30,21 @@ jobs:
       - run: npm test
 
   # See documentation for Contribute List Github Action
-  # https://github.com/marketplace/actions/contribute-list
-  contrib-readme-job:
+  # https://github.com/marketplace/actions/auto-add-contributors
+  add-contributors:
     runs-on: ubuntu-latest
-    name: A job to automate contrib in readme
-    needs: build
     steps:
-      - name: Contribute List
-        uses: akhilmhdh/contributors-readme-action@v2.3.3
-        with:
-          readme_path: "README.md"
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - uses: actions/checkout@v2
+    - uses: BobAnkh/add-contributors@master
+      with:
+        CONTRIBUTOR: '### The United Nations Vector Tile Toolkit contributors'
+        COLUMN_PER_ROW: '6'
+        ACCESS_TOKEN: ${{secrets.GITHUB_TOKEN}}
+        IMG_WIDTH: '50'
+        FONT_SIZE: '14'
+        PATH: '/README.md'
+        COMMIT_MESSAGE: 'docs(README): update contributors'
+        AVATAR_SHAPE: 'round'
 
   publish:
     name: 'Publish npm package'

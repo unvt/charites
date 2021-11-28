@@ -206,9 +206,6 @@ $ git push origin <version>
 
 ### The United Nations Vector Tile Toolkit contributors
 
-<!-- readme: contributors -start -->
-<!-- readme: contributors -end -->
-
 ## License
 
 MIT
