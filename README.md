@@ -204,7 +204,7 @@ $ git push
 $ git push origin <version>
 ```
 
-### Contributors
+### The United Nations Vector Tile Toolkit contributors
 
 ## License
 
