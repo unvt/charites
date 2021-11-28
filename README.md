@@ -181,11 +181,6 @@ charites serve style.yml --provider mapbox --mapbox-access-token xxxx
 
 see [CONTRIBUTING.md](./.github/CONTRIBUTING.md)
 
-### The United Nations Vector Tile Toolkit contributors
-
-<!-- readme: geolonia,collaborators,contributors -start -->
-<!-- readme: geolonia,collaborators,contributors -end -->
-
 ### Development
 
 ```
@@ -208,6 +203,11 @@ $ npm version patch # Or `minor` or `major`
 $ git push
 $ git push origin <version>
 ```
+
+### The United Nations Vector Tile Toolkit contributors
+
+<!-- readme: geolonia,contributors -start -->
+<!-- readme: geolonia,contributors -end -->
 
 ## License
 
