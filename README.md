@@ -206,8 +206,8 @@ $ git push origin <version>
 
 ### The United Nations Vector Tile Toolkit contributors
 
-<!-- readme: geolonia,contributors -start -->
-<!-- readme: geolonia,contributors -end -->
+<!-- readme: collaborators,contributors -start -->
+<!-- readme: collaborators,contributors -end -->
 
 ## License
 
