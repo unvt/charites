@@ -33,6 +33,7 @@ jobs:
   # https://github.com/marketplace/actions/auto-add-contributors
   add-contributors:
     runs-on: ubuntu-latest
+    needs: build
     steps:
     - uses: actions/checkout@v2
     - uses: BobAnkh/add-contributors@master
@@ -42,7 +43,7 @@ jobs:
         ACCESS_TOKEN: ${{secrets.GITHUB_TOKEN}}
         IMG_WIDTH: '50'
         FONT_SIZE: '14'
-        PATH: '/README.md'
+        PATH: 'README.md'
         COMMIT_MESSAGE: 'docs(README): update contributors'
         AVATAR_SHAPE: 'round'
 
