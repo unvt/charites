@@ -108,8 +108,11 @@ Options:
   -u, --sprite-url [<sprite url>]                url to set as the sprite in style.json
   -i, --sprite-input [<icon input directory>]    directory path of icon source to build icons. The default <icon source> is `icons/`
   -o, --sprite-output [<icon output directory>]  directory path to output icon files. The default <icons destination> is the current directory
+  --provider [provider]                          your map service. e.g. `mapbox`, `geolonia`
   -h, --help                                     display help for command
 ```
+
+if you use mapbox v2 for your style, please use `--provider mapbox` to specify mapbox service rather than default. Please see `--provider` option at `serve` command section.
 
 - serve
 
