@@ -14,8 +14,10 @@ program
     .option('-u, --sprite-url [<sprite url>]', 'url to set as the sprite in style.json')
     .option('-i, --sprite-input [<icon input directory>]', 'directory path of icon source to build icons. The default <icon source> is `icons/`')
     .option('-o, --sprite-output [<icon output directory>]', 'directory path to output icon files. The default <icons destination> is the current directory')
+    .option('--provider [provider]', 'your map service. e.g. `mapbox`, `geolonia`')
     .action(async (source: string, destination: string, buildOptions: buildOptions) => {
         const options = program.opts()
+        options.provider = buildOptions.provider
         options.compactOutput = buildOptions.compactOutput
         options.spriteUrl = buildOptions.spriteUrl
         options.spriteOutput = buildOptions.spriteOutput || process.cwd()

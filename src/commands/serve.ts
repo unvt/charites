@@ -9,12 +9,12 @@ import { parser } from '../lib/yaml-parser'
 import { validateStyle } from '../lib/validate-style'
 import { defaultValues } from '../lib/defaultValues'
 
-interface options {
+export interface serveOptions {
   provider?: string
   mapboxAccessToken?: string
 }
 
-export function serve(source: string, options: options) {
+export function serve(source: string, options: serveOptions) {
   const port = process.env.PORT || 8080
   let sourcePath = path.resolve(process.cwd(), source)
 
