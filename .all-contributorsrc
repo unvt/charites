@@ -1,14 +1,11 @@
 {
-  "files": [
-    "README.md"
-  ],
+  "files": ["README.md"],
   "imageSize": 100,
   "contributorsPerLine": 7,
-  "skipCi": true
-  "projectName": "charites",
   "contributorsSortAlphabetically": true,
+  "skipCi": true,
+  "projectName": "charites",
   "repoType": "github",
   "repoHost": "https://github.com",
-  "skipCi": true,
   "contributors": []
 }
