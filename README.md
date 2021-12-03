@@ -187,3 +187,8 @@ $ git push origin <version>
 ## License
 
 MIT
+
+
+## Contributors 
+
+Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
