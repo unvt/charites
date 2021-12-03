@@ -6,16 +6,21 @@ import { buildSprite } from '../lib/build-sprite'
 import { getSpriteSlug } from '../lib/get-sprite-slug'
 import { defaultValues } from '../lib/defaultValues'
 import jsonminify from 'jsonminify'
+import { StyleSpecification } from '@maplibre/maplibre-gl-style-spec/types'
 
 export interface buildOptions {
-  provider?: string,
-  compactOutput?: boolean,
-  spriteUrl?: string,
-  spriteInput?: string,
+  provider?: string
+  compactOutput?: boolean
+  spriteUrl?: string
+  spriteInput?: string
   spriteOutput?: string
 }
 
-export async function build(source: string, destination: string, options: buildOptions) {
+export async function build(
+  source: string,
+  destination: string,
+  options: buildOptions,
+) {
   let sourcePath = path.resolve(process.cwd(), source)
 
   // The `source` is absolute path.
@@ -23,11 +28,11 @@ export async function build(source: string, destination: string, options: buildO
     sourcePath = source
   }
 
-  if (! fs.existsSync(sourcePath)) {
+  if (!fs.existsSync(sourcePath)) {
     throw `${sourcePath}: No such file or directory`
   }
 
-  let destinationPath = ""
+  let destinationPath = ''
 
   if (destination) {
     if (destination.match(/^\//)) {
@@ -36,7 +41,10 @@ export async function build(source: string, destination: string, options: buildO
       destinationPath = path.resolve(process.cwd(), destination)
     }
   } else {
-    destinationPath = path.join(path.dirname(sourcePath), `${path.basename(source, '.yml')}.json`)
+    destinationPath = path.join(
+      path.dirname(sourcePath),
+      `${path.basename(source, '.yml')}.json`,
+    )
   }
 
   let provider = defaultValues.provider
@@ -47,7 +55,7 @@ export async function build(source: string, destination: string, options: buildO
   let style = ''
 
   try {
-    let _style: any = parser(sourcePath)
+    const _style: StyleSpecification = parser(sourcePath)
     validateStyle(_style, provider)
 
     if (options.spriteUrl && 'sprite' in _style) {
@@ -57,12 +65,11 @@ export async function build(source: string, destination: string, options: buildO
     style = JSON.stringify(_style, null, '  ')
 
     if (options.spriteInput && options.spriteOutput) {
-
-      if (! fs.existsSync(options.spriteInput)) {
+      if (!fs.existsSync(options.spriteInput)) {
         throw `${options.spriteInput}: No such directory. Please specify valid icon input directory. For more help run charites build --help`
       }
 
-      if (! fs.existsSync(options.spriteOutput)) {
+      if (!fs.existsSync(options.spriteOutput)) {
         throw `${options.spriteOutput}: No such directory. Please specify valid icon output directory. For more help run charites build --help`
       }
 
@@ -77,8 +84,7 @@ export async function build(source: string, destination: string, options: buildO
     if (options.compactOutput) {
       style = jsonminify(style)
     }
-
-  } catch(err) {
+  } catch (err) {
     if (err) {
       throw err
     } else {
@@ -88,7 +94,7 @@ export async function build(source: string, destination: string, options: buildO
 
   try {
     fs.writeFileSync(destinationPath, style)
-  } catch(err) {
+  } catch (err) {
     throw `${destinationPath}: Permission denied`
   }
 }

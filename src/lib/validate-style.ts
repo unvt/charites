@@ -1,7 +1,11 @@
 const maplibreStyleSpec = require('@maplibre/maplibre-gl-style-spec')
 const mapboxStyleSpec = require('@mapbox/mapbox-gl-style-spec')
+import { StyleSpecification } from '@maplibre/maplibre-gl-style-spec/types'
 
-export function validateStyle(style: object, provider: string = "default"): void {
+export function validateStyle(
+  style: StyleSpecification,
+  provider = 'default',
+): void {
   let result = []
   if ('mapbox' === provider) {
     result = mapboxStyleSpec.validate(style)
@@ -17,6 +21,8 @@ export function validateStyle(style: object, provider: string = "default"): void
   }
 
   if (errors.length) {
-    throw `\u001b[31mError:\u001b[0m ${errors.join("\n\u001b[31mError:\u001b[0m ")}`
+    throw `\u001b[31mError:\u001b[0m ${errors.join(
+      '\n\u001b[31mError:\u001b[0m ',
+    )}`
   }
 }

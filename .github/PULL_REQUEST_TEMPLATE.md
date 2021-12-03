@@ -15,7 +15,8 @@ Please describe what you changed briefly.
 ## Verify the followings
 <!-- ignore-task-list-start -->
 - [ ] Code is up-to-date with the `main` branch
-- [ ] No build erros after `npm run build`
+- [ ] No build errors after `npm run build`
+- [ ] No lint errors after `npm run lint`
 - [ ] No errors on using `charites help` globally
 - [ ] Make sure all the exsiting features working well
 <!-- ignore-task-list-end -->
