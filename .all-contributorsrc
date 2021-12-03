@@ -1,5 +1,7 @@
 {
-  "files": ["README.md"],
+  "files": [
+    "README.md"
+  ],
   "imageSize": 100,
   "contributorsPerLine": 7,
   "contributorsSortAlphabetically": true,
@@ -7,5 +9,16 @@
   "projectName": "charites",
   "repoType": "github",
   "repoHost": "https://github.com",
-  "contributors": []
+  "contributors": [
+    {
+      "login": "ubukawa",
+      "name": "UBUKAWA Taro",
+      "avatar_url": "https://avatars.githubusercontent.com/u/59204379?v=4",
+      "profile": "https://github.com/ubukawa",
+      "contributions": [
+        "design"
+      ]
+    }
+  ],
+  "projectOwner": "ubukawa"
 }
