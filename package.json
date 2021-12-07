@@ -8,8 +8,7 @@
   "scripts": {
     "build": "tsc -p .",
     "watch": "tsc -w",
-    "lint": "eslint .",
-    "fix": "eslint --fix .",
+    "lint": "eslint --fix .",
     "test": "mocha -r ts-node/register test/*.ts",
     "test:watch": "npm test -- --watch --watch-files src/**/*.ts --watch-files test/**/*.ts",
     "command": "./node_modules/.bin/ts-node ./src/cli"
@@ -37,8 +36,14 @@
     "@types/mocha": "^7.0.2",
     "@types/node": "^14.0.14",
     "@types/ws": "^8.2.0",
+    "@typescript-eslint/eslint-plugin": "^4.16.1",
+    "@typescript-eslint/parser": "^4.16.1",
     "chai": "^4.2.0",
+    "eslint": "^7.21.0",
+    "eslint-config-prettier": "^6.15.0",
+    "eslint-plugin-prettier": "^3.3.1",
     "mocha": "^8.0.1",
+    "prettier": "^2.5.0",
     "ts-node": "^8.10.2",
     "typescript": "^3.9.5"
   }

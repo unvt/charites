@@ -3,7 +3,7 @@ import fs from 'fs'
 import readline from 'readline'
 import { writeYaml } from '../lib/yaml-writer'
 
-const getDestinationPath = (destination: string, sourcePath: string = '') => {
+const getDestinationPath = (destination: string, sourcePath = '') => {
   let destinationPath
 
   if (destination) {
@@ -14,7 +14,10 @@ const getDestinationPath = (destination: string, sourcePath: string = '') => {
     }
   } else {
     if (sourcePath) {
-      destinationPath = path.join(path.dirname(sourcePath), `${path.basename(sourcePath, '.json')}.yml`)
+      destinationPath = path.join(
+        path.dirname(sourcePath),
+        `${path.basename(sourcePath, '.json')}.yml`,
+      )
     } else {
       destinationPath = path.join(process.cwd(), 'style.yml')
     }
@@ -29,22 +32,22 @@ export function convert(source: string, destination: string) {
   if ('-' === source) {
     const rl = readline.createInterface({
       input: process.stdin,
-      terminal: false
-    });
+      terminal: false,
+    })
 
     const lines: string[] = []
 
-    rl.on("line", (line) => {
+    rl.on('line', (line) => {
       lines.push(line)
-    });
+    })
 
-    rl.on("close", () => {
+    rl.on('close', () => {
       const style = JSON.parse(lines.join(''))
       const destinationPath = getDestinationPath(destination)
 
       try {
         writeYaml(destinationPath, style, false)
-      } catch(err) {
+      } catch (err) {
         throw `${destinationPath}: Permission denied`
       }
     })
@@ -56,7 +59,7 @@ export function convert(source: string, destination: string) {
       sourcePath = source
     }
 
-    if (! fs.existsSync(sourcePath)) {
+    if (!fs.existsSync(sourcePath)) {
       throw `${sourcePath}: No such file or directory`
     }
 
@@ -66,7 +69,7 @@ export function convert(source: string, destination: string) {
 
     try {
       writeYaml(destinationPath, style, false)
-    } catch(err) {
+    } catch (err) {
       throw `${destinationPath}: Permission denied`
     }
   }

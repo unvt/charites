@@ -1,4 +1,6 @@
-export const error = (message: any) => {
-    console.error(message.toString())
-    process.exit(1)
+export const error = (e: unknown) => {
+  if (e instanceof TypeError) {
+    console.error(e.message)
+  }
+  process.exit(1)
 }

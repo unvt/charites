@@ -28,52 +28,56 @@ export function serve(source: string, options: serveOptions) {
     sourcePath = source
   }
 
-  if (! fs.existsSync(sourcePath)) {
+  if (!fs.existsSync(sourcePath)) {
     throw `${sourcePath}: No such file or directory`
   }
 
   const server = http.createServer((req, res) => {
-      const url = (req.url || '').replace(/\?.*/, '')
-      const dir = path.join(defaultValues.providerDir, provider)
+    const url = (req.url || '').replace(/\?.*/, '')
+    const dir = path.join(defaultValues.providerDir, provider)
 
-      switch (url) {
-        case '/':
-          res.statusCode = 200
-          res.setHeader('Content-Type', 'text/html; charset=UTF-8')
-          const content = fs.readFileSync(path.join(dir, 'index.html'), 'utf-8')
-          res.end(content)
-          break;
-        case '/style.json':
-          let style
-          try {
-            style = parser(sourcePath)
-            validateStyle(style, provider)
-          } catch(error) {
-            console.log(error)
-          }
-          res.statusCode = 200
-          res.setHeader('Content-Type', 'application/json; charset=UTF-8')
-          res.end(JSON.stringify(style))
-          break;
-        case '/app.css':
-          res.statusCode = 200
-          res.setHeader('Content-Type', 'text/css; charset=UTF-8')
-          const css = fs.readFileSync(path.join(dir, 'app.css'), 'utf-8')
-          res.end(css)
-          break;
-        case `/app.js`:
-          res.statusCode = 200
-          res.setHeader('Content-Type', 'application/javascript; charset=UTF-8')
-          try {
-            const app = fs.readFileSync(path.join(dir, 'app.js'), 'utf-8')
-            const js = app.replace('___PORT___', `${port}`)
-              .replace('___MAPBOX_ACCESS_TOKEN___', `${options.mapboxAccessToken || defaultValues.mapboxAccessToken}`)
-            res.end(js)
-          } catch(e) {
-            throw `Invalid provider: ${provider}`
-          }
-          break;
-      }
+    switch (url) {
+      case '/':
+        res.statusCode = 200
+        res.setHeader('Content-Type', 'text/html; charset=UTF-8')
+        const content = fs.readFileSync(path.join(dir, 'index.html'), 'utf-8')
+        res.end(content)
+        break
+      case '/style.json':
+        let style
+        try {
+          style = parser(sourcePath)
+          validateStyle(style, provider)
+        } catch (error) {
+          console.log(error)
+        }
+        res.statusCode = 200
+        res.setHeader('Content-Type', 'application/json; charset=UTF-8')
+        res.end(JSON.stringify(style))
+        break
+      case '/app.css':
+        res.statusCode = 200
+        res.setHeader('Content-Type', 'text/css; charset=UTF-8')
+        const css = fs.readFileSync(path.join(dir, 'app.css'), 'utf-8')
+        res.end(css)
+        break
+      case `/app.js`:
+        res.statusCode = 200
+        res.setHeader('Content-Type', 'application/javascript; charset=UTF-8')
+        try {
+          const app = fs.readFileSync(path.join(dir, 'app.js'), 'utf-8')
+          const js = app
+            .replace('___PORT___', `${port}`)
+            .replace(
+              '___MAPBOX_ACCESS_TOKEN___',
+              `${options.mapboxAccessToken || defaultValues.mapboxAccessToken}`,
+            )
+          res.end(js)
+        } catch (e) {
+          throw `Invalid provider: ${provider}`
+        }
+        break
+    }
   })
 
   server.listen(port, () => {
@@ -83,24 +87,28 @@ export function serve(source: string, options: serveOptions) {
     open(`http://localhost:${port}`)
   })
 
-  const wss = new WebSocketServer({ server });
+  const wss = new WebSocketServer({ server })
 
   wss.on('connection', (ws) => {
-    watch(path.dirname(sourcePath), { recursive: true, filter: /\.yml$/ }, (event, file) => {
-      console.log(`${(event || '').toUpperCase()}: ${file}`)
-      try {
-        const style = parser(sourcePath)
+    watch(
+      path.dirname(sourcePath),
+      { recursive: true, filter: /\.yml$/ },
+      (event, file) => {
+        console.log(`${(event || '').toUpperCase()}: ${file}`)
         try {
-          validateStyle(style, provider)
-        } catch(error) {
-          console.log(error)
+          const style = parser(sourcePath)
+          try {
+            validateStyle(style, provider)
+          } catch (error) {
+            console.log(error)
+          }
+          ws.send(JSON.stringify(style))
+        } catch (e) {
+          // Nothing to do
         }
-        ws.send(JSON.stringify(style))
-      } catch(e) {
-        // Nothing to do
-      }
-    })
-  });
+      },
+    )
+  })
 
   return server
 }
