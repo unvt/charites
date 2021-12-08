@@ -1,6 +1,7 @@
 Examples
 ========
 
+Example: https://github.com/geoloniamaps/basic
 
 init
 ------
