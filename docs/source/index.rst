@@ -38,6 +38,7 @@ Features
 
    install/index
    usage/index
+   development/index
 
 Indices and tables
 ==================
