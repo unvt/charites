@@ -19,16 +19,13 @@ jobs:
       uses: actions/setup-python@v1
       with:
         python-version: 3.9
-    - name: Install dependencies
+    - name: Install dependencies and Build
       run: |
         sudo apt-get install -y gettext
         python -m pip install --upgrade pip
         cd docs
         pip install pipenv
         pipenv sync --dev
-    - name: Build
-      run: |
-        cd docs
         pipenv run build -W
     - name: Deploy 🚀
       uses: JamesIves/github-pages-deploy-action@4.1.7
