@@ -2,10 +2,10 @@ name: Build and Deploy docs
 
 on: 
   push:
-    branches:
-      - main
-    paths:
-      - "docs/**"
+    # branches:
+    #   - main
+    # paths:
+    #   - "docs/**"
   workflow_dispatch:
 
 jobs:
@@ -30,6 +30,7 @@ jobs:
       run: |
         cd docs
         pipenv run build -W
+        touch ./build/html/.nojekyll
     - name: Deploy 🚀
       uses: JamesIves/github-pages-deploy-action@4.1.7
       with:
