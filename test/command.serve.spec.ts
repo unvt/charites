@@ -20,9 +20,9 @@ describe('Test for the `charites serve`', () => {
   })
 
   it('charites serve style.yml', (done) => {
-    // add --headless option for test
+    // add --no-open option for test
     // prettier-ignore
-    exec(`${charites} serve style.yml --headless`, { encoding: 'utf8',cwd: tmpdir })
+    exec(`${charites} serve style.yml --no-open`, { encoding: 'utf8',cwd: tmpdir })
 
     setTimeout(async () => {
       const res = await axios.get('http://localhost:8080')
@@ -32,9 +32,9 @@ describe('Test for the `charites serve`', () => {
   })
 
   it('charites serve style.yml --provider mapbox --mapbox-access-token xxxxxxx', (done) => {
-    // add --headless option for test
+    // add --no-open option for test
     // prettier-ignore
-    exec( `${charites} serve style.yml style.json --provider mapbox --mapbox-access-token xxxxxxx --headless`,{ encoding: 'utf8', cwd: tmpdir })
+    exec( `${charites} serve style.yml style.json --provider mapbox --mapbox-access-token xxxxxxx --no-open`,{ encoding: 'utf8', cwd: tmpdir })
 
     setTimeout(async () => {
       const res = await axios.get('http://localhost:8080/app.js')

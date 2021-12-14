@@ -12,7 +12,7 @@ import { defaultValues } from '../lib/defaultValues'
 export interface serveOptions {
   provider?: string
   mapboxAccessToken?: string
-  headless?: string
+  open?: boolean
 }
 
 export function serve(source: string, options: serveOptions) {
@@ -85,8 +85,8 @@ export function serve(source: string, options: serveOptions) {
     console.log(`Provider: ${provider}`)
     console.log(`Loading your style: ${sourcePath}`)
     console.log(`Your map is running on http://localhost:${port}/\n`)
-    // headless option for integration test
-    if (!options.headless) {
+    // --no-open option for integration test
+    if (options.open) {
       open(`http://localhost:${port}`)
     }
   })
