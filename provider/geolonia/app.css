@@ -5,3 +5,13 @@ html, body, #map
   padding: 0;
   margin: 0;
 }
+
+.overlay {
+  width: 200px;
+  position: absolute;
+  top: 10;
+  left: 10;
+  margin: 5px;
+  z-index: 90;
+  background-color: rgba(255, 255, 255, 0.6);
+}
