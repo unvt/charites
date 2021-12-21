@@ -60,7 +60,7 @@ Options:
   -h, --help                              display help for command
 
 Commands:
-  init [options] <file>                   initialize a style JSON
+  init [options] <project_dir>            initialize a style JSON
   convert <source> [destination]          convert the style JSON to YAML
   build [options] <source> [destination]  build a style JSON from the YAML
   serve [options] <source>                serve your map locally
@@ -73,7 +73,7 @@ Commands:
 
 ```bash
 $ charites init -h  
-Usage: charites init [options] <file>
+Usage: charites init [options] <project_dir>
 
 initialize a style JSON
 
@@ -165,14 +165,16 @@ Initialize `style.yml` from either TileJSON or metadata.json.
 If you do not specify TileJSON URL, it will generate empty `style.yml`.
 
 ```bash
-charites init style.yml --tilejson-urls https://raw.githubusercontent.com/mapbox/tilejson-spec/master/3.0.0/example/osm.json
+charites init . --tilejson-urls https://raw.githubusercontent.com/mapbox/tilejson-spec/master/3.0.0/example/osm.json
 ```
 
 ```bash
-charites init style.yml --metadatajson-urls https://optgeo.github.io/kokoromi-rw/zxy/metadata.json
+charites init . --metadatajson-urls https://optgeo.github.io/kokoromi-rw/zxy/metadata.json
 ```
 
 In `init` command, you can just generate a single YAML instead of creating layer configuration files separately when you add optional `-c` or `--composite-layers` parameter.
+
+After initialising the project, `config.yml` will be generated under project directory. All settings shall be stored in `config.yml`.
 
 - `build`
 
