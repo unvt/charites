@@ -33,12 +33,22 @@ Features
 - Run `charites serve <source>` to preview your style live while you make changes in a browser.
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
    :caption: Contents:
 
    install/index
    usage/index
    development/index
+
+Translations
+============
+
+The documentation is available in several languages.
+
+- `English </charites/en>`_
+- `日本語 </charites/ja>`_
+
+If there is an error with a translation, please `help to improve it <https://www.transifex.com/unvt/charites-docs/>`_.
 
 Indices and tables
 ==================
