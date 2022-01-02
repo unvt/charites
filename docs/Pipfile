@@ -7,6 +7,8 @@ name = "pypi"
 sphinx = "*"
 sphinx-autobuild = "*"
 sphinx-rtd-theme = "*"
+transifex-client = "*"
+sphinx-intl = "*"
 
 [dev-packages]
 
