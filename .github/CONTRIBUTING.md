@@ -21,4 +21,6 @@ charites help
 
 6. Make sure you submit a change specific to exactly one issue. If you have ideas for multiple changes please create separate pull requests.
 
-7. Push to your fork and [submit a pull request](https://help.github.com/articles/using-pull-requests). A button should appear on your fork its github page afterwards.
+7. Make sure update documentation under `docs` folder if your changes affect existing documents.
+
+8. Push to your fork and [submit a pull request](https://help.github.com/articles/using-pull-requests). A button should appear on your fork its github page afterwards.
