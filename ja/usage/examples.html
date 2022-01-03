@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ja" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>実行例 &mdash; charites 0.1.2 ドキュメント</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/translations.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="検索" href="../search.html" />
+    <link rel="next" title="開発" href="../development/index.html" />
+    <link rel="prev" title="グローバルの設定" href="global_options.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> charites
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">コンテンツ:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../install/index.html">Charitesのインストール</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">使い方</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="commandline_interface.html">コマンドラインインターフェース</a></li>
+<li class="toctree-l2"><a class="reference internal" href="global_options.html">グローバルの設定</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">実行例</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#init">初期化</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#build">ビルド</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#convert-style-json-to-style-yml"><cite>style.yml</cite> から <cite>style.json</cite> に変換</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#serve">サーバーで確認</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../development/index.html">開発</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">charites</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">使い方</a> &raquo;</li>
+      <li>実行例</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/unvt/charites/blob/main/docs/source/usage/examples.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="examples">
+<h1>実行例<a class="headerlink" href="#examples" title="このヘッドラインへのパーマリンク"></a></h1>
+<p>例: <a class="reference external" href="https://github.com/geoloniamaps/basic">https://github.com/geoloniamaps/basic</a></p>
+<section id="init">
+<h2>初期化<a class="headerlink" href="#init" title="このヘッドラインへのパーマリンク"></a></h2>
+<p>TileJSONまたはmetadata.jsonから <cite>style.yml</cite> を初期化します。TileJSON の URL を指定しない場合は、空の <cite>style.yml</cite> が生成されます。</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>charites init style.yml --tilejson-urls https://raw.githubusercontent.com/mapbox/tilejson-spec/master/3.0.0/example/osm.json
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>charites init style.yml --metadatajson-urls https://optgeo.github.io/kokoromi-rw/zxy/metadata.json
+</pre></div>
+</div>
+<p>オプションの <cite>-c</cite> または <cite>--composite-layers</cite> パラメータを追加すると、 <cite>init</cite> コマンドで、レイヤーの設定ファイルを個別に作成する代わりに、単一の YAML を生成することができるようになります。</p>
+</section>
+<section id="build">
+<h2>ビルド<a class="headerlink" href="#build" title="このヘッドラインへのパーマリンク"></a></h2>
+<p><cite>style.yml</cite> から <cite>style.json</cite> にビルドする</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>charites build style.yml style.json
+</pre></div>
+</div>
+<p><cite>-c</cite> または <cite>--compact-output</cite> を追加して、JSON を圧縮します。</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>charites build style.yml style.json -c
+</pre></div>
+</div>
+<p>地図アイコン用のsvgファイルをビルドするために <cite>--sprite-input</cite> と <cite>--sprite-output</cite> を追加します。</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>charites build style.yml style.json --sprite-input icons/ --sprite-output public/
+</pre></div>
+</div>
+</section>
+<section id="convert-style-json-to-style-yml">
+<h2><cite>style.yml</cite> から <cite>style.json</cite> に変換<a class="headerlink" href="#convert-style-json-to-style-yml" title="このヘッドラインへのパーマリンク"></a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>charites convert style.json style.yml
+</pre></div>
+</div>
+<p>JSONを標準入力として読み込み、<a href="#id1"><span class="problematic" id="id2">`</span></a>style.yml`を生成します。</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl http://example.com/style.json <span class="p">|</span> charites convert - style.yml
+</pre></div>
+</div>
+</section>
+<section id="serve">
+<h2>サーバーで確認<a class="headerlink" href="#serve" title="このヘッドラインへのパーマリンク"></a></h2>
+<p>ローカル環境での地図スタイルのライブプレビューを起動します。</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>charites serve style.yml
+</pre></div>
+</div>
+<p>Mapboxユーザーの方へ</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>charites serve style.yml --provider mapbox --mapbox-access-token xxxx
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="global_options.html" class="btn btn-neutral float-left" title="グローバルの設定" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../development/index.html" class="btn btn-neutral float-right" title="開発" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, The United Nations Vector Tile Toolkit.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
