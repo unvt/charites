@@ -61,7 +61,8 @@ jobs:
     - name: Build
       run: |
         cd docs
-        pipenv run build -W
+        pipenv shell
+        make html
         touch ./build/html/.nojekyll
 
     - name: Deploy 🚀
