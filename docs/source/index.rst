@@ -19,7 +19,8 @@ Charites - Documentation
 An easy, intuitive, and efficient command-line tool for writing vector map styles compatible with the `Mapbox <https://docs.mapbox.com/mapbox-gl-js/style-spec/>`_ and `MapLibre <https://maplibre.org/maplibre-gl-js-docs/style-spec/>`_ Style Specification in YAML.
 With YAML format's readability, JSON compiler, linter, and live style viewer on a local browser, you can simplify your map styling workflow.
 
-In Greek mythology, the `Charites <https://en.wikipedia.org/wiki/Charites>`_ are the three goddesses of charm, beauty, and human creativity. They are believed to have been worshipped not only by artists but also by those who aspired to technology to infuse them with a creative spirit.
+.. note::
+   In Greek mythology, the `Charites <https://en.wikipedia.org/wiki/Charites>`_ are the three goddesses of charm, beauty, and human creativity. They are believed to have been worshipped not only by artists but also by those who aspired to technology to infuse them with a creative spirit.
 
 Features
 ==================
@@ -33,12 +34,22 @@ Features
 - Run `charites serve <source>` to preview your style live while you make changes in a browser.
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
    :caption: Contents:
 
    install/index
    usage/index
    development/index
+
+Translations
+============
+
+The documentation is available in several languages.
+
+- `English </charites/en>`_
+- `日本語 </charites/ja>`_
+
+If there is an error with a translation, please `help to improve it <https://www.transifex.com/unvt/charites-docs/>`_.
 
 Indices and tables
 ==================

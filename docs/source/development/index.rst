@@ -15,7 +15,8 @@ The following procedures is how to build and install charites from source code.
     $ npm install -g .
 
 
-Note. if you have already installed other version's `charites` from npm globally, it might occur some conflicts. Please uninstall all charites from globally by using following commands before installing development version.
+.. warning::
+    if you have already installed other version's `charites` from npm globally, it might occur some conflicts. Please uninstall all charites from globally by using following commands before installing development version.
 
 .. code-block:: bash
     

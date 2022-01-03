@@ -54,3 +54,16 @@ html_theme = 'sphinx_rtd_theme'
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
+
+locale_dirs = ['../i18n/']     # path is example but recommended.
+gettext_compact = False     # optional.
+
+# Adding “Edit Source” links on your Sphinx theme
+# https://docs.readthedocs.io/en/stable/guides/edit-source-links-sphinx.html
+html_context = {
+    "display_github": True, # Integrate GitHub
+    "github_user": "unvt", # Username
+    "github_repo": "charites", # Repo name
+    "github_version": "main", # Version
+    "conf_py_path": "/docs/source/", # Path in the checkout to the docs root
+}
