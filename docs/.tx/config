@@ -1,0 +1,62 @@
+[main]
+host = https://www.transifex.com
+
+[charites-docs.index]
+file_filter = i18n/<lang>/LC_MESSAGES/index.po
+source_file = i18n/pot/index.pot
+source_lang = en
+type = PO
+
+[charites-docs.development--index]
+file_filter = i18n/<lang>/LC_MESSAGES/development/index.po
+source_file = i18n/pot/development/index.pot
+source_lang = en
+type = PO
+
+[charites-docs.install--index]
+file_filter = i18n/<lang>/LC_MESSAGES/install/index.po
+source_file = i18n/pot/install/index.pot
+source_lang = en
+type = PO
+
+[charites-docs.install--install]
+file_filter = i18n/<lang>/LC_MESSAGES/install/install.po
+source_file = i18n/pot/install/install.pot
+source_lang = en
+type = PO
+
+[charites-docs.install--install_on_nanban]
+file_filter = i18n/<lang>/LC_MESSAGES/install/install_on_nanban.po
+source_file = i18n/pot/install/install_on_nanban.pot
+source_lang = en
+type = PO
+
+[charites-docs.install--recommended_environment]
+file_filter = i18n/<lang>/LC_MESSAGES/install/recommended_environment.po
+source_file = i18n/pot/install/recommended_environment.pot
+source_lang = en
+type = PO
+
+[charites-docs.usage--commandline_interface]
+file_filter = i18n/<lang>/LC_MESSAGES/usage/commandline_interface.po
+source_file = i18n/pot/usage/commandline_interface.pot
+source_lang = en
+type = PO
+
+[charites-docs.usage--examples]
+file_filter = i18n/<lang>/LC_MESSAGES/usage/examples.po
+source_file = i18n/pot/usage/examples.pot
+source_lang = en
+type = PO
+
+[charites-docs.usage--global_options]
+file_filter = i18n/<lang>/LC_MESSAGES/usage/global_options.po
+source_file = i18n/pot/usage/global_options.pot
+source_lang = en
+type = PO
+
+[charites-docs.usage--index]
+file_filter = i18n/<lang>/LC_MESSAGES/usage/index.po
+source_file = i18n/pot/usage/index.pot
+source_lang = en
+type = PO

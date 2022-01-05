@@ -1,0 +1,20 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+sphinx = "4.3.2"
+sphinx-autobuild = "2021.3.14"
+sphinx-rtd-theme = "1.0.0"
+transifex-client = "0.14.4"
+sphinx-intl = "2.0.1"
+
+[dev-packages]
+
+[requires]
+python_version = "3.9"
+
+[scripts]
+build = "sphinx-build -M html source build"
+dev = "sphinx-autobuild -b html source build/html"
