@@ -9,7 +9,7 @@
     "build": "tsc -p .",
     "watch": "tsc -w",
     "lint": "eslint --fix .",
-    "test": "npm run build && mocha -r ts-node/register test/*.ts",
+    "test": "npm run build && mocha -r ts-node/register test/*.ts --timeout 10000",
     "test:watch": "npm test -- --watch --watch-files src/**/*.ts --watch-files test/**/*.ts",
     "command": "./node_modules/.bin/ts-node ./src/cli.ts"
   },
