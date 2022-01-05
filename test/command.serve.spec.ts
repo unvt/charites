@@ -28,7 +28,7 @@ describe('Test for the `charites serve`', () => {
       const res = await axios.get('http://localhost:8080')
       assert.deepEqual(res.status, 200)
       done()
-    }, 500)
+    }, 1000)
   })
 
   it('charites serve style.yml --provider mapbox --mapbox-access-token xxxxxxx', (done) => {
@@ -40,6 +40,6 @@ describe('Test for the `charites serve`', () => {
       const res = await axios.get('http://localhost:8080/app.js')
       assert.include(res.data, "mapboxgl.accessToken = 'xxxxxxx'")
       done()
-    }, 500)
+    }, 1000)
   })
 })
