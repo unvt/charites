@@ -49,7 +49,7 @@ The documentation is available in several languages.
 - `English </charites/en>`_
 - `日本語 </charites/ja>`_
 - `Français </charites/fr>`_
-- `عربى </charites/jara>`_
+- `عربى </charites/ar>`_
 
 If there is an error with a translation, please `help to improve it <https://www.transifex.com/unvt/charites-docs/>`_.
 
