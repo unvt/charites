@@ -5,7 +5,7 @@ import { error } from '../lib/error'
 const program = new Command()
 program
   .name('init')
-  .arguments('<file>')
+  .arguments('<project_dir>')
   .description('initialize a style JSON')
   .option(
     '-t, --tilejson-urls <tilejson_urls>',
@@ -19,13 +19,13 @@ program
     '-c, --composite-layers',
     'If it is true, a single YAML will be generated with multiple layers. Default is false.',
   )
-  .action(async (file: string, initOptions: initOptions) => {
+  .action(async (projectDir: string, initOptions: initOptions) => {
     const options = program.opts()
     options.tilejsonUrls = initOptions.tilejsonUrls
     options.metadatajsonUrls = initOptions.metadatajsonUrls
     options.compositeLayers = initOptions.compositeLayers
     try {
-      await init(file, options)
+      await init(projectDir, options)
     } catch (e) {
       error(e)
     }

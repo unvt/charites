@@ -1,9 +1,12 @@
 import { StyleSpecification } from '@maplibre/maplibre-gl-style-spec/types'
+import path from 'path'
+import fs from 'fs'
 import { writeYaml } from '../lib/yaml-writer'
 import {
   TileJSONImporter,
   MetadataJSONImporter,
 } from '../lib/tileinfo-importer'
+import Config from '../lib/config'
 
 export interface initOptions {
   tilejsonUrls?: string
@@ -20,7 +23,7 @@ const styleRoot: StyleSpecification = {
   layers: [],
 }
 
-export async function init(file: string, options: initOptions) {
+export async function init(projectDir: string, options: initOptions) {
   let styleTemplate = JSON.parse(JSON.stringify(styleRoot))
   if (options.tilejsonUrls) {
     const tileJSONImporter = new TileJSONImporter(options.tilejsonUrls)
@@ -32,5 +35,12 @@ export async function init(file: string, options: initOptions) {
     )
     styleTemplate = await metadataJSONImporter.import(styleTemplate)
   }
-  writeYaml(file, styleTemplate, options.compositeLayers)
+  const projectDirPath = path.resolve(projectDir)
+  if (!fs.existsSync(projectDirPath)) {
+    fs.mkdirSync(projectDirPath)
+  }
+  const config: Config = new Config()
+  const styleYaml = path.join(projectDirPath, config.style.yamlPath)
+  writeYaml(styleYaml, styleTemplate, options.compositeLayers)
+  config.write(projectDirPath)
 }
