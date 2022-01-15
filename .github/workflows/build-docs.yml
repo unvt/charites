@@ -1,0 +1,72 @@
+name: Build and Deploy docs
+
+on: 
+  push:
+    branches:
+      - main
+    paths:
+      - "docs/**"
+  pull_request:
+    branches:
+      - '**'
+  workflow_dispatch: {}
+  schedule:
+    - cron: "0 0 * * *"
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    env:
+      TX_TOKEN: ${{ secrets.TX_TOKEN }}
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Set up Python 3.9
+      uses: actions/setup-python@v1
+      with:
+        python-version: 3.9
+
+    - name: Install dependencies
+      run: |
+        sudo apt-get install -y transifex-client gettext
+        python -m pip install --upgrade pip
+        cd docs
+        pip install pipenv
+        pipenv install --system
+
+    - name: Push translations
+      if: ${{ github.ref == 'refs/heads/main' }}
+      run: |
+        cd docs
+        set -e
+        make gettext
+        if [[ -z "${TX_TOKEN}" ]]; then
+          echo "TX_TOKEN not set, skip tx pull"
+        else
+          tx push -s
+        fi
+        make clean
+
+    - name: Pull translations
+      run: |
+        cd docs
+        set -e
+        if [[ -z "${TX_TOKEN}" ]]; then
+          echo "TX_TOKEN not set, skip tx pull"
+        else
+          make transifex_pull
+        fi
+
+    - name: Build
+      run: |
+        cd docs
+        make html
+        touch ./build/html/.nojekyll
+
+    - name: Deploy 🚀
+      uses: JamesIves/github-pages-deploy-action@4.1.7
+      if: ${{ github.ref == 'refs/heads/main' }}
+      with:
+        branch: gh-pages # The branch the action should deploy to.
+        folder: docs/build/html # The folder the action should deploy.

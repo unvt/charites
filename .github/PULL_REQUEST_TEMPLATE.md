@@ -19,6 +19,7 @@ Please describe what you changed briefly.
 - [ ] No lint errors after `npm run lint`
 - [ ] No errors on using `charites help` globally
 - [ ] Make sure all the exsiting features working well
+- [ ] Have you updated documentation?
 <!-- ignore-task-list-end -->
 
 Refer to [CONTRIBUTING.MD](https://github.com/unvt/charites/tree/master/.github/CONTRIBUTING.md) for more details.
