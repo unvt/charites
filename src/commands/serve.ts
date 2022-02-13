@@ -89,8 +89,6 @@ export function serve(source: string, options: serveOptions) {
       default:
         if (options.localDir) {
           const filePath = path.join(localDirPath + path.normalize(url))
-          console.log(url)
-          console.log(filePath)
           if (fs.existsSync(filePath)) {
             const file = fs.readFileSync(filePath)
             res.statusCode = 200
