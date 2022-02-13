@@ -12,6 +12,7 @@ import { defaultValues } from '../lib/defaultValues'
 export interface serveOptions {
   provider?: string
   mapboxAccessToken?: string
+  localDir?: string
 }
 
 export function serve(source: string, options: serveOptions) {
@@ -30,6 +31,14 @@ export function serve(source: string, options: serveOptions) {
 
   if (!fs.existsSync(sourcePath)) {
     throw `${sourcePath}: No such file or directory`
+  }
+
+  let localDirPath: string
+  if (options.localDir) {
+    localDirPath = path.resolve(process.cwd(), options.localDir)
+    if (!fs.existsSync(localDirPath)) {
+      throw `${localDirPath}: No such file or directory`
+    }
   }
 
   const server = http.createServer((req, res) => {
@@ -75,6 +84,18 @@ export function serve(source: string, options: serveOptions) {
           res.end(js)
         } catch (e) {
           throw `Invalid provider: ${provider}`
+        }
+        break
+      default:
+        if (options.localDir) {
+          const filePath = path.join(localDirPath + path.normalize(url))
+          console.log(url)
+          console.log(filePath)
+          if (fs.existsSync(filePath)) {
+            const file = fs.readFileSync(filePath)
+            res.statusCode = 200
+            res.end(file)
+          }
         }
         break
     }

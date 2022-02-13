@@ -17,6 +17,10 @@ program
     '--mapbox-access-token [mapboxAccessToken]',
     'Access Token for the Mapbox',
   )
+  .option(
+    '--local-dir [localDirPath]',
+    'also serve files in the local directory',
+  )
   .action((source: string, serveOptions: serveOptions) => {
     const options: serveOptions = program.opts()
     options.provider = serveOptions.provider
