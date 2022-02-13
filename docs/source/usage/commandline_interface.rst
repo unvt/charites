@@ -26,7 +26,7 @@ Inititalize `style.yml`
 
 .. code-block:: bash
 
-    $ charites init -h  
+    $ charites init -h
     Usage: charites init [options] <file>
 
     initialize a style JSON
@@ -77,7 +77,7 @@ Realtime editor on browser
 --------------------------
 
 .. code-block:: bash
-    
+
     charites serve -h
     Usage: charites serve [options] <source>
 
@@ -86,13 +86,18 @@ Realtime editor on browser
     Options:
     --provider [provider]                      your map service. e.g. `mapbox`, `geolonia`
     --mapbox-access-token [mapboxAccessToken]  Access Token for the Mapbox
+    --local-dir [localDirPath]                 also serve files in the local directory
     -h, --help                                 display help for command
 
-Charites has two options for `serve` command.
+Charites has three options for `serve` command.
 
 - `--provider` - `mapbox`, `geolonia`, or `default`. When not specified, default or the value in the configuration file will be used.
 
   - `mapbox` - The format linter runs against the Mapbox GL JS v2.x compatible specification.
   - `geolonia` and `default` - the format linter runs against the MapLibre GL JS compatible specification.
-  
+
 - `--mapbox-access-token` - Set your access-token when styling for Mapbox.
+
+- `--local-dir` - Serve static files on the local directory.
+
+  - NOTE: `index.html`, `/style.json`, `/app.css`, `/app.js` will swap to provider files
