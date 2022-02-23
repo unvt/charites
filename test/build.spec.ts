@@ -117,7 +117,6 @@ describe('Test for the `build.ts`.', () => {
 
   it('Should watch `*.yml` and convert it to JSON', async () => {
     const sleep = (ms: number) => new Promise((res) => setTimeout(res, ms))
-    console.log(styleJson)
 
     const watcher = buildWatch(styleYaml, styleJson, {
       provider: defaultValues.provider,
