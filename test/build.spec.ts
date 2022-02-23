@@ -129,7 +129,10 @@ describe('Test for the `build.ts`.', () => {
     await sleep(500)
     await watcher.close()
     assert.deepEqual(true, !!fs.statSync(styleJson))
-    assert.deepEqual(8, JSON.parse(fs.readFileSync(styleJson, 'utf-8')).version)
+    assert.deepEqual(
+      'aaa',
+      JSON.parse(fs.readFileSync(styleJson, 'utf-8')).metadata,
+    )
     const yamlData2 = fs
       .readFileSync(styleYaml, 'utf-8')
       .replace('metadata: aaa', 'metadata: {}')
