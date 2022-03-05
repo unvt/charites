@@ -87,9 +87,10 @@ Realtime editor on browser
     Options:
     --provider [provider]                      your map service. e.g. `mapbox`, `geolonia`
     --mapbox-access-token [mapboxAccessToken]  Access Token for the Mapbox
+    --port [port]                              Specify custom port
     -h, --help                                 display help for command
 
-Charites has two options for `serve` command.
+Charites has three options for `serve` command.
 
 - `--provider` - `mapbox`, `geolonia`, or `default`. When not specified, default or the value in the configuration file will be used.
 
@@ -97,3 +98,5 @@ Charites has two options for `serve` command.
   - `geolonia` and `default` - the format linter runs against the MapLibre GL JS compatible specification.
 
 - `--mapbox-access-token` - Set your access-token when styling for Mapbox.
+
+- `--port` - Set http server's port number. When not specified, use 8080 port.

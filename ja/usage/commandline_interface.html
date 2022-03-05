@@ -160,10 +160,11 @@ serve your map locally
 Options:
 --provider <span class="o">[</span>provider<span class="o">]</span>                      your map service. e.g. <span class="sb">`</span>mapbox<span class="sb">`</span>, <span class="sb">`</span>geolonia<span class="sb">`</span>
 --mapbox-access-token <span class="o">[</span>mapboxAccessToken<span class="o">]</span>  Access Token <span class="k">for</span> the Mapbox
+--port <span class="o">[</span>port<span class="o">]</span>                              Specify custom port
 -h, --help                                 display <span class="nb">help</span> <span class="k">for</span> <span class="nb">command</span>
 </pre></div>
 </div>
-<p>Charites は <cite>serve</cite> コマンドに 2 つのオプションを用意しています。</p>
+<p>Charites has three options for <cite>serve</cite> command.</p>
 <ul class="simple">
 <li><p><cite>--provider</cite> - <cite>mapbox</cite>、<cite>geolonia</cite>、または <cite>default</cite> です。指定しない場合は、デフォルトまたは設定ファイルの値が使用されます。</p>
 <ul>
@@ -172,6 +173,7 @@ Options:
 </ul>
 </li>
 <li><p><cite>--mapbox-access-token</cite> - Mapbox 用にスタイルを設定するときにアクセストークンを設定します。</p></li>
+<li><p><cite>--port</cite> - Set http server's port number. When not specified, use 8080 port.</p></li>
 </ul>
 </section>
 </section>
