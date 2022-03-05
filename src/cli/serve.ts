@@ -17,10 +17,12 @@ program
     '--mapbox-access-token [mapboxAccessToken]',
     'Access Token for the Mapbox',
   )
+  .option('--port [port]', 'Specify custom port')
   .action((source: string, serveOptions: serveOptions) => {
     const options: serveOptions = program.opts()
     options.provider = serveOptions.provider
     options.mapboxAccessToken = serveOptions.mapboxAccessToken
+    options.port = serveOptions.port
     if (!fs.existsSync(defaultSettings.configFile)) {
       fs.writeFileSync(
         defaultSettings.configFile,

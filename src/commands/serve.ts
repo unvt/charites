@@ -12,10 +12,14 @@ import { defaultValues } from '../lib/defaultValues'
 export interface serveOptions {
   provider?: string
   mapboxAccessToken?: string
+  port?: string
 }
 
 export function serve(source: string, options: serveOptions) {
-  const port = process.env.PORT || 8080
+  let port = process.env.PORT || 8080
+  if (options.port) {
+    port = Number(options.port)
+  }
   let sourcePath = path.resolve(process.cwd(), source)
 
   let provider = defaultValues.provider
