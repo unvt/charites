@@ -7,10 +7,12 @@ import { getSpriteSlug } from '../lib/get-sprite-slug'
 import { defaultValues } from '../lib/defaultValues'
 import jsonminify from 'jsonminify'
 import { StyleSpecification } from '@maplibre/maplibre-gl-style-spec/types'
+import watch from 'node-watch'
 
 export interface buildOptions {
   provider?: string
   compactOutput?: boolean
+  watch?: boolean
   spriteUrl?: string
   spriteInput?: string
   spriteOutput?: string
@@ -97,4 +99,28 @@ export async function build(
   } catch (err) {
     throw `${destinationPath}: Permission denied`
   }
+}
+
+export function buildWatch(
+  source: string,
+  destination: string,
+  options: buildOptions,
+) {
+  let sourcePath = path.resolve(process.cwd(), source)
+  if (source.match(/^\//)) {
+    sourcePath = source
+  }
+  console.log(path.dirname(sourcePath))
+  return watch(
+    path.dirname(sourcePath),
+    { recursive: true, filter: /\.yml$/ },
+    (event, file) => {
+      console.log(`${(event || '').toUpperCase()}: ${file}`)
+      try {
+        build(source, destination, options)
+      } catch (e) {
+        // Nothing to do
+      }
+    },
+  )
 }

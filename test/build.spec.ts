@@ -3,7 +3,7 @@ import path from 'path'
 import fs from 'fs'
 import os from 'os'
 
-import { build } from '../src/commands/build'
+import { build, buildWatch } from '../src/commands/build'
 import { defaultValues } from '../src/lib/defaultValues'
 
 describe('Test for the `build.ts`.', () => {
@@ -113,5 +113,29 @@ describe('Test for the `build.ts`.', () => {
     } catch (error) {
       assert.deepEqual(true, !!error) // It should have something error.
     }
+  })
+
+  it('Should watch `*.yml` and convert it to JSON', async () => {
+    const sleep = (ms: number) => new Promise((res) => setTimeout(res, ms))
+
+    const watcher = buildWatch(styleYaml, styleJson, {
+      provider: defaultValues.provider,
+    })
+    await sleep(500)
+    const yamlData1 = fs
+      .readFileSync(styleYaml, 'utf-8')
+      .replace('metadata: {}', 'metadata: aaa')
+    fs.writeFileSync(styleYaml, yamlData1)
+    await sleep(500)
+    await watcher.close()
+    assert.deepEqual(true, !!fs.statSync(styleJson))
+    assert.deepEqual(
+      'aaa',
+      JSON.parse(fs.readFileSync(styleJson, 'utf-8')).metadata,
+    )
+    const yamlData2 = fs
+      .readFileSync(styleYaml, 'utf-8')
+      .replace('metadata: aaa', 'metadata: {}')
+    fs.writeFileSync(styleYaml, yamlData2)
   })
 })

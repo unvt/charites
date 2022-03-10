@@ -1,5 +1,5 @@
 import { Command } from 'commander'
-import { build, buildOptions } from '../commands/build'
+import { build, buildOptions, buildWatch } from '../commands/build'
 import { error } from '../lib/error'
 import { defaultSettings } from '../lib/defaultValues'
 import fs from 'fs'
@@ -11,6 +11,7 @@ program
   .arguments('<source> [destination]')
   .description('build a style JSON from the YAML')
   .option('-c, --compact-output', 'build a minified style JSON')
+  .option('-w, --watch', 'watch YAML and build when changed')
   .option(
     '-u, --sprite-url [<sprite url>]',
     'url to set as the sprite in style.json',
@@ -49,10 +50,26 @@ program
           `provider: ${options.provider || 'default'}`,
         )
       }
-      try {
-        await build(source, destination, options)
-      } catch (e) {
-        error(e)
+
+      if (buildOptions.watch) {
+        try {
+          console.log('Start watching...')
+          await new Promise((resolve) => {
+            const watcher = buildWatch(source, destination, options)
+            process.on('SIGINT', () => {
+              watcher.close()
+              resolve(undefined)
+            })
+          })
+        } catch (e) {
+          error(e)
+        }
+      } else {
+        try {
+          await build(source, destination, options)
+        } catch (e) {
+          error(e)
+        }
       }
     },
   )
