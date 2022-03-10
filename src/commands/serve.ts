@@ -1,7 +1,6 @@
 import path from 'path'
 import fs from 'fs'
 import http from 'http'
-import open from 'open'
 import { WebSocketServer } from 'ws'
 import watch from 'node-watch'
 
