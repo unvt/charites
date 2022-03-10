@@ -7,7 +7,7 @@ SPHINXOPTS    ?=
 SPHINXBUILD   ?= sphinx-build
 SOURCEDIR     = source
 BUILDDIR      = build
-TRANSLATIONS  = ja
+TRANSLATIONS  = ja fr ar
 LANGUAGES     = en $(TRANSLATIONS)
 
 # Internal variables.
