@@ -26,7 +26,7 @@
     "js-yaml": "^4.0.0",
     "jsonminify": "^0.4.1",
     "node-watch": "^0.7.2",
-    "open": "^8.4.0",
+    "open": "^8.2.1",
     "ws": "^8.2.2",
     "yaml-include": "^1.2.1"
   },
