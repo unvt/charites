@@ -23,7 +23,6 @@ program
     options.provider = serveOptions.provider
     options.mapboxAccessToken = serveOptions.mapboxAccessToken
     options.port = serveOptions.port
-  
     if (!fs.existsSync(defaultSettings.configFile)) {
       fs.writeFileSync(
         defaultSettings.configFile,

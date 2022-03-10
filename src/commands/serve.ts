@@ -1,6 +1,7 @@
 import path from 'path'
 import fs from 'fs'
 import http from 'http'
+import open from 'open'
 import { WebSocketServer } from 'ws'
 import watch from 'node-watch'
 
@@ -87,10 +88,7 @@ export function serve(source: string, options: serveOptions) {
     console.log(`Provider: ${provider}`)
     console.log(`Loading your style: ${sourcePath}`)
     console.log(`Your map is running on http://localhost:${port}/\n`)
-    // --no-open option for integration test
-    if (options.open) {
-      open(`http://localhost:${port}`)
-    }
+    open(`http://localhost:${port}`)
   })
 
   const wss = new WebSocketServer({ server })
