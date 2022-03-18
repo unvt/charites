@@ -9,9 +9,9 @@
     "build": "tsc -p .",
     "watch": "tsc -w",
     "lint": "eslint --fix .",
-    "test": "mocha -r ts-node/register test/*.ts",
+    "test": "npm run build && mocha -r ts-node/register test/*.ts",
     "test:watch": "npm test -- --watch --watch-files src/**/*.ts --watch-files test/**/*.ts",
-    "command": "./node_modules/.bin/ts-node ./src/cli"
+    "command": "./node_modules/.bin/ts-node ./src/cli.ts"
   },
   "author": "",
   "license": "MIT",
@@ -32,6 +32,7 @@
   },
   "devDependencies": {
     "@types/chai": "^4.2.11",
+    "@types/fs-extra": "^9.0.13",
     "@types/js-yaml": "^4.0.3",
     "@types/mocha": "^7.0.2",
     "@types/node": "^14.0.14",
@@ -42,6 +43,8 @@
     "eslint": "^7.21.0",
     "eslint-config-prettier": "^6.15.0",
     "eslint-plugin-prettier": "^3.3.1",
+    "fs-extra": "^10.0.0",
+    "kill-port-process": "^3.0.1",
     "mocha": "^8.0.1",
     "prettier": "^2.5.0",
     "ts-node": "^8.10.2",
