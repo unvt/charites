@@ -13,6 +13,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "smellman",
+      "name": "Taro Matsuzawa aka. btm",
+      "avatar_url": "https://avatars.githubusercontent.com/u/135112?v=4",
+      "profile": "http://smellman.hatenablog.com/",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
