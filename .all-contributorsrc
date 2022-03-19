@@ -13,6 +13,69 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "naogify",
+      "name": "Naoki Ohashi",
+      "avatar_url": "https://avatars.githubusercontent.com/u/8760841?v=4",
+      "profile": "https://naoki-is.me",
+      "contributions": [
+        "code"
+      ]      
+    },
+    {
+      "login": "ubukawa",
+      "name": "UBUKAWA Taro",
+      "avatar_url": "https://avatars.githubusercontent.com/u/59204379?v=4",
+      "profile": "https://github.com/ubukawa",
+      "contributions": [
+        "code"
+      ]      
+    },
+    {
+      "login": "miya0001",
+      "name": "Takayuki Miyauchi",
+      "avatar_url": "https://avatars.githubusercontent.com/u/309946?v=4",
+      "profile": "https://geolonia.com/",
+      "contributions": [
+        "code"
+      ]      
+    },
+    {
+      "login": "JinIgarashi",
+      "name": "Jin Igarashi",
+      "avatar_url": "https://avatars.githubusercontent.com/u/2639701?v=4",
+      "profile": "https://jin-igarashi.me",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "smellman",
+      "name": "Taro Matsuzawa aka. btm",
+      "avatar_url": "https://avatars.githubusercontent.com/u/135112?v=4",
+      "profile": "http://smellman.hatenablog.com/",
+      "contributions": [
+        "code"
+      ]    
+    },
+    {
+      "login": "ShinichiNishikawa",
+      "name": "Shinichi Nishikawa",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1124652?v=4",
+      "profile": "https://shinichi.blog",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "yuiseki",
+      "name": "yuiseki",
+      "avatar_url": "https://avatars.githubusercontent.com/u/25507?v=4",
+      "profile": "http://yuiseki.net/",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
