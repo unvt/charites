@@ -40,6 +40,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <table>
   <tr>
     <td align="center"><a href="https://geolonia.com/"><img src="https://avatars.githubusercontent.com/u/42296593?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Geolonia</b></sub></a><br /><a href="https://github.com/unvt/charites/commits?author=geolonia" title="Code">💻</a></td>
+    <td align="center"><a href="https://naoki-is.me"><img src="https://avatars.githubusercontent.com/u/8760841?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Naoki Ohashi</b></sub></a><br /><a href="https://github.com/unvt/charites/commits?author=naogify" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/ubukawa"><img src="https://avatars.githubusercontent.com/u/59204379?v=4?s=100" width="100px;" alt=""/><br /><sub><b>UBUKAWA Taro</b></sub></a><br /><a href="https://github.com/unvt/charites/commits?author=ubukawa" title="Code">💻</a></td>
     <td align="center"><a href="https://geolonia.com/"><img src="https://avatars.githubusercontent.com/u/309946?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Takayuki Miyauchi</b></sub></a><br /><a href="https://github.com/unvt/charites/commits?author=miya0001" title="Code">💻</a></td>
     <td align="center"><a href="https://jin-igarashi.me"><img src="https://avatars.githubusercontent.com/u/2639701?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Jin Igarashi</b></sub></a><br /><a href="https://github.com/unvt/charites/commits?author=JinIgarashi" title="Code">💻</a></td>
