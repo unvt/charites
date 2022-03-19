@@ -41,6 +41,10 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   <tr>
     <td align="center"><a href="https://geolonia.com/"><img src="https://avatars.githubusercontent.com/u/42296593?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Geolonia</b></sub></a><br /><a href="https://github.com/unvt/charites/commits?author=geolonia" title="Code">💻</a></td>
     <td align="center"><a href="https://geolonia.com/"><img src="https://avatars.githubusercontent.com/u/309946?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Takayuki Miyauchi</b></sub></a><br /><a href="https://github.com/unvt/charites/commits?author=miya0001" title="Code">💻</a></td>
+    <td align="center"><a href="https://jin-igarashi.me"><img src="https://avatars.githubusercontent.com/u/2639701?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Jin Igarashi</b></sub></a><br /><a href="https://github.com/unvt/charites/commits?author=JinIgarashi" title="Code">💻</a></td>
+    <td align="center"><a href="http://smellman.hatenablog.com/"><img src="https://avatars.githubusercontent.com/u/135112?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Taro Matsuzawa aka. btm</b></sub></a><br /><a href="https://github.com/unvt/charites/commits?author=smellman" title="Code">💻</a></td>
+    <td align="center"><a href="https://shinichi.blog"><img src="https://avatars.githubusercontent.com/u/1124652?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Shinichi Nishikawa</b></sub></a><br /><a href="https://github.com/unvt/charites/commits?author=ShinichiNishikawa" title="Documentation">📖</a></td>
+    <td align="center"><a href="http://yuiseki.net/"><img src="https://avatars.githubusercontent.com/u/25507?v=4?s=100" width="100px;" alt=""/><br /><sub><b>yuiseki</b></sub></a><br /><a href="https://github.com/unvt/charites/commits?author=yuiseki" title="Code">💻</a></td>
   </tr>
 </table>
 
