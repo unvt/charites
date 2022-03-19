@@ -40,6 +40,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <table>
   <tr>
     <td align="center"><a href="https://geolonia.com/"><img src="https://avatars.githubusercontent.com/u/42296593?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Geolonia</b></sub></a><br /><a href="https://github.com/unvt/charites/commits?author=geolonia" title="Code">💻</a></td>
+    <td align="center"><a href="https://shinichi.blog"><img src="https://avatars.githubusercontent.com/u/1124652?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Shinichi Nishikawa</b></sub></a><br /><a href="https://github.com/unvt/charites/commits?author=ShinichiNishikawa" title="Documentation">📖</a></td>
     <td align="center"><a href="http://yuiseki.net/"><img src="https://avatars.githubusercontent.com/u/25507?v=4?s=100" width="100px;" alt=""/><br /><sub><b>yuiseki</b></sub></a><br /><a href="https://github.com/unvt/charites/commits?author=yuiseki" title="Code">💻</a></td>
   </tr>
 </table>
