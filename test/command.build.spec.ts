@@ -72,6 +72,19 @@ describe('Test for the `charites build`', () => {
     }
   })
 
+  it('charites build style.yml style.json --sprite-input noExistDirname', async () => {
+    try {
+      // prettier-ignore
+      await exec(`${charites} build style.yml style.json --sprite-input noExistDirname`, tmpdir)
+    } catch (error) {
+      assert.deepEqual(error.stdout, '')
+      assert.deepEqual(
+        error.stderr,
+        'noExistDirname: No such directory. Please specify valid icon input directory. For more help run charites build --help\n',
+      )
+    }
+  })
+
   it('charites build style.yml style.json --sprite-output noExistDirname', async () => {
     try {
       // prettier-ignore
