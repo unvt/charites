@@ -63,28 +63,25 @@ describe('Test for the `charites build`', () => {
   })
 
   it('charites build style.yml style.json --sprite-url http://localhost:8080', async () => {
-
     try {
       // prettier-ignore
       await exec(`${charites} build style.yml style.json --sprite-url http://localhost:8080`, tmpdir)
-
     } catch (error) {
-
       assert.deepEqual(error.stdout, '')
       assert.deepEqual(error.stderr, 'Invalid sprite url format.\n')
     }
   })
 
   it('charites build style.yml style.json --sprite-output noExistDirname', async () => {
-
     try {
       // prettier-ignore
       await exec(`${charites} build style.yml style.json --sprite-output noExistDirname`, tmpdir)
-
     } catch (error) {
-
       assert.deepEqual(error.stdout, '')
-      assert.deepEqual(error.stderr, 'noExistDirname: No such directory. Please specify valid icon output directory. For more help run charites build --help\n')
+      assert.deepEqual(
+        error.stderr,
+        'noExistDirname: No such directory. Please specify valid icon output directory. For more help run charites build --help\n',
+      )
     }
   })
 })
