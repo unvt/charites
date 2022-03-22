@@ -14,6 +14,20 @@ socket.addEventListener('message', (message) => {
 
 map.addControl(new mapboxgl.NavigationControl(), 'top-right')
 
+map.addControl(
+  new watergis.MapboxLegendControl(
+    {},
+    {
+      showDefault: true,
+      showCheckbox: true,
+      onlyRendered: true,
+      reverseOrder: true,
+      accesstoken: mapboxgl.accessToken,
+    },
+  ),
+  'bottom-left',
+)
+
 const showTileBoundaries = document.getElementById('showTileBoundaries')
 const setShowTileBoundaries = function () {
   const checked = showTileBoundaries.checked
