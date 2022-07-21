@@ -81,6 +81,11 @@ export function serve(source: string, options: serveOptions) {
           throw `Invalid provider: ${provider}`
         }
         break
+      default:
+        res.statusCode = 404
+        res.setHeader('Content-Type', 'text/plain; charset=UTF-8')
+        res.end('Not found')
+        break
     }
   })
 
