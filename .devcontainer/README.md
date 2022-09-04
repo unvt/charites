@@ -6,6 +6,11 @@
 - DevContainer allows development environments to be written and maintained as code
 - DevContainer allows everyone to develop in a common development environment
 
+## Requirements
+
+- Visual Studio Code
+- Docker
+
 ## How to use it?
 
 - Fork `charites` repository (If not yet)
