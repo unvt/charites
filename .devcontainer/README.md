@@ -24,4 +24,5 @@ npm ci
 npm run build
 npm install -g .
 charites help
+charites serve test/data/style.yml
 ```
