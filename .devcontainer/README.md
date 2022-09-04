@@ -9,6 +9,7 @@
 ## How to use it?
 
 - Fork `charites` repository (If not yet)
+- Sync your fork from upstream (If not yet)
 - Clone `charites` repository (If not yet)
 - Open cloned directory
 - At this time, you should see a message `Reopen in container`, then click `Open` button
