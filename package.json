@@ -17,8 +17,8 @@
   "license": "MIT",
   "dependencies": {
     "@mapbox/mapbox-gl-style-spec": "^13.22.0",
-    "@mapbox/spritezero": "^8.0.0",
     "@maplibre/maplibre-gl-style-spec": "^14.0.2",
+    "@smellman/sprite-one": "^0.0.3",
     "@types/jsonminify": "^0.4.1",
     "axios": "^0.24.0",
     "commander": "^8.2.0",
