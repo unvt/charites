@@ -5,7 +5,7 @@ export async function buildSprite(
   svgPath: string,
   publicPath: string,
   iconSlug: string,
-) {
+): Promise<void> {
   const pxRatios = [1, 2]
 
   for (let i = 0; i < pxRatios.length; i++) {
@@ -23,4 +23,5 @@ export async function buildSprite(
       throw error
     }
   }
+  return
 }
