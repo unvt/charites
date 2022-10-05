@@ -1,0 +1,36 @@
+{
+  "name": "Ubuntu 22.04 Node.js",
+  "dockerFile": "./Dockerfile",
+  "forwardPorts": [8080],
+  "remoteUser": "user",
+  "overrideCommand": false,
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "terminal.integrated.profiles.linux": {
+          "bash": {
+            "path": "/bin/bash"
+          }
+        },
+        "terminal.integrated.defaultProfile.linux": "bash",
+        "files.autoSave": "afterDelay",
+        "files.autoSaveDelay": 1000,
+        "editor.formatOnSave": true
+      },
+      "extensions": [
+        "ms-vscode-remote.vscode-remote-extensionpack",
+        "ms-vscode.vscode-typescript-next",
+        "ms-vsliveshare.vsliveshare",
+        "esbenp.prettier-vscode",
+        "usernamehw.errorlens",
+        "VisualStudioExptTeam.vscodeintellicode",
+        "VisualStudioExptTeam.intellicode-api-usage-examples",
+        "wraith13.bracket-lens",
+        "oderwat.indent-rainbow",
+        "mosapride.zenkaku",
+        "vscode-icons-team.vscode-icons",
+        "nickdemayo.vscode-json-editor"
+      ]
+    }
+  }
+}
