@@ -69,36 +69,36 @@ describe('Test for the `build.ts`.', () => {
     )
   })
 
-  it('Should build icons with the option `--sprite-url`. Icon file name is set by spriteUrl', async () => {
+  it('Should build icons with the option `--sprite-url`. Icon file name is set by spriteUrl', () => {
     const expectedIconName = 'dark'
     const expectedPng = path.join(tmpdir, `${expectedIconName}.png`)
     const expectedJson = path.join(tmpdir, `${expectedIconName}.json`)
 
-    await build(styleYaml, styleJson, {
+    build(styleYaml, styleJson, {
       provider: defaultValues.provider,
       spriteUrl: `http://localhost:8080/${expectedIconName}`,
       spriteInput: iconSource,
       spriteOutput: tmpdir,
+    }).then(() => {
+      assert.deepEqual(true, !!fs.statSync(expectedPng))
+      assert.deepEqual(true, !!fs.statSync(expectedJson))
     })
-
-    assert.deepEqual(true, !!fs.statSync(expectedPng))
-    assert.deepEqual(true, !!fs.statSync(expectedJson))
   })
 
-  it('Use sprite name that specified in style.json with no --sprite-url option', async () => {
+  it('Use sprite name that specified in style.json with no --sprite-url option', () => {
     const expectedIconName = 'basic-white' // from test/data/style.yml
     const expectedPng = path.join(tmpdir, `${expectedIconName}.png`)
     const expectedJson = path.join(tmpdir, `${expectedIconName}.json`)
 
-    await build(styleYaml, styleJson, {
+    build(styleYaml, styleJson, {
       provider: defaultValues.provider,
       spriteInput: iconSource,
       spriteOutput: tmpdir,
+    }).then(() => {
+      // The file should exists.
+      assert.deepEqual(true, !!fs.statSync(expectedPng))
+      assert.deepEqual(true, !!fs.statSync(expectedJson))
     })
-
-    // The file should exists.
-    assert.deepEqual(true, !!fs.statSync(expectedPng))
-    assert.deepEqual(true, !!fs.statSync(expectedJson))
   })
 
   it('Should not create sprite when input directory is not exist.', async () => {

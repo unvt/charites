@@ -12,13 +12,13 @@ describe('Test for the `build-sprite.ts`.', () => {
     tmpdir = fs.mkdtempSync(path.join(os.tmpdir(), 'charites-'))
   })
 
-  it("should create icon's json/png at specified path and name ", async () => {
+  it("should create icon's json/png at specified path and name ", () => {
     const expectedJsonPath = path.join(tmpdir, 'basic.json')
     const expectedPngPath = path.join(tmpdir, 'basic.png')
 
-    await buildSprite(iconsPath, tmpdir, `basic`)
-
-    assert.deepEqual(true, !!fs.statSync(expectedJsonPath))
-    assert.deepEqual(true, !!fs.statSync(expectedPngPath))
+    buildSprite(iconsPath, tmpdir, `basic`).then(() => {
+      assert.deepEqual(true, !!fs.statSync(expectedJsonPath))
+      assert.deepEqual(true, !!fs.statSync(expectedPngPath))
+    })
   })
 })
