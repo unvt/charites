@@ -13,7 +13,7 @@ socket.addEventListener('message', (message) => {
 map.addControl(new maplibregl.NavigationControl(), 'top-right')
 
 map.addControl(
-  new watergis.MaplibreLegendControl(
+  new MaplibreLegendControl(
     {},
     {
       showDefault: true,
