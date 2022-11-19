@@ -15,7 +15,7 @@ socket.addEventListener('message', (message) => {
 map.addControl(new mapboxgl.NavigationControl(), 'top-right')
 
 map.addControl(
-  new watergis.MapboxLegendControl(
+  new MapboxLegendControl(
     {},
     {
       showDefault: true,
