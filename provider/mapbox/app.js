@@ -4,15 +4,35 @@
   const mapStyleUrl = `http://${window.location.host}/style.json`
   const mapStyleRes = await fetch(mapStyleUrl)
   const mapStyleJson = await mapStyleRes.json()
-  const mapTileUrl =
-    mapStyleJson['sources'][Object.keys(mapStyleJson['sources'])]['url']
-  const mapTileRes = await fetch(mapTileUrl)
-  const mapTileJson = await mapTileRes.json()
-  const bounds = mapTileJson.bounds
-  const center = mapTileJson.center
-    ? mapTileJson.center
-    : [(bounds[0] + bounds[2]) / 2, (bounds[1] + bounds[3]) / 2]
-  const zoom = (mapTileJson.minzoom + mapTileJson.maxzoom) / 2
+
+  // detect center & zoom from map style json
+  let center = mapStyleJson.hasOwnProperty('center')
+    ? mapStyleJson.center
+    : undefined
+  let zoom = mapStyleJson.hasOwnProperty('zoom') ? mapStyleJson.zoom : undefined
+
+  // detect center & zoom from tile json
+  if (center === undefined || zoom === undefined) {
+    for (const sourceName in mapStyleJson.sources) {
+      if (
+        mapStyleJson.sources[sourceName].type === 'vector' &&
+        mapStyleJson.sources[sourceName].hasOwnProperty('url')
+      ) {
+        const mapTileUrl = mapStyleJson.sources[sourceName].url
+        const mapTileRes = await fetch(mapTileUrl)
+        const mapTileJson = await mapTileRes.json()
+        if (center === undefined) {
+          const bounds = mapTileJson.bounds
+          center = mapTileJson.center
+            ? mapTileJson.center
+            : [(bounds[0] + bounds[2]) / 2, (bounds[1] + bounds[3]) / 2]
+        }
+        if (zoom === undefined) {
+          zoom = (mapTileJson.minzoom + mapTileJson.maxzoom) / 2
+        }
+      }
+    }
+  }
 
   const map = new maplibregl.Map({
     container: 'map',
