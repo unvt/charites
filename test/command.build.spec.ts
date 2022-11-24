@@ -12,6 +12,7 @@ describe('Test for the `charites build`', () => {
   beforeEach(async function () {
     tmpdir = makeTempDir()
     copyFixturesFile('style.yml', tmpdir)
+    copyFixturesFile('error.yml', tmpdir)
     copyFixturesDir('layers', tmpdir)
     copyFixturesDir('icons', tmpdir)
   })
@@ -94,6 +95,19 @@ describe('Test for the `charites build`', () => {
       assert.deepEqual(
         error.stderr,
         'noExistDirname: No such directory. Please specify valid icon output directory. For more help run charites build --help\n',
+      )
+    }
+  })
+
+  it('charites build print error message ', async () => {
+    try {
+      // prettier-ignore
+      await exec(`${charites} build error.yml`, tmpdir)
+    } catch (error) {
+      assert.deepEqual(error.stdout, '')
+      assert.deepEqual(
+        error.stderr,
+        '\u001b[31mError:\u001b[0m missing required property "sources"\n\u001b[31mError:\u001b[0m missing required property "layers"\n',
       )
     }
   })
