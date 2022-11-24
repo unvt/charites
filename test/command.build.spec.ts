@@ -66,7 +66,9 @@ describe('Test for the `charites build`', () => {
   it('charites build style.yml style.json --sprite-url http://localhost:8080', async () => {
     try {
       // prettier-ignore
-      await exec(`${charites} build style.yml style.json --sprite-url http://localhost:8080`, tmpdir)
+      const { stdout, stderr } = await exec(`${charites} build style.yml style.json --sprite-url http://localhost:8080`, tmpdir)
+      assert.deepEqual(stdout, '')
+      assert.deepEqual(stderr, '')
     } catch (error) {
       assert.deepEqual(error.stdout, '')
       assert.deepEqual(error.stderr, 'Invalid sprite url format.\n')
@@ -76,7 +78,9 @@ describe('Test for the `charites build`', () => {
   it('charites build style.yml style.json --sprite-input noExistDirname', async () => {
     try {
       // prettier-ignore
-      await exec(`${charites} build style.yml style.json --sprite-input noExistDirname`, tmpdir)
+      const { stdout, stderr } = await exec(`${charites} build style.yml style.json --sprite-input noExistDirname`, tmpdir)
+      assert.deepEqual(stdout, '')
+      assert.deepEqual(stderr, '')
     } catch (error) {
       assert.deepEqual(error.stdout, '')
       assert.deepEqual(
@@ -89,7 +93,9 @@ describe('Test for the `charites build`', () => {
   it('charites build style.yml style.json --sprite-output noExistDirname', async () => {
     try {
       // prettier-ignore
-      await exec(`${charites} build style.yml style.json --sprite-output noExistDirname`, tmpdir)
+      const { stdout, stderr } = await exec(`${charites} build style.yml style.json --sprite-output noExistDirname`, tmpdir)
+      assert.deepEqual(stdout, '')
+      assert.deepEqual(stderr, '')
     } catch (error) {
       assert.deepEqual(error.stdout, '')
       assert.deepEqual(
@@ -102,7 +108,9 @@ describe('Test for the `charites build`', () => {
   it('charites build print error message ', async () => {
     try {
       // prettier-ignore
-      await exec(`${charites} build error.yml`, tmpdir)
+      const { stdout, stderr } = await exec(`${charites} build error.yml`, tmpdir)
+      assert.deepEqual(stdout, '')
+      assert.deepEqual(stderr, '')
     } catch (error) {
       assert.deepEqual(error.stdout, '')
       assert.isTrue(
