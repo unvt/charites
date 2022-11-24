@@ -105,10 +105,10 @@ describe('Test for the `charites build`', () => {
       await exec(`${charites} build error.yml`, tmpdir)
     } catch (error) {
       assert.deepEqual(error.stdout, '')
-      assert.deepEqual(
-        error.stderr,
-        '\u001b[31mError:\u001b[0m missing required property "sources"\n\u001b[31mError:\u001b[0m missing required property "layers"\n',
+      assert.isTrue(
+        error.stderr.includes('missing required property "sources"'),
       )
+      assert.isTrue(error.stderr.includes('missing required property "layers"'))
     }
   })
 })
