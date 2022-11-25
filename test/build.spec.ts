@@ -43,7 +43,12 @@ describe('Test for the `build.ts`.', () => {
 
     // The file should exists.
     assert.deepEqual(true, !!fs.statSync(styleJson))
-    assert.deepEqual(8, JSON.parse(fs.readFileSync(styleJson, 'utf-8')).version)
+
+    const fixtureStyleJson = path.join(__dirname, 'data/style.json')
+    assert.equal(
+      fs.readFileSync(styleJson, 'utf-8'),
+      fs.readFileSync(fixtureStyleJson, 'utf-8'),
+    )
   })
 
   it('Should minify `data/style.yml` to JSON.', async () => {
