@@ -1,10 +1,15 @@
-import { assert } from 'chai'
+import chai from 'chai'
+import chaiAsPromised from 'chai-as-promised'
 import path from 'path'
 import fs from 'fs'
 import os from 'os'
 
 import { build, buildWatch } from '../src/commands/build'
 import { defaultValues } from '../src/lib/defaultValues'
+
+chai.use(chaiAsPromised)
+chai.should()
+const assert = chai.assert
 
 describe('Test for the `build.ts`.', () => {
   const styleYaml = path.join(__dirname, 'data/style.yml')
@@ -101,18 +106,18 @@ describe('Test for the `build.ts`.', () => {
     })
   })
 
-  it('Should not create sprite when input directory is not exist.', async () => {
+  it('Should not create sprite when input directory is not exist.', () => {
     const noExistInputDir = path.join(__dirname, 'data/hellooooo')
 
-    try {
-      await build(styleYaml, styleJson, {
-        provider: defaultValues.provider,
-        spriteInput: noExistInputDir,
-        spriteOutput: tmpdir,
-      })
-    } catch (error) {
-      assert.deepEqual(true, !!error) // It should have something error.
-    }
+    const promise = build(styleYaml, styleJson, {
+      provider: defaultValues.provider,
+      spriteInput: noExistInputDir,
+      spriteOutput: tmpdir,
+    })
+    return assert.isRejected(
+      promise,
+      /No such directory. Please specify valid icon input directory. For more help run charites build --help/,
+    )
   })
 
   it('Should watch `*.yml` and convert it to JSON', async () => {

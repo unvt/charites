@@ -1,4 +1,5 @@
-import { assert } from 'chai'
+import chai from 'chai'
+import chaiAsPromised from 'chai-as-promised'
 import path from 'path'
 import fs from 'fs'
 import { copyFixturesFile, copyFixturesDir } from './util/copyFixtures'
@@ -7,6 +8,9 @@ import { makeTempDir } from './util/makeTempDir'
 import charites from './util/charitesCmd'
 
 let tmpdir = ''
+chai.use(chaiAsPromised)
+chai.should()
+const assert = chai.assert
 
 describe('Test for the `charites build`', () => {
   beforeEach(async function () {
@@ -64,59 +68,41 @@ describe('Test for the `charites build`', () => {
   })
 
   it('charites build style.yml style.json --sprite-url http://localhost:8080', async () => {
-    try {
-      // prettier-ignore
-      const { stdout, stderr } = await exec(`${charites} build style.yml style.json --sprite-url http://localhost:8080`, tmpdir)
-      assert.deepEqual(stdout, '')
-      assert.deepEqual(stderr, '')
-    } catch (error) {
-      assert.deepEqual(error.stdout, '')
-      assert.deepEqual(error.stderr, 'Invalid sprite url format.\n')
-    }
+    const promise = exec(
+      `${charites} build style.yml style.json --sprite-url http://localhost:8080`,
+      tmpdir,
+    )
+    return assert.isRejected(promise, /Invalid sprite url format.\n/)
   })
 
   it('charites build style.yml style.json --sprite-input noExistDirname', async () => {
-    try {
-      // prettier-ignore
-      const { stdout, stderr } = await exec(`${charites} build style.yml style.json --sprite-input noExistDirname`, tmpdir)
-      assert.deepEqual(stdout, '')
-      assert.deepEqual(stderr, '')
-    } catch (error) {
-      assert.deepEqual(error.stdout, '')
-      assert.deepEqual(
-        error.stderr,
-        'noExistDirname: No such directory. Please specify valid icon input directory. For more help run charites build --help\n',
-      )
-    }
+    const promise = exec(
+      `${charites} build style.yml style.json --sprite-input noExistDirname`,
+      tmpdir,
+    )
+    return assert.isRejected(
+      promise,
+      /noExistDirname: No such directory. Please specify valid icon input directory. For more help run charites build --help\n/,
+    )
   })
 
-  it('charites build style.yml style.json --sprite-output noExistDirname', async () => {
-    try {
-      // prettier-ignore
-      const { stdout, stderr } = await exec(`${charites} build style.yml style.json --sprite-output noExistDirname`, tmpdir)
-      assert.deepEqual(stdout, '')
-      assert.deepEqual(stderr, '')
-    } catch (error) {
-      assert.deepEqual(error.stdout, '')
-      assert.deepEqual(
-        error.stderr,
-        'noExistDirname: No such directory. Please specify valid icon output directory. For more help run charites build --help\n',
-      )
-    }
+  it('charites build style.yml style.json --sprite-output noExistDirname', (done) => {
+    const promise = exec(
+      `${charites} build style.yml style.json --sprite-output noExistDirname`,
+      tmpdir,
+    )
+    promise.should.be.rejected
+      .then(function () {
+        return assert.isRejected(
+          promise,
+          /noExistDirname: No such directory. Please specify valid icon output directory. For more help run charites build --help\n/,
+        )
+      })
+      .should.notify(done)
   })
 
-  it('charites build print error message ', async () => {
-    try {
-      // prettier-ignore
-      const { stdout, stderr } = await exec(`${charites} build error.yml`, tmpdir)
-      assert.deepEqual(stdout, '')
-      assert.deepEqual(stderr, '')
-    } catch (error) {
-      assert.deepEqual(error.stdout, '')
-      assert.isTrue(
-        error.stderr.includes('missing required property "sources"'),
-      )
-      assert.isTrue(error.stderr.includes('missing required property "layers"'))
-    }
+  it('charites build print error message', () => {
+    const promise = exec(`${charites} build error.yml`, tmpdir)
+    return assert.isRejected(promise, /missing required property "sources"/)
   })
 })
