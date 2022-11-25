@@ -67,7 +67,7 @@ describe('Test for the `charites build`', () => {
     assert.isTrue(fs.existsSync(path.join(tmpdir, 'basic-white.json')))
   })
 
-  it('charites build style.yml style.json --sprite-url http://localhost:8080', async () => {
+  it('charites build style.yml style.json --sprite-url http://localhost:8080', () => {
     const promise = exec(
       `${charites} build style.yml style.json --sprite-url http://localhost:8080`,
       tmpdir,
@@ -75,7 +75,7 @@ describe('Test for the `charites build`', () => {
     return assert.isRejected(promise, /Invalid sprite url format.\n/)
   })
 
-  it('charites build style.yml style.json --sprite-input noExistDirname', async () => {
+  it('charites build style.yml style.json --sprite-input noExistDirname', () => {
     const promise = exec(
       `${charites} build style.yml style.json --sprite-input noExistDirname`,
       tmpdir,
