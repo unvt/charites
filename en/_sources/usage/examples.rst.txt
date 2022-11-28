@@ -29,14 +29,14 @@ Build `style.json` from `style.yml`:
 
     charites build style.yml style.json
 
-Add `-c` or `--compact-output` to minify the JSON
+Add ``-c`` or ``--compact-output`` to minify the JSON
 
 .. code-block:: bash
 
     charites build style.yml style.json -c
 
 
-Add `--sprite-input` and `--sprite-output` to build svg files for map icons.
+Add ``--sprite-input`` and ``--sprite-output`` to build svg files for map icons.
 
 .. code-block:: bash
 

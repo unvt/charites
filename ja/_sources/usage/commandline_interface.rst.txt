@@ -92,11 +92,11 @@ Realtime editor on browser
 
 Charites has three options for `serve` command.
 
-- `--provider` - `mapbox`, `geolonia`, or `default`. When not specified, default or the value in the configuration file will be used.
+- ``--provider`` - `mapbox`, `geolonia`, or `default`. When not specified, default or the value in the configuration file will be used.
 
   - `mapbox` - The format linter runs against the Mapbox GL JS v2.x compatible specification.
   - `geolonia` and `default` - the format linter runs against the MapLibre GL JS compatible specification.
 
-- `--mapbox-access-token` - Set your access-token when styling for Mapbox.
+- ``--mapbox-access-token`` - Set your access-token when styling for Mapbox.
 
-- `--port` - Set http server's port number. When not specified, use 8080 port.
+- ``--port`` - Set http server's port number. When not specified, use 8080 port.
