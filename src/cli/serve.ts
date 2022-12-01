@@ -15,7 +15,7 @@ program
   )
   .option(
     '--mapbox-access-token [mapboxAccessToken]',
-    'Access Token for the Mapbox',
+    'Your Mapbox Access Token (required if using the `mapbox` provider)',
   )
   .option('--port [port]', 'Specify custom port')
   .action((source: string, serveOptions: serveOptions) => {

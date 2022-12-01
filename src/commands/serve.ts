@@ -36,15 +36,25 @@ export function serve(source: string, options: serveOptions) {
     throw `${sourcePath}: No such file or directory`
   }
 
+  const mapboxAccessToken =
+    options.mapboxAccessToken || defaultValues.mapboxAccessToken
+  if (provider === 'mapbox' && !mapboxAccessToken) {
+    throw `Provider is mapbox, but the Mapbox Access Token is not set. Please provide it using --mapbox-access-token, or set it in \`~/.charites/config.yml\` (see the Global configuration section of the documentation for more information)`
+  }
+
   const server = http.createServer((req, res) => {
     const url = (req.url || '').replace(/\?.*/, '')
-    const dir = path.join(defaultValues.providerDir, provider)
+    const defaultProviderDir = path.join(defaultValues.providerDir, 'default')
+    const providerDir = path.join(defaultValues.providerDir, provider)
 
     switch (url) {
       case '/':
         res.statusCode = 200
         res.setHeader('Content-Type', 'text/html; charset=UTF-8')
-        const content = fs.readFileSync(path.join(dir, 'index.html'), 'utf-8')
+        const content = fs.readFileSync(
+          path.join(providerDir, 'index.html'),
+          'utf-8',
+        )
         res.end(content)
         break
       case '/style.json':
@@ -62,14 +72,27 @@ export function serve(source: string, options: serveOptions) {
       case '/app.css':
         res.statusCode = 200
         res.setHeader('Content-Type', 'text/css; charset=UTF-8')
-        const css = fs.readFileSync(path.join(dir, 'app.css'), 'utf-8')
+        const css = fs.readFileSync(
+          path.join(defaultProviderDir, 'app.css'),
+          'utf-8',
+        )
         res.end(css)
+        break
+      case `/shared.js`:
+        res.statusCode = 200
+        res.setHeader('Content-Type', 'application/javascript; charset=UTF-8')
+        const shared = fs.readFileSync(
+          path.join(defaultProviderDir, 'shared.js'),
+          'utf-8',
+        )
+        const js = shared.replace('___PORT___', `${port}`)
+        res.end(js)
         break
       case `/app.js`:
         res.statusCode = 200
         res.setHeader('Content-Type', 'application/javascript; charset=UTF-8')
         try {
-          const app = fs.readFileSync(path.join(dir, 'app.js'), 'utf-8')
+          const app = fs.readFileSync(path.join(providerDir, 'app.js'), 'utf-8')
           const js = app
             .replace('___PORT___', `${port}`)
             .replace(
