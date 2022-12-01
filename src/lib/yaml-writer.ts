@@ -51,8 +51,11 @@ const writeDecompositedYaml = (
     const filePath = path.join(layersDirName, fileName)
     fs.mkdirSync(path.dirname(filePath), { recursive: true })
     fs.writeFileSync(filePath, layerYml)
+
+    // ts-ignore is required here because !!inc/file string is not compatible with the Layer object type.
+    // We use path.posix.join to make sure the path uses / path separators, even when run on Windows.
     // @ts-ignore
-    layers.push(`!!inc/file ${path.join('layers', fileName)}`)
+    layers.push(`!!inc/file ${path.posix.join('layers', fileName)}`)
   }
 
   style.layers = layers
