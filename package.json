@@ -11,6 +11,7 @@
     "lint": "eslint --fix .",
     "test": "npm run build && mocha -r ts-node/register test/*.ts",
     "test:watch": "npm test -- --watch --watch-files src/**/*.ts --watch-files test/**/*.ts",
+    "test:e2e": "npx playwright test",
     "command": "./node_modules/.bin/ts-node ./src/cli.ts"
   },
   "author": "",
@@ -18,8 +19,8 @@
   "dependencies": {
     "@mapbox/mapbox-gl-style-spec": "^13.22.0",
     "@maplibre/maplibre-gl-style-spec": "^14.0.2",
-    "@unvt/sprite-one": "^0.0.6",
     "@types/jsonminify": "^0.4.1",
+    "@unvt/sprite-one": "^0.0.6",
     "axios": "^0.24.0",
     "commander": "^8.2.0",
     "glob": "^7.2.0",
@@ -31,6 +32,7 @@
     "yaml-include": "^1.2.1"
   },
   "devDependencies": {
+    "@playwright/test": "^1.28.1",
     "@types/chai": "^4.2.11",
     "@types/chai-as-promised": "^7.1.5",
     "@types/fs-extra": "^9.0.13",

@@ -29,6 +29,9 @@ jobs:
       - run: npm install
       - run: npm run lint
       - run: npm test
+      - run: npx playwright install --with-deps chromium
+      - run: npx playwright install chromium
+      - run: npm test:e2e
 
   publish:
     name: 'Publish npm package'
