@@ -31,8 +31,7 @@ jobs:
       - run: npm test
       - run: npx playwright install --with-deps chromium
       - run: npx playwright install chromium
-      - run: npm run build
-      - run: npm run test:e2e
+      - run: npm run build && npm run test:e2e
 
   publish:
     name: 'Publish npm package'
