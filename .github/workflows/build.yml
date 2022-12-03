@@ -15,11 +15,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     strategy:
       matrix:
         node-version: [14.x, 16.x, 18.x]
-
     steps:
       - uses: actions/checkout@v2
       - name: Use Node.js ${{ matrix.node-version }}
@@ -29,12 +27,21 @@ jobs:
       - run: npm install
       - run: npm run lint
       - run: npm test
+
+  e2e:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [18.x]
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: npm install
       - run: npx playwright install --with-deps chromium
-      - run: |
-        npm run build &&
-        sleep 10 &&
-        ls -alh dist &&
-        npm run test:e2e
+      - run: npm run build && chmod 777 dist/cli.js && npm run test:e2e
 
   publish:
     name: 'Publish npm package'
