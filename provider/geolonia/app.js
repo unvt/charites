@@ -1,35 +1,30 @@
-const map = new geolonia.Map({
-  container: '#map',
-  hash: true,
-  style: `http://${window.location.host}/style.json`,
-})
+;(async () => {
+  const { style, center, zoom } = await window._charites.parseMapStyle()
+  const options = {
+    container: 'map',
+    hash: true,
+    style,
+  }
+  if (center) options.center = center
+  if (zoom) options.zoom = zoom
+  const map = new geolonia.Map(options)
 
-const socket = new WebSocket('ws://localhost:___PORT___')
+  window._charites.initializeWebSocket((message) => {
+    map.setStyle(JSON.parse(message.data))
+  })
 
-socket.addEventListener('message', (message) => {
-  map.setStyle(JSON.parse(message.data))
-})
+  map.addControl(
+    new MaplibreLegendControl(
+      {},
+      {
+        showDefault: true,
+        showCheckbox: true,
+        onlyRendered: true,
+        reverseOrder: true,
+      },
+    ),
+    'bottom-left',
+  )
 
-const showTileBoundaries = document.getElementById('showTileBoundaries')
-const setShowTileBoundaries = function () {
-  const checked = showTileBoundaries.checked
-  map.showTileBoundaries = checked
-}
-setShowTileBoundaries()
-showTileBoundaries.addEventListener('click', setShowTileBoundaries)
-
-const showCollisionBoxes = document.getElementById('showCollisionBoxes')
-const setShowCollisionBoxes = function () {
-  const checked = showCollisionBoxes.checked
-  map.showCollisionBoxes = checked
-}
-setShowCollisionBoxes()
-showCollisionBoxes.addEventListener('click', setShowCollisionBoxes)
-
-const showPadding = document.getElementById('showPadding')
-const setShowPadding = function () {
-  const checked = showPadding.checked
-  map.showPadding = checked
-}
-setShowPadding()
-showPadding.addEventListener('click', setShowPadding)
+  window._charites.setupDebugCheckboxes(map)
+})()

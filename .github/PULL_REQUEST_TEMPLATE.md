@@ -18,7 +18,7 @@ Please describe what you changed briefly.
 - [ ] No build errors after `npm run build`
 - [ ] No lint errors after `npm run lint`
 - [ ] No errors on using `charites help` globally
-- [ ] Make sure all the exsiting features working well
+- [ ] Make sure all the existing features working well
 - [ ] Have you added at least one unit test if you are going to add new feature?
 - [ ] Have you updated documentation?
 <!-- ignore-task-list-end -->
