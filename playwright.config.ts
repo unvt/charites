@@ -21,7 +21,7 @@ const config: PlaywrightTestConfig = {
     {
       command:
         'dist/cli.js serve test/data/style.yml --provider mapbox --port 8888 --mapbox-access-token ' +
-        process.env.mapboxAccessToken,
+        process.env.MAPBOX_ACCESS_TOKEN,
       port: 8888,
     },
   ],
