@@ -40,7 +40,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - name: Check and restore cache of playwright
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         id: playwright-cache
         with:
           path: |
