@@ -2,7 +2,7 @@
 
 ## What is it?
 
-- DevContainer is a Dockerfike and configuration file for remote development in Visual Studio Code or GitHub Codespaces
+- DevContainer is a Dockerfile and a configuration file for remote development in Visual Studio Code or GitHub Codespaces
 - DevContainer allows development environments to be written and maintained as code
 - DevContainer allows everyone to develop in a common development environment
 
