@@ -1,7 +1,7 @@
 Commandline Interface
 ======================
 
-help
+Help
 ----
 
 .. code-block:: bash
