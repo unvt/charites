@@ -18,11 +18,11 @@
 # -- Project information -----------------------------------------------------
 
 project = 'charites'
-copyright = '2021, The United Nations Vector Tile Toolkit'
+copyright = '2022, The United Nations Vector Tile Toolkit'
 author = 'Jin Igarashi'
 
 # The full version, including alpha/beta/rc tags
-release = '0.1.2'
+release = '0.2.0'
 
 
 # -- General configuration ---------------------------------------------------
