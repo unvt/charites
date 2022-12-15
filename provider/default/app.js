@@ -9,9 +9,7 @@
   if (zoom) options.zoom = zoom
   const map = new maplibregl.Map(options)
 
-  window._charites.initializeWebSocket((message) => {
-    map.setStyle(JSON.parse(message.data))
-  })
+  window._charites.initializeWebSocket(map)
 
   map.addControl(new maplibregl.NavigationControl(), 'top-right')
 
