@@ -6,10 +6,10 @@
 Charites - Documentation
 ====================================
 
-:Date:   2022-11-16
+:Date:   2022-12-15
 :Copyright: CC-BY-SA
 :Organization: The United Nations Vector Tile Toolkit
-:Version: 0.2.0
+:Version: 0.3.0
 :Abstract: This document contains the complete documentation of Charites, an application to style vector tiles easily
 
 .. meta::
