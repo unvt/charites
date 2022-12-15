@@ -45,11 +45,7 @@ export function convert(source: string, destination: string) {
       const style = JSON.parse(lines.join(''))
       const destinationPath = getDestinationPath(destination)
 
-      try {
-        writeYaml(destinationPath, style, false)
-      } catch (err) {
-        throw `${destinationPath}: Permission denied`
-      }
+      writeYaml(destinationPath, style, false)
     })
   } else {
     sourcePath = path.resolve(process.cwd(), source)
@@ -67,10 +63,6 @@ export function convert(source: string, destination: string) {
 
     const destinationPath = getDestinationPath(destination, sourcePath)
 
-    try {
-      writeYaml(destinationPath, style, false)
-    } catch (err) {
-      throw `${destinationPath}: Permission denied`
-    }
+    writeYaml(destinationPath, style, false)
   }
 }

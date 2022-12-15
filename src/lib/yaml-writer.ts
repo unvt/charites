@@ -30,11 +30,7 @@ const writeCompositedYaml = (
     stylePath = destinationPath
   }
 
-  try {
-    fs.writeFileSync(stylePath, styleYAML)
-  } catch (err) {
-    throw `${stylePath}: Permission denied`
-  }
+  fs.writeFileSync(stylePath, styleYAML)
 }
 
 const writeDecompositedYaml = (
