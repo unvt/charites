@@ -46,7 +46,7 @@ If you can see the charites version and command lits with the following command.
 
 Sample snapshot of Installation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-.. image:: ./windows-guide-01.png
+.. image:: ./img/windows-guide-01.png
    :scale: 75%
    :align: center
 
