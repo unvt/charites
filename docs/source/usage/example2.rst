@@ -56,7 +56,7 @@ Check the style.yml by opening it with Notepad or any text editor. You will see 
    :scale: 75%
    :align: center
 
-Although it is rare case, but we need to check one thing. Sometimes, if id for each layer is too long, YAML automatically uses ">-" and break the line to improve human's readability. ">-" would pretend an actual line break in YAML, however, it will cause some problem for Charites, so please fix line brakes with ">-" in the layers if you find them.
+Although it is not often seen, we need to check one thing. Sometimes, if id for each layer is too long, YAML automatically uses ">-" and break the line to improve human's readability. ">-" would pretend an actual line break in YAML, however, it will cause some problem for Charites, so please fix line brakes with ">-" in the layers if you find them.
 This is often seen in style files from Esri vector tile because it has detailed folder structure sometimes.
 
 .. image:: ./img/example02-007.png
@@ -83,4 +83,70 @@ If you obtain the list of layers without ">-", you are ready to go to the next s
    :scale: 75%
    :align: center
 
+.. note::
+   You may also need to check paths in "sprite", "glyphs" and "sources." They would be written as relative paths, so you may need to adjust these paths so that charites in your local PC can access to them. In addition, if you are importing styles from ArcGIS server, reference to the source should be modifyed (use "tiles" instead of "url"). The "tiles" URL will be provided by adding "/tile/{z}/{y}/{x}.pbf" in the end of Esri vector tile server URL.
 
+
+Step 3. Serve YAML files for live preview
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Run the "charites serve" command to serve your YAML files in the localhost. By default, its port is 8080.
+
+.. code-block:: 
+
+    charites serve editing/style.yml
+
+A window would automatically appears in the windows environment, but if not please open "http://localhost:8080" to access your live view. You can stop the live preview by pressing ctrl + c.
+
+.. image:: ./img/example02-012.png
+   :scale: 75%
+   :align: center
+
+Step 4. Editing YAML files to change style
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+You can change/edit the map style by editing YAML files. If you edit and save your update, charites automatically finds your updates to reflect them into the live view.
+
+.. image:: ./img/example02-016.png
+   :scale: 75%
+   :align: center
+
+(Tips 1) Legend control
+########################
+There is a legend control in the lower left of the screen. You can turn on/off any layers so that your edit would be easy. It will also help you to identify layers that should be edited.
+You can enlarge the window by clicking the button, and reduce its size by clicking "x" in the window. You can also choose to list only rendered layers or not in the window. 
+
+.. image:: ./img/example02-013.png
+   :scale: 75%
+   :align: center
+
+(Tips 2) Showing tile boundary
+###############################
+It would be alos helpful to show the tile boundary. There are checkbox in the upper left, and you can turn on/off. You will see tile border and its xyx in z/x/y order together with tile size. This would be useful when you also think about optimization of your vector tile.
+
+.. image:: ./img/example02-014.png
+   :scale: 75%
+   :align: center
+
+(Tips 3) Showing collision boxes
+#################################
+It would be alos helpful to show the collision boxes. If a box is red, it indicates a collision with others. When you adjust label location/size, this is good.
+
+.. image:: ./img/example02-015.png
+   :scale: 75%
+   :align: center
+
+(Tips 4) Use of "#" (comment tag) to specify error
+###################################################
+If there is a layer contains some error, the web map may not appears. In such a case, use a YAML comment tag "#" to comment out a layer (or layers) to specify the layer contains an error. The comment tag is also useful to tentatively change colors, etc.
+
+(Tips 5) Use of inclusion of other YAML file for efficinet edit
+################################################################
+If you repeatedly use the same expression (color, font, etc) for several layers, it is conveninet to use a reference to a common expression. You can do it by using inclusion of  an independent YAML file with "!!inc/file hogehoge.yml". This is particular important if you manage your style with YAML files.
+
+.. image:: ./img/example02-017.png
+   :scale: 75%
+   :align: center
+
+.. image:: ./img/example02-018.png
+   :scale: 75%
+   :align: center
