@@ -84,7 +84,8 @@ If you obtain the list of layers without ">-", you are ready to go to the next s
    :align: center
 
 .. note::
-   You may also need to check paths in "sprite", "glyphs" and "sources." They would be written as relative paths, so you may need to adjust these paths so that charites in your local PC can access to them. In addition, if you are importing styles from ArcGIS server, reference to the source should be modifyed (use "tiles" instead of "url"). The "tiles" URL will be provided by adding "/tile/{z}/{y}/{x}.pbf" in the end of Esri vector tile server URL.
+
+    You may also need to check paths in "sprite", "glyphs" and "sources." They would be written as relative paths, so you may need to adjust these paths so that charites in your local PC can access to them. In addition, if you are importing styles from ArcGIS server, reference to the source should be modifyed (use "tiles" instead of "url"). The "tiles" URL will be provided by adding "/tile/{z}/{y}/{x}.pbf" in the end of Esri vector tile server URL.
 
 
 Step 3. Serve YAML files for live preview
@@ -109,6 +110,8 @@ You can change/edit the map style by editing YAML files. If you edit and save yo
 .. image:: ./img/example02-016.png
    :scale: 75%
    :align: center
+
+Here are some tips for efficient style editing.
 
 (Tips 1) Legend control
 ########################
@@ -150,3 +153,14 @@ If you repeatedly use the same expression (color, font, etc) for several layers,
 .. image:: ./img/example02-018.png
    :scale: 75%
    :align: center
+
+Step 5. Exporting style json from YAML files
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Once you have edited your style with YAML files, you can now export it back to json by running the following command.
+
+.. code-block:: 
+
+    charites build editing/style.yml out.json
+
+Congratulations. You will obtain the updated style json, and all done.
+
