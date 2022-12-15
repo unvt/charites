@@ -23,7 +23,8 @@ If your style json is in the Internet, it may need to downloat it from the Inter
     curl.exe -O https://ubukawa.github.io/cmv-test/style1.json
     charites convert style1.json editing/style.yml
 
-Then, you will see a series of yaml files are converted from the source json. You will obtain an overall YAML that contains a list of style layers with the style yamls in the layer directory.
+Then, you will see a series of yaml files are converted from the source json. You will obtain an overall YAML that contains a list of style layers with the style yamls in the layer directory.  
+In this case, we will have "style.yml" in "editing" directory together with a lot of yaml files for layers in "layers" directory.
 
 .. image:: ./img/example02-001.png
    :scale: 75%
@@ -33,7 +34,7 @@ Then, you will see a series of yaml files are converted from the source json. Yo
    :scale: 75%
    :align: center
 
-It is good to know that if your source json has some folder structure in its layer ids, that structure would be maintained when you import. 
+(Tips) It is good to know that if your source json has some folder structure in its layer ids, that structure would be maintained when you import. 
 
 .. image:: ./img/example02-005.png
    :scale: 75%
@@ -46,3 +47,19 @@ It is good to know that if your source json has some folder structure in its lay
 .. image:: ./img/example02-004.png
    :scale: 75%
    :align: center
+
+Step 2. Checking an overall yaml (style.yml in this case)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Check the style.yml by opening it with Notepad or any text editor. You will see it like this:
+
+.. image:: ./img/example02-006.png
+   :scale: 75%
+   :align: center
+
+Sometimes, if id for each layer is too long, YAML automatically uses ">-" and break the line to improve human's readability. However, it will cause some problem for Charites, so please fix line brake with ">-" in the layers if you find it.
+
+.. image:: ./img/example02-007.png
+   :scale: 75%
+   :align: center
+
+
