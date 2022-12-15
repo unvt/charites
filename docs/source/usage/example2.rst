@@ -56,9 +56,30 @@ Check the style.yml by opening it with Notepad or any text editor. You will see 
    :scale: 75%
    :align: center
 
-Sometimes, if id for each layer is too long, YAML automatically uses ">-" and break the line to improve human's readability. However, it will cause some problem for Charites, so please fix line brake with ">-" in the layers if you find it.
+Although it is rare case, but we need to check one thing. Sometimes, if id for each layer is too long, YAML automatically uses ">-" and break the line to improve human's readability. ">-" would pretend an actual line break in YAML, however, it will cause some problem for Charites, so please fix line brakes with ">-" in the layers if you find them.
+This is often seen in style files from Esri vector tile because it has detailed folder structure sometimes.
 
 .. image:: ./img/example02-007.png
+   :scale: 75%
+   :align: center
+
+.. image:: ./img/example02-008.png
+   :scale: 75%
+   :align: center
+
+You can extract layers and use "replace" tool to remove ">-" and unnecessary line changes.
+
+.. image:: ./img/example02-009.png
+   :scale: 75%
+   :align: center
+
+.. image:: ./img/example02-010.png
+   :scale: 75%
+   :align: center
+
+If you obtain the list of layers without ">-", you are ready to go to the next step.
+
+.. image:: ./img/example02-011.png
    :scale: 75%
    :align: center
 
