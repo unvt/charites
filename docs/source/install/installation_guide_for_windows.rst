@@ -15,7 +15,7 @@ Steps
 
 Step 1. Installation of nodejs (if it is not installed yet)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Check if nodejs is installed. If not, visit `nodejs <https://nodejs.org/en/>`_ to install them. Version 14 or later version is recommended. Installation will fail with the oloder version of nodejs than 12.20.0.
+Check if nodejs is installed. If not, visit `nodejs <https://nodejs.org/en/>`_ to install them. Version 14 or later version is recommended. Installation will fail with the older version of nodejs than 12.20.0.
 
 Step 2. Open Windows PowerShell
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
