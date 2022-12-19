@@ -14,7 +14,7 @@ help
     -h, --help                              display help for command
 
     Commands:
-    init [options] <file>                   initialize a style JSON
+    init [options] <file>                   initialize a style YAML
     convert <source> [destination]          convert the style JSON to YAML
     build [options] <source> [destination]  build a style JSON from the YAML
     serve [options] <source>                serve your map locally
@@ -29,7 +29,7 @@ Inititalize `style.yml`
     $ charites init -h
     Usage: charites init [options] <file>
 
-    initialize a style JSON
+    initialize a style YAML
 
     Options:
     -t, --tilejson-urls <tilejson_urls>          an URL for TileJSON. It will create empty layers from vector_layers property of TileJSON. Please use
