@@ -43,7 +43,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../install/index.html">Installing Charites</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Usage</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Commandline Interface</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#help">help</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#help">Help</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#checking-version">Checking version</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#inititalize-style-yml">Inititalize <cite>style.yml</cite></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#convert-existing-style-json">Convert existing <cite>style.json</cite></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#build-style-json-from-style-yml">Build <cite>style.json</cite> from <cite>style.yml</cite></a></li>
@@ -52,6 +53,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="global_options.html">Global configuration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="examples.html">Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example2.html">Example 2: Import existing style.json and edit it with charites</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../development/index.html">Development</a></li>
@@ -85,7 +87,7 @@
   <section id="commandline-interface">
 <h1>Commandline Interface<a class="headerlink" href="#commandline-interface" title="Permalink to this headline"></a></h1>
 <section id="help">
-<h2>help<a class="headerlink" href="#help" title="Permalink to this headline"></a></h2>
+<h2>Help<a class="headerlink" href="#help" title="Permalink to this headline"></a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ charites <span class="nb">help</span>
 Usage: charites <span class="o">[</span>options<span class="o">]</span> <span class="o">[</span>command<span class="o">]</span>
 
@@ -99,6 +101,13 @@ convert &lt;source&gt; <span class="o">[</span>destination<span class="o">]</spa
 build <span class="o">[</span>options<span class="o">]</span> &lt;source&gt; <span class="o">[</span>destination<span class="o">]</span>  build a style JSON from the YAML
 serve <span class="o">[</span>options<span class="o">]</span> &lt;source&gt;                serve your map locally
 <span class="nb">help</span> <span class="o">[</span>command<span class="o">]</span>                          display <span class="nb">help</span> <span class="k">for</span> <span class="nb">command</span>
+</pre></div>
+</div>
+</section>
+<section id="checking-version">
+<h2>Checking version<a class="headerlink" href="#checking-version" title="Permalink to this headline"></a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ charites --version
+<span class="m">0</span>.3.0
 </pre></div>
 </div>
 </section>

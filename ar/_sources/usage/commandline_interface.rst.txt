@@ -1,7 +1,7 @@
 Commandline Interface
 ======================
 
-help
+Help
 ----
 
 .. code-block:: bash
@@ -19,6 +19,15 @@ help
     build [options] <source> [destination]  build a style JSON from the YAML
     serve [options] <source>                serve your map locally
     help [command]                          display help for command
+
+
+Checking version
+-------------------
+
+.. code-block:: bash
+
+    $ charites --version
+    0.3.0
 
 
 Inititalize `style.yml`

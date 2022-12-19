@@ -8,3 +8,4 @@ Installing Charites
   recommended_environment
   install
   install_on_nanban
+  installation_guide_for_windows
