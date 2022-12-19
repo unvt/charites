@@ -6,7 +6,7 @@ const program = new Command()
 program
   .name('init')
   .arguments('<file>')
-  .description('initialize a style JSON')
+  .description('initialize a style YAML')
   .option(
     '-t, --tilejson-urls <tilejson_urls>',
     'an URL for TileJSON. It will create empty layers from vector_layers property of TileJSON. Please use comma (,) in case multiple TileJSONs require.',
