@@ -17,6 +17,13 @@
       "paint": {
         "background-color": "rgba(19, 28, 54, 1)"
       }
+    },
+    {
+      "id": "background-with-very-long-name-background-with-very-long-name-background-with-very-long-name",
+      "type": "background",
+      "paint": {
+        "background-color": "rgba(19, 28, 54, 1)"
+      }
     }
   ],
   "id": "example"

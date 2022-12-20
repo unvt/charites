@@ -37,6 +37,23 @@ const writeCompositedYaml = (
   }
 }
 
+class IncFileTag {
+  value: string
+  constructor(fileName: string) {
+    // We use path.posix.join to make sure the path uses / path separators, even when run on Windows.
+    this.value = path.posix.join('layers', fileName)
+  }
+}
+
+const INC_PATH_TYPE = new YAML.Type('tag:yaml.org,2002:inc/file', {
+  kind: 'scalar',
+  resolve: (data) => data,
+  construct: (data) => new IncFileTag(data),
+  instanceOf: IncFileTag,
+  represent: (tag) => (tag as IncFileTag).value,
+})
+const INC_PATH_OUTPUT_SCHEMA = YAML.DEFAULT_SCHEMA.extend([INC_PATH_TYPE])
+
 const writeDecompositedYaml = (
   destinationPath: string,
   style: StyleSpecification,
@@ -52,21 +69,17 @@ const writeDecompositedYaml = (
     fs.mkdirSync(path.dirname(filePath), { recursive: true })
     fs.writeFileSync(filePath, layerYml)
 
-    // ts-ignore is required here because !!inc/file string is not compatible with the Layer object type.
-    // We use path.posix.join to make sure the path uses / path separators, even when run on Windows.
+    // ts-ignore is required here because the !!inc/file object is not compatible with the Layer object type.
     // @ts-ignore
-    layers.push(`!!inc/file ${path.posix.join('layers', fileName)}`)
+    layers.push(new IncFileTag(fileName))
   }
 
   style.layers = layers
 
   fs.writeFileSync(
     destinationPath,
-    YAML.dump(style).replace(
-      /'\!\!inc\/file layers\/.+\.yml'/g,
-      function (match) {
-        return match.replace(/'/g, '')
-      },
-    ),
+    YAML.dump(style, {
+      schema: INC_PATH_OUTPUT_SCHEMA,
+    }),
   )
 }
