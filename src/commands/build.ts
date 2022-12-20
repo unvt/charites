@@ -94,11 +94,7 @@ export async function build(
     }
   }
 
-  try {
-    fs.writeFileSync(destinationPath, style)
-  } catch (err) {
-    throw `${destinationPath}: Permission denied`
-  }
+  fs.writeFileSync(destinationPath, style)
 }
 
 export function buildWatch(

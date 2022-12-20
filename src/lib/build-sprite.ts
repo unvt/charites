@@ -1,5 +1,5 @@
 import { generateSprite } from '@unvt/sprite-one'
-const path = require('path')
+import path from 'path'
 
 export async function buildSprite(
   svgPath: string,
@@ -8,10 +8,6 @@ export async function buildSprite(
 ): Promise<void> {
   const pxRatios = [1, 2]
   const outPath = path.join(publicPath, iconSlug)
-  try {
-    await generateSprite(outPath, [svgPath], pxRatios)
-  } catch (error) {
-    throw error
-  }
+  await generateSprite(outPath, [svgPath], pxRatios)
   return
 }
