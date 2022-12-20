@@ -1,9 +1,18 @@
 ;(async () => {
   window._charites = {
-    initializeWebSocket: function (onmessage) {
+    initializeWebSocket: function (map) {
       const socket = new WebSocket(`ws://${window.location.host}`)
 
-      socket.addEventListener('message', onmessage)
+      socket.addEventListener('message', (message) => {
+        const data = JSON.parse(message.data)
+        if (data.event === 'styleUpdate') {
+          map.setStyle(`http://${window.location.host}/style.json`)
+        } else if (data.event === 'spriteUpdate') {
+          map.setStyle(`http://${window.location.host}/style.json`, {
+            diff: false,
+          })
+        }
+      })
     },
     parseMapStyle: async function () {
       const mapStyleUrl = `http://${window.location.host}/style.json`

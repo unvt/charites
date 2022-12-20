@@ -1,5 +1,6 @@
 import path from 'path'
 import fs from 'fs'
+import os from 'os'
 import http from 'http'
 import open from 'open'
 import { WebSocketServer } from 'ws'
@@ -8,14 +9,17 @@ import watch from 'node-watch'
 import { parser } from '../lib/yaml-parser'
 import { validateStyle } from '../lib/validate-style'
 import { defaultValues } from '../lib/defaultValues'
+import { buildSprite } from '../lib/build-sprite'
 
 export interface serveOptions {
   provider?: string
   mapboxAccessToken?: string
   port?: string
+  spriteInput?: string
+  open?: boolean
 }
 
-export function serve(source: string, options: serveOptions) {
+export async function serve(source: string, options: serveOptions) {
   let port = process.env.PORT || 8080
   if (options.port) {
     port = Number(options.port)
@@ -42,10 +46,43 @@ export function serve(source: string, options: serveOptions) {
     throw `Provider is mapbox, but the Mapbox Access Token is not set. Please provide it using --mapbox-access-token, or set it in \`~/.charites/config.yml\` (see the Global configuration section of the documentation for more information)`
   }
 
-  const server = http.createServer((req, res) => {
+  let spriteOut: string | undefined = undefined
+  let spriteRefresher: (() => Promise<void>) | undefined = undefined
+  if (options.spriteInput) {
+    spriteOut = await fs.promises.mkdtemp(path.join(os.tmpdir(), 'charites-'))
+    spriteRefresher = async () => {
+      if (
+        typeof options.spriteInput === 'undefined' ||
+        typeof spriteOut === 'undefined'
+      ) {
+        return
+      }
+      await buildSprite(options.spriteInput, spriteOut, 'sprite')
+    }
+    await spriteRefresher()
+  }
+
+  const server = http.createServer(async (req, res) => {
     const url = (req.url || '').replace(/\?.*/, '')
     const defaultProviderDir = path.join(defaultValues.providerDir, 'default')
     const providerDir = path.join(defaultValues.providerDir, provider)
+
+    if (
+      typeof spriteOut !== 'undefined' &&
+      url.match(/^\/sprite(@2x)?\.(json|png)/)
+    ) {
+      res.statusCode = 200
+      if (url.endsWith('.json')) {
+        res.setHeader('Content-Type', 'application/json; charset=UTF-8')
+      } else {
+        res.setHeader('Content-Type', 'image/png')
+      }
+      res.setHeader('Cache-Control', 'no-store')
+      const filename = path.basename(url)
+      const fsStream = fs.createReadStream(path.join(spriteOut, filename))
+      fsStream.pipe(res)
+      return
+    }
 
     switch (url) {
       case '/':
@@ -61,12 +98,18 @@ export function serve(source: string, options: serveOptions) {
         let style
         try {
           style = parser(sourcePath)
+          if (typeof spriteOut !== 'undefined') {
+            style.sprite = `http://${
+              req.headers.host || `localhost:${port}`
+            }/sprite`
+          }
           validateStyle(style, provider)
         } catch (error) {
           console.log(error)
         }
         res.statusCode = 200
         res.setHeader('Content-Type', 'application/json; charset=UTF-8')
+        res.setHeader('Cache-Control', 'no-store')
         res.end(JSON.stringify(style))
         break
       case '/app.css':
@@ -116,30 +159,56 @@ export function serve(source: string, options: serveOptions) {
     console.log(`Provider: ${provider}`)
     console.log(`Loading your style: ${sourcePath}`)
     console.log(`Your map is running on http://localhost:${port}/\n`)
-    open(`http://localhost:${port}`)
+    if (options.open) {
+      open(`http://localhost:${port}`)
+    }
   })
 
   const wss = new WebSocketServer({ server })
 
   wss.on('connection', (ws) => {
-    watch(
+    const watcher = watch(
       path.dirname(sourcePath),
-      { recursive: true, filter: /\.yml$/ },
+      { recursive: true, filter: /\.yml$|\.svg$/i },
       (event, file) => {
         console.log(`${(event || '').toUpperCase()}: ${file}`)
         try {
-          const style = parser(sourcePath)
-          try {
-            validateStyle(style, provider)
-          } catch (error) {
-            console.log(error)
+          if (file?.toLowerCase().endsWith('.yml')) {
+            ws.send(
+              JSON.stringify({
+                event: 'styleUpdate',
+              }),
+            )
+          } else if (
+            file?.toLowerCase().endsWith('.svg') &&
+            typeof spriteRefresher !== 'undefined'
+          ) {
+            spriteRefresher().then(() => {
+              ws.send(
+                JSON.stringify({
+                  event: 'spriteUpdate',
+                }),
+              )
+            })
           }
-          ws.send(JSON.stringify(style))
         } catch (e) {
           // Nothing to do
         }
       },
     )
+    ws.on('close', () => {
+      watcher.close()
+    })
+  })
+
+  process.on('SIGINT', () => {
+    console.log('Cleaning up...')
+    server.close()
+    if (typeof spriteOut !== 'undefined') {
+      fs.rmSync(spriteOut, { recursive: true })
+      spriteOut = undefined
+    }
+    process.exit(0)
   })
 
   return server

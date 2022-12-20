@@ -1,3 +1,5 @@
 import path from 'path'
 
-export default `node ${path.join(__dirname, '..', '..', 'dist', 'cli.js')}`
+export const charitesCliJs = path.join(__dirname, '..', '..', 'dist', 'cli.js')
+
+export default `${process.execPath} ${charitesCliJs}`

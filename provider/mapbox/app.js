@@ -11,9 +11,7 @@
   if (zoom) options.zoom = zoom
   const map = new mapboxgl.Map(options)
 
-  window._charites.initializeWebSocket((message) => {
-    map.setStyle(JSON.parse(message.data))
-  })
+  window._charites.initializeWebSocket(map)
 
   map.addControl(new mapboxgl.NavigationControl(), 'top-right')
 
