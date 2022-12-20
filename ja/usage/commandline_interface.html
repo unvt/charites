@@ -167,10 +167,12 @@ Usage: charites serve <span class="o">[</span>options<span class="o">]</span> &l
 serve your map locally
 
 Options:
---provider <span class="o">[</span>provider<span class="o">]</span>                      your map service. e.g. <span class="sb">`</span>mapbox<span class="sb">`</span>, <span class="sb">`</span>geolonia<span class="sb">`</span>
---mapbox-access-token <span class="o">[</span>mapboxAccessToken<span class="o">]</span>  Access Token <span class="k">for</span> the Mapbox
---port <span class="o">[</span>port<span class="o">]</span>                              Specify custom port
--h, --help                                 display <span class="nb">help</span> <span class="k">for</span> <span class="nb">command</span>
+--provider <span class="o">[</span>provider<span class="o">]</span>                        your map service. e.g. <span class="sb">`</span>mapbox<span class="sb">`</span>, <span class="sb">`</span>geolonia<span class="sb">`</span>
+--mapbox-access-token <span class="o">[</span>mapboxAccessToken<span class="o">]</span>    Access Token <span class="k">for</span> the Mapbox
+-i, --sprite-input <span class="o">[</span>&lt;icon input directory&gt;<span class="o">]</span>  directory path of icon <span class="nb">source</span> to build icons. The default &lt;icon
+                                             source&gt; is <span class="sb">`</span>icons/<span class="sb">`</span>
+--port <span class="o">[</span>port<span class="o">]</span>                                Specify custom port
+-h, --help                                   display <span class="nb">help</span> <span class="k">for</span> <span class="nb">command</span>
 </pre></div>
 </div>
 <p>Charites は <cite>serve</cite> コマンドに 3 つのオプションを用意しています。</p>
@@ -182,7 +184,8 @@ Options:
 </ul>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">--mapbox-access-token</span></code> - Set your access-token when styling for Mapbox.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">--port</span></code> - Set http server's port number. When not specified, use 8080 port.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--sprite-input</span></code> - If you are building icon spritesheets with Charites, you can specify the directory of SVG files to compile here. See the <code class="docutils literal notranslate"><span class="pre">build</span></code> command for more information.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--port</span></code> - Set http server's port number. When not specified, the default is 8080.</p></li>
 </ul>
 </section>
 </section>

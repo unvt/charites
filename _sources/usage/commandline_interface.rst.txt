@@ -94,10 +94,12 @@ Realtime editor on browser
     serve your map locally
 
     Options:
-    --provider [provider]                      your map service. e.g. `mapbox`, `geolonia`
-    --mapbox-access-token [mapboxAccessToken]  Access Token for the Mapbox
-    --port [port]                              Specify custom port
-    -h, --help                                 display help for command
+    --provider [provider]                        your map service. e.g. `mapbox`, `geolonia`
+    --mapbox-access-token [mapboxAccessToken]    Access Token for the Mapbox
+    -i, --sprite-input [<icon input directory>]  directory path of icon source to build icons. The default <icon
+                                                 source> is `icons/`
+    --port [port]                                Specify custom port
+    -h, --help                                   display help for command
 
 Charites has three options for `serve` command.
 
@@ -108,4 +110,6 @@ Charites has three options for `serve` command.
 
 - ``--mapbox-access-token`` - Set your access-token when styling for Mapbox.
 
-- ``--port`` - Set http server's port number. When not specified, use 8080 port.
+- ``--sprite-input`` - If you are building icon spritesheets with Charites, you can specify the directory of SVG files to compile here. See the ``build`` command for more information.
+
+- ``--port`` - Set http server's port number. When not specified, the default is 8080.
