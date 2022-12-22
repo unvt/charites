@@ -38,6 +38,11 @@ export const abortableExecFile = (
   new Promise<ExecResult>((resolve, reject) => {
     const temp = cwd ? cwd : makeTempDir()
 
+    // Because Windows can't catch the SIGINT signal (it doesn't have signals)
+    // we set a flag in the parent whether the command can die or not.
+    // If the command exits before we request it to exit, the error will be
+    // thrown, but if it exits after we request it to exit, it won't be an error.
+    let noErrorOnDie = false
     const process = child_process.execFile(
       file,
       args,
@@ -46,13 +51,14 @@ export const abortableExecFile = (
         cwd: temp,
       },
       (error, stdout, stderr) => {
-        if (error) {
+        if (error && noErrorOnDie !== true) {
           return reject(error)
         }
         resolve({ stdout, stderr, cwd: temp })
       },
     )
     signal.addEventListener('abort', () => {
+      noErrorOnDie = true
       process.kill('SIGINT')
     })
   })
