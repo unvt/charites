@@ -46,8 +46,8 @@ describe('Test for the `build.ts`.', () => {
 
     const fixtureStyleJson = path.join(__dirname, 'data/style.json')
     assert.equal(
-      fs.readFileSync(styleJson, 'utf-8'),
-      fs.readFileSync(fixtureStyleJson, 'utf-8'),
+      fs.readFileSync(styleJson, 'utf-8').replace(/\r\n/gm, '\n'),
+      fs.readFileSync(fixtureStyleJson, 'utf-8').replace(/\r\n/gm, '\n'),
     )
   })
 
