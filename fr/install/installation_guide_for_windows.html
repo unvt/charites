@@ -14,7 +14,9 @@
         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
         <script src="../_static/translations.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -75,9 +77,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="index.html">Installation de charites en cours</a> &raquo;</li>
-      <li>Installation guide for windows users</li>
+      <li><a href="../index.html" class="icon icon-home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Installation de charites en cours</a></li>
+      <li class="breadcrumb-item active">Installation guide for windows users</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/unvt/charites/blob/main/docs/source/install/installation_guide_for_windows.rst" class="fa fa-github"> Éditer sur GitHub</a>
       </li>
@@ -88,10 +90,10 @@
            <div itemprop="articleBody">
              
   <section id="installation-guide-for-windows-users">
-<h1>Installation guide for windows users<a class="headerlink" href="#installation-guide-for-windows-users" title="Lien permanent vers ce titre"></a></h1>
+<h1>Installation guide for windows users<a class="headerlink" href="#installation-guide-for-windows-users" title="Lien permanent vers cette rubrique"></a></h1>
 <p>Here is an typical work flow of installation for windows users.</p>
 <section id="condition-of-this-example">
-<h2>Condition of this example<a class="headerlink" href="#condition-of-this-example" title="Lien permanent vers ce titre"></a></h2>
+<h2>Condition of this example<a class="headerlink" href="#condition-of-this-example" title="Lien permanent vers cette rubrique"></a></h2>
 <ul class="simple">
 <li><p>Windows 10</p></li>
 <li><p>nodejs version 18.12.1</p></li>
@@ -100,13 +102,13 @@
 </ul>
 </section>
 <section id="steps">
-<h2>Steps<a class="headerlink" href="#steps" title="Lien permanent vers ce titre"></a></h2>
+<h2>Steps<a class="headerlink" href="#steps" title="Lien permanent vers cette rubrique"></a></h2>
 <section id="step-1-installation-of-nodejs-if-it-is-not-installed-yet">
-<h3>Step 1. Installation of nodejs (if it is not installed yet)<a class="headerlink" href="#step-1-installation-of-nodejs-if-it-is-not-installed-yet" title="Lien permanent vers ce titre"></a></h3>
+<h3>Step 1. Installation of nodejs (if it is not installed yet)<a class="headerlink" href="#step-1-installation-of-nodejs-if-it-is-not-installed-yet" title="Lien permanent vers cette rubrique"></a></h3>
 <p>Check if nodejs is installed. If not, visit <a class="reference external" href="https://nodejs.org/en/">nodejs</a> to install them. Version 14 or later version is recommended. Installation will fail with the older version of nodejs than 12.20.0.</p>
 </section>
 <section id="step-2-open-windows-powershell">
-<h3>Step 2. Open Windows PowerShell<a class="headerlink" href="#step-2-open-windows-powershell" title="Lien permanent vers ce titre"></a></h3>
+<h3>Step 2. Open Windows PowerShell<a class="headerlink" href="#step-2-open-windows-powershell" title="Lien permanent vers cette rubrique"></a></h3>
 <p>Open Windows PowerShell and confirm if nodejs and npm works.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">npm</span> <span class="o">--</span><span class="n">version</span>
 <span class="n">node</span> <span class="o">--</span><span class="n">version</span>
@@ -114,14 +116,14 @@
 </div>
 </section>
 <section id="step-3-install-unvt-charites-as-a-npm-package">
-<h3>Step 3. Install &#64;unvt/charites as a npm package<a class="headerlink" href="#step-3-install-unvt-charites-as-a-npm-package" title="Lien permanent vers ce titre"></a></h3>
+<h3>Step 3. Install &#64;unvt/charites as a npm package<a class="headerlink" href="#step-3-install-unvt-charites-as-a-npm-package" title="Lien permanent vers cette rubrique"></a></h3>
 <p>Just rung the following command to install the charites.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">npm</span> <span class="n">install</span> <span class="o">-</span><span class="n">g</span> <span class="nd">@unvt</span><span class="o">/</span><span class="n">charites</span>
 </pre></div>
 </div>
 </section>
 <section id="step-4-confirm-if-charites-is-properly-installed">
-<h3>Step 4. Confirm if charites is properly installed<a class="headerlink" href="#step-4-confirm-if-charites-is-properly-installed" title="Lien permanent vers ce titre"></a></h3>
+<h3>Step 4. Confirm if charites is properly installed<a class="headerlink" href="#step-4-confirm-if-charites-is-properly-installed" title="Lien permanent vers cette rubrique"></a></h3>
 <p>If you can see the charites version and command lits with the following command. It seems that your installation has done successfully.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">charites</span> <span class="o">--</span><span class="n">version</span>
 <span class="n">charites</span> <span class="o">--</span><span class="n">help</span>
@@ -129,7 +131,7 @@
 </div>
 </section>
 <section id="sample-snapshot-of-installation">
-<h3>Sample snapshot of Installation<a class="headerlink" href="#sample-snapshot-of-installation" title="Lien permanent vers ce titre"></a></h3>
+<h3>Sample snapshot of Installation<a class="headerlink" href="#sample-snapshot-of-installation" title="Lien permanent vers cette rubrique"></a></h3>
 <a class="reference internal image-reference" href="../_images/windows-guide-01.png"><img alt="../_images/windows-guide-01.png" class="align-center" src="../_images/windows-guide-01.png" style="width: 530.25px; height: 397.5px;" /></a>
 </section>
 </section>

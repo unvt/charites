@@ -14,7 +14,9 @@
         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
         <script src="../_static/translations.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="索引" href="../genindex.html" />
@@ -64,9 +66,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="index.html">Charitesのインストール</a> &raquo;</li>
-      <li>unvt/nanbanでcharitesを動かす</li>
+      <li><a href="../index.html" class="icon icon-home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Charitesのインストール</a></li>
+      <li class="breadcrumb-item active">unvt/nanbanでcharitesを動かす</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/unvt/charites/blob/main/docs/source/install/install_on_nanban.rst" class="fa fa-github"> Edit on GitHub</a>
       </li>
@@ -77,7 +79,7 @@
            <div itemprop="articleBody">
              
   <section id="charites-on-unvt-nanban">
-<h1>unvt/nanbanでcharitesを動かす<a class="headerlink" href="#charites-on-unvt-nanban" title="このヘッドラインへのパーマリンク"></a></h1>
+<h1>unvt/nanbanでcharitesを動かす<a class="headerlink" href="#charites-on-unvt-nanban" title="この見出しへのパーマリンク"></a></h1>
 <p>Charites runs on Docker with one of UNVT tools named <a class="reference external" href="https://github.com/unvt/nanban">unvt/nanban</a>. Charites is already installed in the tool, so you can use it by just staring unvt/nanban.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ docker run -ti --rm -v <span class="si">${</span><span class="nv">PWD</span><span class="si">}</span>:/data -p <span class="m">8080</span>:8080 unvt/nanban
 $ <span class="nb">cd</span> /data

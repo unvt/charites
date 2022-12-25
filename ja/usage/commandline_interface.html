@@ -14,7 +14,9 @@
         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
         <script src="../_static/translations.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="索引" href="../genindex.html" />
@@ -72,9 +74,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="index.html">使い方</a> &raquo;</li>
-      <li>コマンドラインインターフェース</li>
+      <li><a href="../index.html" class="icon icon-home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">使い方</a></li>
+      <li class="breadcrumb-item active">コマンドラインインターフェース</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/unvt/charites/blob/main/docs/source/usage/commandline_interface.rst" class="fa fa-github"> Edit on GitHub</a>
       </li>
@@ -85,9 +87,9 @@
            <div itemprop="articleBody">
              
   <section id="commandline-interface">
-<h1>コマンドラインインターフェース<a class="headerlink" href="#commandline-interface" title="このヘッドラインへのパーマリンク"></a></h1>
+<h1>コマンドラインインターフェース<a class="headerlink" href="#commandline-interface" title="この見出しへのパーマリンク"></a></h1>
 <section id="help">
-<h2>Help<a class="headerlink" href="#help" title="このヘッドラインへのパーマリンク"></a></h2>
+<h2>Help<a class="headerlink" href="#help" title="この見出しへのパーマリンク"></a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ charites <span class="nb">help</span>
 Usage: charites <span class="o">[</span>options<span class="o">]</span> <span class="o">[</span>command<span class="o">]</span>
 
@@ -105,14 +107,14 @@ serve <span class="o">[</span>options<span class="o">]</span> &lt;source&gt;    
 </div>
 </section>
 <section id="checking-version">
-<h2>Checking version<a class="headerlink" href="#checking-version" title="このヘッドラインへのパーマリンク"></a></h2>
+<h2>Checking version<a class="headerlink" href="#checking-version" title="この見出しへのパーマリンク"></a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ charites --version
 <span class="m">0</span>.3.0
 </pre></div>
 </div>
 </section>
 <section id="inititalize-style-yml">
-<h2><cite>style.yml</cite> を初期化する<a class="headerlink" href="#inititalize-style-yml" title="このヘッドラインへのパーマリンク"></a></h2>
+<h2><cite>style.yml</cite> を初期化する<a class="headerlink" href="#inititalize-style-yml" title="この見出しへのパーマリンク"></a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ charites init -h
 Usage: charites init <span class="o">[</span>options<span class="o">]</span> &lt;file&gt;
 
@@ -129,7 +131,7 @@ Options:
 </div>
 </section>
 <section id="convert-existing-style-json">
-<h2>既存の <cite>style.json</cite> を変換する<a class="headerlink" href="#convert-existing-style-json" title="このヘッドラインへのパーマリンク"></a></h2>
+<h2>既存の <cite>style.json</cite> を変換する<a class="headerlink" href="#convert-existing-style-json" title="この見出しへのパーマリンク"></a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ charites convert -h
 Usage: charites convert <span class="o">[</span>options<span class="o">]</span> &lt;source&gt; <span class="o">[</span>destination<span class="o">]</span>
 
@@ -141,7 +143,7 @@ Options:
 </div>
 </section>
 <section id="build-style-json-from-style-yml">
-<h2><cite>style.yml</cite> から <cite>style.json</cite> にビルドする<a class="headerlink" href="#build-style-json-from-style-yml" title="このヘッドラインへのパーマリンク"></a></h2>
+<h2><cite>style.yml</cite> から <cite>style.json</cite> にビルドする<a class="headerlink" href="#build-style-json-from-style-yml" title="この見出しへのパーマリンク"></a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>charites build -h
 Usage: charites build <span class="o">[</span>options<span class="o">]</span> &lt;source&gt; <span class="o">[</span>destination<span class="o">]</span>
 
@@ -160,7 +162,7 @@ Options:
 <p>mapbox v2を使用している場合、デフォルトの設定ではなく、<cite>--provider mapbox</cite> を使用してmapboxサービスを指定してください。詳しくは <cite>serve</cite> コマンドセクションの <cite>--provider</cite> オプションを参照してください。</p>
 </section>
 <section id="realtime-editor-on-browser">
-<h2>ブラウザでのリアルタイムエディタ<a class="headerlink" href="#realtime-editor-on-browser" title="このヘッドラインへのパーマリンク"></a></h2>
+<h2>ブラウザでのリアルタイムエディタ<a class="headerlink" href="#realtime-editor-on-browser" title="この見出しへのパーマリンク"></a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>charites serve -h
 Usage: charites serve <span class="o">[</span>options<span class="o">]</span> &lt;source&gt;
 

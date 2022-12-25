@@ -14,7 +14,9 @@
         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -74,9 +76,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="index.html">Usage</a> &raquo;</li>
-      <li>Example 2: Import existing style.json and edit it with charites</li>
+      <li><a href="../index.html" class="icon icon-home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Usage</a></li>
+      <li class="breadcrumb-item active">Example 2: Import existing style.json and edit it with charites</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/unvt/charites/blob/main/docs/source/usage/example2.rst" class="fa fa-github"> Edit on GitHub</a>
       </li>
@@ -87,10 +89,10 @@
            <div itemprop="articleBody">
              
   <section id="example-2-import-existing-style-json-and-edit-it-with-charites">
-<h1>Example 2: Import existing style.json and edit it with charites<a class="headerlink" href="#example-2-import-existing-style-json-and-edit-it-with-charites" title="Permalink to this headline"></a></h1>
+<h1>Example 2: Import existing style.json and edit it with charites<a class="headerlink" href="#example-2-import-existing-style-json-and-edit-it-with-charites" title="Permalink to this heading"></a></h1>
 <p>This is an example of using charites for importing an existing style.json and editing it as yaml files, and exporting them back to a json style.</p>
 <section id="condition">
-<h2>Condition<a class="headerlink" href="#condition" title="Permalink to this headline"></a></h2>
+<h2>Condition<a class="headerlink" href="#condition" title="Permalink to this heading"></a></h2>
 <ul class="simple">
 <li><p>OS: Windows 10</p></li>
 <li><p>Charites version: 0.3.0</p></li>
@@ -98,9 +100,9 @@
 </ul>
 </section>
 <section id="steps">
-<h2>Steps<a class="headerlink" href="#steps" title="Permalink to this headline"></a></h2>
+<h2>Steps<a class="headerlink" href="#steps" title="Permalink to this heading"></a></h2>
 <section id="step-1-import-style-json-into-a-series-of-yaml-files">
-<h3>Step 1. Import style json into a series of YAML files<a class="headerlink" href="#step-1-import-style-json-into-a-series-of-yaml-files" title="Permalink to this headline"></a></h3>
+<h3>Step 1. Import style json into a series of YAML files<a class="headerlink" href="#step-1-import-style-json-into-a-series-of-yaml-files" title="Permalink to this heading"></a></h3>
 <p>If your style json is in the Internet, it may need to downloat it from the Internet before you convert because charites cannot directly convert json a file in the Internet. Use curl.exe (in WindowsPowershell) or curl (in bash environment).</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">curl</span><span class="o">.</span><span class="n">exe</span> <span class="o">-</span><span class="n">O</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">ubukawa</span><span class="o">.</span><span class="n">github</span><span class="o">.</span><span class="n">io</span><span class="o">/</span><span class="n">cmv</span><span class="o">-</span><span class="n">test</span><span class="o">/</span><span class="n">style1</span><span class="o">.</span><span class="n">json</span>
 <span class="n">charites</span> <span class="n">convert</span> <span class="n">style1</span><span class="o">.</span><span class="n">json</span> <span class="n">editing</span><span class="o">/</span><span class="n">style</span><span class="o">.</span><span class="n">yml</span>
@@ -116,7 +118,7 @@ In this case, we will have “style.yml” in “editing” directory together w
 <a class="reference internal image-reference" href="../_images/example02-004.png"><img alt="../_images/example02-004.png" class="align-center" src="../_images/example02-004.png" style="width: 474.75px; height: 95.25px;" /></a>
 </section>
 <section id="step-2-checking-an-overall-yaml-style-yml-in-this-case">
-<h3>Step 2. Checking an overall yaml (style.yml in this case)<a class="headerlink" href="#step-2-checking-an-overall-yaml-style-yml-in-this-case" title="Permalink to this headline"></a></h3>
+<h3>Step 2. Checking an overall yaml (style.yml in this case)<a class="headerlink" href="#step-2-checking-an-overall-yaml-style-yml-in-this-case" title="Permalink to this heading"></a></h3>
 <p>Check the style.yml by opening it with Notepad or any text editor. You will see it like this:</p>
 <a class="reference internal image-reference" href="../_images/example02-006.png"><img alt="../_images/example02-006.png" class="align-center" src="../_images/example02-006.png" style="width: 839.25px; height: 580.5px;" /></a>
 <p>Although it is not often seen, we need to check one thing. Sometimes, if id for each layer is too long, YAML automatically uses “&gt;-” and break the line to improve human’s readability. “&gt;-” would pretend an actual line break in YAML, however, it will cause some problem for Charites, so please fix line brakes with “&gt;-” in the layers if you find them.
@@ -134,7 +136,7 @@ This is often seen in style files from Esri vector tile because it has detailed 
 </div>
 </section>
 <section id="step-3-serve-yaml-files-for-live-preview">
-<h3>Step 3. Serve YAML files for live preview<a class="headerlink" href="#step-3-serve-yaml-files-for-live-preview" title="Permalink to this headline"></a></h3>
+<h3>Step 3. Serve YAML files for live preview<a class="headerlink" href="#step-3-serve-yaml-files-for-live-preview" title="Permalink to this heading"></a></h3>
 <p>Run the “charites serve” command to serve your YAML files in the localhost. By default, its port is 8080.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">charites</span> <span class="n">serve</span> <span class="n">editing</span><span class="o">/</span><span class="n">style</span><span class="o">.</span><span class="n">yml</span>
 </pre></div>
@@ -143,39 +145,39 @@ This is often seen in style files from Esri vector tile because it has detailed 
 <a class="reference internal image-reference" href="../_images/example02-012.png"><img alt="../_images/example02-012.png" class="align-center" src="../_images/example02-012.png" style="width: 1157.25px; height: 602.25px;" /></a>
 </section>
 <section id="step-4-editing-yaml-files-to-change-style">
-<h3>Step 4. Editing YAML files to change style<a class="headerlink" href="#step-4-editing-yaml-files-to-change-style" title="Permalink to this headline"></a></h3>
+<h3>Step 4. Editing YAML files to change style<a class="headerlink" href="#step-4-editing-yaml-files-to-change-style" title="Permalink to this heading"></a></h3>
 <p>You can change/edit the map style by editing YAML files. If you edit and save your update, charites automatically finds your updates to reflect them into the live view.</p>
 <a class="reference internal image-reference" href="../_images/example02-016.png"><img alt="../_images/example02-016.png" class="align-center" src="../_images/example02-016.png" style="width: 1075.5px; height: 566.25px;" /></a>
 <p>Here are some tips for efficient style editing.</p>
 <section id="tips-1-legend-control">
-<h4>(Tips 1) Legend control<a class="headerlink" href="#tips-1-legend-control" title="Permalink to this headline"></a></h4>
+<h4>(Tips 1) Legend control<a class="headerlink" href="#tips-1-legend-control" title="Permalink to this heading"></a></h4>
 <p>There is a legend control in the lower left of the screen. You can turn on/off any layers so that your edit would be easy. It will also help you to identify layers that should be edited.
 You can enlarge the window by clicking the button, and reduce its size by clicking “x” in the window. You can also choose to list only rendered layers or not in the window.</p>
 <a class="reference internal image-reference" href="../_images/example02-013.png"><img alt="../_images/example02-013.png" class="align-center" src="../_images/example02-013.png" style="width: 723.0px; height: 571.5px;" /></a>
 </section>
 <section id="tips-2-showing-tile-boundary">
-<h4>(Tips 2) Showing tile boundary<a class="headerlink" href="#tips-2-showing-tile-boundary" title="Permalink to this headline"></a></h4>
+<h4>(Tips 2) Showing tile boundary<a class="headerlink" href="#tips-2-showing-tile-boundary" title="Permalink to this heading"></a></h4>
 <p>It would be alos helpful to show the tile boundary. There are checkbox in the upper left, and you can turn on/off. You will see tile border and its xyx in z/x/y order together with tile size. This would be useful when you also think about optimization of your vector tile.</p>
 <a class="reference internal image-reference" href="../_images/example02-014.png"><img alt="../_images/example02-014.png" class="align-center" src="../_images/example02-014.png" style="width: 936.0px; height: 571.5px;" /></a>
 </section>
 <section id="tips-3-showing-collision-boxes">
-<h4>(Tips 3) Showing collision boxes<a class="headerlink" href="#tips-3-showing-collision-boxes" title="Permalink to this headline"></a></h4>
+<h4>(Tips 3) Showing collision boxes<a class="headerlink" href="#tips-3-showing-collision-boxes" title="Permalink to this heading"></a></h4>
 <p>It would be alos helpful to show the collision boxes. If a box is red, it indicates a collision with others. When you adjust label location/size, this is good.</p>
 <a class="reference internal image-reference" href="../_images/example02-015.png"><img alt="../_images/example02-015.png" class="align-center" src="../_images/example02-015.png" style="width: 936.0px; height: 571.5px;" /></a>
 </section>
 <section id="tips-4-use-of-comment-tag-to-specify-error">
-<h4>(Tips 4) Use of “#” (comment tag) to specify error<a class="headerlink" href="#tips-4-use-of-comment-tag-to-specify-error" title="Permalink to this headline"></a></h4>
+<h4>(Tips 4) Use of “#” (comment tag) to specify error<a class="headerlink" href="#tips-4-use-of-comment-tag-to-specify-error" title="Permalink to this heading"></a></h4>
 <p>If there is a layer contains some error, the web map may not appears. In such a case, use a YAML comment tag “#” to comment out a layer (or layers) to specify the layer contains an error. The comment tag is also useful to tentatively change colors, etc.</p>
 </section>
 <section id="tips-5-use-of-inclusion-of-other-yaml-file-for-efficinet-edit">
-<h4>(Tips 5) Use of inclusion of other YAML file for efficinet edit<a class="headerlink" href="#tips-5-use-of-inclusion-of-other-yaml-file-for-efficinet-edit" title="Permalink to this headline"></a></h4>
+<h4>(Tips 5) Use of inclusion of other YAML file for efficinet edit<a class="headerlink" href="#tips-5-use-of-inclusion-of-other-yaml-file-for-efficinet-edit" title="Permalink to this heading"></a></h4>
 <p>If you repeatedly use the same expression (color, font, etc) for several layers, it is conveninet to use a reference to a common expression. You can do it by using inclusion of  an independent YAML file with “!!inc/file hogehoge.yml”. This is particular important if you manage your style with YAML files.</p>
 <a class="reference internal image-reference" href="../_images/example02-017.png"><img alt="../_images/example02-017.png" class="align-center" src="../_images/example02-017.png" style="width: 891.0px; height: 483.0px;" /></a>
 <a class="reference internal image-reference" href="../_images/example02-018.png"><img alt="../_images/example02-018.png" class="align-center" src="../_images/example02-018.png" style="width: 912.0px; height: 558.0px;" /></a>
 </section>
 </section>
 <section id="step-5-exporting-style-json-from-yaml-files">
-<h3>Step 5. Exporting style json from YAML files<a class="headerlink" href="#step-5-exporting-style-json-from-yaml-files" title="Permalink to this headline"></a></h3>
+<h3>Step 5. Exporting style json from YAML files<a class="headerlink" href="#step-5-exporting-style-json-from-yaml-files" title="Permalink to this heading"></a></h3>
 <p>Once you have edited your style with YAML files, you can now export it back to json by running the following command.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">charites</span> <span class="n">build</span> <span class="n">editing</span><span class="o">/</span><span class="n">style</span><span class="o">.</span><span class="n">yml</span> <span class="n">out</span><span class="o">.</span><span class="n">json</span>
 </pre></div>

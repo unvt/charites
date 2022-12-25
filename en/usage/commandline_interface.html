@@ -14,7 +14,9 @@
         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -71,9 +73,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="index.html">Usage</a> &raquo;</li>
-      <li>Commandline Interface</li>
+      <li><a href="../index.html" class="icon icon-home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Usage</a></li>
+      <li class="breadcrumb-item active">Commandline Interface</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/unvt/charites/blob/main/docs/source/usage/commandline_interface.rst" class="fa fa-github"> Edit on GitHub</a>
       </li>
@@ -84,9 +86,9 @@
            <div itemprop="articleBody">
              
   <section id="commandline-interface">
-<h1>Commandline Interface<a class="headerlink" href="#commandline-interface" title="Permalink to this headline"></a></h1>
+<h1>Commandline Interface<a class="headerlink" href="#commandline-interface" title="Permalink to this heading"></a></h1>
 <section id="help">
-<h2>Help<a class="headerlink" href="#help" title="Permalink to this headline"></a></h2>
+<h2>Help<a class="headerlink" href="#help" title="Permalink to this heading"></a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ charites <span class="nb">help</span>
 Usage: charites <span class="o">[</span>options<span class="o">]</span> <span class="o">[</span>command<span class="o">]</span>
 
@@ -104,14 +106,14 @@ serve <span class="o">[</span>options<span class="o">]</span> &lt;source&gt;    
 </div>
 </section>
 <section id="checking-version">
-<h2>Checking version<a class="headerlink" href="#checking-version" title="Permalink to this headline"></a></h2>
+<h2>Checking version<a class="headerlink" href="#checking-version" title="Permalink to this heading"></a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ charites --version
 <span class="m">0</span>.3.0
 </pre></div>
 </div>
 </section>
 <section id="inititalize-style-yml">
-<h2>Inititalize <cite>style.yml</cite><a class="headerlink" href="#inititalize-style-yml" title="Permalink to this headline"></a></h2>
+<h2>Inititalize <cite>style.yml</cite><a class="headerlink" href="#inititalize-style-yml" title="Permalink to this heading"></a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ charites init -h
 Usage: charites init <span class="o">[</span>options<span class="o">]</span> &lt;file&gt;
 
@@ -128,7 +130,7 @@ Options:
 </div>
 </section>
 <section id="convert-existing-style-json">
-<h2>Convert existing <cite>style.json</cite><a class="headerlink" href="#convert-existing-style-json" title="Permalink to this headline"></a></h2>
+<h2>Convert existing <cite>style.json</cite><a class="headerlink" href="#convert-existing-style-json" title="Permalink to this heading"></a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ charites convert -h
 Usage: charites convert <span class="o">[</span>options<span class="o">]</span> &lt;source&gt; <span class="o">[</span>destination<span class="o">]</span>
 
@@ -140,7 +142,7 @@ Options:
 </div>
 </section>
 <section id="build-style-json-from-style-yml">
-<h2>Build <cite>style.json</cite> from <cite>style.yml</cite><a class="headerlink" href="#build-style-json-from-style-yml" title="Permalink to this headline"></a></h2>
+<h2>Build <cite>style.json</cite> from <cite>style.yml</cite><a class="headerlink" href="#build-style-json-from-style-yml" title="Permalink to this heading"></a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>charites build -h
 Usage: charites build <span class="o">[</span>options<span class="o">]</span> &lt;source&gt; <span class="o">[</span>destination<span class="o">]</span>
 
@@ -159,7 +161,7 @@ Options:
 <p>if you use mapbox v2 for your style, please use <cite>–provider mapbox</cite> to specify mapbox service rather than default. Please see <cite>–provider</cite> option at <cite>serve</cite> command section.</p>
 </section>
 <section id="realtime-editor-on-browser">
-<h2>Realtime editor on browser<a class="headerlink" href="#realtime-editor-on-browser" title="Permalink to this headline"></a></h2>
+<h2>Realtime editor on browser<a class="headerlink" href="#realtime-editor-on-browser" title="Permalink to this heading"></a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>charites serve -h
 Usage: charites serve <span class="o">[</span>options<span class="o">]</span> &lt;source&gt;
 
