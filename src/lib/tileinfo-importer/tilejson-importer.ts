@@ -3,7 +3,7 @@ import { TileJSON } from '../../types'
 import {
   SourceSpecification,
   LayerSpecification,
-} from '@maplibre/maplibre-gl-style-spec/types'
+} from '@maplibre/maplibre-gl-style-spec'
 import { BaseImporter, TileInfoJSONResponse } from './base-importer'
 
 export class TileJSONImporter extends BaseImporter {

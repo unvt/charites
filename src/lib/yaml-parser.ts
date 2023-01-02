@@ -1,6 +1,6 @@
 import fs from 'fs'
 import YAML from 'js-yaml'
-import { StyleSpecification } from '@maplibre/maplibre-gl-style-spec/types'
+import { StyleSpecification } from '@maplibre/maplibre-gl-style-spec'
 
 const yamlinc = require('yaml-include')
 

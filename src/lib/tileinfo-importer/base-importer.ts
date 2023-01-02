@@ -4,7 +4,7 @@ import {
   SourceSpecification,
   LayerSpecification,
   VectorSourceSpecification,
-} from '@maplibre/maplibre-gl-style-spec/types'
+} from '@maplibre/maplibre-gl-style-spec'
 
 export type TileInfoJSONResponse = {
   sources: { [key: string]: SourceSpecification | VectorSourceSpecification }
