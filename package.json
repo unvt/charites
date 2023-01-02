@@ -32,7 +32,7 @@
     "yaml-include": "^1.2.1"
   },
   "devDependencies": {
-    "@playwright/test": "^1.28.1",
+    "@playwright/test": "^1.29.1",
     "@types/chai": "^4.2.11",
     "@types/chai-as-promised": "^7.1.5",
     "@types/fs-extra": "^9.0.13",
