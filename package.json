@@ -28,7 +28,7 @@
     "jsonminify": "^0.4.1",
     "node-watch": "^0.7.2",
     "open": "^8.2.1",
-    "ws": "^8.2.2",
+    "ws": "^8.11.0",
     "yaml-include": "^1.2.1"
   },
   "devDependencies": {
@@ -40,7 +40,7 @@
     "@types/mapbox__point-geometry": "^0.1.2",
     "@types/mocha": "^10.0.1",
     "@types/node": "^18.11.18",
-    "@types/ws": "^8.2.0",
+    "@types/ws": "^8.5.4",
     "@typescript-eslint/eslint-plugin": "^5.47.1",
     "@typescript-eslint/parser": "^5.47.1",
     "chai": "^4.3.7",
