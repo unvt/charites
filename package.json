@@ -17,10 +17,10 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "@mapbox/mapbox-gl-style-spec": "^13.22.0",
-    "@maplibre/maplibre-gl-style-spec": "^14.0.2",
+    "@mapbox/mapbox-gl-style-spec": "^13.27.0",
+    "@maplibre/maplibre-gl-style-spec": "^17.0.2",
     "@types/jsonminify": "^0.4.1",
-    "@unvt/sprite-one": "^0.0.8",
+    "@unvt/sprite-one": "^0.0.9",
     "axios": "^0.24.0",
     "commander": "^8.2.0",
     "glob": "^7.2.0",
@@ -37,6 +37,7 @@
     "@types/chai-as-promised": "^7.1.5",
     "@types/fs-extra": "^9.0.13",
     "@types/js-yaml": "^4.0.3",
+    "@types/mapbox__point-geometry": "^0.1.2",
     "@types/mocha": "^7.0.2",
     "@types/node": "^14.0.14",
     "@types/ws": "^8.2.0",
@@ -53,6 +54,6 @@
     "node-abort-controller": "^3.0.1",
     "prettier": "^2.5.0",
     "ts-node": "^8.10.2",
-    "typescript": "^3.9.5"
+    "typescript": "^4.9.4"
   }
 }

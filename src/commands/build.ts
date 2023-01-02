@@ -6,7 +6,7 @@ import { buildSprite } from '../lib/build-sprite'
 import { getSpriteSlug } from '../lib/get-sprite-slug'
 import { defaultValues } from '../lib/defaultValues'
 import jsonminify from 'jsonminify'
-import { StyleSpecification } from '@maplibre/maplibre-gl-style-spec/types'
+import { StyleSpecification } from '@maplibre/maplibre-gl-style-spec'
 import watch from 'node-watch'
 
 export interface buildOptions {

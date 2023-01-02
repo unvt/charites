@@ -1,4 +1,4 @@
-import { StyleSpecification } from '@maplibre/maplibre-gl-style-spec/types'
+import { StyleSpecification } from '@maplibre/maplibre-gl-style-spec'
 
 export function getSpriteSlug(style: StyleSpecification): string | false {
   if (!style.hasOwnProperty('sprite')) {

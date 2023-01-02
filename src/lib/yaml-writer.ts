@@ -4,7 +4,7 @@ import YAML from 'js-yaml'
 import {
   StyleSpecification,
   LayerSpecification,
-} from '@maplibre/maplibre-gl-style-spec/types'
+} from '@maplibre/maplibre-gl-style-spec'
 
 export const writeYaml = (
   destinationPath: string,

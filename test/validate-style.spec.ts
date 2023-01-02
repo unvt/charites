@@ -1,5 +1,5 @@
 import { assert } from 'chai'
-import { StyleSpecification } from '@maplibre/maplibre-gl-style-spec/types'
+import { StyleSpecification } from '@maplibre/maplibre-gl-style-spec'
 
 import { validateStyle } from '../src/lib/validate-style'
 

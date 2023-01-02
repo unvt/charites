@@ -1,4 +1,4 @@
-import { StyleSpecification } from '@maplibre/maplibre-gl-style-spec/types'
+import { StyleSpecification } from '@maplibre/maplibre-gl-style-spec'
 import { writeYaml } from '../lib/yaml-writer'
 import {
   TileJSONImporter,
