@@ -107,16 +107,25 @@ export function buildWatch(
     sourcePath = source
   }
   console.log(path.dirname(sourcePath))
+
+  const watchCallback = async (event: 'update' | 'remove', file: string) => {
+    console.log(`${(event || '').toUpperCase()}: ${file}`)
+    try {
+      await build(source, destination, options)
+    } catch (e) {
+      // Nothing to do
+      console.warn(
+        `WARN: Ignored error in ${file}:\n${e}\nFix the errors above, and try saving the file again.`,
+      )
+    }
+  }
+
+  // Trigger the watch callback first manually, so the user doesn't need to save the file to create the initial file.
+  watchCallback('update', sourcePath)
+
   return watch(
     path.dirname(sourcePath),
     { recursive: true, filter: /\.yml$/ },
-    (event, file) => {
-      console.log(`${(event || '').toUpperCase()}: ${file}`)
-      try {
-        build(source, destination, options)
-      } catch (e) {
-        // Nothing to do
-      }
-    },
+    watchCallback,
   )
 }
