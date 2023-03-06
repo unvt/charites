@@ -11,7 +11,8 @@ on:
       - '**'
   workflow_dispatch: {}
   schedule:
-    - cron: "0 0 * * *"
+    - cron: "0 0 * * 1" #once a week (Monday)
+#    - cron: "0 0 * * *"
 
 jobs:
   build:
