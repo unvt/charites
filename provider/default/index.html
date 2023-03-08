@@ -7,6 +7,7 @@
     <title>Charites Live Preview</title>
     <script src='https://unpkg.com/maplibre-gl@2.4.0/dist/maplibre-gl.js'></script>
     <script src="https://watergis.github.io/maplibre-gl-legend/maplibre-gl-legend.js"></script>
+    <script src="https://unpkg.com/pmtiles@2.7.0/dist/index.js"></script>
   </head>
   <body>
     <div class="overlay">
@@ -17,6 +18,10 @@
       <label><input type="checkbox" id="showPadding">show Padding</label>
     </div>
     <div id="map"></div>
+    <script type="text/javascript">
+      let protocol = new pmtiles.Protocol()
+        maplibregl.addProtocol('pmtiles', protocol.tile)
+      </script>
     <script type="text/javascript" src="/shared.js"></script>
     <script type="text/javascript" src="/app.js"></script>
   </body>
