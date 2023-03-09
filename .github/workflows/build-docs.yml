@@ -35,6 +35,11 @@ jobs:
         pip install pipenv
         pipenv install --system
 
+    - name: Install transifex CLI
+      run: curl -o- https://raw.githubusercontent.com/transifex/cli/master/install.sh | bash
+      working-directory: /tmp/tx
+      shell: bash
+
     - name: Push translations
       if: ${{ github.ref == 'refs/heads/main' }}
       run: |
@@ -44,7 +49,7 @@ jobs:
         if [[ -z "${TX_TOKEN}" ]]; then
           echo "TX_TOKEN not set, skip tx pull"
         else
-          tx push -s
+          /tmp/tx/tx --token "${TX_TOKEN}" push -s
         fi
         make clean
 
@@ -55,7 +60,7 @@ jobs:
         if [[ -z "${TX_TOKEN}" ]]; then
           echo "TX_TOKEN not set, skip tx pull"
         else
-          make transifex_pull
+          /tmp/tx/tx --token "${TX_TOKEN}" pull -a
         fi
 
     - name: Build
