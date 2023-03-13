@@ -39,28 +39,19 @@ jobs:
       run: curl -o- https://raw.githubusercontent.com/transifex/cli/master/install.sh | bash
       shell: bash
 
+    # https://github.com/transifex/cli-action
     - name: Push translations
       if: ${{ github.ref == 'refs/heads/main' }}
-      run: |
-        cd docs
-        set -e
-        make gettext
-        if [[ -z "${TX_TOKEN}" ]]; then
-          echo "TX_TOKEN not set, skip tx pull"
-        else
-          tx --token "${TX_TOKEN}" push -s
-        fi
-        make clean
+      uses: transifex/cli-action@v1
+        with:
+          token: ${{ secrets.TX_TOKEN }}
+      args: push -s
 
     - name: Pull translations
-      run: |
-        cd docs
-        set -e
-        if [[ -z "${TX_TOKEN}" ]]; then
-          echo "TX_TOKEN not set, skip tx pull"
-        else
-          tx --token "${TX_TOKEN}" pull -a
-        fi
+      uses: transifex/cli-action@v1
+        with:
+          token: ${{ secrets.TX_TOKEN }}
+      args: pull -a
 
     - name: Build
       run: |
