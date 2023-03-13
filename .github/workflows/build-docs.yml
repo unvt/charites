@@ -13,12 +13,13 @@ on:
   schedule:
     - cron: "0 0 * * *"
 
+env:
+  TX_TOKEN: ${{ secrets.TX_TOKEN }}
+
 jobs:
   build:
 
     runs-on: ubuntu-latest
-    env:
-      TX_TOKEN: ${{ secrets.TX_TOKEN }}
 
     steps:
     - uses: actions/checkout@v3
@@ -35,8 +36,13 @@ jobs:
         pip install pipenv
         pipenv install --system
 
+    - name: Create temporary directory to store the CLI
+      run: mkdir /tmp/tx
+      shell: bash
+
     - name: Install transifex CLI
       run: curl -o- https://raw.githubusercontent.com/transifex/cli/master/install.sh | bash
+      working-directory: /tmp/tx
       shell: bash
 
     - name: Push translations
@@ -48,7 +54,7 @@ jobs:
         if [[ -z "${TX_TOKEN}" ]]; then
           echo "TX_TOKEN not set, skip tx pull"
         else
-          tx --token "${TX_TOKEN}" push -s
+          /tmp/tx/tx push --token "${TX_TOKEN}" -s
         fi
         make clean
 
@@ -59,7 +65,7 @@ jobs:
         if [[ -z "${TX_TOKEN}" ]]; then
           echo "TX_TOKEN not set, skip tx pull"
         else
-          tx --token "${TX_TOKEN}" pull -a
+          /tmp/tx/tx pull --token "${TX_TOKEN}" -a
         fi
 
     - name: Build
