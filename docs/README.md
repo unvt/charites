@@ -28,6 +28,12 @@ open http://127.0.0.1:8000
 
 ## for i18n
 
+Install [transifex CLI](https://developers.transifex.com/docs/cli) in your local machine
+
+```bash
+curl -o- https://raw.githubusercontent.com/transifex/cli/master/install.sh | bash
+```
+
 ```bash
 # initialise (only first time)
 $tx init
