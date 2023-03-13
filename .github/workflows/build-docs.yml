@@ -13,12 +13,13 @@ on:
   schedule:
     - cron: "0 0 * * *"
 
+env:
+  TX_TOKEN: ${{ secrets.TX_TOKEN }}
+
 jobs:
   build:
 
     runs-on: ubuntu-latest
-    env:
-      TX_TOKEN: ${{ secrets.TX_TOKEN }}
 
     steps:
     - uses: actions/checkout@v3
