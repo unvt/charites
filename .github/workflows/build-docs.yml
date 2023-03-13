@@ -39,13 +39,13 @@ jobs:
       uses: transifex/cli-action@v1
       with:
         token: ${{ secrets.TX_TOKEN }}
-      args: push -s
+        args: push -s
 
     - name: Pull translations
       uses: transifex/cli-action@v1
       with:
         token: ${{ secrets.TX_TOKEN }}
-      args: pull -a
+        args: pull -a
 
     - name: Build
       run: |
