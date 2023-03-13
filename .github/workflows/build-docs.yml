@@ -17,8 +17,6 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-    env:
-      TX_TOKEN: ${{ secrets.TX_TOKEN }}
 
     steps:
     - uses: actions/checkout@v3
@@ -39,14 +37,14 @@ jobs:
     - name: Push translations
       if: ${{ github.ref == 'refs/heads/main' }}
       uses: transifex/cli-action@v1
-        with:
-          token: ${{ secrets.TX_TOKEN }}
+      with:
+        token: ${{ secrets.TX_TOKEN }}
       args: push -s
 
     - name: Pull translations
       uses: transifex/cli-action@v1
-        with:
-          token: ${{ secrets.TX_TOKEN }}
+      with:
+        token: ${{ secrets.TX_TOKEN }}
       args: pull -a
 
     - name: Build
