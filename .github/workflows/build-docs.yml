@@ -4,8 +4,8 @@ on:
   push:
     branches:
       - main
-    paths:
-      - "docs/**"
+    # paths:
+    #   - "docs/**"
   pull_request:
     branches:
       - '**'
@@ -37,6 +37,7 @@ jobs:
 
     - name: Install transifex CLI
       run: curl -o- https://raw.githubusercontent.com/transifex/cli/master/install.sh | bash
+      working-directory: tx
       shell: bash
 
     - name: Push translations
@@ -48,7 +49,7 @@ jobs:
         if [[ -z "${TX_TOKEN}" ]]; then
           echo "TX_TOKEN not set, skip tx pull"
         else
-          tx --token "${TX_TOKEN}" push -s
+          tx/tx push --token "${TX_TOKEN}" -s
         fi
         make clean
 
@@ -59,7 +60,7 @@ jobs:
         if [[ -z "${TX_TOKEN}" ]]; then
           echo "TX_TOKEN not set, skip tx pull"
         else
-          tx --token "${TX_TOKEN}" pull -a
+          tx/tx pull --token "${TX_TOKEN}" -a
         fi
 
     - name: Build
