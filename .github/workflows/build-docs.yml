@@ -45,7 +45,7 @@ jobs:
       uses: transifex/cli-action@v1
       with:
         token: ${{ secrets.TX_TOKEN }}
-        args: pull -a
+        args: pull
 
     - name: Build
       run: |
