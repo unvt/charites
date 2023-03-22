@@ -54,7 +54,7 @@ jobs:
         if [[ -z "${TX_TOKEN}" ]]; then
           echo "TX_TOKEN not set, skip tx pull"
         else
-          /tmp/tx/tx push --token "${TX_TOKEN}" -s
+          /tmp/tx/tx --token "${TX_TOKEN}" push -s
         fi
         make clean
 
@@ -65,7 +65,7 @@ jobs:
         if [[ -z "${TX_TOKEN}" ]]; then
           echo "TX_TOKEN not set, skip tx pull"
         else
-          /tmp/tx/tx pull --token "${TX_TOKEN}" -a
+          /tmp/tx/tx --token "${TX_TOKEN}" pull -a
         fi
 
     - name: Build
