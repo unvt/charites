@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="ar" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>charites on unvt/nanban &mdash; charites 0.2.0 documentation</title>
@@ -11,10 +11,8 @@
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
         <script src="../_static/sphinx_highlight.js"></script>
         <script src="../_static/translations.js"></script>
@@ -30,11 +28,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="../index.html" class="icon icon-home"> charites
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            charites
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -66,7 +68,7 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home"></a></li>
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="index.html">Installing Charites</a></li>
       <li class="breadcrumb-item active">charites on unvt/nanban</li>
       <li class="wy-breadcrumbs-aside">
@@ -81,8 +83,8 @@
   <section id="charites-on-unvt-nanban">
 <h1>charites on unvt/nanban<a class="headerlink" href="#charites-on-unvt-nanban" title="Permalink to this heading"></a></h1>
 <p>Charites runs on Docker with one of UNVT tools named <a class="reference external" href="https://github.com/unvt/nanban">unvt/nanban</a>. Charites is already installed in the tool, so you can use it by just staring unvt/nanban.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ docker run -ti --rm -v <span class="si">${</span><span class="nv">PWD</span><span class="si">}</span>:/data -p <span class="m">8080</span>:8080 unvt/nanban
-$ <span class="nb">cd</span> /data
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </span>-ti<span class="w"> </span>--rm<span class="w"> </span>-v<span class="w"> </span><span class="si">${</span><span class="nv">PWD</span><span class="si">}</span>:/data<span class="w"> </span>-p<span class="w"> </span><span class="m">8080</span>:8080<span class="w"> </span>unvt/nanban
+$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>/data
 </pre></div>
 </div>
 </section>

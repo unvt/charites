@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="ja" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>開発 &mdash; charites 0.2.0 ドキュメント</title>
@@ -11,10 +11,8 @@
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
         <script src="../_static/sphinx_highlight.js"></script>
         <script src="../_static/translations.js"></script>
@@ -29,11 +27,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="../index.html" class="icon icon-home"> charites
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            charites
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -63,7 +65,7 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home"></a></li>
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
       <li class="breadcrumb-item active">開発</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/unvt/charites/blob/main/docs/source/development/index.rst" class="fa fa-github"> Edit on GitHub</a>
@@ -79,31 +81,31 @@
 <section id="build-from-source-code">
 <h2>ソースコードからビルドする<a class="headerlink" href="#build-from-source-code" title="この見出しへのパーマリンク"></a></h2>
 <p>charitesをソースコードからビルドしてインストールする手順を以下に説明します。</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git clone https://github.com/unvt/charites.git
-$ <span class="nb">cd</span> charites
-$ npm install
-$ npm run build
-$ npm install -g .
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/unvt/charites.git
+$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>charites
+$<span class="w"> </span>npm<span class="w"> </span>install
+$<span class="w"> </span>npm<span class="w"> </span>run<span class="w"> </span>build
+$<span class="w"> </span>npm<span class="w"> </span>install<span class="w"> </span>-g<span class="w"> </span>.
 </pre></div>
 </div>
 <div class="admonition warning">
 <p class="admonition-title">警告</p>
 <p>すでに他のバージョンの <cite>charites</cite> を npm からグローバルにインストールしている場合、いくつかのコンフリクトが発生する可能性があります。開発版をインストールする前に、以下のコマンドを使用して、グローバルからすべてのcharitesをアンインストールしてください。</p>
 </div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>npm uninstall -g .
-npm uninstall -g @unvt/charites
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>npm<span class="w"> </span>uninstall<span class="w"> </span>-g<span class="w"> </span>.
+npm<span class="w"> </span>uninstall<span class="w"> </span>-g<span class="w"> </span>@unvt/charites
 </pre></div>
 </div>
 <p>次に、以下を実行します。</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ charites <span class="nb">help</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>charites<span class="w"> </span><span class="nb">help</span>
 </pre></div>
 </div>
 </section>
 <section id="releasing-this-package">
 <h2>パッケージのリリースをするには<a class="headerlink" href="#releasing-this-package" title="この見出しへのパーマリンク"></a></h2>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ npm version patch <span class="c1"># Or `minor` or `major`</span>
-$ git push
-$ git push origin &lt;version&gt;
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>npm<span class="w"> </span>version<span class="w"> </span>patch<span class="w"> </span><span class="c1"># Or `minor` or `major`</span>
+$<span class="w"> </span>git<span class="w"> </span>push
+$<span class="w"> </span>git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>&lt;version&gt;
 </pre></div>
 </div>
 </section>

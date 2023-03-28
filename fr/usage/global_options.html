@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="fr" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Global configuration &mdash; Documentation charites 0.2.0</title>
@@ -11,10 +11,8 @@
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
         <script src="../_static/sphinx_highlight.js"></script>
         <script src="../_static/translations.js"></script>
@@ -30,11 +28,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="../index.html" class="icon icon-home"> charites
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            charites
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Rechercher docs" />
+    <input type="text" name="q" placeholder="Rechercher docs" aria-label="Rechercher docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -66,7 +68,7 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home"></a></li>
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="index.html">Usage</a></li>
       <li class="breadcrumb-item active">Global configuration</li>
       <li class="wy-breadcrumbs-aside">
@@ -86,8 +88,8 @@
 </pre></div>
 </div>
 <p>Global options can be specified as follows:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>provider: mapbox
-mapboxAccessToken: xxxx
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>provider:<span class="w"> </span>mapbox
+mapboxAccessToken:<span class="w"> </span>xxxx
 </pre></div>
 </div>
 <p>With the example above, you get the same result as <cite>charites serve –provider mapbox –mapbox-access-token xxxx</cite>.</p>

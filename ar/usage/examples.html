@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="ar" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Examples &mdash; charites 0.2.0 documentation</title>
@@ -11,10 +11,8 @@
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
         <script src="../_static/sphinx_highlight.js"></script>
         <script src="../_static/translations.js"></script>
@@ -30,11 +28,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="../index.html" class="icon icon-home"> charites
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            charites
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -72,7 +74,7 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home"></a></li>
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="index.html">Usage</a></li>
       <li class="breadcrumb-item active">Examples</li>
       <li class="wy-breadcrumbs-aside">
@@ -91,10 +93,10 @@
 <h2>init<a class="headerlink" href="#init" title="Permalink to this heading"></a></h2>
 <p>Initialize <cite>style.yml</cite> from either TileJSON or metadata.json.
 If you do not specify TileJSON URL, it will generate empty <cite>style.yml</cite>.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>charites init style.yml --tilejson-urls https://raw.githubusercontent.com/mapbox/tilejson-spec/master/3.0.0/example/osm.json
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>charites<span class="w"> </span>init<span class="w"> </span>style.yml<span class="w"> </span>--tilejson-urls<span class="w"> </span>https://raw.githubusercontent.com/mapbox/tilejson-spec/master/3.0.0/example/osm.json
 </pre></div>
 </div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>charites init style.yml --metadatajson-urls https://optgeo.github.io/kokoromi-rw/zxy/metadata.json
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>charites<span class="w"> </span>init<span class="w"> </span>style.yml<span class="w"> </span>--metadatajson-urls<span class="w"> </span>https://optgeo.github.io/kokoromi-rw/zxy/metadata.json
 </pre></div>
 </div>
 <p>In <cite>init</cite> command, you can just generate a single YAML instead of creating layer configuration files separately when you add optional <cite>-c</cite> or <cite>--composite-layers</cite> parameter.</p>
@@ -102,36 +104,36 @@ If you do not specify TileJSON URL, it will generate empty <cite>style.yml</cite
 <section id="build">
 <h2>build<a class="headerlink" href="#build" title="Permalink to this heading"></a></h2>
 <p>Build <cite>style.json</cite> from <cite>style.yml</cite>:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>charites build style.yml style.json
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>charites<span class="w"> </span>build<span class="w"> </span>style.yml<span class="w"> </span>style.json
 </pre></div>
 </div>
 <p>Add <code class="docutils literal notranslate"><span class="pre">-c</span></code> or <code class="docutils literal notranslate"><span class="pre">--compact-output</span></code> to minify the JSON</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>charites build style.yml style.json -c
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>charites<span class="w"> </span>build<span class="w"> </span>style.yml<span class="w"> </span>style.json<span class="w"> </span>-c
 </pre></div>
 </div>
 <p>Add <code class="docutils literal notranslate"><span class="pre">--sprite-input</span></code> and <code class="docutils literal notranslate"><span class="pre">--sprite-output</span></code> to build svg files for map icons.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>charites build style.yml style.json --sprite-input icons/ --sprite-output public/
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>charites<span class="w"> </span>build<span class="w"> </span>style.yml<span class="w"> </span>style.json<span class="w"> </span>--sprite-input<span class="w"> </span>icons/<span class="w"> </span>--sprite-output<span class="w"> </span>public/
 </pre></div>
 </div>
 </section>
 <section id="convert-style-json-to-style-yml">
 <h2>Convert <cite>style.json</cite> to <cite>style.yml</cite><a class="headerlink" href="#convert-style-json-to-style-yml" title="Permalink to this heading"></a></h2>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>charites convert style.json style.yml
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>charites<span class="w"> </span>convert<span class="w"> </span>style.json<span class="w"> </span>style.yml
 </pre></div>
 </div>
 <p>Load JSON as a standard input to generate <cite>style.yml</cite>:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl http://example.com/style.json <span class="p">|</span> charites convert - style.yml
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>http://example.com/style.json<span class="w"> </span><span class="p">|</span><span class="w"> </span>charites<span class="w"> </span>convert<span class="w"> </span>-<span class="w"> </span>style.yml
 </pre></div>
 </div>
 </section>
 <section id="serve">
 <h2>serve<a class="headerlink" href="#serve" title="Permalink to this heading"></a></h2>
 <p>Launch a live preview of your map style in your local environment:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>charites serve style.yml
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>charites<span class="w"> </span>serve<span class="w"> </span>style.yml
 </pre></div>
 </div>
 <p>For Mapbox users:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>charites serve style.yml --provider mapbox --mapbox-access-token xxxx
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>charites<span class="w"> </span>serve<span class="w"> </span>style.yml<span class="w"> </span>--provider<span class="w"> </span>mapbox<span class="w"> </span>--mapbox-access-token<span class="w"> </span>xxxx
 </pre></div>
 </div>
 </section>

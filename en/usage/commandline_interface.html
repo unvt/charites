@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Commandline Interface &mdash; charites 0.2.0 documentation</title>
@@ -11,10 +11,8 @@
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
         <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/js/theme.js"></script>
@@ -29,11 +27,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="../index.html" class="icon icon-home"> charites
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            charites
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -73,7 +75,7 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home"></a></li>
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="index.html">Usage</a></li>
       <li class="breadcrumb-item active">Commandline Interface</li>
       <li class="wy-breadcrumbs-aside">
@@ -89,91 +91,91 @@
 <h1>Commandline Interface<a class="headerlink" href="#commandline-interface" title="Permalink to this heading"></a></h1>
 <section id="help">
 <h2>Help<a class="headerlink" href="#help" title="Permalink to this heading"></a></h2>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ charites <span class="nb">help</span>
-Usage: charites <span class="o">[</span>options<span class="o">]</span> <span class="o">[</span>command<span class="o">]</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>charites<span class="w"> </span><span class="nb">help</span>
+Usage:<span class="w"> </span>charites<span class="w"> </span><span class="o">[</span>options<span class="o">]</span><span class="w"> </span><span class="o">[</span>command<span class="o">]</span>
 
 Options:
--v, --version                           output the version number
--h, --help                              display <span class="nb">help</span> <span class="k">for</span> <span class="nb">command</span>
+-v,<span class="w"> </span>--version<span class="w">                           </span>output<span class="w"> </span>the<span class="w"> </span>version<span class="w"> </span>number
+-h,<span class="w"> </span>--help<span class="w">                              </span>display<span class="w"> </span><span class="nb">help</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nb">command</span>
 
 Commands:
-init <span class="o">[</span>options<span class="o">]</span> &lt;file&gt;                   initialize a style YAML
-convert &lt;source&gt; <span class="o">[</span>destination<span class="o">]</span>          convert the style JSON to YAML
-build <span class="o">[</span>options<span class="o">]</span> &lt;source&gt; <span class="o">[</span>destination<span class="o">]</span>  build a style JSON from the YAML
-serve <span class="o">[</span>options<span class="o">]</span> &lt;source&gt;                serve your map locally
-<span class="nb">help</span> <span class="o">[</span>command<span class="o">]</span>                          display <span class="nb">help</span> <span class="k">for</span> <span class="nb">command</span>
+init<span class="w"> </span><span class="o">[</span>options<span class="o">]</span><span class="w"> </span>&lt;file&gt;<span class="w">                   </span>initialize<span class="w"> </span>a<span class="w"> </span>style<span class="w"> </span>YAML
+convert<span class="w"> </span>&lt;source&gt;<span class="w"> </span><span class="o">[</span>destination<span class="o">]</span><span class="w">          </span>convert<span class="w"> </span>the<span class="w"> </span>style<span class="w"> </span>JSON<span class="w"> </span>to<span class="w"> </span>YAML
+build<span class="w"> </span><span class="o">[</span>options<span class="o">]</span><span class="w"> </span>&lt;source&gt;<span class="w"> </span><span class="o">[</span>destination<span class="o">]</span><span class="w">  </span>build<span class="w"> </span>a<span class="w"> </span>style<span class="w"> </span>JSON<span class="w"> </span>from<span class="w"> </span>the<span class="w"> </span>YAML
+serve<span class="w"> </span><span class="o">[</span>options<span class="o">]</span><span class="w"> </span>&lt;source&gt;<span class="w">                </span>serve<span class="w"> </span>your<span class="w"> </span>map<span class="w"> </span>locally
+<span class="nb">help</span><span class="w"> </span><span class="o">[</span>command<span class="o">]</span><span class="w">                          </span>display<span class="w"> </span><span class="nb">help</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nb">command</span>
 </pre></div>
 </div>
 </section>
 <section id="checking-version">
 <h2>Checking version<a class="headerlink" href="#checking-version" title="Permalink to this heading"></a></h2>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ charites --version
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>charites<span class="w"> </span>--version
 <span class="m">0</span>.3.0
 </pre></div>
 </div>
 </section>
 <section id="inititalize-style-yml">
 <h2>Inititalize <cite>style.yml</cite><a class="headerlink" href="#inititalize-style-yml" title="Permalink to this heading"></a></h2>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ charites init -h
-Usage: charites init <span class="o">[</span>options<span class="o">]</span> &lt;file&gt;
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>charites<span class="w"> </span>init<span class="w"> </span>-h
+Usage:<span class="w"> </span>charites<span class="w"> </span>init<span class="w"> </span><span class="o">[</span>options<span class="o">]</span><span class="w"> </span>&lt;file&gt;
 
-initialize a style YAML
+initialize<span class="w"> </span>a<span class="w"> </span>style<span class="w"> </span>YAML
 
 Options:
--t, --tilejson-urls &lt;tilejson_urls&gt;          an URL <span class="k">for</span> TileJSON. It will create empty layers from vector_layers property of TileJSON. Please use
-                                            comma <span class="o">(</span>,<span class="o">)</span> <span class="k">in</span> <span class="k">case</span> multiple TileJSONs require.
--m, --metadatajson-urls &lt;metadatajson_urls&gt;  an URL <span class="k">for</span> metadata.json. It will create empty layers from vector_layers property of metadata.json.
-                                            Please use comma <span class="o">(</span>,<span class="o">)</span> <span class="k">in</span> <span class="k">case</span> multiple metadata.json require.
--c, --composite-layers                       If it is true, a single YAML will be generated with multiple layers. Default is false.
--h, --help                                   display <span class="nb">help</span> <span class="k">for</span> <span class="nb">command</span>
+-t,<span class="w"> </span>--tilejson-urls<span class="w"> </span>&lt;tilejson_urls&gt;<span class="w">          </span>an<span class="w"> </span>URL<span class="w"> </span><span class="k">for</span><span class="w"> </span>TileJSON.<span class="w"> </span>It<span class="w"> </span>will<span class="w"> </span>create<span class="w"> </span>empty<span class="w"> </span>layers<span class="w"> </span>from<span class="w"> </span>vector_layers<span class="w"> </span>property<span class="w"> </span>of<span class="w"> </span>TileJSON.<span class="w"> </span>Please<span class="w"> </span>use
+<span class="w">                                            </span>comma<span class="w"> </span><span class="o">(</span>,<span class="o">)</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="k">case</span><span class="w"> </span>multiple<span class="w"> </span>TileJSONs<span class="w"> </span>require.
+-m,<span class="w"> </span>--metadatajson-urls<span class="w"> </span>&lt;metadatajson_urls&gt;<span class="w">  </span>an<span class="w"> </span>URL<span class="w"> </span><span class="k">for</span><span class="w"> </span>metadata.json.<span class="w"> </span>It<span class="w"> </span>will<span class="w"> </span>create<span class="w"> </span>empty<span class="w"> </span>layers<span class="w"> </span>from<span class="w"> </span>vector_layers<span class="w"> </span>property<span class="w"> </span>of<span class="w"> </span>metadata.json.
+<span class="w">                                            </span>Please<span class="w"> </span>use<span class="w"> </span>comma<span class="w"> </span><span class="o">(</span>,<span class="o">)</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="k">case</span><span class="w"> </span>multiple<span class="w"> </span>metadata.json<span class="w"> </span>require.
+-c,<span class="w"> </span>--composite-layers<span class="w">                       </span>If<span class="w"> </span>it<span class="w"> </span>is<span class="w"> </span>true,<span class="w"> </span>a<span class="w"> </span>single<span class="w"> </span>YAML<span class="w"> </span>will<span class="w"> </span>be<span class="w"> </span>generated<span class="w"> </span>with<span class="w"> </span>multiple<span class="w"> </span>layers.<span class="w"> </span>Default<span class="w"> </span>is<span class="w"> </span>false.
+-h,<span class="w"> </span>--help<span class="w">                                   </span>display<span class="w"> </span><span class="nb">help</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nb">command</span>
 </pre></div>
 </div>
 </section>
 <section id="convert-existing-style-json">
 <h2>Convert existing <cite>style.json</cite><a class="headerlink" href="#convert-existing-style-json" title="Permalink to this heading"></a></h2>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ charites convert -h
-Usage: charites convert <span class="o">[</span>options<span class="o">]</span> &lt;source&gt; <span class="o">[</span>destination<span class="o">]</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>charites<span class="w"> </span>convert<span class="w"> </span>-h
+Usage:<span class="w"> </span>charites<span class="w"> </span>convert<span class="w"> </span><span class="o">[</span>options<span class="o">]</span><span class="w"> </span>&lt;source&gt;<span class="w"> </span><span class="o">[</span>destination<span class="o">]</span>
 
-convert the style JSON to YAML
+convert<span class="w"> </span>the<span class="w"> </span>style<span class="w"> </span>JSON<span class="w"> </span>to<span class="w"> </span>YAML
 
 Options:
--h, --help  display <span class="nb">help</span> <span class="k">for</span> <span class="nb">command</span>
+-h,<span class="w"> </span>--help<span class="w">  </span>display<span class="w"> </span><span class="nb">help</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nb">command</span>
 </pre></div>
 </div>
 </section>
 <section id="build-style-json-from-style-yml">
 <h2>Build <cite>style.json</cite> from <cite>style.yml</cite><a class="headerlink" href="#build-style-json-from-style-yml" title="Permalink to this heading"></a></h2>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>charites build -h
-Usage: charites build <span class="o">[</span>options<span class="o">]</span> &lt;source&gt; <span class="o">[</span>destination<span class="o">]</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>charites<span class="w"> </span>build<span class="w"> </span>-h
+Usage:<span class="w"> </span>charites<span class="w"> </span>build<span class="w"> </span><span class="o">[</span>options<span class="o">]</span><span class="w"> </span>&lt;source&gt;<span class="w"> </span><span class="o">[</span>destination<span class="o">]</span>
 
-build a style JSON from the YAML
+build<span class="w"> </span>a<span class="w"> </span>style<span class="w"> </span>JSON<span class="w"> </span>from<span class="w"> </span>the<span class="w"> </span>YAML
 
 Options:
--c, --compact-output                           build a minified style JSON
--w, --watch                                    watch YAML and build when changed
--u, --sprite-url <span class="o">[</span>&lt;sprite url&gt;<span class="o">]</span>                url to <span class="nb">set</span> as the sprite <span class="k">in</span> style.json
--i, --sprite-input <span class="o">[</span>&lt;icon input directory&gt;<span class="o">]</span>    directory path of icon <span class="nb">source</span> to build icons. The default &lt;icon source&gt; is <span class="sb">`</span>icons/<span class="sb">`</span>
--o, --sprite-output <span class="o">[</span>&lt;icon output directory&gt;<span class="o">]</span>  directory path to output icon files. The default &lt;icons destination&gt; is the current directory
---provider <span class="o">[</span>provider<span class="o">]</span>                          your map service. e.g. <span class="sb">`</span>mapbox<span class="sb">`</span>, <span class="sb">`</span>geolonia<span class="sb">`</span>
--h, --help                                     display <span class="nb">help</span> <span class="k">for</span> <span class="nb">command</span>
+-c,<span class="w"> </span>--compact-output<span class="w">                           </span>build<span class="w"> </span>a<span class="w"> </span>minified<span class="w"> </span>style<span class="w"> </span>JSON
+-w,<span class="w"> </span>--watch<span class="w">                                    </span>watch<span class="w"> </span>YAML<span class="w"> </span>and<span class="w"> </span>build<span class="w"> </span>when<span class="w"> </span>changed
+-u,<span class="w"> </span>--sprite-url<span class="w"> </span><span class="o">[</span>&lt;sprite<span class="w"> </span>url&gt;<span class="o">]</span><span class="w">                </span>url<span class="w"> </span>to<span class="w"> </span><span class="nb">set</span><span class="w"> </span>as<span class="w"> </span>the<span class="w"> </span>sprite<span class="w"> </span><span class="k">in</span><span class="w"> </span>style.json
+-i,<span class="w"> </span>--sprite-input<span class="w"> </span><span class="o">[</span>&lt;icon<span class="w"> </span>input<span class="w"> </span>directory&gt;<span class="o">]</span><span class="w">    </span>directory<span class="w"> </span>path<span class="w"> </span>of<span class="w"> </span>icon<span class="w"> </span><span class="nb">source</span><span class="w"> </span>to<span class="w"> </span>build<span class="w"> </span>icons.<span class="w"> </span>The<span class="w"> </span>default<span class="w"> </span>&lt;icon<span class="w"> </span>source&gt;<span class="w"> </span>is<span class="w"> </span><span class="sb">`</span>icons/<span class="sb">`</span>
+-o,<span class="w"> </span>--sprite-output<span class="w"> </span><span class="o">[</span>&lt;icon<span class="w"> </span>output<span class="w"> </span>directory&gt;<span class="o">]</span><span class="w">  </span>directory<span class="w"> </span>path<span class="w"> </span>to<span class="w"> </span>output<span class="w"> </span>icon<span class="w"> </span>files.<span class="w"> </span>The<span class="w"> </span>default<span class="w"> </span>&lt;icons<span class="w"> </span>destination&gt;<span class="w"> </span>is<span class="w"> </span>the<span class="w"> </span>current<span class="w"> </span>directory
+--provider<span class="w"> </span><span class="o">[</span>provider<span class="o">]</span><span class="w">                          </span>your<span class="w"> </span>map<span class="w"> </span>service.<span class="w"> </span>e.g.<span class="w"> </span><span class="sb">`</span>mapbox<span class="sb">`</span>,<span class="w"> </span><span class="sb">`</span>geolonia<span class="sb">`</span>
+-h,<span class="w"> </span>--help<span class="w">                                     </span>display<span class="w"> </span><span class="nb">help</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nb">command</span>
 </pre></div>
 </div>
 <p>if you use mapbox v2 for your style, please use <cite>–provider mapbox</cite> to specify mapbox service rather than default. Please see <cite>–provider</cite> option at <cite>serve</cite> command section.</p>
 </section>
 <section id="realtime-editor-on-browser">
 <h2>Realtime editor on browser<a class="headerlink" href="#realtime-editor-on-browser" title="Permalink to this heading"></a></h2>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>charites serve -h
-Usage: charites serve <span class="o">[</span>options<span class="o">]</span> &lt;source&gt;
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>charites<span class="w"> </span>serve<span class="w"> </span>-h
+Usage:<span class="w"> </span>charites<span class="w"> </span>serve<span class="w"> </span><span class="o">[</span>options<span class="o">]</span><span class="w"> </span>&lt;source&gt;
 
-serve your map locally
+serve<span class="w"> </span>your<span class="w"> </span>map<span class="w"> </span>locally
 
 Options:
---provider <span class="o">[</span>provider<span class="o">]</span>                        your map service. e.g. <span class="sb">`</span>mapbox<span class="sb">`</span>, <span class="sb">`</span>geolonia<span class="sb">`</span>
---mapbox-access-token <span class="o">[</span>mapboxAccessToken<span class="o">]</span>    Access Token <span class="k">for</span> the Mapbox
--i, --sprite-input <span class="o">[</span>&lt;icon input directory&gt;<span class="o">]</span>  directory path of icon <span class="nb">source</span> to build icons. The default &lt;icon
-                                             source&gt; is <span class="sb">`</span>icons/<span class="sb">`</span>
---port <span class="o">[</span>port<span class="o">]</span>                                Specify custom port
--h, --help                                   display <span class="nb">help</span> <span class="k">for</span> <span class="nb">command</span>
+--provider<span class="w"> </span><span class="o">[</span>provider<span class="o">]</span><span class="w">                        </span>your<span class="w"> </span>map<span class="w"> </span>service.<span class="w"> </span>e.g.<span class="w"> </span><span class="sb">`</span>mapbox<span class="sb">`</span>,<span class="w"> </span><span class="sb">`</span>geolonia<span class="sb">`</span>
+--mapbox-access-token<span class="w"> </span><span class="o">[</span>mapboxAccessToken<span class="o">]</span><span class="w">    </span>Access<span class="w"> </span>Token<span class="w"> </span><span class="k">for</span><span class="w"> </span>the<span class="w"> </span>Mapbox
+-i,<span class="w"> </span>--sprite-input<span class="w"> </span><span class="o">[</span>&lt;icon<span class="w"> </span>input<span class="w"> </span>directory&gt;<span class="o">]</span><span class="w">  </span>directory<span class="w"> </span>path<span class="w"> </span>of<span class="w"> </span>icon<span class="w"> </span><span class="nb">source</span><span class="w"> </span>to<span class="w"> </span>build<span class="w"> </span>icons.<span class="w"> </span>The<span class="w"> </span>default<span class="w"> </span>&lt;icon
+<span class="w">                                             </span>source&gt;<span class="w"> </span>is<span class="w"> </span><span class="sb">`</span>icons/<span class="sb">`</span>
+--port<span class="w"> </span><span class="o">[</span>port<span class="o">]</span><span class="w">                                </span>Specify<span class="w"> </span>custom<span class="w"> </span>port
+-h,<span class="w"> </span>--help<span class="w">                                   </span>display<span class="w"> </span><span class="nb">help</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nb">command</span>
 </pre></div>
 </div>
 <p>Charites has three options for <cite>serve</cite> command.</p>
