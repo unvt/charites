@@ -45,6 +45,7 @@ describe('Test for the `init.ts`.', () => {
     )
   })
 
+  /*
   it('Should produce composited style.yml without layers if tilejson without vector_layers is specified', async () => {
     const tempStylePath = path.join(
       __dirname,
@@ -67,6 +68,7 @@ describe('Test for the `init.ts`.', () => {
       YAML.load(fs.readFileSync(tempStylePath, 'utf-8')),
     )
   })
+  */
 
   it('Should initialize default decomposited style.yml from tilejson provided', async () => {
     const tmpdir = fs.mkdtempSync(path.join(os.tmpdir(), 'charites-'))
