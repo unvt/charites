@@ -12,7 +12,7 @@
   window._charites.initializeWebSocket(map)
 
   map.addControl(
-    new MaplibreLegendControl(
+    new MaplibreLegendControl.MaplibreLegendControl(
       {},
       {
         showDefault: true,

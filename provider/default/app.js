@@ -14,7 +14,7 @@
   map.addControl(new maplibregl.NavigationControl(), 'top-right')
 
   map.addControl(
-    new MaplibreLegendControl(
+    new MaplibreLegendControl.MaplibreLegendControl(
       {},
       {
         showDefault: true,
