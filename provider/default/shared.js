@@ -42,8 +42,12 @@
             if (center === undefined) {
               const bounds = mapTileJson.bounds
               center = mapTileJson.center
-                ? mapTileJson.center
-                : [(bounds[0] + bounds[2]) / 2, (bounds[1] + bounds[3]) / 2]
+              if (!center && bounds) {
+                center = [
+                  (bounds[0] + bounds[2]) / 2,
+                  (bounds[1] + bounds[3]) / 2,
+                ]
+              }
             }
             if (zoom === undefined) {
               zoom = (mapTileJson.minzoom + mapTileJson.maxzoom) / 2
