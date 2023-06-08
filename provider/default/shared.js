@@ -1,21 +1,23 @@
 ;(async () => {
   window._charites = {
     initializeWebSocket: function (map) {
-      const socket = new WebSocket(`ws://${window.location.host}`)
+      const isHttps = window.location.protocol === 'https:'
+      const wsProtocol = isHttps ? 'wss' : 'ws'
+      const socket = new WebSocket(`${wsProtocol}://${window.location.host}`)
 
       socket.addEventListener('message', (message) => {
         const data = JSON.parse(message.data)
         if (data.event === 'styleUpdate') {
-          map.setStyle(`http://${window.location.host}/style.json`)
+          map.setStyle(`//${window.location.host}/style.json`)
         } else if (data.event === 'spriteUpdate') {
-          map.setStyle(`http://${window.location.host}/style.json`, {
+          map.setStyle(`//${window.location.host}/style.json`, {
             diff: false,
           })
         }
       })
     },
     parseMapStyle: async function () {
-      const mapStyleUrl = `http://${window.location.host}/style.json`
+      const mapStyleUrl = `//${window.location.host}/style.json`
       const mapStyleRes = await fetch(mapStyleUrl)
       const mapStyleJson = await mapStyleRes.json()
 
