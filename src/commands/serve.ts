@@ -155,12 +155,12 @@ export async function serve(source: string, options: serveOptions) {
     }
   })
 
-  server.listen(port, () => {
+  server.listen(port, async () => {
     console.log(`Provider: ${provider}`)
     console.log(`Loading your style: ${sourcePath}`)
     console.log(`Your map is running on http://localhost:${port}/\n`)
     if (options.open) {
-      open(`http://localhost:${port}`)
+      await open(`http://localhost:${port}`)
     }
   })
 

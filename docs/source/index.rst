@@ -16,7 +16,7 @@ Charites - Documentation
    :description lang=en: This document contains the complete documentation of Charites, an application to style vector tiles easily
    :keywords: Charites, Mapbox, Maplibre, Vectortiles, UNVT, webmapping
 
-An easy, intuitive, and efficient command-line tool for writing vector map styles compatible with the `Mapbox <https://docs.mapbox.com/mapbox-gl-js/style-spec/>`_ and `MapLibre <https://maplibre.org/maplibre-gl-js-docs/style-spec/>`_ Style Specification in YAML.
+An easy, intuitive, and efficient command-line tool for writing vector map styles compatible with the `Mapbox <https://docs.mapbox.com/mapbox-gl-js/style-spec/>`_ and `MapLibre <https://maplibre.org/maplibre-style-spec/>`_ Style Specification in YAML.
 With YAML format's readability, JSON compiler, linter, and live style viewer on a local browser, you can simplify your map styling workflow.
 
 .. note::
