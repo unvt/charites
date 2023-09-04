@@ -1,4 +1,4 @@
-const maplibreStyleSpec = require('@maplibre/maplibre-gl-style-spec')
+import maplibreStyleSpec from '@maplibre/maplibre-gl-style-spec'
 const mapboxStyleSpec = require('@mapbox/mapbox-gl-style-spec')
 import { StyleSpecification } from '@maplibre/maplibre-gl-style-spec'
 
@@ -10,7 +10,7 @@ export function validateStyle(
   if ('mapbox' === provider) {
     result = mapboxStyleSpec.validate(style)
   } else {
-    result = maplibreStyleSpec.validate(style)
+    result = maplibreStyleSpec.validateStyleMin(style)
   }
 
   const errors = []

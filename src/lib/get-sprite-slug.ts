@@ -1,11 +1,15 @@
 import { StyleSpecification } from '@maplibre/maplibre-gl-style-spec'
 
 export function getSpriteSlug(style: StyleSpecification): string | false {
-  if (!style.hasOwnProperty('sprite')) {
+  if (!style.hasOwnProperty('sprite') || !style.sprite) {
     return false
   }
 
-  const matchedUrl = style.sprite?.match(
+  const firstUrl = Array.isArray(style.sprite)
+    ? style.sprite[0].url
+    : style.sprite
+
+  const matchedUrl = firstUrl.match(
     /^(?:[^:\/?#]+:)?(?:\/\/[^\/?#]*)?(?:([^?#]*\/)([^\/?#]*))?(\?[^#]*)?(?:#.*)?$/,
   )
 
