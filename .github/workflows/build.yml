@@ -67,7 +67,7 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           tag_name: 'v%s'
-          node-version: '14.x'
+          node-version: '18.x'
           registry-url: 'https://registry.npmjs.org'
           scope: '@unvt'
       - run: npm install
