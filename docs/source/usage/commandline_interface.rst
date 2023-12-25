@@ -98,6 +98,7 @@ Realtime editor on browser
     --mapbox-access-token [mapboxAccessToken]    Access Token for the Mapbox
     -i, --sprite-input [<icon input directory>]  directory path of icon source to build icons. The default <icon
                                                  source> is `icons/`
+    --sdf                                        Allows to use SDF sprite in charites
     --port [port]                                Specify custom port
     -h, --help                                   display help for command
 
@@ -111,5 +112,7 @@ Charites has three options for `serve` command.
 - ``--mapbox-access-token`` - Set your access-token when styling for Mapbox.
 
 - ``--sprite-input`` - If you are building icon spritesheets with Charites, you can specify the directory of SVG files to compile here. See the ``build`` command for more information.
+
+- ``--sdf`` - if this option is used together with ``--sprite-input``, the viewer will generate SDF sprite. If the option is not specified, non SDF sprite will be generated.
 
 - ``--port`` - Set http server's port number. When not specified, the default is 8080.
