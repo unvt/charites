@@ -17,6 +17,7 @@ export interface serveOptions {
   port?: string
   spriteInput?: string
   open?: boolean
+  sdf?: boolean
 }
 
 export async function serve(source: string, options: serveOptions) {
@@ -57,7 +58,7 @@ export async function serve(source: string, options: serveOptions) {
       ) {
         return
       }
-      await buildSprite(options.spriteInput, spriteOut, 'sprite')
+      await buildSprite(options.spriteInput, spriteOut, 'sprite', options.sdf)
     }
     await spriteRefresher()
   }
