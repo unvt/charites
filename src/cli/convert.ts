@@ -1,6 +1,6 @@
 import { Command } from 'commander'
-import { convert } from '../commands/convert'
-import { error } from '../lib/error'
+import { convert } from '../commands/convert.js'
+import { error } from '../lib/error.js'
 
 const program = new Command()
 program

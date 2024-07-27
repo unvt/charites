@@ -8,6 +8,6 @@ sources:
     url: >-
       https://raw.githubusercontent.com/mapbox/tilejson-spec/master/3.0.0/example/osm.json
 layers:
-  - !!inc/file layers/telephone.yml
-  - !!inc/file layers/bicycle_parking.yml
-  - !!inc/file layers/showers.yml
+  - !!import/single layers/telephone.yml
+  - !!import/single layers/bicycle_parking.yml
+  - !!import/single layers/showers.yml

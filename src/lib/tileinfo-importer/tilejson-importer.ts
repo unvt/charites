@@ -1,10 +1,10 @@
 import axios from 'axios'
-import { TileJSON } from '../../types'
+import { TileJSON } from '../../types/index.js'
 import {
   SourceSpecification,
   LayerSpecification,
 } from '@maplibre/maplibre-gl-style-spec'
-import { BaseImporter, TileInfoJSONResponse } from './base-importer'
+import { BaseImporter, TileInfoJSONResponse } from './base-importer.js'
 
 export class TileJSONImporter extends BaseImporter {
   async getJSON(url: string): Promise<TileInfoJSONResponse> {

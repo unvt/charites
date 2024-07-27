@@ -6,6 +6,11 @@ import YAML from 'js-yaml'
 
 import { init, initOptions } from '../src/commands/init'
 
+import { fileURLToPath } from 'url'
+import { dirname } from 'path'
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = dirname(__filename)
+
 describe('Test for the `init.ts`.', () => {
   it('Should initialize default style.yml.', async () => {
     const tempStylePath = path.join(__dirname, 'data/init/init.yml')

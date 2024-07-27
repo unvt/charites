@@ -1,7 +1,7 @@
 import { Command } from 'commander'
-import { serve, serveOptions } from '../commands/serve'
-import { error } from '../lib/error'
-import { defaultSettings } from '../lib/defaultValues'
+import { serve, serveOptions } from '../commands/serve.js'
+import { error } from '../lib/error.js'
+import { defaultSettings } from '../lib/defaultValues.js'
 import fs from 'fs'
 
 const program = new Command()
@@ -9,14 +9,7 @@ program
   .name('serve')
   .arguments('<source>')
   .description('serve your map locally')
-  .option(
-    '--provider [provider]',
-    'your map service. e.g. `mapbox`, `geolonia`',
-  )
-  .option(
-    '--mapbox-access-token [mapboxAccessToken]',
-    'Your Mapbox Access Token (required if using the `mapbox` provider)',
-  )
+  .option('--provider [provider]', 'your map service. e.g. `geolonia`')
   .option(
     '-i, --sprite-input [<icon input directory>]',
     'directory path of icon source to build icons. The default <icon source> is `icons/`',
@@ -27,7 +20,6 @@ program
   .action(async (source: string, serveOptions: serveOptions) => {
     const options: serveOptions = program.opts()
     options.provider = serveOptions.provider
-    options.mapboxAccessToken = serveOptions.mapboxAccessToken
     options.port = serveOptions.port
     options.spriteInput = serveOptions.spriteInput
     options.open = serveOptions.open

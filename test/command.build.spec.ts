@@ -1,4 +1,4 @@
-import chai from 'chai'
+import * as chai from 'chai'
 import chaiAsPromised from 'chai-as-promised'
 import path from 'path'
 import fs from 'fs'
@@ -10,7 +10,7 @@ import charites from './util/charitesCmd'
 let tmpdir = ''
 chai.use(chaiAsPromised)
 chai.should()
-const assert = chai.assert
+const assert: Chai.AssertStatic = chai.assert
 
 describe('Test for the `charites build`', () => {
   beforeEach(async function () {

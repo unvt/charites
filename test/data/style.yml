@@ -8,5 +8,5 @@ sources:
 sprite: https://sprites.geolonia.com/basic-white
 glyphs: https://glyphs.geolonia.com/{fontstack}/{range}.pbf
 layers:
-  - !!inc/file layers/background.yml
-  - !!inc/file layers/water.yml
+  - !!import/single layers/background.yml
+  - !!import/single layers/water.yml

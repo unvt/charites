@@ -41,7 +41,7 @@ class IncFileTag {
   }
 }
 
-const INC_PATH_TYPE = new YAML.Type('tag:yaml.org,2002:inc/file', {
+const INC_PATH_TYPE = new YAML.Type('tag:yaml.org,2002:import/single', {
   kind: 'scalar',
   resolve: (data) => data,
   construct: (data) => new IncFileTag(data),

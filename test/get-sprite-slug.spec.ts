@@ -2,7 +2,11 @@ import { assert } from 'chai'
 import path from 'path'
 import fs from 'fs'
 import { getSpriteSlug } from '../src/lib/get-sprite-slug'
+import { fileURLToPath } from 'url'
+import { dirname } from 'path'
 
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = dirname(__filename)
 const stylePath = path.join(__dirname, 'data/style.json')
 const styleJson = fs.readFileSync(stylePath, 'utf-8')
 

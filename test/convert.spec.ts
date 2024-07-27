@@ -6,6 +6,12 @@ import os from 'os'
 import { convert } from '../src/commands/convert'
 import { build } from '../src/commands/build'
 
+import { fileURLToPath } from 'url'
+import { dirname } from 'path'
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = dirname(__filename)
+
 let tmp: string
 
 describe('Test for the `convert.ts`.', () => {
@@ -36,8 +42,8 @@ sources:
 sprite: https://sprites.geolonia.com/basic-white
 glyphs: https://glyphs.geolonia.com/{fontstack}/{range}.pbf
 layers:
-  - !!inc/file layers/background.yml
-  - !!inc/file >-
+  - !!import/single layers/background.yml
+  - !!import/single >-
     layers/background-with-very-long-name-background-with-very-long-name-background-with-very-long-name.yml
 id: example
 `,

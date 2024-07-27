@@ -1,4 +1,6 @@
-import chai from 'chai'
+import { fileURLToPath } from 'url'
+import { dirname } from 'path'
+import * as chai from 'chai'
 import chaiAsPromised from 'chai-as-promised'
 import path from 'path'
 import fs from 'fs'
@@ -7,9 +9,12 @@ import os from 'os'
 import { build, buildWatch } from '../src/commands/build'
 import { defaultValues } from '../src/lib/defaultValues'
 
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = dirname(__filename)
+
 chai.use(chaiAsPromised)
 chai.should()
-const assert = chai.assert
+const assert: Chai.AssertStatic = chai.assert
 
 describe('Test for the `build.ts`.', () => {
   const styleYaml = path.join(__dirname, 'data/style.yml')

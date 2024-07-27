@@ -2,7 +2,11 @@ import { assert } from 'chai'
 import path from 'path'
 
 import { parser } from '../src/lib/yaml-parser'
+import { fileURLToPath } from 'url'
+import { dirname } from 'path'
 
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = dirname(__filename)
 describe('Test for the `yaml-parser.ts`.', () => {
   it('should parse `data/example.yml`.', () => {
     const yamlPath = path.join(__dirname, 'data/example.yml')

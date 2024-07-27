@@ -6,14 +6,13 @@ import open from 'open'
 import { WebSocketServer } from 'ws'
 import watch from 'node-watch'
 
-import { parser } from '../lib/yaml-parser'
-import { validateStyle } from '../lib/validate-style'
-import { defaultValues } from '../lib/defaultValues'
-import { buildSprite } from '../lib/build-sprite'
+import { parser } from '../lib/yaml-parser.js'
+import { validateStyle } from '../lib/validate-style.js'
+import { defaultValues } from '../lib/defaultValues.js'
+import { buildSprite } from '../lib/build-sprite.js'
 
 export interface serveOptions {
   provider?: string
-  mapboxAccessToken?: string
   port?: string
   spriteInput?: string
   open?: boolean
@@ -39,12 +38,6 @@ export async function serve(source: string, options: serveOptions) {
 
   if (!fs.existsSync(sourcePath)) {
     throw `${sourcePath}: No such file or directory`
-  }
-
-  const mapboxAccessToken =
-    options.mapboxAccessToken || defaultValues.mapboxAccessToken
-  if (provider === 'mapbox' && !mapboxAccessToken) {
-    throw `Provider is mapbox, but the Mapbox Access Token is not set. Please provide it using --mapbox-access-token, or set it in \`~/.charites/config.yml\` (see the Global configuration section of the documentation for more information)`
   }
 
   let spriteOut: string | undefined = undefined
@@ -104,7 +97,7 @@ export async function serve(source: string, options: serveOptions) {
               req.headers.host || `localhost:${port}`
             }/sprite`
           }
-          validateStyle(style, provider)
+          validateStyle(style)
         } catch (error) {
           console.log(error)
         }
@@ -137,12 +130,7 @@ export async function serve(source: string, options: serveOptions) {
         res.setHeader('Content-Type', 'application/javascript; charset=UTF-8')
         try {
           const app = fs.readFileSync(path.join(providerDir, 'app.js'), 'utf-8')
-          const js = app
-            .replace('___PORT___', `${port}`)
-            .replace(
-              '___MAPBOX_ACCESS_TOKEN___',
-              `${options.mapboxAccessToken || defaultValues.mapboxAccessToken}`,
-            )
+          const js = app.replace('___PORT___', `${port}`)
           res.end(js)
         } catch (e) {
           throw `Invalid provider: ${provider}`

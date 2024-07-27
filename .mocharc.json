@@ -1,0 +1,7 @@
+{
+  "loader": "ts-node/esm",
+  "require": ["./mocha-register.cjs"],
+  "extensions": ["ts"],
+  "spec": "test/*.ts",
+  "timeout": 5000
+}

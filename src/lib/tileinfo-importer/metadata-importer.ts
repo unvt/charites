@@ -1,10 +1,10 @@
 import axios from 'axios'
-import { MetadataJSON, VectorLayer } from '../../types'
+import { MetadataJSON, VectorLayer } from '../../types/index.js'
 import {
   LayerSpecification,
   VectorSourceSpecification,
 } from '@maplibre/maplibre-gl-style-spec'
-import { BaseImporter, TileInfoJSONResponse } from './base-importer'
+import { BaseImporter, TileInfoJSONResponse } from './base-importer.js'
 
 export class MetadataJSONImporter extends BaseImporter {
   async getJSON(url: string): Promise<TileInfoJSONResponse> {

@@ -1,10 +1,9 @@
 import path from 'path'
 import fs from 'fs'
-import { parser } from '../lib/yaml-parser'
-import { validateStyle } from '../lib/validate-style'
-import { buildSprite } from '../lib/build-sprite'
-import { getSpriteSlug } from '../lib/get-sprite-slug'
-import { defaultValues } from '../lib/defaultValues'
+import { parser } from '../lib/yaml-parser.js'
+import { validateStyle } from '../lib/validate-style.js'
+import { buildSprite } from '../lib/build-sprite.js'
+import { getSpriteSlug } from '../lib/get-sprite-slug.js'
 import jsonminify from 'jsonminify'
 import { StyleSpecification } from '@maplibre/maplibre-gl-style-spec'
 import watch from 'node-watch'
@@ -49,16 +48,11 @@ export async function build(
     )
   }
 
-  let provider = defaultValues.provider
-  if (options.provider) {
-    provider = options.provider
-  }
-
   let style = ''
 
   try {
     const _style: StyleSpecification = parser(sourcePath)
-    validateStyle(_style, provider)
+    validateStyle(_style)
 
     if (options.spriteUrl && 'sprite' in _style) {
       _style.sprite = options.spriteUrl

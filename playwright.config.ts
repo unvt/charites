@@ -18,12 +18,6 @@ const config: PlaywrightTestConfig = {
         'dist/cli.js serve test/data/style.yml --provider geolonia --port 8088',
       port: 8088,
     },
-    {
-      command:
-        'dist/cli.js serve test/data/style.yml --provider mapbox --port 8888 --mapbox-access-token ' +
-        process.env.MAPBOX_ACCESS_TOKEN,
-      port: 8888,
-    },
   ],
 }
 export default config
