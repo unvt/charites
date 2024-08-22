@@ -1,16 +1,15 @@
 import fs from 'fs'
 import YAML from 'js-yaml'
-import { dirname } from 'path'
 import { StyleSpecification } from '@maplibre/maplibre-gl-style-spec'
-
-import { getSchema } from 'yaml-import'
+import * as yamlinc from './yaml-include/index.js'
 
 interface StyleObject {
   [key: string]: string
 }
 
 export function parser(file: string): StyleSpecification {
-  const schema = getSchema(dirname(file))
+  yamlinc.setBaseFile(file)
+  const schema = yamlinc.YAML_INCLUDE_SCHEMA
   const yaml = fs.readFileSync(file, 'utf8')
 
   const obj: StyleObject = YAML.load(yaml, {

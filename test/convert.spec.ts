@@ -42,8 +42,8 @@ sources:
 sprite: https://sprites.geolonia.com/basic-white
 glyphs: https://glyphs.geolonia.com/{fontstack}/{range}.pbf
 layers:
-  - !!import/single layers/background.yml
-  - !!import/single >-
+  - !!inc/file layers/background.yml
+  - !!inc/file >-
     layers/background-with-very-long-name-background-with-very-long-name-background-with-very-long-name.yml
 id: example
 `,
