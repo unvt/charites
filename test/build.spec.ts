@@ -141,7 +141,7 @@ describe('Test for the `build.ts`.', () => {
       .readFileSync(styleYaml, 'utf-8')
       .replace('metadata: {}', 'metadata: aaa')
     fs.writeFileSync(styleYaml, yamlData1)
-    await sleep(500)
+    await sleep(1000)
     await watcher.close()
     assert.deepEqual(true, !!fs.statSync(styleJson))
     assert.deepEqual(

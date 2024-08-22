@@ -17,4 +17,4 @@ backgroundColor: $backgroundColor
 alias: $backgroundAlias
 fruits: $array-alias
 
-names: !!import/single names.yml
+names: !!inc/file names.yml
