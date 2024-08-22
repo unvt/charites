@@ -14,8 +14,6 @@ Global options can be specified as follows:
 
 .. code-block:: bash
 
-    provider: mapbox
-    mapboxAccessToken: xxxx
+    provider: geolonia
 
-
-With the example above, you get the same result as `charites serve --provider mapbox --mapbox-access-token xxxx`.
+With the example above, you get the same result as `charites serve --provider geolonia`.

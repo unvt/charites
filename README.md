@@ -3,7 +3,7 @@
 [![All Contributors](https://img.shields.io/badge/all_contributors-8-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
-An easy, intuitive, and efficient command-line tool for writing vector map styles compatible with the [MapLibre](https://maplibre.org/maplibre-gl-js-docs/style-spec/) Style Specification in YAML.
+An easy, intuitive, and efficient command-line tool for writing vector map styles compatible with the [MapLibre](https://maplibre.org/maplibre-style-spec/) Style Specification in YAML.
 With YAML format's readability, JSON compiler, linter, and live style viewer on a local browser, you can simplify your map styling workflow.
 
 In Greek mythology, the [Charites](https://en.wikipedia.org/wiki/Charites) are the three goddesses of charm, beauty, and human creativity. They are believed to have been worshipped not only by artists but also by those who aspired to technology to infuse them with a creative spirit.
@@ -12,7 +12,7 @@ In Greek mythology, the [Charites](https://en.wikipedia.org/wiki/Charites) are t
 
 - Initiate a project from scratch, or convert an existing `style.json` file to generate YAML style files.
 - Write styles in a simple YAML format.
-- Divide groups of layers in to multiple files for better readability and mantainability. `!!import/simple <relative-path-to-the-file>`
+- Divide groups of layers in to multiple files for better readability and mantainability. `!!inc/file <relative-path-to-the-file>`
 - Use variables like `$backgroundColor` and `$waterColor` to style effectively.
 - Compile YAML to a single style.json file, with a format linter.
 - Run `charites serve <source>` to preview your style live while you make changes in a browser.

@@ -78,10 +78,8 @@ Build `style.json` from `style.yml`
     -u, --sprite-url [<sprite url>]                url to set as the sprite in style.json
     -i, --sprite-input [<icon input directory>]    directory path of icon source to build icons. The default <icon source> is `icons/`
     -o, --sprite-output [<icon output directory>]  directory path to output icon files. The default <icons destination> is the current directory
-    --provider [provider]                          your map service. e.g. `mapbox`, `geolonia`
+    --provider [provider]                          your map service. e.g. `geolonia`
     -h, --help                                     display help for command
-
-if you use mapbox v2 for your style, please use `--provider mapbox` to specify mapbox service rather than default. Please see `--provider` option at `serve` command section.
 
 Realtime editor on browser
 --------------------------
@@ -94,8 +92,7 @@ Realtime editor on browser
     serve your map locally
 
     Options:
-    --provider [provider]                        your map service. e.g. `mapbox`, `geolonia`
-    --mapbox-access-token [mapboxAccessToken]    Access Token for the Mapbox
+    --provider [provider]                        your map service. e.g. `geolonia`
     -i, --sprite-input [<icon input directory>]  directory path of icon source to build icons. The default <icon
                                                  source> is `icons/`
     --sdf                                        Allows to use SDF sprite in charites
@@ -104,12 +101,9 @@ Realtime editor on browser
 
 Charites has three options for `serve` command.
 
-- ``--provider`` - `mapbox`, `geolonia`, or `default`. When not specified, default or the value in the configuration file will be used.
+- ``--provider`` - `geolonia`, or `default`. When not specified, default or the value in the configuration file will be used.
 
-  - `mapbox` - The format linter runs against the Mapbox GL JS v2.x compatible specification.
   - `geolonia` and `default` - the format linter runs against the MapLibre GL JS compatible specification.
-
-- ``--mapbox-access-token`` - Set your access-token when styling for Mapbox.
 
 - ``--sprite-input`` - If you are building icon spritesheets with Charites, you can specify the directory of SVG files to compile here. See the ``build`` command for more information.
 
