@@ -132,7 +132,7 @@ export async function serve(source: string, options: serveOptions) {
           const app = fs.readFileSync(path.join(providerDir, 'app.js'), 'utf-8')
           const js = app.replace('___PORT___', `${port}`)
           res.end(js)
-        } catch (e) {
+        } catch (_) {
           throw `Invalid provider: ${provider}`
         }
         break
@@ -180,7 +180,7 @@ export async function serve(source: string, options: serveOptions) {
               )
             })
           }
-        } catch (e) {
+        } catch (_) {
           // Nothing to do
         }
       },

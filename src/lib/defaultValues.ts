@@ -25,7 +25,7 @@ let config: Config = { provider: '', providerDir: '' }
 try {
   const yaml = fs.readFileSync(configFile, 'utf-8')
   config = YAML.load(yaml) as Config
-} catch (e) {
+} catch (_) {
   // nothing to do
 }
 
