@@ -3,6 +3,7 @@
   const options = {
     container: 'map',
     hash: true,
+    maxPitch: 85,
     style,
   }
   if (center) options.center = center
