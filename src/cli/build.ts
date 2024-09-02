@@ -1,7 +1,6 @@
 import { Command } from 'commander'
 import { build, buildOptions, buildWatch } from '../commands/build.js'
 import { error } from '../lib/error.js'
-import { defaultSettings } from '../lib/defaultValues.js'
 import fs from 'fs'
 import path from 'path'
 
@@ -24,11 +23,9 @@ program
     '-o, --sprite-output [<icon output directory>]',
     'directory path to output icon files. The default <icons destination> is the current directory',
   )
-  .option('--provider [provider]', 'your map service. e.g. `geolonia`')
   .action(
     async (source: string, destination: string, buildOptions: buildOptions) => {
       const options = program.opts()
-      options.provider = buildOptions.provider
       options.compactOutput = buildOptions.compactOutput
       options.spriteUrl = buildOptions.spriteUrl
       options.spriteOutput = buildOptions.spriteOutput || process.cwd()
@@ -39,13 +36,6 @@ program
         options.spriteInput = buildOptions.spriteInput
       } else if (fs.existsSync(spriteInputDefault)) {
         options.spriteInput = spriteInputDefault
-      }
-
-      if (!fs.existsSync(defaultSettings.configFile)) {
-        fs.writeFileSync(
-          defaultSettings.configFile,
-          `provider: ${options.provider || 'default'}`,
-        )
       }
 
       if (buildOptions.watch) {

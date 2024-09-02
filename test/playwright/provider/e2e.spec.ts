@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test/index.mjs'
 
-test('Charites Live Preview with maplibre', async ({ page }) => {
+test('Charites Live Preview', async ({ page }) => {
   // collect errors on the page
   const pageErrors: Error[] = []
   page.on('pageerror', (exception) => pageErrors.push(exception))

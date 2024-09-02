@@ -8,11 +8,10 @@ import watch from 'node-watch'
 
 import { parser } from '../lib/yaml-parser.js'
 import { validateStyle } from '../lib/validate-style.js'
-import { defaultValues } from '../lib/defaultValues.js'
+import { providerDir } from '../lib/defaultValues.js'
 import { buildSprite } from '../lib/build-sprite.js'
 
 export interface serveOptions {
-  provider?: string
   port?: string
   spriteInput?: string
   open?: boolean
@@ -25,11 +24,6 @@ export async function serve(source: string, options: serveOptions) {
     port = Number(options.port)
   }
   let sourcePath = path.resolve(process.cwd(), source)
-
-  let provider = defaultValues.provider
-  if (options.provider) {
-    provider = options.provider
-  }
 
   // The `source` is absolute path.
   if (source.match(/^\//)) {
@@ -58,8 +52,6 @@ export async function serve(source: string, options: serveOptions) {
 
   const server = http.createServer(async (req, res) => {
     const url = (req.url || '').replace(/\?.*/, '')
-    const defaultProviderDir = path.join(defaultValues.providerDir, 'default')
-    const providerDir = path.join(defaultValues.providerDir, provider)
 
     if (
       typeof spriteOut !== 'undefined' &&
@@ -109,32 +101,15 @@ export async function serve(source: string, options: serveOptions) {
       case '/app.css':
         res.statusCode = 200
         res.setHeader('Content-Type', 'text/css; charset=UTF-8')
-        const css = fs.readFileSync(
-          path.join(defaultProviderDir, 'app.css'),
-          'utf-8',
-        )
+        const css = fs.readFileSync(path.join(providerDir, 'app.css'), 'utf-8')
         res.end(css)
-        break
-      case `/shared.js`:
-        res.statusCode = 200
-        res.setHeader('Content-Type', 'application/javascript; charset=UTF-8')
-        const shared = fs.readFileSync(
-          path.join(defaultProviderDir, 'shared.js'),
-          'utf-8',
-        )
-        const js = shared.replace('___PORT___', `${port}`)
-        res.end(js)
         break
       case `/app.js`:
         res.statusCode = 200
         res.setHeader('Content-Type', 'application/javascript; charset=UTF-8')
-        try {
-          const app = fs.readFileSync(path.join(providerDir, 'app.js'), 'utf-8')
-          const js = app.replace('___PORT___', `${port}`)
-          res.end(js)
-        } catch (_) {
-          throw `Invalid provider: ${provider}`
-        }
+        const app = fs.readFileSync(path.join(providerDir, 'app.js'), 'utf-8')
+        const js = app.replace('___PORT___', `${port}`)
+        res.end(js)
         break
       default:
         res.statusCode = 404
@@ -145,7 +120,6 @@ export async function serve(source: string, options: serveOptions) {
   })
 
   server.listen(port, () => {
-    console.log(`Provider: ${provider}`)
     console.log(`Loading your style: ${sourcePath}`)
     console.log(`Your map is running on http://localhost:${port}/\n`)
     if (options.open) {

@@ -7,7 +7,6 @@ import fs from 'fs'
 import os from 'os'
 
 import { build, buildWatch } from '../src/commands/build'
-import { defaultValues } from '../src/lib/defaultValues'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
@@ -44,7 +43,7 @@ describe('Test for the `build.ts`.', () => {
   })
 
   it('Should convert `data/style.yml` to JSON.', async () => {
-    await build(styleYaml, styleJson, { provider: defaultValues.provider })
+    await build(styleYaml, styleJson, {})
 
     // The file should exists.
     assert.deepEqual(true, !!fs.statSync(styleJson))
@@ -58,7 +57,6 @@ describe('Test for the `build.ts`.', () => {
 
   it('Should minify `data/style.yml` to JSON.', async () => {
     await build(styleYaml, styleJson, {
-      provider: defaultValues.provider,
       compactOutput: true,
     })
 
@@ -72,7 +70,6 @@ describe('Test for the `build.ts`.', () => {
     const expectedUrl = 'http://localhost:8080/icons'
 
     await build(styleYaml, styleJson, {
-      provider: defaultValues.provider,
       spriteUrl: expectedUrl,
       spriteInput: iconSource,
       spriteOutput: tmpdir,
@@ -90,7 +87,6 @@ describe('Test for the `build.ts`.', () => {
     const expectedJson = path.join(tmpdir, `${expectedIconName}.json`)
 
     build(styleYaml, styleJson, {
-      provider: defaultValues.provider,
       spriteUrl: `http://localhost:8080/${expectedIconName}`,
       spriteInput: iconSource,
       spriteOutput: tmpdir,
@@ -106,7 +102,6 @@ describe('Test for the `build.ts`.', () => {
     const expectedJson = path.join(tmpdir, `${expectedIconName}.json`)
 
     build(styleYaml, styleJson, {
-      provider: defaultValues.provider,
       spriteInput: iconSource,
       spriteOutput: tmpdir,
     }).then(() => {
@@ -120,7 +115,6 @@ describe('Test for the `build.ts`.', () => {
     const noExistInputDir = path.join(__dirname, 'data/hellooooo')
 
     const promise = build(styleYaml, styleJson, {
-      provider: defaultValues.provider,
       spriteInput: noExistInputDir,
       spriteOutput: tmpdir,
     })
@@ -133,9 +127,7 @@ describe('Test for the `build.ts`.', () => {
   it('Should watch `*.yml` and convert it to JSON', async () => {
     const sleep = (ms: number) => new Promise((res) => setTimeout(res, ms))
 
-    const watcher = buildWatch(styleYaml, styleJson, {
-      provider: defaultValues.provider,
-    })
+    const watcher = buildWatch(styleYaml, styleJson, {})
     await sleep(500)
     const yamlData1 = fs
       .readFileSync(styleYaml, 'utf-8')

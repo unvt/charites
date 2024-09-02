@@ -9,7 +9,6 @@ import { StyleSpecification } from '@maplibre/maplibre-gl-style-spec'
 import watch from 'node-watch'
 
 export interface buildOptions {
-  provider?: string
   compactOutput?: boolean
   watch?: boolean
   spriteUrl?: string
