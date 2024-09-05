@@ -1,9 +1,9 @@
 import { StyleSpecification } from '@maplibre/maplibre-gl-style-spec'
-import { writeYaml } from '../lib/yaml-writer'
+import { writeYaml } from '../lib/yaml-writer.js'
 import {
   TileJSONImporter,
   MetadataJSONImporter,
-} from '../lib/tileinfo-importer'
+} from '../lib/tileinfo-importer/index.js'
 
 export interface initOptions {
   tilejsonUrls?: string

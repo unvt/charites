@@ -6,14 +6,12 @@ import open from 'open'
 import { WebSocketServer } from 'ws'
 import watch from 'node-watch'
 
-import { parser } from '../lib/yaml-parser'
-import { validateStyle } from '../lib/validate-style'
-import { defaultValues } from '../lib/defaultValues'
-import { buildSprite } from '../lib/build-sprite'
+import { parser } from '../lib/yaml-parser.js'
+import { validateStyle } from '../lib/validate-style.js'
+import { providerDir } from '../lib/defaultValues.js'
+import { buildSprite } from '../lib/build-sprite.js'
 
 export interface serveOptions {
-  provider?: string
-  mapboxAccessToken?: string
   port?: string
   spriteInput?: string
   open?: boolean
@@ -27,11 +25,6 @@ export async function serve(source: string, options: serveOptions) {
   }
   let sourcePath = path.resolve(process.cwd(), source)
 
-  let provider = defaultValues.provider
-  if (options.provider) {
-    provider = options.provider
-  }
-
   // The `source` is absolute path.
   if (source.match(/^\//)) {
     sourcePath = source
@@ -39,12 +32,6 @@ export async function serve(source: string, options: serveOptions) {
 
   if (!fs.existsSync(sourcePath)) {
     throw `${sourcePath}: No such file or directory`
-  }
-
-  const mapboxAccessToken =
-    options.mapboxAccessToken || defaultValues.mapboxAccessToken
-  if (provider === 'mapbox' && !mapboxAccessToken) {
-    throw `Provider is mapbox, but the Mapbox Access Token is not set. Please provide it using --mapbox-access-token, or set it in \`~/.charites/config.yml\` (see the Global configuration section of the documentation for more information)`
   }
 
   let spriteOut: string | undefined = undefined
@@ -65,8 +52,6 @@ export async function serve(source: string, options: serveOptions) {
 
   const server = http.createServer(async (req, res) => {
     const url = (req.url || '').replace(/\?.*/, '')
-    const defaultProviderDir = path.join(defaultValues.providerDir, 'default')
-    const providerDir = path.join(defaultValues.providerDir, provider)
 
     if (
       typeof spriteOut !== 'undefined' &&
@@ -104,7 +89,7 @@ export async function serve(source: string, options: serveOptions) {
               req.headers.host || `localhost:${port}`
             }/sprite`
           }
-          validateStyle(style, provider)
+          validateStyle(style)
         } catch (error) {
           console.log(error)
         }
@@ -116,37 +101,15 @@ export async function serve(source: string, options: serveOptions) {
       case '/app.css':
         res.statusCode = 200
         res.setHeader('Content-Type', 'text/css; charset=UTF-8')
-        const css = fs.readFileSync(
-          path.join(defaultProviderDir, 'app.css'),
-          'utf-8',
-        )
+        const css = fs.readFileSync(path.join(providerDir, 'app.css'), 'utf-8')
         res.end(css)
-        break
-      case `/shared.js`:
-        res.statusCode = 200
-        res.setHeader('Content-Type', 'application/javascript; charset=UTF-8')
-        const shared = fs.readFileSync(
-          path.join(defaultProviderDir, 'shared.js'),
-          'utf-8',
-        )
-        const js = shared.replace('___PORT___', `${port}`)
-        res.end(js)
         break
       case `/app.js`:
         res.statusCode = 200
         res.setHeader('Content-Type', 'application/javascript; charset=UTF-8')
-        try {
-          const app = fs.readFileSync(path.join(providerDir, 'app.js'), 'utf-8')
-          const js = app
-            .replace('___PORT___', `${port}`)
-            .replace(
-              '___MAPBOX_ACCESS_TOKEN___',
-              `${options.mapboxAccessToken || defaultValues.mapboxAccessToken}`,
-            )
-          res.end(js)
-        } catch (e) {
-          throw `Invalid provider: ${provider}`
-        }
+        const app = fs.readFileSync(path.join(providerDir, 'app.js'), 'utf-8')
+        const js = app.replace('___PORT___', `${port}`)
+        res.end(js)
         break
       default:
         res.statusCode = 404
@@ -157,7 +120,6 @@ export async function serve(source: string, options: serveOptions) {
   })
 
   server.listen(port, () => {
-    console.log(`Provider: ${provider}`)
     console.log(`Loading your style: ${sourcePath}`)
     console.log(`Your map is running on http://localhost:${port}/\n`)
     if (options.open) {
@@ -192,7 +154,7 @@ export async function serve(source: string, options: serveOptions) {
               )
             })
           }
-        } catch (e) {
+        } catch (_) {
           // Nothing to do
         }
       },

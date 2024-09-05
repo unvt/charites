@@ -6,17 +6,17 @@
 Charites - Documentation
 ====================================
 
-:Date:   2022-12-15
+:Date:   2024-08-23
 :Copyright: CC-BY-SA
 :Organization: The United Nations Vector Tile Toolkit
-:Version: 0.3.0
+:Version: 2.0.0
 :Abstract: This document contains the complete documentation of Charites, an application to style vector tiles easily
 
 .. meta::
    :description lang=en: This document contains the complete documentation of Charites, an application to style vector tiles easily
-   :keywords: Charites, Mapbox, Maplibre, Vectortiles, UNVT, webmapping
+   :keywords: Charites, Maplibre, Vectortiles, UNVT, webmapping
 
-An easy, intuitive, and efficient command-line tool for writing vector map styles compatible with the `Mapbox <https://docs.mapbox.com/mapbox-gl-js/style-spec/>`_ and `MapLibre <https://maplibre.org/maplibre-gl-js-docs/style-spec/>`_ Style Specification in YAML.
+An easy, intuitive, and efficient command-line tool for writing vector map styles compatible with the `MapLibre <https://maplibre.org/maplibre-style-spec/>`_ Style Specification in YAML.
 With YAML format's readability, JSON compiler, linter, and live style viewer on a local browser, you can simplify your map styling workflow.
 
 .. note::
@@ -30,7 +30,6 @@ Features
 - Divide groups of layers in to multiple files for better readability and mantainability. `!!inc/file <relative-path-to-the-file>`
 - Use variables like `$backgroundColor` and `$waterColor` to style effectively.
 - Compile YAML to a single style.json file, with a format linter.
-- Use `--provider mapbox` to validate your style against Mapbox GL JS v2.x
 - Run `charites serve <source>` to preview your style live while you make changes in a browser.
 
 .. toctree::

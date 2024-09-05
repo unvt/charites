@@ -1,7 +1,7 @@
 import path from 'path'
 import fs from 'fs'
 import readline from 'readline'
-import { writeYaml } from '../lib/yaml-writer'
+import { writeYaml } from '../lib/yaml-writer.js'
 
 const getDestinationPath = (destination: string, sourcePath = '') => {
   let destinationPath

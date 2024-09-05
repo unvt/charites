@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es2018",
+    "target": "ESNext",
     "declaration": false,
     "declarationMap": false,
     "sourceMap": false,
@@ -12,10 +12,15 @@
     "esModuleInterop": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
-    "module": "commonjs",
-    "outDir": "./dist"
+    "resolveJsonModule": true,
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "outDir": "./dist",
+    "baseUrl": ".",
+    "paths": {
+      "*": ["node_modules/*", "src/types/*"]
+    }
   },
-  "include": [
-    "src/cli.ts"
-  ]
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist"]
 }

@@ -66,9 +66,3 @@ Launch a live preview of your map style in your local environment:
 
     charites serve style.yml
 
-
-For Mapbox users:
-
-.. code-block:: bash
-
-    charites serve style.yml --provider mapbox --mapbox-access-token xxxx

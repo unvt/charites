@@ -7,22 +7,11 @@ const config: PlaywrightTestConfig = {
     browserName: 'chromium',
     headless: true,
   },
-  workers: 3,
+  workers: 1,
   webServer: [
     {
       command: 'dist/cli.js serve test/data/style.yml --port 8080',
       port: 8080,
-    },
-    {
-      command:
-        'dist/cli.js serve test/data/style.yml --provider geolonia --port 8088',
-      port: 8088,
-    },
-    {
-      command:
-        'dist/cli.js serve test/data/style.yml --provider mapbox --port 8888 --mapbox-access-token ' +
-        process.env.MAPBOX_ACCESS_TOKEN,
-      port: 8888,
     },
   ],
 }

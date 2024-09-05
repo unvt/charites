@@ -1,2 +1,2 @@
-export { MetadataJSONImporter } from './metadata-importer'
-export { TileJSONImporter } from './tilejson-importer'
+export { MetadataJSONImporter } from './metadata-importer.js'
+export { TileJSONImporter } from './tilejson-importer.js'

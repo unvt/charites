@@ -6,6 +6,12 @@ import os from 'os'
 import { convert } from '../src/commands/convert'
 import { build } from '../src/commands/build'
 
+import { fileURLToPath } from 'url'
+import { dirname } from 'path'
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = dirname(__filename)
+
 let tmp: string
 
 describe('Test for the `convert.ts`.', () => {
@@ -46,7 +52,7 @@ id: example
 
     const outJsonPath = path.join(tmp, 'converted-back.json')
     // This will throw an error if the outputted YAML was invalid
-    await build(yamlPath, outJsonPath, { provider: 'default' })
+    await build(yamlPath, outJsonPath, {})
     assert.isTrue(fs.existsSync(outJsonPath))
   })
 

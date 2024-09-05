@@ -1,11 +1,11 @@
-import { test, expect } from '@playwright/test'
+import { test, expect } from '@playwright/test/index.mjs'
 
-test('Charites Live Preview with mapbox', async ({ page }) => {
+test('Charites Live Preview', async ({ page }) => {
   // collect errors on the page
   const pageErrors: Error[] = []
   page.on('pageerror', (exception) => pageErrors.push(exception))
 
-  await page.goto('http://localhost:8888/', { waitUntil: 'networkidle' })
+  await page.goto('http://localhost:8080/', { waitUntil: 'networkidle' })
   await page.waitForTimeout(1000)
   const title = await page.title()
   expect(title).toBe('Charites Live Preview')

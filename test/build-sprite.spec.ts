@@ -1,7 +1,12 @@
+import { fileURLToPath } from 'url'
+import { dirname } from 'path'
 import { assert } from 'chai'
 import path from 'path'
 import fs from 'fs'
 import os from 'os'
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = dirname(__filename)
 
 import { buildSprite } from '../src/lib/build-sprite'
 const iconsPath = path.join(__dirname, 'data/icons')
