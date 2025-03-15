@@ -3,7 +3,9 @@ import fs from 'fs'
 import os from 'os'
 import http from 'http'
 import open from 'open'
-import { WebSocketServer } from 'ws'
+// tweak to fix WebSocketServer is not a constructor
+const ws = await import('ws')
+const WebSocketServer = ws.default.WebSocketServer || ws.WebSocketServer
 import watch from 'node-watch'
 
 import { parser } from '../lib/yaml-parser.js'

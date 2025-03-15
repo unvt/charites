@@ -12,7 +12,7 @@
     "test": "npm run build && NODE_OPTIONS='--experimental-specifier-resolution=node' mocha --timeout 5000 'test/*.ts'",
     "test:watch": "npm test -- --watch --watch-files src/**/*.ts --watch-files test/**/*.ts",
     "test:e2e": "npx playwright test",
-    "command": "./node_modules/.bin/ts-node ./src/cli.ts"
+    "command": "tsx ./src/cli.ts"
   },
   "author": "",
   "license": "MIT",
@@ -28,7 +28,7 @@
     "jsonminify": "^0.4.2",
     "node-watch": "^0.7.4",
     "open": "^10.1.0",
-    "ws": "^8.18.0"
+    "ws": "^8.18.1"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.1.0",
@@ -41,7 +41,7 @@
     "@types/mapbox__point-geometry": "^0.1.4",
     "@types/mocha": "^10.0.7",
     "@types/node": "^22.5.0",
-    "@types/ws": "^8.5.12",
+    "@types/ws": "^8.18.0",
     "@typescript-eslint/eslint-plugin": "^8.3.0",
     "@typescript-eslint/parser": "^8.3.0",
     "chai": "^5.1.1",
@@ -54,8 +54,8 @@
     "mocha": "^10.7.3",
     "node-abort-controller": "^3.1.1",
     "prettier": "^3.3.3",
-    "ts-node": "^10.9.2",
     "tsconfig-paths": "^4.2.0",
+    "tsx": "^4.19.3",
     "typescript": "^5.5.4"
   },
   "type": "module"
