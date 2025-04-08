@@ -1,4 +1,4 @@
-import { VectorLayer } from './vector_layers'
+import { VectorLayer } from './vector_layers.js'
 
 /**
  * Definition of TileJSON v3.0.0

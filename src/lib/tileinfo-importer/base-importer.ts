@@ -1,4 +1,4 @@
-import { VectorLayer } from '../../types'
+import { VectorLayer } from '../../types/vector_layers.js'
 import {
   StyleSpecification,
   SourceSpecification,

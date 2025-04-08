@@ -10,11 +10,11 @@ import watch from 'node-watch'
 
 import { parser } from '../lib/yaml-parser.js'
 import { validateStyle } from '../lib/validate-style.js'
-import { providerDir } from '../lib/defaultValues.js'
 import { buildSprite } from '../lib/build-sprite.js'
 
 export interface serveOptions {
   port?: string
+  vitePort?: string
   spriteInput?: string
   open?: boolean
   sdf?: boolean
@@ -73,15 +73,6 @@ export async function serve(source: string, options: serveOptions) {
     }
 
     switch (url) {
-      case '/':
-        res.statusCode = 200
-        res.setHeader('Content-Type', 'text/html; charset=UTF-8')
-        const content = fs.readFileSync(
-          path.join(providerDir, 'index.html'),
-          'utf-8',
-        )
-        res.end(content)
-        break
       case '/style.json':
         let style
         try {
@@ -100,23 +91,39 @@ export async function serve(source: string, options: serveOptions) {
         res.setHeader('Cache-Control', 'no-store')
         res.end(JSON.stringify(style))
         break
-      case '/app.css':
-        res.statusCode = 200
-        res.setHeader('Content-Type', 'text/css; charset=UTF-8')
-        const css = fs.readFileSync(path.join(providerDir, 'app.css'), 'utf-8')
-        res.end(css)
-        break
-      case `/app.js`:
-        res.statusCode = 200
-        res.setHeader('Content-Type', 'application/javascript; charset=UTF-8')
-        const app = fs.readFileSync(path.join(providerDir, 'app.js'), 'utf-8')
-        const js = app.replace('___PORT___', `${port}`)
-        res.end(js)
-        break
-      default:
+      case '/sprite.json':
+      case '/sprite@2x.json':
+      case '/sprite.png':
+      case '/sprite@2x.png':
         res.statusCode = 404
         res.setHeader('Content-Type', 'text/plain; charset=UTF-8')
         res.end('Not found')
+        break
+      default:
+        const vitePort = parseInt(options.vitePort || '5137')
+        const proxyReq = http.request(
+          {
+            hostname: 'localhost',
+            port: vitePort,
+            path: url,
+            method: req.method,
+            headers: req.headers,
+          },
+          (viteRes) => {
+            res.writeHead(viteRes.statusCode || 500, viteRes.headers)
+            viteRes.pipe(res, {
+              end: true,
+            })
+          },
+        )
+        req.pipe(proxyReq, {
+          end: true,
+        })
+        proxyReq.on('error', (err) => {
+          console.error('Error with proxy request:', err)
+          res.statusCode = 500
+          res.end('Bad gateway: failed to proxy to Vite dev server')
+        })
         break
     }
   })
@@ -131,11 +138,11 @@ export async function serve(source: string, options: serveOptions) {
 
   const wss = new WebSocketServer({ server })
 
-  wss.on('connection', (ws) => {
+  wss.on('connection', (ws: WebSocket) => {
     const watcher = watch(
       path.dirname(sourcePath),
       { recursive: true, filter: /\.yml$|\.svg$/i },
-      (event, file) => {
+      (event: string, file: string) => {
         console.log(`${(event || '').toUpperCase()}: ${file}`)
         try {
           if (file?.toLowerCase().endsWith('.yml')) {
@@ -161,7 +168,7 @@ export async function serve(source: string, options: serveOptions) {
         }
       },
     )
-    ws.on('close', () => {
+    wss.on('close', () => {
       watcher.close()
     })
   })
