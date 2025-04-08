@@ -1,9 +1,10 @@
-import maplibreStyleSpec, {
+import {
+  validateStyleMin,
   StyleSpecification,
 } from '@maplibre/maplibre-gl-style-spec'
 
 export function validateStyle(style: StyleSpecification): void {
-  const result = maplibreStyleSpec.validateStyleMin(style)
+  const result = validateStyleMin(style)
 
   const errors = []
   for (let i = 0; i < result.length; i++) {

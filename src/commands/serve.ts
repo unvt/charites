@@ -91,6 +91,14 @@ export async function serve(source: string, options: serveOptions) {
         res.setHeader('Cache-Control', 'no-store')
         res.end(JSON.stringify(style))
         break
+      case '/sprite.json':
+      case '/sprite@2x.json':
+      case '/sprite.png':
+      case '/sprite@2x.png':
+        res.statusCode = 404
+        res.setHeader('Content-Type', 'text/plain; charset=UTF-8')
+        res.end('Not found')
+        break
       default:
         const vitePort = parseInt(options.vitePort || '5137')
         const proxyReq = http.request(
@@ -130,15 +138,14 @@ export async function serve(source: string, options: serveOptions) {
 
   const wss = new WebSocketServer({ server })
 
-  wss.on('connection', (ws) => {
+  wss.on('connection', (ws: WebSocket) => {
     const watcher = watch(
       path.dirname(sourcePath),
       { recursive: true, filter: /\.yml$|\.svg$/i },
-      (event, file) => {
+      (event: string, file: string) => {
         console.log(`${(event || '').toUpperCase()}: ${file}`)
         try {
           if (file?.toLowerCase().endsWith('.yml')) {
-            console.log('Reloading style')
             ws.send(
               JSON.stringify({
                 event: 'styleUpdate',
@@ -161,7 +168,7 @@ export async function serve(source: string, options: serveOptions) {
         }
       },
     )
-    ws.on('close', () => {
+    wss.on('close', () => {
       watcher.close()
     })
   })

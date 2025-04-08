@@ -16,7 +16,7 @@ program
   )
   .option('--sdf', 'Allows to use SDF sprite in charites')
   .option('--port [port]', 'Specify custom port')
-  .option('--vite-port [port]', 'Specify custom port for vite server')
+  .option('--vite-port [vitePort]', 'Specify custom port for vite server')
   .option('--no-open', "Don't open the preview in the default browser")
   .action(async (source: string, serveOptions: serveOptions) => {
     const options: serveOptions = program.opts()

@@ -43,10 +43,13 @@ class IncFileTag {
 
 const INC_PATH_TYPE = new YAML.Type('tag:yaml.org,2002:inc/file', {
   kind: 'scalar',
-  resolve: (data) => data,
-  construct: (data) => new IncFileTag(data),
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  resolve: (data: any) => data,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  construct: (data: any) => new IncFileTag(data),
   instanceOf: IncFileTag,
-  represent: (tag) => (tag as IncFileTag).value,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  represent: (tag: any) => (tag as IncFileTag).value,
 })
 const INC_PATH_OUTPUT_SCHEMA = YAML.DEFAULT_SCHEMA.extend([INC_PATH_TYPE])
 

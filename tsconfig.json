@@ -13,13 +13,21 @@
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "resolveJsonModule": true,
-    "module": "ESNext",
+    "allowSyntheticDefaultImports": true,
+    "skipLibCheck": true,
+    "module": "Preserve",
     "moduleResolution": "node",
     "outDir": "./dist",
     "baseUrl": ".",
     "paths": {
       "*": ["node_modules/*", "src/types/*"]
-    }
+    },
+    "types": [
+      "mocha",
+      "chai",
+      "node"
+    ],
+    "typeRoots": ["./node_modules/@types", "./src/types"]
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules", "dist"]
