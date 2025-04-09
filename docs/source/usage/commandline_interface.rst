@@ -27,7 +27,7 @@ Checking version
 .. code-block:: bash
 
     $ charites --version
-    0.3.0
+    2.1.0
 
 
 Inititalize `style.yml`
@@ -95,12 +95,18 @@ Realtime editor on browser
                                                  source> is `icons/`
     --sdf                                        Allows to use SDF sprite in charites
     --port [port]                                Specify custom port
+    --vite-port [vitePort]                       Specify custom port for vite server
+    --no-open                                    Don't open the preview in the default browser
     -h, --help                                   display help for command
 
-Charites has three options for `serve` command.
+Charites has fifth options for `serve` command.
 
 - ``--sprite-input`` - If you are building icon spritesheets with Charites, you can specify the directory of SVG files to compile here. See the ``build`` command for more information.
 
 - ``--sdf`` - if this option is used together with ``--sprite-input``, the viewer will generate SDF sprite. If the option is not specified, non SDF sprite will be generated.
 
 - ``--port`` - Set http server's port number. When not specified, the default is 8080.
+
+- ``--vite-port`` - Set Vite server's port number. When not specified, the default is 5137.
+
+- ``--no-open`` - If this option is used, the preview will not be opened in the default browser. This is useful when you want to use the preview in a headless environment.
