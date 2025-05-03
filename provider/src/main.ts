@@ -7,8 +7,8 @@ import {
   IControl,
 } from 'maplibre-gl'
 import 'maplibre-gl/dist/maplibre-gl.css'
-import '@maplibre/maplibre-gl-inspect/dist/maplibre-gl-inspect.css';
-import MaplibreInspect from '@maplibre/maplibre-gl-inspect';
+import '@maplibre/maplibre-gl-inspect/dist/maplibre-gl-inspect.css'
+import MaplibreInspect from '@maplibre/maplibre-gl-inspect'
 import { MaplibreLegendControl } from '@watergis/maplibre-gl-legend'
 import '@watergis/maplibre-gl-legend/dist/maplibre-gl-legend.css'
 import { Protocol } from 'pmtiles'
@@ -122,12 +122,14 @@ const init = async () => {
 
   charites.initializeWebSocket(map)
 
-  map.addControl(new MaplibreInspect({
-    popup: new Popup({
-      closeButton: false,
-      closeOnClick: false
-    })
-  }));
+  map.addControl(
+    new MaplibreInspect({
+      popup: new Popup({
+        closeButton: false,
+        closeOnClick: false,
+      }),
+    }),
+  )
   map.addControl(new NavigationControl(), 'top-right')
   map.addControl(
     new MaplibreLegendControl(
