@@ -1,4 +1,3 @@
-import axios from 'axios'
 import { TileJSON } from '../../types/index.js'
 import {
   SourceSpecification,
@@ -8,8 +7,8 @@ import { BaseImporter, TileInfoJSONResponse } from './base-importer.js'
 
 export class TileJSONImporter extends BaseImporter {
   async getJSON(url: string): Promise<TileInfoJSONResponse> {
-    const res = await axios.get(url)
-    const tilejson: TileJSON = res.data
+    const res = await fetch(url)
+    const tilejson: TileJSON = await res.json()
     const tilesetName: string = tilejson.name
       ? tilejson.name
       : Math.random().toString(32).substring(2)

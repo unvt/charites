@@ -1,6 +1,5 @@
 import { expect } from 'chai'
 import { AbortController } from 'node-abort-controller'
-import axios from 'axios'
 import { abortableExecFile } from './util/execPromise'
 import { copyFixturesDir, copyFixturesFile } from './util/copyFixtures'
 import { makeTempDir } from './util/makeTempDir'
@@ -29,13 +28,13 @@ describe('Test for `charites serve`', () => {
       await sleep(500)
       await Promise.all([
         (async () => {
-          const res = await axios('http://127.0.0.1:8080/style.json', {})
-          expect(res.data.version).to.equal(8)
+          const res = await fetch('http://127.0.0.1:8080/style.json')
+          const data = await res.json()
+          expect(data.version).to.equal(8)
         })(),
         (async () => {
-          await axios('http://127.0.0.1:8080/sprite.json', {
-            validateStatus: (status) => status === 404,
-          })
+          const res = await fetch('http://127.0.0.1:8080/sprite.json')
+          expect(res.status).to.equal(404)
         })(),
       ])
     } finally {
@@ -67,30 +66,35 @@ describe('Test for `charites serve`', () => {
       await sleep(500)
       await Promise.all([
         (async () => {
-          const res = await axios('http://127.0.0.1:8080/style.json', {})
+          const res = await fetch('http://127.0.0.1:8080/style.json')
           expect(res.status).to.equal(200)
-          expect(res.data.version).to.equal(8)
-          expect(res.data.sprite).to.equal('http://127.0.0.1:8080/sprite')
+          const data = await res.json()
+          expect(data.version).to.equal(8)
+          expect(data.sprite).to.equal('http://127.0.0.1:8080/sprite')
         })(),
         (async () => {
-          const res = await axios('http://127.0.0.1:8080/sprite.json', {})
+          const res = await fetch('http://127.0.0.1:8080/sprite.json')
           expect(res.status).to.equal(200)
-          expect(Object.entries(res.data).length).to.be.greaterThan(0)
+          const data = await res.json()
+          expect(Object.entries(data).length).to.be.greaterThan(0)
         })(),
         (async () => {
-          const res = await axios('http://127.0.0.1:8080/sprite@2x.json', {})
+          const res = await fetch('http://127.0.0.1:8080/sprite@2x.json')
           expect(res.status).to.equal(200)
-          expect(Object.entries(res.data).length).to.be.greaterThan(0)
+          const data = await res.json()
+          expect(Object.entries(data).length).to.be.greaterThan(0)
         })(),
         (async () => {
-          const res = await axios('http://127.0.0.1:8080/sprite.png', {})
+          const res = await fetch('http://127.0.0.1:8080/sprite.png')
           expect(res.status).to.equal(200)
-          expect(res.data.length).to.be.greaterThan(0)
+          const buffer = await res.arrayBuffer()
+          expect(buffer.byteLength).to.be.greaterThan(0)
         })(),
         (async () => {
-          const res = await axios('http://127.0.0.1:8080/sprite@2x.png', {})
+          const res = await fetch('http://127.0.0.1:8080/sprite@2x.png')
           expect(res.status).to.equal(200)
-          expect(res.data.length).to.be.greaterThan(0)
+          const buffer = await res.arrayBuffer()
+          expect(buffer.byteLength).to.be.greaterThan(0)
         })(),
       ])
     } finally {
