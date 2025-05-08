@@ -1,4 +1,3 @@
-import axios from 'axios'
 import { MetadataJSON, VectorLayer } from '../../types/index.js'
 import {
   LayerSpecification,
@@ -8,8 +7,8 @@ import { BaseImporter, TileInfoJSONResponse } from './base-importer.js'
 
 export class MetadataJSONImporter extends BaseImporter {
   async getJSON(url: string): Promise<TileInfoJSONResponse> {
-    const res = await axios.get(url)
-    const matadataJSON: MetadataJSON = res.data
+    const res = await fetch(url)
+    const matadataJSON: MetadataJSON = await res.json()
     const metadataName: string = matadataJSON.name
       ? matadataJSON.name
       : Math.random().toString(32).substring(2)
