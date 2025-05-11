@@ -49,7 +49,7 @@ class IncFileTag {
   }
 }
 
-const INC_PATH_TYPE = {
+export const INC_PATH_TYPE = {
   tag: 'tag:yaml.org,2002:inc/file',
   identify: (value: unknown) => value instanceof IncFileTag,
   resolve: (str: string) => str,

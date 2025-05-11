@@ -8,6 +8,7 @@ import { init, initOptions } from '../src/commands/init'
 
 import { fileURLToPath } from 'url'
 import { dirname } from 'path'
+import { INC_PATH_TYPE } from '../src/lib/yaml-writer'
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
 
@@ -66,12 +67,15 @@ describe('Test for the `init.ts`.', () => {
     assert.deepEqual(true, !!fs.statSync(styleYaml))
     // the file should be the same with init_tilejson.yml
     assert.deepEqual(
-      YAML.parse(fs.readFileSync(styleYaml, 'utf8')),
+      YAML.parse(fs.readFileSync(styleYaml, 'utf8'), {
+        customTags: [INC_PATH_TYPE],
+      }),
       YAML.parse(
         fs.readFileSync(
           path.join(__dirname, 'data/init/tilejson/init_decomposite.yml'),
           'utf-8',
         ),
+        { customTags: [INC_PATH_TYPE] },
       ),
     )
     assert.deepEqual(
