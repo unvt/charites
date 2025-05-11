@@ -1,4 +1,3 @@
-import yaml from 'js-yaml'
 import path from 'path'
 
 // import YamlIncludeDirType from './lib/dir';
@@ -9,7 +8,7 @@ export const YAML_TYPES = [
   // YamlIncludeDirType,
   YamlIncludeFileType,
 ]
-export const YAML_INCLUDE_SCHEMA = yaml.DEFAULT_SCHEMA.extend(YAML_TYPES)
+export const YAML_INCLUDE_SCHEMA = { customTags: YAML_TYPES }
 export let basefile = ''
 
 // so we know where to find files referenced relative to the base file
