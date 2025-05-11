@@ -2,7 +2,7 @@ import { assert } from 'chai'
 import path from 'path'
 import fs from 'fs'
 import os from 'os'
-import YAML from 'js-yaml'
+import YAML from 'yaml'
 
 import { init, initOptions } from '../src/commands/init'
 
@@ -23,8 +23,8 @@ describe('Test for the `init.ts`.', () => {
     assert.deepEqual(true, !!fs.statSync(styleYaml))
     // the file should be the same with init.yml
     assert.deepEqual(
-      YAML.load(fs.readFileSync(styleYaml, 'utf8')),
-      YAML.load(fs.readFileSync(tempStylePath, 'utf-8')),
+      YAML.parse(fs.readFileSync(styleYaml, 'utf8')),
+      YAML.parse(fs.readFileSync(tempStylePath, 'utf-8')),
     )
   })
 
@@ -45,35 +45,10 @@ describe('Test for the `init.ts`.', () => {
     assert.deepEqual(true, !!fs.statSync(styleYaml))
     // the file should be the same with init_tilejson.yml
     assert.deepEqual(
-      YAML.load(fs.readFileSync(styleYaml, 'utf8')),
-      YAML.load(fs.readFileSync(tempStylePath, 'utf-8')),
+      YAML.parse(fs.readFileSync(styleYaml, 'utf8')),
+      YAML.parse(fs.readFileSync(tempStylePath, 'utf-8')),
     )
   })
-
-  /*
-  it('Should produce composited style.yml without layers if tilejson without vector_layers is specified', async () => {
-    const tempStylePath = path.join(
-      __dirname,
-      'data/init/init_tilejson_without_layers.yml',
-    )
-    const tmpdir = fs.mkdtempSync(path.join(os.tmpdir(), 'charites-'))
-    const styleYaml = path.join(tmpdir, 'style.yml')
-
-    const options: initOptions = {
-      tilejsonUrls: 'https://a.tiles.mapbox.com/v3/aj.1x1-degrees.json',
-      compositeLayers: true,
-    }
-
-    await init(styleYaml, options)
-
-    // The file should exists.
-    assert.deepEqual(true, !!fs.statSync(styleYaml))
-    assert.deepEqual(
-      YAML.load(fs.readFileSync(styleYaml, 'utf8')),
-      YAML.load(fs.readFileSync(tempStylePath, 'utf-8')),
-    )
-  })
-  */
 
   it('Should initialize default decomposited style.yml from tilejson provided', async () => {
     const tmpdir = fs.mkdtempSync(path.join(os.tmpdir(), 'charites-'))
@@ -100,13 +75,13 @@ describe('Test for the `init.ts`.', () => {
         .replace(/\r\n/gm, '\n'),
     )
     assert.deepEqual(
-      YAML.load(
+      YAML.parse(
         fs.readFileSync(
           path.join(tmpdir, 'layers/bicycle_parking.yml'),
           'utf8',
         ),
       ),
-      YAML.load(
+      YAML.parse(
         fs.readFileSync(
           path.join(__dirname, 'data/init/tilejson/layers/bicycle_parking.yml'),
           'utf-8',
@@ -114,10 +89,10 @@ describe('Test for the `init.ts`.', () => {
       ),
     )
     assert.deepEqual(
-      YAML.load(
+      YAML.parse(
         fs.readFileSync(path.join(tmpdir, 'layers/showers.yml'), 'utf8'),
       ),
-      YAML.load(
+      YAML.parse(
         fs.readFileSync(
           path.join(__dirname, 'data/init/tilejson/layers/showers.yml'),
           'utf-8',
@@ -125,10 +100,10 @@ describe('Test for the `init.ts`.', () => {
       ),
     )
     assert.deepEqual(
-      YAML.load(
+      YAML.parse(
         fs.readFileSync(path.join(tmpdir, 'layers/telephone.yml'), 'utf8'),
       ),
-      YAML.load(
+      YAML.parse(
         fs.readFileSync(
           path.join(__dirname, 'data/init/tilejson/layers/telephone.yml'),
           'utf-8',
@@ -153,8 +128,8 @@ describe('Test for the `init.ts`.', () => {
     // The file should exists.
     assert.deepEqual(true, !!fs.statSync(styleYaml))
     assert.deepEqual(
-      YAML.load(fs.readFileSync(styleYaml, 'utf8')),
-      YAML.load(fs.readFileSync(tempStylePath, 'utf-8')),
+      YAML.parse(fs.readFileSync(styleYaml, 'utf8')),
+      YAML.parse(fs.readFileSync(tempStylePath, 'utf-8')),
     )
   })
 })
