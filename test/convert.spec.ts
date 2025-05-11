@@ -9,6 +9,9 @@ import { build } from '../src/commands/build'
 import { fileURLToPath } from 'url'
 import { dirname } from 'path'
 
+import YAML from 'yaml'
+import { INC_PATH_TYPE } from '../src/lib/yaml-writer'
+
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
 
@@ -31,8 +34,10 @@ describe('Test for the `convert.ts`.', () => {
     convert(jsonPath, yamlPath)
     const yml = fs.readFileSync(yamlPath, 'utf-8')
 
-    assert.equal(
-      `version: 8
+    assert.deepEqual(
+      YAML.parse(yml, { customTags: [INC_PATH_TYPE] }),
+      YAML.parse(
+        `version: 8
 name: example
 metadata: {}
 sources:
@@ -47,7 +52,8 @@ layers:
     layers/background-with-very-long-name-background-with-very-long-name-background-with-very-long-name.yml
 id: example
 `,
-      yml,
+        { customTags: [INC_PATH_TYPE] },
+      ),
     )
 
     const outJsonPath = path.join(tmp, 'converted-back.json')

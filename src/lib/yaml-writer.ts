@@ -1,6 +1,6 @@
 import path from 'path'
 import fs from 'fs'
-import YAML from 'js-yaml'
+import YAML from 'yaml'
 import {
   StyleSpecification,
   LayerSpecification,
@@ -22,7 +22,11 @@ const writeCompositedYaml = (
   destinationPath: string,
   style: StyleSpecification,
 ) => {
-  const styleYAML = YAML.dump(style)
+  const styleYAML = YAML.stringify(style, null, {
+    singleQuote: true,
+    indent: 2,
+    lineWidth: 40,
+  })
   let stylePath = path.resolve(process.cwd(), destinationPath)
 
   // The `source` is absolute path.
@@ -39,19 +43,24 @@ class IncFileTag {
     // We use path.posix.join to make sure the path uses / path separators, even when run on Windows.
     this.value = path.posix.join('layers', fileName)
   }
+
+  toString() {
+    return this.value
+  }
 }
 
-const INC_PATH_TYPE = new YAML.Type('tag:yaml.org,2002:inc/file', {
-  kind: 'scalar',
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  resolve: (data: any) => data,
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  construct: (data: any) => new IncFileTag(data),
-  instanceOf: IncFileTag,
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  represent: (tag: any) => (tag as IncFileTag).value,
-})
-const INC_PATH_OUTPUT_SCHEMA = YAML.DEFAULT_SCHEMA.extend([INC_PATH_TYPE])
+export const INC_PATH_TYPE = {
+  tag: 'tag:yaml.org,2002:inc/file',
+  identify: (value: unknown) => value instanceof IncFileTag,
+  resolve: (str: string) => str,
+  stringify: (item: IncFileTag | unknown) => {
+    if (item instanceof IncFileTag) {
+      const value = item.value
+      return value
+    }
+    return String(item)
+  },
+}
 
 const writeDecompositedYaml = (
   destinationPath: string,
@@ -61,7 +70,11 @@ const writeDecompositedYaml = (
 
   for (let i = 0; i < style.layers.length; i++) {
     const layer = style.layers[i]
-    const layerYml = YAML.dump(layer)
+    const layerYml = YAML.stringify(layer, null, {
+      singleQuote: true,
+      indent: 2,
+      lineWidth: 40,
+    })
     const fileName = `${style.layers[i].id}.yml`
     const layersDirName = path.join(path.dirname(destinationPath), 'layers')
     const filePath = path.join(layersDirName, fileName)
@@ -75,10 +88,12 @@ const writeDecompositedYaml = (
 
   style.layers = layers
 
-  fs.writeFileSync(
-    destinationPath,
-    YAML.dump(style, {
-      schema: INC_PATH_OUTPUT_SCHEMA,
-    }),
-  )
+  const yamlOutput = YAML.stringify(style, null, {
+    customTags: [INC_PATH_TYPE],
+    singleQuote: true,
+    indent: 2,
+    lineWidth: 40,
+  })
+
+  fs.writeFileSync(destinationPath, yamlOutput)
 }
