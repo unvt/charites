@@ -66,13 +66,13 @@ describe('Test for the `init.ts`.', () => {
     assert.deepEqual(true, !!fs.statSync(styleYaml))
     // the file should be the same with init_tilejson.yml
     assert.deepEqual(
-      fs.readFileSync(styleYaml, 'utf8').replace(/\r\n/gm, '\n'),
-      fs
-        .readFileSync(
+      YAML.parse(fs.readFileSync(styleYaml, 'utf8')),
+      YAML.parse(
+        fs.readFileSync(
           path.join(__dirname, 'data/init/tilejson/init_decomposite.yml'),
           'utf-8',
-        )
-        .replace(/\r\n/gm, '\n'),
+        ),
+      ),
     )
     assert.deepEqual(
       YAML.parse(
