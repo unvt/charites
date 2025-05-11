@@ -25,7 +25,7 @@ const writeCompositedYaml = (
   const styleYAML = YAML.stringify(style, null, {
     singleQuote: true,
     indent: 2,
-    lineWidth: 80,
+    lineWidth: 40,
   })
   let stylePath = path.resolve(process.cwd(), destinationPath)
 
@@ -53,7 +53,7 @@ const INC_PATH_TYPE = {
   tag: 'tag:yaml.org,2002:inc/file',
   identify: (value: unknown) => value instanceof IncFileTag,
   resolve: (str: string) => str,
-  stringify: (item: any) => {
+  stringify: (item: IncFileTag | unknown) => {
     if (item instanceof IncFileTag) {
       const value = item.value
       return value
@@ -73,7 +73,7 @@ const writeDecompositedYaml = (
     const layerYml = YAML.stringify(layer, null, {
       singleQuote: true,
       indent: 2,
-      lineWidth: 80,
+      lineWidth: 40,
     })
     const fileName = `${style.layers[i].id}.yml`
     const layersDirName = path.join(path.dirname(destinationPath), 'layers')
@@ -92,7 +92,7 @@ const writeDecompositedYaml = (
     customTags: [INC_PATH_TYPE],
     singleQuote: true,
     indent: 2,
-    lineWidth: 80,
+    lineWidth: 40,
   })
 
   fs.writeFileSync(destinationPath, yamlOutput)
