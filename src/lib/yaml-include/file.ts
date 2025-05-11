@@ -13,7 +13,6 @@ const fileTag = {
     yamlinc.YAML_VISITED_FILES.push(fullpath.replace(basepath + path.sep, ''))
 
     const src = fs.readFileSync(fullpath, 'utf8')
-    // YAMLパッケージでのパース
     const included = YAML.parse(src, {
       customTags: yamlinc.YAML_TYPES,
     })
