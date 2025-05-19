@@ -1,5 +1,5 @@
 import fs from 'fs'
-import YAML from 'js-yaml'
+import YAML from 'yaml'
 import { StyleSpecification } from '@maplibre/maplibre-gl-style-spec'
 import * as yamlinc from './yaml-include/index.js'
 
@@ -12,10 +12,8 @@ export function parser(file: string): StyleSpecification {
   const schema = yamlinc.YAML_INCLUDE_SCHEMA
   const yaml = fs.readFileSync(file, 'utf8')
 
-  const obj: StyleObject = YAML.load(yaml, {
-    schema,
-    filename: file,
-    json: true,
+  const obj: StyleObject = YAML.parse(yaml, {
+    ...schema,
   }) as StyleObject
 
   const styleObj: StyleObject = {}
