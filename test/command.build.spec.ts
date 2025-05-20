@@ -91,14 +91,12 @@ describe('Test for the `charites build`', () => {
       `${charites} build style.yml style.json --sprite-output noExistDirname`,
       tmpdir,
     )
-    promise.should.be.rejected
-      .then(function () {
-        return assert.isRejected(
-          promise,
-          /noExistDirname: No such directory. Please specify valid icon output directory. For more help run charites build --help\n/,
-        )
-      })
-      .should.notify(done)
+    assert
+      .isRejected(
+        promise,
+        /noExistDirname: No such directory. Please specify valid icon output directory. For more help run charites build --help\n/,
+      )
+      .then(() => done(), done)
   })
 
   it('charites build print error message', () => {
