@@ -5,6 +5,7 @@ import http from 'http'
 import open from 'open'
 // tweak to fix WebSocketServer is not a constructor
 const ws = await import('ws')
+import type { WebSocket as WSWebSocket } from 'ws'
 const WebSocketServer = ws.default.WebSocketServer || ws.WebSocketServer
 import watch from 'node-watch'
 
@@ -145,45 +146,45 @@ export async function serve(source: string, options: serveOptions) {
   })
 
   const wss = new WebSocketServer({ server })
+  const sockets = new Set<WSWebSocket>()
 
-  wss.on('connection', (ws: WebSocket) => {
-    const watcher = watch(
-      path.dirname(sourcePath),
-      { recursive: true, filter: /\.yml$|\.svg$/i },
-      (event: string, file: string) => {
-        console.log(`${(event || '').toUpperCase()}: ${file}`)
-        try {
-          if (file?.toLowerCase().endsWith('.yml')) {
-            ws.send(
-              JSON.stringify({
-                event: 'styleUpdate',
-              }),
-            )
-          } else if (
-            file?.toLowerCase().endsWith('.svg') &&
-            typeof spriteRefresher !== 'undefined'
-          ) {
-            spriteRefresher().then(() => {
-              ws.send(
-                JSON.stringify({
-                  event: 'spriteUpdate',
-                }),
-              )
-            })
+  const watcher = watch(
+    path.dirname(sourcePath),
+    { recursive: true, filter: /\.yml$|\.svg$/i },
+    (event: string, file: string) => {
+      console.log(`${(event || '').toUpperCase()}: ${file}`)
+      try {
+        if (file?.toLowerCase().endsWith('.yml')) {
+          for (const client of sockets) {
+            client.send(JSON.stringify({ event: 'styleUpdate' }))
           }
-        } catch (_) {
-          // Nothing to do
+        } else if (
+          file?.toLowerCase().endsWith('.svg') &&
+          typeof spriteRefresher !== 'undefined'
+        ) {
+          spriteRefresher().then(() => {
+            for (const client of sockets) {
+              client.send(JSON.stringify({ event: 'spriteUpdate' }))
+            }
+          })
         }
-      },
-    )
-    wss.on('close', () => {
-      watcher.close()
+      } catch (_) {
+        // Nothing to do
+      }
+    },
+  )
+
+  wss.on('connection', (ws: WSWebSocket) => {
+    sockets.add(ws)
+    ws.on('close', () => {
+      sockets.delete(ws)
     })
   })
 
   process.on('SIGINT', () => {
     console.log('Cleaning up...')
     server.close()
+    watcher.close()
     if (typeof spriteOut !== 'undefined') {
       fs.rmSync(spriteOut, { recursive: true })
       spriteOut = undefined
