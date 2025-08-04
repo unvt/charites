@@ -87,9 +87,29 @@ export async function serve(source: string, options: serveOptions) {
         try {
           style = parser(sourcePath)
           if (typeof spriteOut !== 'undefined') {
-            style.sprite = `http://${
+            const spriteUrl = `http://${
               req.headers.host || `localhost:${port}`
             }/sprite`
+
+            if (typeof style.sprite === 'string') {
+              // update a single sprite URL
+              style.sprite = spriteUrl
+            } else if (Array.isArray(style.sprite)) {
+              // if sprite is an array, update default sprite URL.
+              // if default sprite is not found, add default url.
+              if (style.sprite.find((s) => s.id === 'default')) {
+                for (const s of style.sprite) {
+                  if (s.id === 'default') {
+                    s.url = spriteUrl
+                  }
+                }
+              } else {
+                style.sprite.push({
+                  id: 'default',
+                  url: spriteUrl,
+                })
+              }
+            }
           }
           validateStyle(style)
         } catch (error) {
