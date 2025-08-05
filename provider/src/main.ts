@@ -131,7 +131,7 @@ const init = async () => {
       }),
     }),
   )
-  map.addControl(new NavigationControl({}), 'top-right')
+  map.addControl(new NavigationControl(), 'top-right')
   map.addControl(new GlobeControl(), 'top-right')
   map.addControl(
     new MaplibreLegendControl(
