@@ -5,6 +5,7 @@ import {
   NavigationControl,
   addProtocol,
   IControl,
+  GlobeControl,
 } from 'maplibre-gl'
 import 'maplibre-gl/dist/maplibre-gl.css'
 import '@maplibre/maplibre-gl-inspect/dist/maplibre-gl-inspect.css'
@@ -131,6 +132,7 @@ const init = async () => {
     }),
   )
   map.addControl(new NavigationControl(), 'top-right')
+  map.addControl(new GlobeControl(), 'top-right')
   map.addControl(
     new MaplibreLegendControl(
       {},
