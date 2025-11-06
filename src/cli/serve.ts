@@ -39,6 +39,7 @@ async function startProviderDevServer(options: serveOptions) {
   const config: InlineConfig = {
     root: path.resolve(__dirname, '../../provider'),
     server: {
+      host: '0.0.0.0',
       port: parseInt(options.vitePort ?? '5137'),
     },
   }

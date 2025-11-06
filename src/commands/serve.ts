@@ -201,7 +201,7 @@ export async function serve(source: string, options: serveOptions) {
     })
   })
 
-  process.on('SIGINT', () => {
+  const cleanUpAndExit = () => {
     console.log('Cleaning up...')
     server.close()
     watcher.close()
@@ -210,7 +210,10 @@ export async function serve(source: string, options: serveOptions) {
       spriteOut = undefined
     }
     process.exit(0)
-  })
+  }
+
+  process.on('SIGINT', cleanUpAndExit)
+  process.on('SIGTERM', cleanUpAndExit)
 
   return server
 }
