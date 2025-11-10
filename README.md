@@ -33,6 +33,25 @@ MIT
 
 - Node.js v20 or later
 
+## Docker
+
+Build the Docker image:
+
+```bash
+docker build -t charites:latest .
+```
+
+Run charites commands in Docker:
+
+```bash
+docker run --rm -v $(pwd):/data -u $(id -u):$(id -g) charites:latest init /data/my-style.yml
+docker run --rm -v $(pwd):/data -u $(id -u):$(id -g) charites:latest convert /data/style.json /data/style.yml
+docker run --rm -v $(pwd):/data -u $(id -u):$(id -g) charites:latest build /data/style.yml /data/style.json
+docker run --init -it --rm -p 8080:8080 -v $(pwd):/data charites:latest serve /data/style.yml
+```
+
+Note: `charites serve` requires running as root user because it needs to rebuild vite server inside the container.
+
 ## Contributors ✨
 
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
