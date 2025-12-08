@@ -12,6 +12,10 @@ on:
     branches:
       - main
 
+permissions:
+  id-token: write  # Required for OIDC
+  contents: read
+
 jobs:
   build:
     strategy:
@@ -60,9 +64,9 @@ jobs:
     needs: build
     if: startsWith(github.ref, 'refs/tags/v')
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       # Setup .npmrc file to publish to npm
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v4
         with:
           tag_name: 'v%s'
           node-version: '22.x'
@@ -70,6 +74,6 @@ jobs:
           scope: '@unvt'
       - run: npm install
       - run: npm run build
-      - run: npm publish --access=public
+      - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
