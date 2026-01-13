@@ -1,6 +1,6 @@
 {
   "name": "@unvt/charites",
-  "version": "2.1.9",
+  "version": "2.1.10",
   "description": "",
   "bin": {
     "charites": "dist/cli.js"
