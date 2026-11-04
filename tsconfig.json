@@ -20,7 +20,6 @@
     "outDir": "./dist",
     "rootDir": "./src",
     "types": [
-      "mocha",
       "chai",
       "node"
     ],
