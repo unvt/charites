@@ -1,3 +1,4 @@
+import { beforeEach, describe, it } from 'node:test'
 import { expect } from 'chai'
 import { AbortController } from 'node-abort-controller'
 import { abortableExecFile } from './util/execPromise'

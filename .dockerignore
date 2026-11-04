@@ -83,10 +83,8 @@ test-results/
 docs/
 test/
 .gitignore
-.mocharc.json
 .prettierrc.cjs
 eslint.config.mjs
-mocha-register.cjs
 playwright.config.ts
 README.md
 .all-contributorsrc

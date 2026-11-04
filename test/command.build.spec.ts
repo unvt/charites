@@ -1,3 +1,4 @@
+import { beforeEach, describe, it } from 'node:test'
 import * as chai from 'chai'
 import chaiAsPromised from 'chai-as-promised'
 import path from 'path'
@@ -86,7 +87,7 @@ describe('Test for the `charites build`', () => {
     )
   })
 
-  it('charites build style.yml style.json --sprite-output noExistDirname', (done) => {
+  it('charites build style.yml style.json --sprite-output noExistDirname', (_t, done) => {
     const promise = exec(
       `${charites} build style.yml style.json --sprite-output noExistDirname`,
       tmpdir,

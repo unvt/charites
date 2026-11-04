@@ -1,10 +1,11 @@
+import { describe, it } from 'node:test'
 import { assert } from 'chai'
 import { StyleSpecification } from '@maplibre/maplibre-gl-style-spec'
 
 import { validateStyle } from '../src/lib/validate-style'
 
 describe('Test for the `validate-style.ts`.', () => {
-  it('should validate as expected.', (done) => {
+  it('should validate as expected.', (_t, done) => {
     // @ts-ignore
     const style: StyleSpecification = {
       version: 8,

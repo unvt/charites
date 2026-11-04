@@ -14,7 +14,7 @@ const compat = new FlatCompat({
 
 export default [
   {
-    ignores: ['node_modules/', 'dist', 'mocha-register.cjs'],
+    ignores: ['node_modules/', 'dist'],
   },
   ...compat.extends(
     'plugin:@typescript-eslint/recommended',
