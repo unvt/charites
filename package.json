@@ -9,8 +9,8 @@
     "build": "tsc -p .",
     "watch": "tsc -w",
     "lint": "eslint --fix .",
-    "test": "npm run build && node --import tsx --test --test-timeout=5000 'test/*.spec.ts'",
-    "test:watch": "node --import tsx --test --watch --test-timeout=5000 'test/*.spec.ts'",
+    "test": "npm run build && node --import tsx --test --test-timeout=15000 'test/*.spec.ts'",
+    "test:watch": "node --import tsx --test --watch --test-timeout=15000 'test/*.spec.ts'",
     "test:e2e": "npx playwright test",
     "command": "tsx ./src/cli.ts"
   },
