@@ -1,4 +1,5 @@
-import { describe, it } from 'node:test'
+import { describe } from 'node:test'
+import { it } from './util/test'
 import { assert } from 'chai'
 import { StyleSpecification } from '@maplibre/maplibre-gl-style-spec'
 
