@@ -1,4 +1,5 @@
-import { beforeEach, describe, it } from 'node:test'
+import { beforeEach, describe } from 'node:test'
+import { it } from './util/test'
 import { fileURLToPath } from 'url'
 import { dirname } from 'path'
 import { assert } from 'chai'

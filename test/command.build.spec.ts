@@ -1,4 +1,5 @@
-import { beforeEach, describe, it } from 'node:test'
+import { beforeEach, describe } from 'node:test'
+import { it } from './util/test'
 import * as chai from 'chai'
 import chaiAsPromised from 'chai-as-promised'
 import path from 'path'

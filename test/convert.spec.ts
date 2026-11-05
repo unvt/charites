@@ -1,4 +1,5 @@
-import { afterEach, beforeEach, describe, it } from 'node:test'
+import { afterEach, beforeEach, describe } from 'node:test'
+import { it } from './util/test'
 import { assert } from 'chai'
 import path from 'path'
 import fs from 'fs'
