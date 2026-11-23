@@ -142,6 +142,8 @@ const init = async () => {
         showCheckbox: true,
         onlyRendered: true,
         reverseOrder: true,
+        groupBySourceLayer: true,
+        showStyleEditor: true,
       },
     ) as unknown as IControl,
     'bottom-left',
