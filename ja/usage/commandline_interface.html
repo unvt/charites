@@ -1,25 +1,26 @@
+
+
 <!DOCTYPE html>
-<html class="writer-html5" lang="ja" >
+<html class="writer-html5" lang="ja" data-content_root="../">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>コマンドラインインターフェース &mdash; charites 0.2.0 ドキュメント</title>
-      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <!--[if lt IE 9]>
-    <script src="../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+
   
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/doctools.js"></script>
-        <script src="../_static/sphinx_highlight.js"></script>
-        <script src="../_static/translations.js"></script>
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=0a962762"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="../_static/translations.js?v=4755f45a"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="検索" href="../search.html" />
-    <link rel="next" title="グローバルの設定" href="global_options.html" />
+    <link rel="next" title="実行例" href="examples.html" />
     <link rel="prev" title="使い方" href="index.html" /> 
 </head>
 
@@ -55,7 +56,6 @@
 <li class="toctree-l3"><a class="reference internal" href="#realtime-editor-on-browser">ブラウザでのリアルタイムエディタ</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="global_options.html">グローバルの設定</a></li>
 <li class="toctree-l2"><a class="reference internal" href="examples.html">実行例</a></li>
 <li class="toctree-l2"><a class="reference internal" href="example2.html">Example 2: Import existing style.json and edit it with charites</a></li>
 </ul>
@@ -89,9 +89,9 @@
            <div itemprop="articleBody">
              
   <section id="commandline-interface">
-<h1>コマンドラインインターフェース<a class="headerlink" href="#commandline-interface" title="この見出しへのパーマリンク"></a></h1>
+<h1>コマンドラインインターフェース<a class="headerlink" href="#commandline-interface" title="Link to this heading"></a></h1>
 <section id="help">
-<h2>Help<a class="headerlink" href="#help" title="この見出しへのパーマリンク"></a></h2>
+<h2>Help<a class="headerlink" href="#help" title="Link to this heading"></a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>charites<span class="w"> </span><span class="nb">help</span>
 Usage:<span class="w"> </span>charites<span class="w"> </span><span class="o">[</span>options<span class="o">]</span><span class="w"> </span><span class="o">[</span>command<span class="o">]</span>
 
@@ -109,14 +109,14 @@ serve<span class="w"> </span><span class="o">[</span>options<span class="o">]</s
 </div>
 </section>
 <section id="checking-version">
-<h2>Checking version<a class="headerlink" href="#checking-version" title="この見出しへのパーマリンク"></a></h2>
+<h2>Checking version<a class="headerlink" href="#checking-version" title="Link to this heading"></a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>charites<span class="w"> </span>--version
-<span class="m">0</span>.3.0
+<span class="m">2</span>.1.0
 </pre></div>
 </div>
 </section>
 <section id="inititalize-style-yml">
-<h2><cite>style.yml</cite> を初期化する<a class="headerlink" href="#inititalize-style-yml" title="この見出しへのパーマリンク"></a></h2>
+<h2><cite>style.yml</cite> を初期化する<a class="headerlink" href="#inititalize-style-yml" title="Link to this heading"></a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>charites<span class="w"> </span>init<span class="w"> </span>-h
 Usage:<span class="w"> </span>charites<span class="w"> </span>init<span class="w"> </span><span class="o">[</span>options<span class="o">]</span><span class="w"> </span>&lt;file&gt;
 
@@ -133,7 +133,7 @@ Options:
 </div>
 </section>
 <section id="convert-existing-style-json">
-<h2>既存の <cite>style.json</cite> を変換する<a class="headerlink" href="#convert-existing-style-json" title="この見出しへのパーマリンク"></a></h2>
+<h2>既存の <cite>style.json</cite> を変換する<a class="headerlink" href="#convert-existing-style-json" title="Link to this heading"></a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>charites<span class="w"> </span>convert<span class="w"> </span>-h
 Usage:<span class="w"> </span>charites<span class="w"> </span>convert<span class="w"> </span><span class="o">[</span>options<span class="o">]</span><span class="w"> </span>&lt;source&gt;<span class="w"> </span><span class="o">[</span>destination<span class="o">]</span>
 
@@ -145,7 +145,7 @@ Options:
 </div>
 </section>
 <section id="build-style-json-from-style-yml">
-<h2><cite>style.yml</cite> から <cite>style.json</cite> にビルドする<a class="headerlink" href="#build-style-json-from-style-yml" title="この見出しへのパーマリンク"></a></h2>
+<h2><cite>style.yml</cite> から <cite>style.json</cite> にビルドする<a class="headerlink" href="#build-style-json-from-style-yml" title="Link to this heading"></a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>charites<span class="w"> </span>build<span class="w"> </span>-h
 Usage:<span class="w"> </span>charites<span class="w"> </span>build<span class="w"> </span><span class="o">[</span>options<span class="o">]</span><span class="w"> </span>&lt;source&gt;<span class="w"> </span><span class="o">[</span>destination<span class="o">]</span>
 
@@ -157,39 +157,34 @@ Options:
 -u,<span class="w"> </span>--sprite-url<span class="w"> </span><span class="o">[</span>&lt;sprite<span class="w"> </span>url&gt;<span class="o">]</span><span class="w">                </span>url<span class="w"> </span>to<span class="w"> </span><span class="nb">set</span><span class="w"> </span>as<span class="w"> </span>the<span class="w"> </span>sprite<span class="w"> </span><span class="k">in</span><span class="w"> </span>style.json
 -i,<span class="w"> </span>--sprite-input<span class="w"> </span><span class="o">[</span>&lt;icon<span class="w"> </span>input<span class="w"> </span>directory&gt;<span class="o">]</span><span class="w">    </span>directory<span class="w"> </span>path<span class="w"> </span>of<span class="w"> </span>icon<span class="w"> </span><span class="nb">source</span><span class="w"> </span>to<span class="w"> </span>build<span class="w"> </span>icons.<span class="w"> </span>The<span class="w"> </span>default<span class="w"> </span>&lt;icon<span class="w"> </span>source&gt;<span class="w"> </span>is<span class="w"> </span><span class="sb">`</span>icons/<span class="sb">`</span>
 -o,<span class="w"> </span>--sprite-output<span class="w"> </span><span class="o">[</span>&lt;icon<span class="w"> </span>output<span class="w"> </span>directory&gt;<span class="o">]</span><span class="w">  </span>directory<span class="w"> </span>path<span class="w"> </span>to<span class="w"> </span>output<span class="w"> </span>icon<span class="w"> </span>files.<span class="w"> </span>The<span class="w"> </span>default<span class="w"> </span>&lt;icons<span class="w"> </span>destination&gt;<span class="w"> </span>is<span class="w"> </span>the<span class="w"> </span>current<span class="w"> </span>directory
---provider<span class="w"> </span><span class="o">[</span>provider<span class="o">]</span><span class="w">                          </span>your<span class="w"> </span>map<span class="w"> </span>service.<span class="w"> </span>e.g.<span class="w"> </span><span class="sb">`</span>mapbox<span class="sb">`</span>,<span class="w"> </span><span class="sb">`</span>geolonia<span class="sb">`</span>
 -h,<span class="w"> </span>--help<span class="w">                                     </span>display<span class="w"> </span><span class="nb">help</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nb">command</span>
 </pre></div>
 </div>
-<p>mapbox v2を使用している場合、デフォルトの設定ではなく、<cite>--provider mapbox</cite> を使用してmapboxサービスを指定してください。詳しくは <cite>serve</cite> コマンドセクションの <cite>--provider</cite> オプションを参照してください。</p>
 </section>
 <section id="realtime-editor-on-browser">
-<h2>ブラウザでのリアルタイムエディタ<a class="headerlink" href="#realtime-editor-on-browser" title="この見出しへのパーマリンク"></a></h2>
+<h2>ブラウザでのリアルタイムエディタ<a class="headerlink" href="#realtime-editor-on-browser" title="Link to this heading"></a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>charites<span class="w"> </span>serve<span class="w"> </span>-h
 Usage:<span class="w"> </span>charites<span class="w"> </span>serve<span class="w"> </span><span class="o">[</span>options<span class="o">]</span><span class="w"> </span>&lt;source&gt;
 
 serve<span class="w"> </span>your<span class="w"> </span>map<span class="w"> </span>locally
 
 Options:
---provider<span class="w"> </span><span class="o">[</span>provider<span class="o">]</span><span class="w">                        </span>your<span class="w"> </span>map<span class="w"> </span>service.<span class="w"> </span>e.g.<span class="w"> </span><span class="sb">`</span>mapbox<span class="sb">`</span>,<span class="w"> </span><span class="sb">`</span>geolonia<span class="sb">`</span>
---mapbox-access-token<span class="w"> </span><span class="o">[</span>mapboxAccessToken<span class="o">]</span><span class="w">    </span>Access<span class="w"> </span>Token<span class="w"> </span><span class="k">for</span><span class="w"> </span>the<span class="w"> </span>Mapbox
 -i,<span class="w"> </span>--sprite-input<span class="w"> </span><span class="o">[</span>&lt;icon<span class="w"> </span>input<span class="w"> </span>directory&gt;<span class="o">]</span><span class="w">  </span>directory<span class="w"> </span>path<span class="w"> </span>of<span class="w"> </span>icon<span class="w"> </span><span class="nb">source</span><span class="w"> </span>to<span class="w"> </span>build<span class="w"> </span>icons.<span class="w"> </span>The<span class="w"> </span>default<span class="w"> </span>&lt;icon
 <span class="w">                                             </span>source&gt;<span class="w"> </span>is<span class="w"> </span><span class="sb">`</span>icons/<span class="sb">`</span>
+--sdf<span class="w">                                        </span>Allows<span class="w"> </span>to<span class="w"> </span>use<span class="w"> </span>SDF<span class="w"> </span>sprite<span class="w"> </span><span class="k">in</span><span class="w"> </span>charites
 --port<span class="w"> </span><span class="o">[</span>port<span class="o">]</span><span class="w">                                </span>Specify<span class="w"> </span>custom<span class="w"> </span>port
+--vite-port<span class="w"> </span><span class="o">[</span>vitePort<span class="o">]</span><span class="w">                       </span>Specify<span class="w"> </span>custom<span class="w"> </span>port<span class="w"> </span><span class="k">for</span><span class="w"> </span>vite<span class="w"> </span>server
+--no-open<span class="w">                                    </span>Don<span class="err">'</span>t<span class="w"> </span>open<span class="w"> </span>the<span class="w"> </span>preview<span class="w"> </span><span class="k">in</span><span class="w"> </span>the<span class="w"> </span>default<span class="w"> </span>browser
 -h,<span class="w"> </span>--help<span class="w">                                   </span>display<span class="w"> </span><span class="nb">help</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nb">command</span>
 </pre></div>
 </div>
-<p>Charites は <cite>serve</cite> コマンドに 3 つのオプションを用意しています。</p>
+<p>Charites has fifth options for <cite>serve</cite> command.</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">--provider</span></code> - <cite>mapbox</cite>, <cite>geolonia</cite>,又は <cite>default</cite>. 指定されない場合、デフォルト値又はコンフィグファイルに指定された値が使われます。</p>
-<ul>
-<li><p><cite>mapbox</cite> - Mapbox GL JS v2.x 互換の仕様に対して実行されるフォーマットリンターです。</p></li>
-<li><p><cite>geolonia</cite> と <cite>default</cite> - MapLibre GL JS 互換の仕様に対して実行されるフォーマットリンターです。</p></li>
-</ul>
-</li>
-<li><p><code class="docutils literal notranslate"><span class="pre">--mapbox-access-token</span></code> -　マップボックスでスタイリングをする際には、アクセストークンを指定します。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">--sprite-input</span></code> - If you are building icon spritesheets with Charites, you can specify the directory of SVG files to compile here. See the <code class="docutils literal notranslate"><span class="pre">build</span></code> command for more information.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--sdf</span></code> - if this option is used together with <code class="docutils literal notranslate"><span class="pre">--sprite-input</span></code>, the viewer will generate SDF sprite. If the option is not specified, non SDF sprite will be generated.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">--port</span></code> - Set http server's port number. When not specified, the default is 8080.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--vite-port</span></code> - Set Vite server's port number. When not specified, the default is 5137.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--no-open</span></code> - If this option is used, the preview will not be opened in the default browser. This is useful when you want to use the preview in a headless environment.</p></li>
 </ul>
 </section>
 </section>
@@ -199,7 +194,7 @@ Options:
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="index.html" class="btn btn-neutral float-left" title="使い方" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="global_options.html" class="btn btn-neutral float-right" title="グローバルの設定" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="examples.html" class="btn btn-neutral float-right" title="実行例" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

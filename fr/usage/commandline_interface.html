@@ -1,25 +1,26 @@
+
+
 <!DOCTYPE html>
-<html class="writer-html5" lang="fr" >
+<html class="writer-html5" lang="fr" data-content_root="../">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Commandline Interface &mdash; Documentation charites 0.2.0</title>
-      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <!--[if lt IE 9]>
-    <script src="../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+
   
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/doctools.js"></script>
-        <script src="../_static/sphinx_highlight.js"></script>
-        <script src="../_static/translations.js"></script>
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=1b0070ce"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="../_static/translations.js?v=e6b791cb"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Recherche" href="../search.html" />
-    <link rel="next" title="Global configuration" href="global_options.html" />
+    <link rel="next" title="Examples" href="examples.html" />
     <link rel="prev" title="Usage" href="index.html" /> 
 </head>
 
@@ -55,7 +56,6 @@
 <li class="toctree-l3"><a class="reference internal" href="#realtime-editor-on-browser">Realtime editor on browser</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="global_options.html">Global configuration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="examples.html">Examples</a></li>
 <li class="toctree-l2"><a class="reference internal" href="example2.html">Example 2: Import existing style.json and edit it with charites</a></li>
 </ul>
@@ -89,9 +89,9 @@
            <div itemprop="articleBody">
              
   <section id="commandline-interface">
-<h1>Commandline Interface<a class="headerlink" href="#commandline-interface" title="Lien permanent vers cette rubrique"></a></h1>
+<h1>Commandline Interface<a class="headerlink" href="#commandline-interface" title="Lien vers cette rubrique"></a></h1>
 <section id="help">
-<h2>Help<a class="headerlink" href="#help" title="Lien permanent vers cette rubrique"></a></h2>
+<h2>Help<a class="headerlink" href="#help" title="Lien vers cette rubrique"></a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>charites<span class="w"> </span><span class="nb">help</span>
 Usage:<span class="w"> </span>charites<span class="w"> </span><span class="o">[</span>options<span class="o">]</span><span class="w"> </span><span class="o">[</span>command<span class="o">]</span>
 
@@ -109,14 +109,14 @@ serve<span class="w"> </span><span class="o">[</span>options<span class="o">]</s
 </div>
 </section>
 <section id="checking-version">
-<h2>Checking version<a class="headerlink" href="#checking-version" title="Lien permanent vers cette rubrique"></a></h2>
+<h2>Checking version<a class="headerlink" href="#checking-version" title="Lien vers cette rubrique"></a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>charites<span class="w"> </span>--version
-<span class="m">0</span>.3.0
+<span class="m">2</span>.1.0
 </pre></div>
 </div>
 </section>
 <section id="inititalize-style-yml">
-<h2>Inititalize <cite>style.yml</cite><a class="headerlink" href="#inititalize-style-yml" title="Lien permanent vers cette rubrique"></a></h2>
+<h2>Inititalize <cite>style.yml</cite><a class="headerlink" href="#inititalize-style-yml" title="Lien vers cette rubrique"></a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>charites<span class="w"> </span>init<span class="w"> </span>-h
 Usage:<span class="w"> </span>charites<span class="w"> </span>init<span class="w"> </span><span class="o">[</span>options<span class="o">]</span><span class="w"> </span>&lt;file&gt;
 
@@ -133,7 +133,7 @@ Options:
 </div>
 </section>
 <section id="convert-existing-style-json">
-<h2>Convert existing <cite>style.json</cite><a class="headerlink" href="#convert-existing-style-json" title="Lien permanent vers cette rubrique"></a></h2>
+<h2>Convert existing <cite>style.json</cite><a class="headerlink" href="#convert-existing-style-json" title="Lien vers cette rubrique"></a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>charites<span class="w"> </span>convert<span class="w"> </span>-h
 Usage:<span class="w"> </span>charites<span class="w"> </span>convert<span class="w"> </span><span class="o">[</span>options<span class="o">]</span><span class="w"> </span>&lt;source&gt;<span class="w"> </span><span class="o">[</span>destination<span class="o">]</span>
 
@@ -145,7 +145,7 @@ Options:
 </div>
 </section>
 <section id="build-style-json-from-style-yml">
-<h2>Build <cite>style.json</cite> from <cite>style.yml</cite><a class="headerlink" href="#build-style-json-from-style-yml" title="Lien permanent vers cette rubrique"></a></h2>
+<h2>Build <cite>style.json</cite> from <cite>style.yml</cite><a class="headerlink" href="#build-style-json-from-style-yml" title="Lien vers cette rubrique"></a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>charites<span class="w"> </span>build<span class="w"> </span>-h
 Usage:<span class="w"> </span>charites<span class="w"> </span>build<span class="w"> </span><span class="o">[</span>options<span class="o">]</span><span class="w"> </span>&lt;source&gt;<span class="w"> </span><span class="o">[</span>destination<span class="o">]</span>
 
@@ -157,39 +157,34 @@ Options:
 -u,<span class="w"> </span>--sprite-url<span class="w"> </span><span class="o">[</span>&lt;sprite<span class="w"> </span>url&gt;<span class="o">]</span><span class="w">                </span>url<span class="w"> </span>to<span class="w"> </span><span class="nb">set</span><span class="w"> </span>as<span class="w"> </span>the<span class="w"> </span>sprite<span class="w"> </span><span class="k">in</span><span class="w"> </span>style.json
 -i,<span class="w"> </span>--sprite-input<span class="w"> </span><span class="o">[</span>&lt;icon<span class="w"> </span>input<span class="w"> </span>directory&gt;<span class="o">]</span><span class="w">    </span>directory<span class="w"> </span>path<span class="w"> </span>of<span class="w"> </span>icon<span class="w"> </span><span class="nb">source</span><span class="w"> </span>to<span class="w"> </span>build<span class="w"> </span>icons.<span class="w"> </span>The<span class="w"> </span>default<span class="w"> </span>&lt;icon<span class="w"> </span>source&gt;<span class="w"> </span>is<span class="w"> </span><span class="sb">`</span>icons/<span class="sb">`</span>
 -o,<span class="w"> </span>--sprite-output<span class="w"> </span><span class="o">[</span>&lt;icon<span class="w"> </span>output<span class="w"> </span>directory&gt;<span class="o">]</span><span class="w">  </span>directory<span class="w"> </span>path<span class="w"> </span>to<span class="w"> </span>output<span class="w"> </span>icon<span class="w"> </span>files.<span class="w"> </span>The<span class="w"> </span>default<span class="w"> </span>&lt;icons<span class="w"> </span>destination&gt;<span class="w"> </span>is<span class="w"> </span>the<span class="w"> </span>current<span class="w"> </span>directory
---provider<span class="w"> </span><span class="o">[</span>provider<span class="o">]</span><span class="w">                          </span>your<span class="w"> </span>map<span class="w"> </span>service.<span class="w"> </span>e.g.<span class="w"> </span><span class="sb">`</span>mapbox<span class="sb">`</span>,<span class="w"> </span><span class="sb">`</span>geolonia<span class="sb">`</span>
 -h,<span class="w"> </span>--help<span class="w">                                     </span>display<span class="w"> </span><span class="nb">help</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nb">command</span>
 </pre></div>
 </div>
-<p>if you use mapbox v2 for your style, please use <cite>–provider mapbox</cite> to specify mapbox service rather than default. Please see <cite>–provider</cite> option at <cite>serve</cite> command section.</p>
 </section>
 <section id="realtime-editor-on-browser">
-<h2>Realtime editor on browser<a class="headerlink" href="#realtime-editor-on-browser" title="Lien permanent vers cette rubrique"></a></h2>
+<h2>Realtime editor on browser<a class="headerlink" href="#realtime-editor-on-browser" title="Lien vers cette rubrique"></a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>charites<span class="w"> </span>serve<span class="w"> </span>-h
 Usage:<span class="w"> </span>charites<span class="w"> </span>serve<span class="w"> </span><span class="o">[</span>options<span class="o">]</span><span class="w"> </span>&lt;source&gt;
 
 serve<span class="w"> </span>your<span class="w"> </span>map<span class="w"> </span>locally
 
 Options:
---provider<span class="w"> </span><span class="o">[</span>provider<span class="o">]</span><span class="w">                        </span>your<span class="w"> </span>map<span class="w"> </span>service.<span class="w"> </span>e.g.<span class="w"> </span><span class="sb">`</span>mapbox<span class="sb">`</span>,<span class="w"> </span><span class="sb">`</span>geolonia<span class="sb">`</span>
---mapbox-access-token<span class="w"> </span><span class="o">[</span>mapboxAccessToken<span class="o">]</span><span class="w">    </span>Access<span class="w"> </span>Token<span class="w"> </span><span class="k">for</span><span class="w"> </span>the<span class="w"> </span>Mapbox
 -i,<span class="w"> </span>--sprite-input<span class="w"> </span><span class="o">[</span>&lt;icon<span class="w"> </span>input<span class="w"> </span>directory&gt;<span class="o">]</span><span class="w">  </span>directory<span class="w"> </span>path<span class="w"> </span>of<span class="w"> </span>icon<span class="w"> </span><span class="nb">source</span><span class="w"> </span>to<span class="w"> </span>build<span class="w"> </span>icons.<span class="w"> </span>The<span class="w"> </span>default<span class="w"> </span>&lt;icon
 <span class="w">                                             </span>source&gt;<span class="w"> </span>is<span class="w"> </span><span class="sb">`</span>icons/<span class="sb">`</span>
+--sdf<span class="w">                                        </span>Allows<span class="w"> </span>to<span class="w"> </span>use<span class="w"> </span>SDF<span class="w"> </span>sprite<span class="w"> </span><span class="k">in</span><span class="w"> </span>charites
 --port<span class="w"> </span><span class="o">[</span>port<span class="o">]</span><span class="w">                                </span>Specify<span class="w"> </span>custom<span class="w"> </span>port
+--vite-port<span class="w"> </span><span class="o">[</span>vitePort<span class="o">]</span><span class="w">                       </span>Specify<span class="w"> </span>custom<span class="w"> </span>port<span class="w"> </span><span class="k">for</span><span class="w"> </span>vite<span class="w"> </span>server
+--no-open<span class="w">                                    </span>Don<span class="err">'</span>t<span class="w"> </span>open<span class="w"> </span>the<span class="w"> </span>preview<span class="w"> </span><span class="k">in</span><span class="w"> </span>the<span class="w"> </span>default<span class="w"> </span>browser
 -h,<span class="w"> </span>--help<span class="w">                                   </span>display<span class="w"> </span><span class="nb">help</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nb">command</span>
 </pre></div>
 </div>
-<p>Charites has three options for <cite>serve</cite> command.</p>
+<p>Charites has fifth options for <cite>serve</cite> command.</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">--provider</span></code> - <cite>mapbox</cite>, <cite>geolonia</cite>, or <cite>default</cite>. When not specified, default or the value in the configuration file will be used.</p>
-<ul>
-<li><p><cite>mapbox</cite> - The format linter runs against the Mapbox GL JS v2.x compatible specification.</p></li>
-<li><p><cite>geolonia</cite> and <cite>default</cite> - the format linter runs against the MapLibre GL JS compatible specification.</p></li>
-</ul>
-</li>
-<li><p><code class="docutils literal notranslate"><span class="pre">--mapbox-access-token</span></code> - Set your access-token when styling for Mapbox.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">--sprite-input</span></code> - If you are building icon spritesheets with Charites, you can specify the directory of SVG files to compile here. See the <code class="docutils literal notranslate"><span class="pre">build</span></code> command for more information.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--sdf</span></code> - if this option is used together with <code class="docutils literal notranslate"><span class="pre">--sprite-input</span></code>, the viewer will generate SDF sprite. If the option is not specified, non SDF sprite will be generated.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">--port</span></code> - Set http server’s port number. When not specified, the default is 8080.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--vite-port</span></code> - Set Vite server’s port number. When not specified, the default is 5137.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--no-open</span></code> - If this option is used, the preview will not be opened in the default browser. This is useful when you want to use the preview in a headless environment.</p></li>
 </ul>
 </section>
 </section>
@@ -199,13 +194,13 @@ Options:
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pied de page">
         <a href="index.html" class="btn btn-neutral float-left" title="Usage" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Précédent</a>
-        <a href="global_options.html" class="btn btn-neutral float-right" title="Global configuration" accesskey="n" rel="next">Suivant <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="examples.html" class="btn btn-neutral float-right" title="Examples" accesskey="n" rel="next">Suivant <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022, The United Nations Vector Tile Toolkit.</p>
+    <p>&#169; Droits d'auteur 2022, The United Nations Vector Tile Toolkit.</p>
   </div>
 
   Compilé avec <a href="https://www.sphinx-doc.org/">Sphinx</a> en utilisant un

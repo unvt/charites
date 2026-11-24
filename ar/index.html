@@ -1,23 +1,24 @@
+
+
 <!DOCTYPE html>
-<html class="writer-html5" lang="ar" >
+<html class="writer-html5" lang="ar" data-content_root="./">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
-<meta content="This document contains the complete documentation of Charites, an application to style vector tiles easily" lang="en" name="description" xml:lang="en" />
-<meta content="Charites, Mapbox, Maplibre, Vectortiles, UNVT, webmapping" name="keywords" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta content="This document contains the complete documentation of Charites, an application to style vector tiles easily" lang="en" name="description" translated="False" xml:lang="en" />
+<meta content="Charites, Maplibre, Vectortiles, UNVT, webmapping" name="keywords" translated="False" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Charites - Documentation &mdash; charites 0.2.0 documentation</title>
-      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  <!--[if lt IE 9]>
-    <script src="_static/js/html5shiv.min.js"></script>
-  <![endif]-->
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
   
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/doctools.js"></script>
-        <script src="_static/sphinx_highlight.js"></script>
-        <script src="_static/translations.js"></script>
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=772bc2a4"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="_static/translations.js?v=87cb2081"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="بحث" href="search.html" />
@@ -75,10 +76,10 @@
            <div itemprop="articleBody">
              
   <section id="charites-documentation">
-<h1>Charites - Documentation<a class="headerlink" href="#charites-documentation" title="Permalink to this heading"></a></h1>
+<h1>Charites - Documentation<a class="headerlink" href="#charites-documentation" title="Link to this heading"></a></h1>
 <dl class="field-list simple">
 <dt class="field-odd">Date<span class="colon">:</span></dt>
-<dd class="field-odd"><p>2022-12-15</p>
+<dd class="field-odd"><p>2024-08-23</p>
 </dd>
 <dt class="field-even">Copyright<span class="colon">:</span></dt>
 <dd class="field-even"><p>CC-BY-SA</p>
@@ -87,13 +88,13 @@
 <dd class="field-odd"><p>The United Nations Vector Tile Toolkit</p>
 </dd>
 <dt class="field-even">Version<span class="colon">:</span></dt>
-<dd class="field-even"><p>0.3.0</p>
+<dd class="field-even"><p>2.1.0</p>
 </dd>
 <dt class="field-odd">Abstract<span class="colon">:</span></dt>
 <dd class="field-odd"><p>This document contains the complete documentation of Charites, an application to style vector tiles easily</p>
 </dd>
 </dl>
-<p>An easy, intuitive, and efficient command-line tool for writing vector map styles compatible with the <a class="reference external" href="https://docs.mapbox.com/mapbox-gl-js/style-spec/">Mapbox</a> and <a class="reference external" href="https://maplibre.org/maplibre-gl-js-docs/style-spec/">MapLibre</a> Style Specification in YAML.
+<p>An easy, intuitive, and efficient command-line tool for writing vector map styles compatible with the <a class="reference external" href="https://maplibre.org/maplibre-style-spec/">MapLibre</a> Style Specification in YAML.
 With YAML format's readability, JSON compiler, linter, and live style viewer on a local browser, you can simplify your map styling workflow.</p>
 <div class="admonition note">
 <p class="admonition-title">ملاحظة</p>
@@ -101,14 +102,13 @@ With YAML format's readability, JSON compiler, linter, and live style viewer on 
 </div>
 </section>
 <section id="features">
-<h1>Features<a class="headerlink" href="#features" title="Permalink to this heading"></a></h1>
+<h1>Features<a class="headerlink" href="#features" title="Link to this heading"></a></h1>
 <ul class="simple">
 <li><p>Initiate a project from scratch, or convert an existing <cite>style.json</cite> file to generate YAML style files.</p></li>
 <li><p>Write styles in a simple YAML format.</p></li>
 <li><p>Divide groups of layers in to multiple files for better readability and mantainability. <cite>!!inc/file &lt;relative-path-to-the-file&gt;</cite></p></li>
 <li><p>Use variables like <cite>$backgroundColor</cite> and <cite>$waterColor</cite> to style effectively.</p></li>
 <li><p>Compile YAML to a single style.json file, with a format linter.</p></li>
-<li><p>Use <cite>--provider mapbox</cite> to validate your style against Mapbox GL JS v2.x</p></li>
 <li><p>Run <cite>charites serve &lt;source&gt;</cite> to preview your style live while you make changes in a browser.</p></li>
 </ul>
 <div class="toctree-wrapper compound">
@@ -121,7 +121,7 @@ With YAML format's readability, JSON compiler, linter, and live style viewer on 
 </div>
 </section>
 <section id="translations">
-<h1>Translations<a class="headerlink" href="#translations" title="Permalink to this heading"></a></h1>
+<h1>Translations<a class="headerlink" href="#translations" title="Link to this heading"></a></h1>
 <p>The documentation is available in several languages.</p>
 <ul class="simple">
 <li><p><a class="reference external" href="/charites/en">English</a></p></li>
@@ -132,7 +132,7 @@ With YAML format's readability, JSON compiler, linter, and live style viewer on 
 <p>If there is an error with a translation, please <a class="reference external" href="https://www.transifex.com/unvt/charites-docs/">help to improve it</a>.</p>
 </section>
 <section id="indices-and-tables">
-<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this heading"></a></h1>
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Link to this heading"></a></h1>
 <ul class="simple">
 <li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
 <li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
@@ -150,7 +150,7 @@ With YAML format's readability, JSON compiler, linter, and live style viewer on 
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169;  حقوق النشر 2022, The United Nations Vector Tile Toolkit</p>
+    <p>&#169; Copyright 2022, The United Nations Vector Tile Toolkit.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

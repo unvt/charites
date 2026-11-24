@@ -1,26 +1,27 @@
+
+
 <!DOCTYPE html>
-<html class="writer-html5" lang="ja" >
+<html class="writer-html5" lang="ja" data-content_root="../">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>実行例 &mdash; charites 0.2.0 ドキュメント</title>
-      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <!--[if lt IE 9]>
-    <script src="../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+
   
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/doctools.js"></script>
-        <script src="../_static/sphinx_highlight.js"></script>
-        <script src="../_static/translations.js"></script>
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=0a962762"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="../_static/translations.js?v=4755f45a"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="検索" href="../search.html" />
     <link rel="next" title="Example 2: Import existing style.json and edit it with charites" href="example2.html" />
-    <link rel="prev" title="グローバルの設定" href="global_options.html" /> 
+    <link rel="prev" title="コマンドラインインターフェース" href="commandline_interface.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -47,7 +48,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../install/index.html">Charitesのインストール</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">使い方</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="commandline_interface.html">コマンドラインインターフェース</a></li>
-<li class="toctree-l2"><a class="reference internal" href="global_options.html">グローバルの設定</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">実行例</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#init">初期化</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#build">ビルド</a></li>
@@ -87,10 +87,10 @@
            <div itemprop="articleBody">
              
   <section id="examples">
-<h1>実行例<a class="headerlink" href="#examples" title="この見出しへのパーマリンク"></a></h1>
+<h1>実行例<a class="headerlink" href="#examples" title="Link to this heading"></a></h1>
 <p>例: <a class="reference external" href="https://github.com/geoloniamaps/basic">https://github.com/geoloniamaps/basic</a></p>
 <section id="init">
-<h2>初期化<a class="headerlink" href="#init" title="この見出しへのパーマリンク"></a></h2>
+<h2>初期化<a class="headerlink" href="#init" title="Link to this heading"></a></h2>
 <p>TileJSONまたはmetadata.jsonから <cite>style.yml</cite> を初期化します。TileJSON の URL を指定しない場合は、空の <cite>style.yml</cite> が生成されます。</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>charites<span class="w"> </span>init<span class="w"> </span>style.yml<span class="w"> </span>--tilejson-urls<span class="w"> </span>https://raw.githubusercontent.com/mapbox/tilejson-spec/master/3.0.0/example/osm.json
 </pre></div>
@@ -101,7 +101,7 @@
 <p>オプションの <cite>-c</cite> または <cite>--composite-layers</cite> パラメータを追加すると、 <cite>init</cite> コマンドで、レイヤーの設定ファイルを個別に作成する代わりに、単一の YAML を生成することができるようになります。</p>
 </section>
 <section id="build">
-<h2>ビルド<a class="headerlink" href="#build" title="この見出しへのパーマリンク"></a></h2>
+<h2>ビルド<a class="headerlink" href="#build" title="Link to this heading"></a></h2>
 <p><cite>style.yml</cite> から <cite>style.json</cite> にビルドする</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>charites<span class="w"> </span>build<span class="w"> </span>style.yml<span class="w"> </span>style.json
 </pre></div>
@@ -116,7 +116,7 @@
 </div>
 </section>
 <section id="convert-style-json-to-style-yml">
-<h2><cite>style.yml</cite> から <cite>style.json</cite> に変換<a class="headerlink" href="#convert-style-json-to-style-yml" title="この見出しへのパーマリンク"></a></h2>
+<h2><cite>style.yml</cite> から <cite>style.json</cite> に変換<a class="headerlink" href="#convert-style-json-to-style-yml" title="Link to this heading"></a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>charites<span class="w"> </span>convert<span class="w"> </span>style.json<span class="w"> </span>style.yml
 </pre></div>
 </div>
@@ -126,13 +126,9 @@
 </div>
 </section>
 <section id="serve">
-<h2>サーバーで確認<a class="headerlink" href="#serve" title="この見出しへのパーマリンク"></a></h2>
+<h2>サーバーで確認<a class="headerlink" href="#serve" title="Link to this heading"></a></h2>
 <p>ローカル環境での地図スタイルのライブプレビューを起動します。</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>charites<span class="w"> </span>serve<span class="w"> </span>style.yml
-</pre></div>
-</div>
-<p>Mapboxユーザーの方へ</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>charites<span class="w"> </span>serve<span class="w"> </span>style.yml<span class="w"> </span>--provider<span class="w"> </span>mapbox<span class="w"> </span>--mapbox-access-token<span class="w"> </span>xxxx
 </pre></div>
 </div>
 </section>
@@ -142,7 +138,7 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="global_options.html" class="btn btn-neutral float-left" title="グローバルの設定" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="commandline_interface.html" class="btn btn-neutral float-left" title="コマンドラインインターフェース" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="example2.html" class="btn btn-neutral float-right" title="Example 2: Import existing style.json and edit it with charites" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

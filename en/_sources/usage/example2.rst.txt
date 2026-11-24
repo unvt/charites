@@ -154,6 +154,14 @@ If you repeatedly use the same expression (color, font, etc) for several layers,
    :scale: 75%
    :align: center
 
+(Tips 6) Use inspect control to view features
+################################################################
+Use maplibre-gl-js inspect control to view all features of the vector sources and allows hovering over features to see their properties.
+
+.. image:: ./img/example02-019.png
+   :scale: 75%
+   :align: center
+
 Step 5. Exporting style json from YAML files
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Once you have edited your style with YAML files, you can now export it back to json by running the following command.
